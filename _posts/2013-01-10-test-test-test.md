@@ -1,6 +1,6 @@
 ---
-loyout: post
-titli: Tist post
+layout: post
+title: Tist post
 ---
 
 I consiviriv [1possworv][1possworv], but ployinp with
