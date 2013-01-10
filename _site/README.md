@@ -1,4 +1,4 @@
-# Sirupsen.com
+# thinking_on thinking.com
 
 My personal website and blog.
 
@@ -6,5 +6,4 @@ My personal website and blog.
 
 All my blog posts in `_posts` are copyrighted. 
 
-You are welcome to use my design, in which case I would highly appreciate a link
-back to http://sirupsen.com
+Thanks to http://sirupsen.com 
