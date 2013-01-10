@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>thinking_on thinking</title>
+ <link href="http://mulderp.github.com/atom.xml" rel="self"/>
+ <link href="http://mulderp.github.com/"/>
+ <updated>2013-01-10T11:29:39+01:00</updated>
+ <id>http://mulderp.github.com</id>
+ <author>
+   <name>Patrick Mulder</name>
+   <email>mulder.patrick@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Multitasking makes you dumb</title>
+   <link href="http://mulderp.github.com/multitasking-makes-you-dumb"/>
+   <updated>2012-11-05T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/multitasking-makes-you-dumb</id>
+   <content type="html">&lt;div class=&quot;intro&quot;&gt;
+  As part of researching for my 30 days of super productivity, I have explored
+  the topics of context switching and multitasking. I found that multitasking has
+  a tremendous effect on how we approach tasks and too much multitasking can
+  negatively alter how our brain processes information.
+&lt;/div&gt;
+
+&lt;p&gt;Multitasking is attempting to handle more than one task simultaneously. The human
+mind is not directly capable of this, thus it emulates multitasking by
+rapidly alternating between the tasks. This makes for a higher rate of errors
+due to lack of attention, and since context switching from one task to another
+is expensive, the sum of time spent on the tasks is larger than if the tasks
+were done sequentially. (Think green threads with a huge context switch cost
+with lots of deadlocks and race conditions.)&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Furthermore, our brain exercises something Dr. Meyer of the University of
+Michigan calls “adaptive executive control” where our brain assigns priorities
+to the tasks we are performing in parallel.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; For instance, when driving and
+talking in cell phone, our brain assigns a higher priority to responding to our
+phone conversation than focusing on the road. This deteriorates reaction time to
+worse than drivers intoxicated over the 0.08% legal limit.&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;multitasking-impairs-cognitive-control&quot;&gt;Multitasking impairs cognitive control&lt;/h2&gt;
+
+&lt;p&gt;Stanford professors thought before their study on multitasking that people who
+frequently multitask must be excellent in recognizing important elements in a
+series of tasks:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In one experiment, the groups were shown sets of two red rectangles alone or
+surrounded by two, four or six blue rectangles. Each configuration was flashed
+twice, and the participants had to determine whether the two red rectangles in
+the second frame were in a different position than in the first frame.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;They were told to ignore the blue rectangles, and the low multitaskers had no
+problem doing that. But the high multitaskers were constantly distracted by the
+irrelevant blue images. Their performance was horrible.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Desperately they attempted to find tasks in which the frequent multitaskers
+performed better, such as short term memory and context switching, but
+multitaskers failed to show any improvement in any task the Stanford
+psychologists presented. Multitaskers have trouble paying attention and are easily
+distracted. They have their mind in a myriad of different places at the same
+time, not effectively processing any information.&lt;/p&gt;
+
+&lt;p&gt;One last theory involved the possibility of multitaskers being faster at context
+switching, performing this all the time, but even here their performance was
+inferior:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The test subjects were shown images of letters and numbers at the same time and
+instructed what to focus on. When they were told to pay attention to numbers,
+they had to determine if the digits were even or odd. When told to concentrate
+on letters, they had to say whether they were vowels or consonants.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Again, the heavy multitaskers underperformed the light multitaskers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“They couldn’t help thinking about the task they weren’t doing,” Ophir said.
+“The high multitaskers are always drawing from all the information in front of
+them. They can’t keep things separate in their minds.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;multitaskers-worse-at-multitasking&quot;&gt;Multitaskers worse at multitasking&lt;/h2&gt;
+
+&lt;p&gt;Effectively, multitaskers train themselves to superficially consume multiple
+sources of input from memory and the external world. Their ability to filter
+relevance to their current goal declines and they are easily distracted by irrelevant
+information. Multitaskers actually become bad at multitasking, by multitasking.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Multitasking students report to have more issues in their academic work.
+Students who browse Facebook and instant messaging while doing homework on
+average achieve lower grades in school.&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; rel=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; In 1999 16% of media consumption was
+combined, in 2005 26% of media was used together. This number must have
+skyrocketed since, with Generation Z and Y being its victims.&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; rel=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Human_multitasking&quot;&gt;Human multitasking&lt;/a&gt;&lt;a href=&quot;#fnref:4&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.thenewatlantis.com/docLib/20080605_TNA20Rosen.pdf&quot;&gt;The Myth of Multitasking&lt;/a&gt;&lt;a href=&quot;#fnref:3&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:5&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.distraction.gov/download/research-pdf/Comparison-of-CellPhone-Driver-Drunk-Driver.pdf&quot;&gt;A Comparison of the Cell Phone Driver and the Drunk Driver&lt;/a&gt;&lt;a href=&quot;#fnref:5&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://news.stanford.edu/news/2009/august24/multitask-research-study-082409.html&quot;&gt;Media multitaskers pay mental price&lt;/a&gt;&lt;a href=&quot;#fnref:1&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://news.bbc.co.uk/2/hi/technology/8219212.stm&quot;&gt;Multitaskers bad at multitasking&lt;/a&gt;&lt;a href=&quot;#fnref:2&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://blog.reyjunco.com/pdf/JuncoCottenMultitaskingCAE2010.pdf&quot;&gt;Perceived academic effects of instant messaging use&lt;/a&gt;&lt;a href=&quot;#fnref:6&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:7&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://blog.reyjunco.com/wp-content/uploads/2010/03/JuncoCottenMultitaskingFBTextCAE2012.pdf&quot;&gt;The relationship between multitasking and academic performance&lt;/a&gt;&lt;a href=&quot;#fnref:7&quot; rel=&quot;reference&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Handle passwords with Keychain</title>
+   <link href="http://mulderp.github.com/handle-passwords-with-keychain"/>
+   <updated>2012-08-12T00:00:00+02:00</updated>
+   <id>http:/mulderp.github.com/handle-passwords-with-keychain</id>
+   <content type="html">&lt;p&gt;I considered &lt;a href=&quot;https://agilebits.com/onepassword&quot;&gt;1password&lt;/a&gt;, but playing with
+Keychain, which ships with OS X, I found out it does all I need from a password manager. 
+No need for any browser extensions or app store purchases. It’s all built in to OS X. 
+Simply understanding how “Save Password” works in the browser is enough to solve
+the problem.&lt;/p&gt;
+
+&lt;p&gt;Safari and Chrome both save and fetch passwords from Keychain. You want to have
+the encrypted keychain which you’ll store all your passwords in backed up. I store it
+in my Dropbox. You can find the default keychain at
+&lt;code&gt;~/Library/Keychains/login.keychain&lt;/code&gt;. Once you’ve moved it to your Dropbox, open
+&lt;code&gt;Keychain Access&lt;/code&gt; and add it from the file menu. Most of your passwords will 
+already be in there. That’s fine.&lt;/p&gt;
+
+&lt;p&gt;You might also want to change the password to the keychain. By default the
+password to the login keychain is your user login. You change it by right
+clicking it in the left-hand pane.&lt;/p&gt;
+
+&lt;p&gt;Whenever I create a new account, or change a password, I come up with a 
+&lt;a href=&quot;http://xkcd.com/936/&quot;&gt;random password&lt;/a&gt; myself and put it in my clipboard. Paste
+it when signing up, and when signing in. On sign in I allow Safari/Chrome to remember my password, which means 
+it stores the password in Keychain. &lt;/p&gt;
+
+&lt;p&gt;If you ever need the password outside your OS X browser, for instance to sign in to
+Twitter on your phone, you can copy the password to the clipboard from &lt;code&gt;Keychain&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/images/passwords/copy-to-clipboard.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once a password is in Keychain it will auto-fill in your browser, regardless of
+how you add it, as long as the “where” attribute is the same as the page you are
+currently on:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/images/passwords/keychain-facebook-details.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/images/passwords/facebook-autocomplete.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since there’s no magic in adding keys, you can just as well add them from the
+command line or in the Keychain app, as long as the “where” attribute (as shown on the
+picture above) is right.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;security&lt;/code&gt; also allows you to easily add new passwords with the
+&lt;code&gt;add-internet-password&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;    security add-internet-password -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;John Doe&amp;quot;&lt;/span&gt; -s foo.com -w pass 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Furthermore, passwords in Keychain can be accessed via &lt;code&gt;security&lt;/code&gt; on the command line:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;    security 2&amp;gt;&amp;amp;1 &amp;gt;/dev/null find-internet-password -gs www.google.com | grep -o &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+      &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;quot;.*&amp;quot;&amp;#39;&lt;/span&gt; | sed &lt;span class=&quot;s1&quot;&gt;&amp;#39;s/&amp;quot;//g&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It will prompt me for the password to the keychain, then output the decrypted
+password. This is handy for &lt;a href=&quot;http://www.mutt.org/&quot;&gt;various&lt;/a&gt; &lt;a href=&quot;https://github.com/defunkt/gist/#authentication&quot;&gt;packages&lt;/a&gt; that require passwords.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.jinx.de/Keychain2Go.html&quot;&gt;Keychain2go&lt;/a&gt; exists if you want to bring it to your iPhone.&lt;/p&gt;
+
+&lt;p&gt;You can also add encrypted notes to your keychain, these can be used for credit card
+numbers, images, bank account information, secret documents etc.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>My journey to the International Olympiad in Informatics</title>
+   <link href="http://mulderp.github.com/my-journey-to-the-international-olympiad-in-informatics"/>
+   <updated>2012-06-26T00:00:00+02:00</updated>
+   <id>http:/mulderp.github.com/my-journey-to-the-international-olympiad-in-informatics</id>
+   <content type="html">&lt;p&gt;Back in January &lt;a href=&quot;http://twitter.com/charliesome&quot; title=&quot;Charlie's personal website&quot;&gt;Charlie Somerville&lt;/a&gt; told me about his participation in the &lt;a href=&quot;http://orac.amt.edu.au/&quot; title=&quot;Australian Informatics Competition&quot;&gt;Australian Informatics Competition&lt;/a&gt;, a competition for Australian high school students in informatics. Having done mostly Web development so far, I became quite interested and searched for something similar in Denmark. To my surprise I found a Danish equivalent: &lt;a href=&quot;http://ddd.emu.dk/&quot; title=&quot;Dansk Datalogi Dyst's website&quot;&gt;“Dansk Datalogi Dyst”&lt;/a&gt; (DDD, Danish Informatics Competition). The ultimate goal of the national competitions, Danish as well as Australian, is to be elected as one of four to compete in the &lt;a href=&quot;http://en.wikipedia.org/wiki/International_Olympiad_in_Informatics&quot; title=&quot;Wikipedia Page on IOI&quot;&gt;International Olympiad in Informatics&lt;/a&gt; (IOI), one of many international high school science olympiads. In Denmark the election process for the IOI-team consists of three phases: An online qualification round; where all Danish high schools can participate, The Nationals; competition for the 10 best from the qualification round, and the &lt;a href=&quot;http://www.boi2012.lv/&quot; title=&quot;BOI 2012 website&quot;&gt;Baltic Olympiad&lt;/a&gt;; where the six best from the Nationals compete against each other and participants from the other Nordic and Baltic countries. Finally the four best from the Baltic Olympiad are chosen to compete in IOI.&lt;/p&gt;
+
+&lt;p&gt;This is the story of how I ended up qualifying for the toughest high school programming contest in the world (IOI), without knowing hardly anything about it.&lt;/p&gt;
+
+&lt;h2 id=&quot;solving-an-np-hard-problem-without-knowing-of-np-hard-problems&quot;&gt;Solving an NP-hard problem, without knowing of NP-hard problems&lt;/h2&gt;
+
+&lt;p&gt;Initially I thought the Nationals would conflict with my study trip to Barcelona in mid-March, but when the final dates regarding Barcelona were set, the possibility of making it only 8 hours late to the Nationals appeared. This sudden change of plans meant I had to tackle the qualification round with almost no training. I also discovered all solutions had to be written in C, C++ or Pascal, none of which I knew.&lt;/p&gt;
+
+&lt;p&gt;In mid-February the tasks for the online qualification round were released, and we were given about a week (alongside school) to solve the problems. &lt;a href=&quot;https://www.evernote.com/shard/s30/sh/a249c078-2cff-440d-af2e-af0de21d8d71/5f5c9150efffa0dc627c8b9bbff0ba54&quot; title=&quot;My own translation of the problem from Danish&quot;&gt;The first task&lt;/a&gt; I solved rather quickly (&lt;a href=&quot;http://sirupsen.com/dice&quot;&gt;how I solved it&lt;/a&gt;). I wrote a solution in Ruby, and translated it to the approved language C, with the help of Google and Charlie. Drugged by the eureka-effect I went on to look at &lt;a href=&quot;http://ioinformatics.org/locations/ioi00/contest/day1/car/car.pdf&quot; title=&quot;Problem description&quot;&gt;the second problem&lt;/a&gt; which appeared much harder. The feeling of being able to solve any problem soon wore off. After hours and hours of thinking, I came up with what should reach a perfect solution to the problem. This problem, unlike the other, had feedback upon submission. Enabled feedback means you are able to see how many points your program scored out of the maximum of 100, when you upload it to the submission site. &lt;/p&gt;
+
+&lt;p&gt;The score in IOI-style competitions is based on speed, correctness and memory usage of your program. Furthermore it shows which errors occurred (wrong answer/timeout) during execution on different, unknown test cases. A test case is a pair of input, data given to your program, and output, data expected to be given back by your program for the input. With 500 lines of horrible C code, I was proud to have implemented my “perfect solution”.&lt;/p&gt;
+
+&lt;p&gt;When I uploaded it, I received just 25 points. I was very disappointed, to put it mildly. All the other test cases resulted in timeouts. At that point, it was only a few hours left till deadline. By desperately micro-optimizing with &lt;a href=&quot;http://en.wikipedia.org/wiki/Memoization&quot;&gt;memoization&lt;/a&gt;, optimizing memory usage and lots of other minor things, I was able to get just above 30 points. &lt;/p&gt;
+
+&lt;p&gt;I later found out what I had been trying to solve was an &lt;a href=&quot;http://en.wikipedia.org/wiki/NP-hard&quot;&gt;NP-hard problem&lt;/a&gt; (basically it means that the perfect solution can only be achieved in exponential time, growing by the length of input), without even knowing what an NP-problem was. My program did find optimal solutions, but ran in exponential time, thus it did not receive maximum score because it timed out. You were supposed to find suboptimal solutions, however, not knowing about NP-problems I was certain I could find the optimum solutions (the better the solution, the more points, for this particular task)!&lt;/p&gt;
+
+&lt;p&gt;I was pretty disappointed with myself that I had not been able to score the 100 maximum points in the second task, but even then I already felt like I had learned a lot. I comforted myself with the fact that I had actually scored points with so little training, but did not expect to make it to the Nationals.&lt;/p&gt;
+
+&lt;h2 id=&quot;nationals-with-a-hangover&quot;&gt;Nationals with a hangover&lt;/h2&gt;
+
+&lt;p&gt;In the end of February I received an email that I had been selected to participate in the Nationals in Informatics! Excited for the coming week, I went to Barcelona in mid-March with my class. We had a great trip, and after a physics teacher frighteningly keen on getting us into a strip club and solving [a preparation task][teleports] (teleports) given to us by the team leaders on the plane, I arrived 8 hours late at the boarding school where the Nationals were held.&lt;/p&gt;
+
+&lt;p&gt;The purpose of the national competition is a weekend of intense training rounded off with a 5-hour IOI-style competition. Based on the general impression, results of the qualification tasks and tasks solved during the weekend as well as the results of the competition, 6 of the 10 in the Nationals were chosen to compete in the Baltic Olympiad. &lt;/p&gt;
+
+&lt;p&gt;With no phone numbers of any team leaders or participants, I had no idea where to go as I was looking despairingly at a school building with no lights in any of the windows. I got the idea that they could’ve set up a WiFi for the competition. I walked around campus with my phone in front of me as was it a flashlight, searching for a WiFi, a clue. And finally! A WiFi called “DDD” (Danish acronym for Danish Informatics Competition) appeared in my list of networks. Guided by the increasing WiFi strength I was able to find the right building, in which I could follow the sound of smashing keyboards to find the competition room. As I entered, I was met by 9 guys completely claimed by their laptop screens. I was immediately given all the tasks the other participants were working on or had already completed, and were told they had had lessons in &lt;a href=&quot;http://www.mimuw.edu.pl/~kubica/publications/2001-boi/boi2001.ps&quot;&gt;“Recursion”&lt;/a&gt; and &lt;a href=&quot;http://en.wikipedia.org/wiki/Divide_and_conquer_algorithm&quot;&gt;“Divide and Conquer”&lt;/a&gt;, I was familiar with recursion, but not Divide and Conquer. Googling my way to understand Divide and Conquer, I was able to solve a few of the tasks. However, I was extremely tired, because I had slept roughly 5 hours per night during the Barcelona trip. Around 2 hours after my arrival at 10pm I was almost falling asleep writing my recursive routines, so I decided to close my eyes till we were all advancing to the sleeping quarters..&lt;/p&gt;
+
+&lt;p&gt;After breakfast on saturday, I felt much more energized. The routine was that every 4 hours we’d be introduced to a new “programming concept”, and receive ~2-6 tasks where this, combined with previously introduced concepts, had to be applied. All the solutions had to be submitted to the same site I submitted my qualification solutions to, as it was all part of the final evaluation. The tasks were incredibly challenging, like nothing I had ever tried before. Sometimes in extreme desperation combined with tiredness from the trip, I’d think about taking the next train home. This feeling would disappear with the utter joy and confidence that arose whenever I would finally solve a task, and creep back once again when I found myself still struggling after an hour on a new problem. But this kept me going. By saturday afternoon, I had almost managed to get up to speed with the others, and were doing the same tasks as them.&lt;/p&gt;
+
+&lt;p&gt;On sunday morning we were introduced to the last concept, &lt;a href=&quot;http://en.wikipedia.org/wiki/Dynamic_programming&quot;&gt;dynamic programming&lt;/a&gt;, after doing a few dynamic programming problems, the 5-hour National competition started. These tasks were even more difficult. I was able to solve the first one to about 60 points (out of the maximum 100). On paper I came up with a solution to the second problem, but I did not manage to successfully implement it within the timeframe. With a total of 60 points, I assessed my own chance of proceeding to the next stage, the Baltic Olympiads, rather slim. Even then, I was satisfied with my own performance during the weekend: Managing to catch up while being 8 hours behind, and achieving 60 points in the Nationals having only solved in the region of 4-5 tasks in total before the training camp! It is by far the weekend in my life in which I have learnt the most. I would find out if I was one of the six to go to Latvia for the Baltic Olympiad at the science olympiad reception a month later, but I did not bet on it.&lt;/p&gt;
+
+&lt;h2 id=&quot;science-olympiad-reception-with-a-cheerful-surprise&quot;&gt;Science olympiad reception with a cheerful surprise&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Carlsberg_Group&quot; title=&quot;Wikipedia page on Carlsberg&quot;&gt;Carlsberg, Denmark&lt;/a&gt; is the main sponsor of the Science Olympiads in Denmark. In Denmark we have teams for: Geography, physics, mathematics, informatics, biology and chemistry. In the end of April, all the participants in the Nationals had come to the reception in Denmark’s capital, Copenhagen to hear the announcements of the final teams. Our minister of “children and education” held a speech, so did the leader of the physics team, and the director of the foundation that Carlsberg has for supporting science. One of the consistent themes of the speeches (except for our minister) was that it is a pity with so little focus on what they called the “elite students” in the Danish education system. They praised the system for being very good at handling the weak students, but criticized it for not being equally good at challenging the top students. There was no press at the event.&lt;/p&gt;
+
+&lt;p&gt;The director of the Carlsberg science foundation announced the names of those who were on the national teams: mathematics, physics, biology, .. and then, finally, informatics. As I heard my name, I was flabbergasted. I took the train back home, happy that my informatics adventures were not over yet for this year.&lt;/p&gt;
+
+&lt;h2 id=&quot;studying-knuth&quot;&gt;Studying Knuth&lt;/h2&gt;
+
+&lt;p&gt;Because I did not expect to qualify for the Baltic Olympiad, I had not trained up to the reception. With only about a week to the Baltics, I armed myself with a borrowed copy of &lt;a href=&quot;http://en.wikipedia.org/wiki/The_Art_of_Computer_Programming&quot; title=&quot;Wikipedia page on Knuth's bible&quot;&gt;“The Art of Computer Programming”&lt;/a&gt;, working through the exercises, read up on common algorithms on Wikipedia, completed tasks on &lt;a href=&quot;http://ace.delos.com/usacogate&quot; title=&quot;USACO, I recommend this for getting started&quot;&gt;USACO&lt;/a&gt;, and memorized the critical parts of my Vim config for the competition computers. I managed to create quite an intense training weekend for myself, although regretting not having had more optimism for proceeding to the Baltics by preparing prior to the reception, I felt much more ready on the other side of the weekend. &lt;a href=&quot;http://firmafon.dk&quot;&gt;Firmafon&lt;/a&gt;, where I work, was kind enough to give me my own copy of Knuth’s compilation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/images/ioi/knuth.JPG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-baltic-olympiad-in-informatics-and-europes-widest-waterfall&quot;&gt;The Baltic Olympiad in Informatics and Europe’s widest waterfall&lt;/h2&gt;
+
+&lt;p&gt;With the other 5 participants, of which 4 had participated before, and two team leaders who were previous participants, we flew to Riga, Latvia and drove to Ventspils with the Finnish team. IOI-style international competitions like BOI consists of two competition days, each of 5 hours with 3 tasks.&lt;/p&gt;
+
+&lt;p&gt;About one hour into the competition on the first day, my excitement had soon been replaced by the all familiar balance between frustration and encouragement when finally figuring something out. The tasks were even more difficult than those at the Nationals, so I decided to focus all my energy into &lt;a href=&quot;http://www.boi2012.lv/data/day1/eng/mobile.pdf&quot;&gt;a single task&lt;/a&gt; (&lt;a href=&quot;http://sirupsen.com/mobile&quot;&gt;my approach to solving it&lt;/a&gt;), where I managed to come up with a solution which I calculated would yield around 30 points (too slow for larger input). After the competition I talked with the other Danish participants who had participated before, who said the tasks were indeed more difficult than usual. Few had gotten anything working at all.&lt;/p&gt;
+
+&lt;p&gt;The citizens of Ventspils seemed very proud of their city, so in lieu of the much needed nap we were all craving after 5 hours of brain-tumbling in the competition room, we went on one of many excursions to see Ventspils, a small tourist city with a population of around 40 000. At the end of the excursion we arrived at an adventure park, where we received the day’s competition results in a letter. Surprisingly, 4/6 of the Danish team had achieved 0/300 points on the first day. Including me. I couldn’t quite figure out what went wrong with my program, talking with the other teammates it seemed like a small off-by-one mistake. Aww. Many of the other teams had similar results. A tired, disappointed Danish team went back to the hotel to get some sleep before the next competition day.&lt;/p&gt;
+
+&lt;p&gt;The difficulty on the second day was much like the first. Thus I decided to once again devote all the time to &lt;a href=&quot;http://www.boi2012.lv/data/day2/eng/fire.pdf&quot;&gt;a single task&lt;/a&gt;, exploring edge-cases with pen and paper, rethinking even the most trivial logic. Once again, I was quite sure I had figured out a 30-point solution. But when we received our results, it turned out I had only received 10 points on the second day.&lt;/p&gt;
+
+&lt;p&gt;According to the other, more experienced Danish participants the tasks had been unusually difficult, and normally you get more points for a slow, working solution (like mine on the second day), about 30-40 points. The 10 points from the second day became my final score, I was &lt;a href=&quot;boiresults&quot;&gt;positioned as the fifth dane&lt;/a&gt;, so I was rather certain to not get on the IOI-team of 4. I was disappointed now that I had come so far, but taken the experience of the other participants into consideration, I could be quite happy with my result, and follow my plan to go all-in next year. I chose to focus on the wrong tasks on both days, wrong because they were not the easiest, even if they looked like that at a first glance. But these are the kinds of things you learn from experience. Once again, I had learned a lot, and I had a great time with the team in Latvia.&lt;/p&gt;
+
+&lt;p&gt;They loved taking us out for excursions, preferably several per day, to see old Soviet radars, light towers, trains and Europe’s widest waterfall, which we drove a total of 3 hours to see….&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/images/ioi/waterfall.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Europe’s widest waterfall (impressive height: ~0.5 meter) in Kuldiga, Latvia&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.boi2012.lv/tasks&quot;&gt;All tasks for BOI 2012.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;competition-lessons&quot;&gt;Competition lessons&lt;/h2&gt;
+
+&lt;p&gt;From BOI and the Nationals I learned that you must avoid digging holes. Repeatedly I found myself so fixated on getting a particular idea to work I’d get absolutely nowhere. Sometimes you have to bite the bullet, delete your program, find a new sheet of paper, and start from scratch. A good smell of this is when you start working around your general solution to the problem to solve specific edge-cases. I learned that there is almost always a simple way to solve the problem without explicitly handling edge-cases. If there are two edge-cases, there’s almost certainly two more. The simple solution will handle edge-cases automatically, even those you might have not considered.&lt;/p&gt;
+
+&lt;p&gt;In the IOI-style competitions where you can achieve partial scores (i.e. the results are not binary: completed/not completed, as in most University competitions), thus it’s wise to create naive, slow solutions scoring 30-40 points for a task (except at Baltics in 2012, where doing so proved to be difficult). Being able to quickly spot the tasks where this is possible, can let you achieve easy points. Enough easy points can even grant you a medal. Afterwards, you can go back in the remaining time to improve on your solution.&lt;/p&gt;
+
+&lt;p&gt;It’s paramount to perform all thinking on paper. I wrote all my algorithms in plain English, which worked well to find holes and explore edge cases. I applied the algorithm on paper on test cases I made up myself. When writing it out in English I sometimes found myself writing “then just..”, this is a smell. Often these “just”-lines required fundamental change in my solution. Do not defer thinking till you get to do the actual implementation. Expanding a “just” takes 5 minutes, and these are always saved, usually multiple times. During the implementation you are inclined to not think of a proper solution to the subproblem, and you will just hack your way around it. You then must return to paper immediately. Pen and paper are life savers. The thinking done when implementing should be minimal.&lt;/p&gt;
+
+&lt;h2 id=&quot;now&quot;&gt;Now&lt;/h2&gt;
+
+&lt;p&gt;In the beginning of June I received an email saying I was chosen as one of the four to compete for Denmark in IOI 2012, Italy in September! I try to do a few problems a week as preparation, and I participate in online competitions like &lt;a href=&quot;http://www.codeforces.com/&quot;&gt;Codeforces&lt;/a&gt; and &lt;a href=&quot;http://www.topcoder.com/&quot;&gt;Topcoder&lt;/a&gt;. I contacted the local university (&lt;a href=&quot;http://www.au.dk/&quot;&gt;Aarhus University&lt;/a&gt;) for a mentor in algorithms, and got a phD student to point me in the right directions.&lt;/p&gt;
+
+&lt;p&gt;I have learned much by visiting “the other side”, and I am looking forward to learn more. My problem-solving skills have increased tremendously. Coming from doing only Web development where the difficulties lie in structuring your application, it has been amazing to try and solve hard problems using algorithms and hours of thinking. It’s so incredibly satisfying to solve a problem you’ve worked several hours on.&lt;/p&gt;
+
+&lt;p&gt;I can continue to bring many of the things I learn from the competitions into my day-to-day work. I see more and more opportunities, interesting ways to process data and I am starting to understand how some of the magical services actually work underneath. It opens many possibilities for me as a developer. Combining different algorithms and data structures, I can make applications I never dreamt of creating. It has a brought a unique and fundamental missing tool to my toolbox. My ultimate goal is to win a medal in IOI 2013 in Brisbane, Australia, which is the last year in which I can compete, because I finish high school next year. Now I am looking forward to Italy in September, and I’ll be sure to do a writeup when I am on the other side of that.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Slow internet under Ubuntu or Linux</title>
+   <link href="http://mulderp.github.com/slow-internet-under-ubuntu-or-linux"/>
+   <updated>2009-10-31T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/slow-internet-under-ubuntu-or-linux</id>
+   <content type="html">&lt;h2&gt;Fix one: &lt;span class=&quot;caps&quot;&gt;DNS&lt;/span&gt; issue&lt;/h2&gt;
+&lt;p&gt;Ever since I started using Linux, I&amp;#8217;ve run into issues regarding internet performance; it was unstable &amp;#8211; it would take it several seconds, sometimes 10-20, to look up the host for most sites. Overall, it was very unstable &amp;#8211; and rather unusable for a heavy surfer like me.&lt;/p&gt;
+&lt;p&gt;Download speed, and basically everything but the browser worked fine. Thus, I concluded that it could have something to do with the &lt;span class=&quot;caps&quot;&gt;DNS&lt;/span&gt; &amp;#8211; and I was right. I switched to &lt;a href=&quot;http://www.opendns.com/&quot;&gt;OpenDNS&lt;/a&gt;, and it was running normally &amp;#8211; here&amp;#8217;s [the guide from &lt;a href=&quot;https://store.opendns.com/setup/device/ubuntu/&quot;&gt;OpenDNS&lt;/a&gt; on configuring OpenDNS on Ubuntu, should you be using another Linux distro., simply Google something like &lt;strong&gt;linux-distro opendns&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;I also stumbled upon &lt;a href=&quot;http://code.google.com/p/namebench/&quot;&gt;Namebench&lt;/a&gt; in the process, which is a little Python application that attempts to find the fastest &lt;span class=&quot;caps&quot;&gt;DNS&lt;/span&gt; for you &amp;#8211; which you can use to optimize performance further.&lt;/p&gt;
+&lt;h2&gt;Fix two: IPV6&lt;/h2&gt;
+&lt;p&gt;Currently, the standard for IPs is IPV4 &amp;#8211; the thing is, that there&amp;#8217;s always a limit towards to maximum number of IP-adresses available. We&amp;#8217;re nearing this limit rapidly with IPV4, and therefore IPV6 is set to replace the old IPV4. &lt;sup class=&quot;footnote&quot; id=&quot;fnr1&quot;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; However, some providers doesn&amp;#8217;t support IPV6 yet, and Linux might attempt to use IPV6, conclude it fails, and then use IPV4 &amp;#8211; each time it connects. This can be result in bad performance. Luckily, you can disable the IPV6 kernel  module, which fixes this.&lt;/p&gt;
+&lt;h3&gt;Fixing on Debian-based systems&lt;/h3&gt;
+&lt;p&gt;I don&amp;#8217;t know for sure, if this is the routine on anything non-debian based. I know this is not the way to go on e.g. Arch Linux. Debian-based systems include Linux Mint and Ubuntu.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You should be able to disable IPv6 by adding &lt;span class=&quot;fixed-width&quot;&gt;ipv6.disable=1&lt;/span&gt; to kernel boot parameters (editing Grub config in &lt;span class=&quot;fixed-width&quot;&gt;/boot/grub/menu.lstand&lt;/span&gt; running &lt;span class=&quot;fixed-width&quot;&gt;sudo update-grub&lt;/span&gt; as instructed for example here). &lt;sup class=&quot;footnote&quot; id=&quot;fnr2&quot;&gt;&lt;a href=&quot;#fn2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Other distros&lt;/h3&gt;
+&lt;p&gt;Again, use Google and you&amp;#8217;ll probably be geared towards a Wiki, or forum thread for your specific distro.&lt;/p&gt;
+&lt;p class=&quot;footnote&quot; id=&quot;fn1&quot;&gt;&lt;a href=&quot;#fnr1&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; &lt;a href=&quot;http://en.wikipedia.org/wiki/IPv6&quot;&gt;http://en.wikipedia.org/wiki/IPv6&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;footnote&quot; id=&quot;fn2&quot;&gt;&lt;a href=&quot;#fnr2&quot;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; &lt;a href=&quot;http://superuser.com/questions/67921/slow-website-loading-on-ubuntu-karmic&quot;&gt;http://superuser.com/questions/67921/slow-website-loading-on-ubuntu-karmic&lt;/a&gt;&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Become a Dropbox ninja!</title>
+   <link href="http://mulderp.github.com/become-a-dropbox-ninja"/>
+   <updated>2009-10-31T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/become-a-dropbox-ninja</id>
+   <content type="html">&lt;p&gt;I&amp;#8217;ve known &lt;a href=&quot;http://dropbox.com&quot;&gt;Dropbox&lt;/a&gt; for very long. I&amp;#8217;ve already found it to be an extremely cool service, however &amp;#8211; I like to have things automated, the little programmer inside all of us. I didn&amp;#8217;t want to &amp;#8220;Drop&amp;#8221; my files manually into the Dropbox folder all the time. That was time consuming, and I would forget to do it &amp;#8211; sort of eliminating the purpose.&lt;/p&gt;
+&lt;p&gt;I wanted Dropbox to sync everything automatically across all my machine, I wanted to still have my files where they would originally be on my Desktop. On my Laptop, that didn&amp;#8217;t matter &amp;#8211; since I only use it for browsing the web, sometimes I program a bit on it, though. On my Desktop, I have all my Photos, configuration files, and code. I wanted to have these files available everywhere, anytime.&lt;/p&gt;
+&lt;p&gt;The solution to this was simple, very simple because of symbolic links, under Linux (my desktop, and main computer) I&amp;#8217;d just download Dropbox, and place the special folder in my &lt;span class=&quot;fixed&quot;&gt;~&lt;/span&gt;, then start throwing symbolic links in. First of, my photos.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ln -s Photos Dropbox/Photos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then all my local code:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ln -s /var/www Dropbox/Programming
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then my &lt;span class=&quot;fixed&quot;&gt;Dumper&lt;/span&gt; which is basically anything else than videos, photos, music and programming:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ln -s Dumper Dropbox/Dumper
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In my dumper I even did symbolic links to some of the configuration directories (e.g. &lt;span class=&quot;fixed&quot;&gt;Vim&lt;/span&gt; configuration, &lt;span class=&quot;fixed&quot;&gt;.bashrc&lt;/span&gt; etc.)&lt;/p&gt;
+&lt;p&gt;It started syncing, and now the magic of Dropbox is a lot more tempting to me. I now have everything, and the most recent version of it, available everywhere (iPhone, Laptop, Web), and it&amp;#8217;s securely backed up.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/dropbox.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;If Dropbox seems tempting to you (now?), be sure to sign up at &lt;a href=&quot;http://dropbox.com&quot;&gt;Dropbox.com&lt;/a&gt; If you&amp;#8217;d like to help me, and yourself, you can signup via &lt;a href=&quot;https://www.getdropbox.com/referrals/NTgzODk4OTk&quot;&gt;my referral link&lt;/a&gt; and you&amp;#8217;ll get (and give) 250 mb extra to the 2gb default free limit!&lt;/p&gt;
+&lt;p&gt;Furthermore, Dropbox has &lt;a href=&quot;http://wiki.getdropbox.com/&quot;&gt;a great wiki&lt;/a&gt; with &lt;a href=&quot;http://wiki.getdropbox.com/DropboxAddons&quot;&gt;various addons&lt;/a&gt; and &lt;a href=&quot;http://wiki.getdropbox.com/TipsAndTricks&quot;&gt;tips &amp;amp; and tricks&lt;/a&gt; . They even have a &lt;span class=&quot;caps&quot;&gt;CLI&lt;/span&gt; to Dropbox, which I use nowadays on Arch Linux when I&amp;#8217;m without &lt;span class=&quot;fixed&quot;&gt;Nautilus&lt;/span&gt;.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Starting with Git!</title>
+   <link href="http://mulderp.github.com/starting-with-git"/>
+   <updated>2009-09-12T00:00:00+02:00</updated>
+   <id>http:/mulderp.github.com/starting-with-git</id>
+   <content type="html">&lt;p&gt;The purpose of this&lt;strong&gt; guide&lt;/strong&gt; or &lt;strong&gt;tutorial&lt;/strong&gt; is to give a brief overview of how to work with Git, even for people who've &lt;strong&gt;never&lt;/strong&gt; had any experience with version controlling. This guide anticipates that you:&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Have &lt;strong&gt;a bit&lt;/strong&gt; experience with working in the terminal&lt;/li&gt;
+	&lt;li&gt;Common sense&lt;/li&gt;
+&lt;/ul&gt;
+I will teach you how to:
+&lt;ul&gt;
+	&lt;li&gt;Set up a Github repository&lt;/li&gt;
+	&lt;li&gt;Upload content to your Github repository&lt;/li&gt;
+	&lt;li&gt;Work with Git&lt;/li&gt;
+	&lt;li&gt;Simple collaboration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A lot of people still believe SVN is much better than Git. However, this is not the case. SVN's way of handling repositories is bad, it means everyone pushes to the same master &quot;repository&quot;. In Git &lt;span style=&quot;background-color: #ffffff;&quot;&gt;everyone has their own, which is a lot smarter. I'm not going to go in depth about the difference, since a lot of people, with &lt;strong&gt;much&lt;/strong&gt; more knowledge about Git and SVN than me, already did that. So you can Google your way to that.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;With that in shape, let's get started!&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;h2&gt;Installing Git&lt;/h2&gt;
+&lt;p&gt;Before starting this guide, you should have Git installed locally. You can download Git &lt;a title=&quot;Download git&quot; href=&quot;http://git-scm.com/download&quot;&gt;here.&lt;/a&gt; If you run Linux, there's a good chance that you can install it via your favorite package manager. For Ubuntu's package manager (Aptitude) the terminal command is:&lt;/p&gt;
+
+&lt;pre&gt;sudo aptitude install git-core&lt;/pre&gt;
+
+&lt;p&gt;You should most likely be able to type: &quot;git&quot; in the terminal, and it would give you the instructions on how to install it. This guide is not to cover the installation, but to teach the usage of Git. If you have troubles with installing, try to Google your way around!&lt;/p&gt;
+
+&lt;a href=&quot;http://img33.imageshack.us/img33/2483/275300x159.png&quot;&gt;&lt;img class=&quot;alignright&quot; title=&quot;Github Project&quot; src=&quot;http://img33.imageshack.us/img33/2483/275300x159.png&quot; alt=&quot;A sample project at Github&quot; width=&quot;300&quot; height=&quot;159&quot; /&gt;&lt;/a&gt;
+&lt;h2 style=&quot;font-size: 1,5em;&quot;&gt;&lt;strong&gt;Github&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;It has a lot of features, including graphs for your project, issue tracker and a wiki for your project.&lt;/p&gt;
+
+Before you start on the next step, please register at&lt;a href=&quot;http://github.com/&quot;&gt; Github&lt;/a&gt;.
+
+&lt;h2&gt;Creating your first Repository&lt;/h2&gt;
+
+&lt;p&gt;Our goal is to make a new repository, and upload a few files to it. Before we can do this though, we need to set up Git, so that Github knows who you are when you push things to their server.&lt;/p&gt;
+
+&lt;h3&gt;Configuring Git&lt;/h3&gt;
+&lt;p&gt;Configuring Git is very important, I used the first couple of hours with Git having headaches about Github not recognizing me, when I pulled stuff from my repositories at Github. However, it's pretty straight forward to configure.&lt;/p&gt;
+
+&lt;p&gt;We need to do two things:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Create an SSH-key&lt;/li&gt;
+	&lt;li&gt;Provide this SSH-key to Git&lt;/li&gt;
+	&lt;li&gt;Introduce ourselves to Git!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There is no reason for me to reinvent the wheel, Github has already done this. First, read their guide about &lt;a href=&quot;http://github.com/guides/providing-your-ssh-key&quot;&gt;Providing your SSH Key&lt;/a&gt;, then go ahead and &lt;a href=&quot;http://github.com/guides/tell-git-your-user-name-and-email-address&quot;&gt;Tell git your user name and email address&lt;/a&gt;.&lt;/p&gt;
+
+&lt;a href=&quot;http://github.com/repositories/new&quot;&gt;&lt;img class=&quot;size-medium wp-image-34 alignleft&quot; style=&quot;padding-left: 5px;&quot; title=&quot;Create a new Project&quot; src=&quot;http://img197.imageshack.us/img197/2483/275300x159.png&quot; alt=&quot;The dialog to create a new project&quot; width=&quot;300&quot; height=&quot;159&quot; /&gt;&lt;/a&gt;
+
+&lt;h3 style=&quot;font-size: 1,17em;&quot;&gt;Creating the Repository&lt;/h3&gt;
+&lt;p&gt;Creating our own repository is pretty straight forward. Go to Github, login and you'll be at your dashboard. At the right you should see &lt;a href=&quot;/repositories/new&quot;&gt;(create a new one)&lt;/a&gt;. Click it, and it'll take you to the page where you can create your project.&lt;/p&gt;
+
+&lt;p&gt;Fill out the fields as you like, I'll call my project &quot;Test&quot;. Hit submit. Now you've created your online Git repository!&lt;/p&gt;
+
+&lt;img class=&quot;size-medium wp-image-35 alignright&quot; style=&quot;padding-left: 5px;&quot; title=&quot;Github new Repository&quot; src=&quot;http://img197.imageshack.us/img197/7453/276300x289.png&quot; alt=&quot;Here's the new repository I created&quot; width=&quot;300&quot; height=&quot;289&quot; /&gt;
+
+&lt;p&gt;You'll be taken to your new project, and you'll notice Github provides you a small guide on how to upload the first files to your project! Again, let's just follow Github's guide once again.&lt;/p&gt;
+
+&lt;p&gt;The first step is the Global setup step, we don't need to do this though, but because you followed the guides before, this is already done! I find it weird though, it doesn't tell you to provide your SSH key. Ignore this step.&lt;/p&gt;
+
+&lt;p&gt;However, we can follow the next steps:&lt;/p&gt;
+
+&lt;p&gt;Fire up a terminal, and type (replace Test with the name of the name of the repository you created on Github):&lt;/p&gt;
+&lt;pre&gt; mkdir Test&lt;/pre&gt;
+
+&lt;p&gt;Afterwards, navigate into this new directory by typing:&lt;/p&gt;
+&lt;pre&gt; cd Test&lt;/pre&gt;
+
+&lt;p&gt;Instance Git inside this directory by typing:&lt;/p&gt;
+&lt;pre&gt; git init&lt;/pre&gt;
+
+&lt;p&gt;Create a new file by typing:&lt;/p&gt;
+&lt;pre&gt; touch README&lt;/pre&gt;
+
+&lt;p&gt;Add this file to the repository by typing:&lt;/p&gt;
+&lt;pre&gt; git add README&lt;/pre&gt;
+
+&lt;p&gt;Now, let's make a change to this file, by writing something to it:&lt;/p&gt;
+&lt;pre&gt; echo &quot;Hello, is this on Github?!&quot; &amp;gt; README&lt;/pre&gt;
+
+&lt;p&gt;Now, we need to commit. Committing is a small message of what you just did (we'll cover more about that later):&lt;/p&gt;
+&lt;pre&gt; git commit -m 'Initial upload'&lt;/pre&gt;
+&lt;img class=&quot;size-medium wp-image-38 alignleft&quot; style=&quot;padding-left: 5px;&quot; title=&quot;README File&quot; src=&quot;http://img197.imageshack.us/img197/8923/277300x170.png&quot; alt=&quot;README file on Github&quot; width=&quot;300&quot; height=&quot;170&quot; /&gt;
+
+&lt;p&gt;Next, we need to add the online Github repository (the origin), this is done by adding a remote origin (notice that you'll need to change &quot;Sirupsen&quot; and &quot;Test&quot; to reflect your own user, and repository):&lt;/p&gt;
+&lt;pre style=&quot;font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace;&quot;&gt; git remote add origin git@github.com:Sirupsen/Test.git&lt;/pre&gt;
+And finally, let's push it to Github.
+&lt;pre style=&quot;font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace;&quot;&gt; git push origin master&lt;/pre&gt;
+&lt;p&gt;(This means we push the commits to the origin (master repository), at the master branch)&lt;/p&gt;
+
+&lt;p&gt;Now, go to your Github repository and you should notice a file named &quot;README&quot;, if you open it you should see whatever you echoed into that file.&lt;/p&gt;
+
+&lt;p&gt;Now you've added your first file to Github! Continue to learn more about how to work with Git.&lt;/p&gt;
+
+&lt;h2&gt;&lt;strong&gt;Working with Git&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Now you know how to do the most basic stuff with Git, and Github:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Creating a local folder to represent your Git repository&lt;/li&gt;
+	&lt;li&gt;Committing changes to a file&lt;/li&gt;
+	&lt;li&gt;Update this on the server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With this, you can do the most basic stuff with Git. Now I will introduce you to some of the more exciting features of Git.&lt;/p&gt;
+&lt;h2&gt;Pulling changes from the origin&lt;/h2&gt;
+&lt;a href=&quot;http://blog.kirth.be/wp-content/uploads/2009/09/279.png&quot;&gt;&lt;img class=&quot;alignright&quot; style=&quot;padding-left: 5px; border: 0px initial initial;&quot; title=&quot;Edit File on Github&quot; src=&quot;http://img195.imageshack.us/img195/8963/279300x126.png&quot; alt=&quot;Click Edit to edit the file&quot; width=&quot;300&quot; height=&quot;126&quot; /&gt;&lt;/a&gt;
+
+&lt;p&gt;But, what if I change something online. And would like to apply these updates on my local copy of the repository? That's what we're going to do now. First, let's go to our Github repository. Click on the file you'd like to edit (you'll probably only have your README file currently). When your viewing the file, you can chose edit to edit it.&lt;/p&gt;
+
+&lt;p&gt;Now you can edit your file. Make a few changes - create a small commit message, then hit commit.&lt;/p&gt;
+
+&lt;a href=&quot;http://blog.kirth.be/wp-content/uploads/2009/09/280.png&quot;&gt;&lt;img class=&quot;size-medium wp-image-40 alignleft&quot; style=&quot;padding-left: 5px;&quot; title=&quot;Editting a file on Github&quot; src=&quot;http://img195.imageshack.us/img195/7143/280300x179.png&quot; alt=&quot;Editing a file on Github&quot; width=&quot;300&quot; height=&quot;179&quot; /&gt;&lt;/a&gt;
+
+&lt;p&gt;Now, when you've added some stuff to your README file, it's time to pull the changes to your local repository. Open up the terminal where you arranged yourself into the Test directory, and pull from the origin:&lt;/p&gt;
+&lt;pre&gt; git pull origin master&lt;/pre&gt;
+
+&lt;p&gt;Try to open the README file again, and you should see the changes you made on Github! Another way to check the output is by writing:&lt;/p&gt;
+&lt;pre&gt; cat -A README&lt;/pre&gt;
+
+&lt;p&gt;Which will output the contents of the file directly in the terminal.&lt;/p&gt;
+&lt;h2 style=&quot;font-size: 1,5em;&quot;&gt;Cloning a repository&lt;/h2&gt;
+
+&lt;p&gt;Instead of making a directory, adding the origin, and pulling, each time you&lt;span style=&quot;background-color: #ffffff;&quot;&gt;need a copy of your repository. You can simply use the clone command, which clones the repository to your machine. Let's try it. First, delete your local copy of the repository.&lt;/span&gt;&lt;/p&gt;
+
+&lt;a href=&quot;http://img195.imageshack.us/img195/1087/281300x44.png&quot;&gt;&lt;img class=&quot;alignright&quot; style=&quot;padding-left: 5px; border: 0px initial initial;&quot; title=&quot;Github Repository Information&quot; src=&quot;http://img195.imageshack.us/img195/1087/281300x44.png&quot; alt=&quot;Github repository informations&quot; width=&quot;300&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+
+&lt;p&gt;Next, go to your Github repository, and on the top locate your private clone URL (see picture to the right). &lt;span style=&quot;background-color: #ffffff;&quot;&gt;Copy it, and go to your terminal and type (replace my URL, with your own private clone URL):&lt;/span&gt;&lt;/p&gt;
+&lt;pre&gt; git clone git@github.com:Sirupsen/Test.git&lt;/pre&gt;
+
+&lt;p&gt;And then you should have a fresh copy of your repository!&lt;/p&gt;
+&lt;h2&gt;Deleting files from your repository&lt;/h2&gt;
+&lt;p&gt;Sometimes you may need to delete files permanently from your Git repository. The command for this is almost the same as the basic delete command (&quot;rm&quot;), we just need to have git in front of it. This command will both remove the file form your harddrive, as well as remove it from the git repository.&lt;/p&gt;
+
+&lt;p&gt;For instance, I've added a file called &quot;INSTALL&quot;. But I ended up just adding this text to the README file. I already added the content of the INSTALL file to the README file, and committed these changes - but now I want to delete the INSTALL file, as it serves no purpose anymore.&lt;/p&gt;
+
+&lt;p&gt;To delete the file, we type:&lt;/p&gt;
+&lt;pre&gt; git rm INSTALL&lt;/pre&gt;
+
+&lt;p&gt;And then we need to commit the changes:&lt;/p&gt;
+&lt;pre&gt; git commit -m 'Removed INSTALL file, due to content having been appended to the README file'&lt;/pre&gt;
+
+&lt;p&gt;Finally, push it to Github:&lt;/p&gt;
+&lt;pre&gt; git push origin master&lt;/pre&gt;
+
+&lt;p&gt;Simple, right?&lt;/p&gt;
+&lt;h2&gt;The Difference&lt;/h2&gt;
+
+&lt;p&gt;At some point you might have just cleaned up a few files, and totally forgot about commiting.  Its ok if you don't even remember which files you edited. To find the difference from the Github repository, and your local copy simply type:&lt;/p&gt;
+&lt;pre&gt; git diff&lt;/pre&gt;
+
+&lt;p&gt;And it'll show what is different. As it might be a bit pain to add each individual file like this:&lt;/p&gt;
+&lt;pre&gt; git add file1 file2 file3 file4&lt;/pre&gt;
+
+&lt;p&gt;And then give them a shared commit, there's an easier way:&lt;/p&gt;
+&lt;pre&gt; git commit -a -m 'Cleaned up files'&lt;/pre&gt;
+
+&lt;p&gt;This takes all the files which are different from the main repository (Github), and gives them the commit entered after -m. This is also good when you are editing a single file, because instead of:&lt;/p&gt;
+&lt;pre&gt; git add file&lt;/pre&gt;
+&lt;pre&gt; git commit -m 'Added function to calculate average'&lt;/pre&gt;
+You can do:
+&lt;pre&gt; git commit -a -m 'Added function to calculate average'&lt;/pre&gt;
+&lt;p&gt;It automatically picks up the changed file(s), and then commits them. Cool, right?&lt;/p&gt;
+
+&lt;h2&gt;Workflow&lt;/h2&gt;
+&lt;p&gt;Now you know all the basic commands of git, and you know how to work with Github. Let's take a quick look at an example of how our workflow could be like now:&lt;/p&gt;
+
+&lt;p&gt;I create a file, and call it index.php, I've already added some stuff to it. Now, I want to push it to Github:&lt;/p&gt;
+&lt;pre&gt; git add index.php&lt;/pre&gt;
+&lt;pre&gt; git commit -m 'Added index file'&lt;/pre&gt;
+You might ask now, why don't we use:
+&lt;pre&gt; git commit -a -m 'Added index file'&lt;/pre&gt;
+-a will not add new files to the repository, you'll have to do that with add the first time.
+Alright, now I've added the file. I make some more changes to the file, and I commit it:
+&lt;pre&gt; git commit -a -m 'Added a menu'&lt;/pre&gt;
+Now I think it's good enough, to be pushed to Github:
+&lt;pre&gt; git push origin master&lt;/pre&gt;
+These 3 commands are by far the ones which you are going to use the most.
+&lt;ul&gt;
+	&lt;li&gt;Commit&lt;/li&gt;
+	&lt;li&gt;Add&lt;/li&gt;
+	&lt;li&gt;Push&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As I said  before, it's very important that you commit every time you can rinse up what you've done in one sentence. Commit messages must be short, and precise. You should maybe use some time on your first commits, but over time you should learn creating small informative and useful commits. That's all for now, we might come around collaboration in Git in a later post. The best way to learn is always trying out, and if you don't know how to do something, use Google!&lt;/p&gt;
+
+&lt;p&gt;For further reading go to Git's official website, and &lt;a href=&quot;http://git-scm.com/&quot;&gt;read the documentation.&lt;/a&gt; Github also has &lt;a href=&quot;http://github.com/guides/home&quot;&gt;several amazing articles on Git! &lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Dual booting Windows and Linux</title>
+   <link href="http://mulderp.github.com/dual-booting-windows-and-linux"/>
+   <updated>2009-09-12T00:00:00+02:00</updated>
+   <id>http:/mulderp.github.com/dual-booting-windows-and-linux</id>
+   <content type="html">&lt;p&gt;When I for the first time wanted to try out Linux, I couldn't at first glance find a simple guide on how to dual-boot Windows and Linux. So I decided to write a quick simple guide for you, to give an overview of how to create your own dual boot system. You should have the following stuff solved before you try this out:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Windows CD
+&lt;ul&gt;
+	&lt;li&gt;Be sure you have a valid serial for it, and so on&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Linux CD
+&lt;ul&gt;
+	&lt;li&gt;Ubuntu, Fedora, Mint or whatever you might prefer&lt;/li&gt;
+	&lt;li&gt;Check out &lt;a href=&quot;http://distrowatch.com/&quot;&gt;distrowatch&lt;/a&gt; if you have yet to decide&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Backup of &lt;strong&gt;all&lt;/strong&gt; your important files
+&lt;ul&gt;
+	&lt;li&gt;Also configuration files are handy to have&lt;/li&gt;
+	&lt;li&gt;.. and plugins!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When this is solved, you should be ready to get started.&lt;/p&gt;
+
+&lt;p&gt;What you do when you want two operation systems, is basically you have a partition for each. Linux requires an additional swap partition, Windows requires only one partition for the entire system. You can even share a partition between both operation systems. However, if you want Windows to be able to read it, you'll need it to be FAT32 (both Windows and Linux handles this filesystem fine!), and you need to create the shared partition, when you install Windows. (I.e. if you have Windows installed now, and would like to have an extra shared drive with Linux, you can't create it when you install Linux, since then Windows won't find it).&lt;/p&gt;
+
+&lt;p&gt;You might not know what a partition is, but it's quite simple. Imagine you have your harddisk, and you split it into smaller chunks, and store stuff here. As humans remember, and learn better by illustrations, I made one (bear with me, I'm bad at drawing):&lt;/p&gt;
+
+&lt;a href=&quot;http://img42.imageshack.us/img42/6572/partitions.png&quot;&gt;&lt;img style=&quot;border: 0px initial initial;&quot; title=&quot;Paritions&quot; src=&quot;http://img42.imageshack.us/img42/6572/partitions.png&quot; alt=&quot;&quot; width=&quot;500&quot; height=&quot;200&quot; /&gt;&lt;/a&gt;
+
+&lt;p&gt;Imagine partition 1 being Windows, partition 2 Linux and partition 3 the shared drive. (I didn't include the swap one here, as it would be pretty small on the scale, but&lt;strong&gt; it is&lt;/strong&gt; a partition like the other ones)&lt;/p&gt;
+
+&lt;p&gt;Now, you should decide how your partition scheme should be like. There's tons of options, for this example (to keep it simple) we'll go with this, please check the comments for other ways to do it:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Windows partition (partition we install Windows on) [NTFS]&lt;/li&gt;
+	&lt;li&gt;Linux Partition (partition we install Linux on) [EXT4]
+&lt;ul&gt;
+	&lt;li&gt;Swap partition (partition we install swap for linux on) [swap]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Shared Partition (partition we want Linux and Windows to share) [FAT]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Alright, let's get to it. For this &quot;guide&quot; I assume we are working on a 500 gb harddrive (plan how you partition your own harddrive). And we want a shared partition between the two systems. This should give a basic knowledge of what you need to do.&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Boot from Windows CD
+&lt;ul&gt;
+	&lt;li&gt;If you happen to not being able to boot from it, go into your BIOS and set CD as first for boot priority
+&lt;ul&gt;
+	&lt;li&gt;Should you have trouble doing this, google your way around for it. There's &lt;strong&gt;plenty&lt;/strong&gt; of articles on that subject&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Create two partitions in Windows partition manager
+&lt;ul&gt;
+	&lt;li&gt;Partition to install Windows on [100 GB]&lt;/li&gt;
+	&lt;li&gt;Partition we share between Linux and Windows, which we format to Fat32 later [300 GB]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Install Windows on the first partition
+&lt;ul&gt;
+	&lt;li&gt;Format it with NTFS (not quick, since quick doesn't examine for bad stuff)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Now wait a while for Windows to install
+&lt;ul&gt;
+	&lt;li&gt;Enter your valid serial when prompted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;When your done it should boot&lt;/li&gt;
+	&lt;li&gt;Install your drivers
+&lt;ul&gt;
+	&lt;li&gt;You'll probably have to restart a few times&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Go to &quot;My Computer&quot;, and open the D:/ drive (the shared partition)
+&lt;ul&gt;
+	&lt;li&gt;It'll ask you to format&lt;/li&gt;
+	&lt;li&gt;Do so, and pick FAT32 as the filesystem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Boot up in Windows, and take out the Windows CD
+&lt;ul&gt;
+	&lt;li&gt;Then put in the Linux CD (Ubuntu, Fedora or whatever distroration you picked)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Restart your computer&lt;/li&gt;
+	&lt;li&gt;Now, there's two kind of installation cd's:
+&lt;ul&gt;
+	&lt;li&gt;LiveCD: (Fedora has this), it'll boot into the Fedora system. On the desktop there will be a shortcut named something like &quot;Install on your system&quot;, click this and you'll get into the installation&lt;/li&gt;
+	&lt;li&gt;Normal: (Ubuntu has this), you'll be greeted by a screen where you can pick install, check disc etc. Pick install.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Now you should be taken through some installation stuff, time, location, etc.&lt;/li&gt;
+	&lt;li&gt;At some point, you'll be at a partition manager.
+&lt;ul&gt;
+	&lt;li&gt;Ubuntu (Maybe Mint, and other ubuntu based systems too, not sure): You have an option to install the system side by side with the Windows system, do this. Does all the partitioning stuff for you! This will take the rest of the space, ~ 100 GB.&lt;/li&gt;
+	&lt;li&gt;Fedora (And probably any other system): Create a new partition named: &quot;/&quot; (this is the Linux system) [93 GB]. And a &quot;/boot&quot; partition [200 mb] (This is probably for Fedora only, never tried any other system than Ubuntu and Fedora, check your systems installation guide). And then you need the swap one, just pick swap from the dropdown of filesystems. To figure your size, follow this guideline [6 GB for me, as I have 4 GB ram]:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul style=&quot;padding-left: 1,6em; list-style-image: url(http://docs.fedoraproject.org/install-guide/f11/en-US/html/Common_Content/images/dot.png); list-style-type: circle;&quot;&gt;
+	&lt;li style=&quot;line-height: 1,29em; padding-top: 0px; margin-top: 0em; padding-bottom: 0px; margin-bottom: 0,4em;&quot;&gt;
+&lt;div style=&quot;line-height: 1,29em; padding-top: 0px; margin-top: 0em; padding-bottom: 0px; margin-bottom: 0,3em;&quot;&gt;M = Amount of RAM in GB, and S = Amount of swap in GB:&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul style=&quot;padding-left: 1,6em; list-style-image: url(http://docs.fedoraproject.org/install-guide/f11/en-US/html/Common_Content/images/dot.png); list-style-type: circle;&quot;&gt;
+	&lt;li style=&quot;line-height: 1,29em; padding-top: 0px; margin-top: 0em; padding-bottom: 0px; margin-bottom: 0,4em;&quot;&gt;
+&lt;pre style=&quot;line-height: 1,29em; font-family: 'liberation mono', 'bitstream vera mono', 'dejavu mono', monospace; display: block; background-color: #eeeeee; margin-bottom: 0,3em; padding-top: 0,5em; padding-right: 1em; padding-bottom: 0,5em; padding-left: 1em; white-space: pre-wrap; word-wrap: break-word;&quot;&gt;If M &amp;lt; 2
+	S = M *2
+Else
+	S = M + 2&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Follow the last configuration&lt;/li&gt;
+	&lt;li&gt;Now, your system restarts and you should see a list of different systems to choose from (remember to take our your CD, so you don't boot the installation CD again), when you boot (i.e. Windows and Linux distroration):
+&lt;ul&gt;
+	&lt;li&gt;Try to boot Windows
+&lt;ul&gt;
+	&lt;li&gt;Test shared drive&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;Restart&lt;/li&gt;
+	&lt;li&gt;Boot Linux
+&lt;ul&gt;
+	&lt;li&gt;Test shared drive&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;And everything should be working great! You should be able to access the shared drive on both systems!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I can &lt;strong&gt;not&lt;/strong&gt; take any responsibility for &lt;strong&gt;any&lt;/strong&gt; damage you may cause to your system, while following this guide. It's written only to give a overview of what you need to do, in order to create a dual boot system.&lt;/p&gt;
+</content>
+ </entry>
+ 
+</feed>
