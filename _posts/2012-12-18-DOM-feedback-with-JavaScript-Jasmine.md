@@ -1,3 +1,8 @@
+---
+layout: post
+title: DOM feedback with JavaScript Jasmine
+---
+
 In my first attempts to develop frontend interactions with Backbone.js, I discovered some blind spots in my understanding of Backbone views. Especially, I find the different options to organize views with parent and child-views, as well as attaching views to DOM nodes difficult. A nice overview on Backbone pitfalls is given here.
 
 As in many programming matters, thinking about outcomes and tests can help to write better code. This is where Jasmine can help in the development of Backbone applications.
