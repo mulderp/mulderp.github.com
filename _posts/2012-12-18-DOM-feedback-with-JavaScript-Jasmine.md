@@ -30,11 +30,10 @@ The first line refers to the jasmine-require project by Scott Burch that helps t
 
 With Backbone this might look like:
 
-
-    requireDependencies(["underscore", "backbone"], function(_, Backbone) {
-      View = Backbone.View.extend({tagName: "li" });
-      view = new View();
-    });
+      requireDependencies(["underscore", "backbone"], function(_, Backbone) {
+        View = Backbone.View.extend({tagName: "li" });
+        view = new View();
+      });
 
 3. Other approaches
 
