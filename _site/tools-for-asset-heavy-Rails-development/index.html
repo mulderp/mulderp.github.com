@@ -1,0 +1,189 @@
+
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> 	
+<html lang="en"> 
+<!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
+    <title>Tools for asset heavy rails development</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href="http://feeds.feedburner.com/ThinkingOnThinking" rel="alternate" title="mulderp" type="application/atom+xml" /> 
+    <link rel="shortcut icon" href="/static/images/favicon.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!--[if IE 7]>
+      <script src="/static/css/font-awesome-ie7.css"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">	
+      <div id='mobile' class='two columns hidden'>
+        <ul>
+          <li><span class="gray">Patrick Mulder</span></li>
+          <li><a href="mailto:mulder.patrick@gmail.com" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', 'Sidebar Email']);">mulder.patrick@gmail.com</a></li>
+          <li><a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', Sidebar Email']);">@mulpat</a></li>
+        </ul>
+      </div>
+
+      <div class="four columns sidebar">
+        <section>
+          <a id="avatar" href="/"></a>
+
+          <ul id="social">
+            <li>
+              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Email']);" title="Say hi"></a>
+            </li>
+
+            <li>
+              <a href="http://twitter.com/mulpat" class="icon-twitter" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Twitter']);" title="You should follow me" style="font-size: 28px;"></a>
+            </li>
+
+            <li>
+              <a href="http://github.com/mulderp" class="icon-github" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Github']);" title="I share and fork code here"></a>
+            </li>
+
+            <li>
+              <a href="skype:patrickmulder__?add" class="icon-comment" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Skype']);" title="Feel free to add me on Skype"></a>
+            </li>
+
+            <li>
+              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar RSS']);" title="RSS"></a>
+            </li>
+          </ul>
+
+          <ul id="me">
+            <li>Patrick Mulder</span></li>
+            <li class="gray">Ruby developer.</li>
+          </ul>
+
+        </section>
+      </div>
+
+      <article class='ten columns offset-by-four' id="article-content">
+  <header class="ten columns" id="article-header">
+    <h1>Tools for asset heavy rails development</h1>
+  </header>
+
+  <div class='ten columns gray' id="date-header">
+    <p>
+      Dec 2012
+  
+    </p>
+
+  </div>
+
+  <div class="ten columns" id="article-content">
+    <p>Nowadays mobile browsers and changing use cases for web applications, require programmers to understand detailed DOM abstractions (usually html5 tags, css, js) as well as API’s that talk to a number of different client setups. Although Ruby-on-Rails has brought us a long way to easily meet our business goals, I had the feeling to be stuck when it came to use Backbone with Rails.</p>
+
+<p>There is Sprockets; and as long as I work with JQuery and use Twitter Bootstrap as default assets, Sprockets worked nicely: Sprockets gives some nice abstractions to bundle external asset dependencies, but if you want to develop your own client-side assets (e.g. Backbone programming and work with a Sass precompiler and Compass) Sprockets has some learning curve, and debugging asset problems is often painful. Also, for client-side development dealing with problems through a Rails stack is in my opinion not so ideal.</p>
+
+<p>Now, over the last months, I’ve found some options for a new toolchain that allows a better combination of client- and server-side programming. Here are my findings:</p>
+
+<h2 id="rake-pipeline">Rake-Pipeline</h2>
+
+<p>I’ve discovered this tool shortly after the great Baruco conference 2012 in Barcelona. After talks from Josh Kalderimis and Konstantin Haase on software development at Travis, it was a nice discovery to see how Travis manages a modular asset repository. The tool that makes this work is: rake-pipeline. Here some background information on rake-pipeline:</p>
+
+<h1 id="the-assetfile">The Assetfile</h1>
+<p>defines how precompilers, concat and copy commands can be combined to generate your assets as needed from a bunch of asset source files.</p>
+
+<pre><code> rakep build
+</code></pre>
+
+<p>This command reads the Assetfile definition and performs the actions on the sources. It’s the asset build step so to say.</p>
+
+<pre><code> rakep server
+</code></pre>
+
+<p>Now, when developing your client-side assets, you actually don’t need to run rakep build from the command line. rakep server gives you a Sinatra server that nicely serves assets as they change during development.
+Also, as a nice debugger for rake-pipeline, is a minimalistic Python webserver python -m SimpleHTTPServer that directly can serve all your files from the directory where you are in (e.g. /public). Quite handy if you just need some server, for quick-and-dirty browser debugging and experimentation.
+So far about building assets, next about serving data that assets want… we’ll move on to:</p>
+
+<h2 id="rails-api">Rails-Api</h2>
+
+<p>Some weeks ago at Rupy in Brno, there was a great melting pot of Ruby, Python and JavaScript programmers, and if you were looking for the lowest common denominator, it might have been JSON and REST. Now, there is some discussion recently headed by Steve Klabnik on how to interprete Roy Fielding’s ideas for modern Rails applications, but in this context, some nice tools are ready for use: The Rails-Api stack (and ActiveSerializer)</p>
+
+<p>The Rails-Api removes the Rails ERB templates and Sprockets from your application. This is nice, because your Rack stack becomes lighter, and you can focus on the thing that matters: Serving data to clients. From first experiments, Rails-API combines very nicely with rake-pipeline. As you can see from my demo-project, the Rails app just servers JSON to client-side code that is built with rake-pipeline from the /source directory.</p>
+
+<h2 id="backbonejs-underscorejs-and-requirejs">Backbone.js, Underscore.js and Require.js</h2>
+
+<p>Last but not least, for my application design, I want to use a JS framework that allows to structure the interaction with the DOM and with the end-user. This framework is Backbone.js - but maybe first, a step back.</p>
+
+<p>As a Ruby programmer, you think JavaScript has some problems: Incompatible browsers with different language implementations, as well as language constructs that leave you alone quite fast. At least part of the language problems are solved by JQuery and Underscore.js (which reminds on Ruby, see the collection stuff and enumerator constructs at underscorejs.org</p>
+
+<p>For the rest, a lot of folks from the Node.js community is an example of disruptive innovation at work; especially it is interesting to see, that the JS community nowadays has a modular requirement setup to manage dependencies: require.js. In my view, this will make fancy browser (and maybe one day server) programming fun again.</p>
+
+<p>What you need to know as Rails programmer, Require.js injects dependencies where they are needed, and as such prevents problems in the global scope. Additionally, you can inject HTML templates into your JS modules, which is very nice too. I’ll need to explore this, but you can actually take your Rails ERB templates and inject them 1-1 to Backbone templates, where you need them. Some ideas behind this technique are discussed by Thomas Davis, here. A boilerplate for backbone and require-js is here. Another nice overview on Backbone development is here and here (Backbone and Require.js).</p>
+
+<p>That’s all for now.</p>
+
+<p>Here some references to my Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.</p>
+
+  </div>
+
+  <footer class="ten columns">
+    <p>
+    <a class="btn btn-mini btn-info" href="https://github.com/mulderp/mulderp.github.com/issues/new" title="Leave feedback using GitHub" target="_blank"><i class="icon-comment icon-white"></i> Leave me feedback</a>
+    </p>
+    <p id='follow'>
+      Follow me on Twitter <a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Post Twitter']);">here.</a>
+    </p>
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="mulpat">Tweet</a>
+       
+      <!-- Put this just before the closing body tag -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </p>
+    <p>
+       <!-- Google + -->
+       <p><g:plusone size="medium"></g:plusone></p>
+        
+       <!-- Add this just before the closing body tag of your web page -->	
+       <script type="text/javascript">
+         (function() {
+           var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+           po.src = 'https://apis.google.com/js/plusone.js';
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+         })();
+       </script>
+    </p>
+  </footer>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'thinkingonthinking'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+ 
+</article>
+<script src="../static/js/disqus.js" type="text/javascript"></script>
+
+    </div>
+
+<script type="text/javascript">
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","pageview","ab"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])},
+  analytics.load("t2dez1p4gw");
+</script>
+  </body>
+</html> 

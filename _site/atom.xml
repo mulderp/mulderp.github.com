@@ -4,7 +4,7 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-01-17T23:26:22+01:00</updated>
+ <updated>2013-01-18T15:56:03+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
@@ -13,41 +13,218 @@
 
  
  <entry>
-   <title>Tist post</title>
-   <link href="http://mulderp.github.com/test-test-test"/>
-   <updated>2013-01-10T00:00:00+01:00</updated>
-   <id>http:/mulderp.github.com/test-test-test</id>
-   <content type="html">&lt;p&gt;I consiviriv &lt;a href=&quot;https://opilibits.com/onipossworv&quot;&gt;1possworv&lt;/a&gt;, but ployinp with
-thi problim.&lt;/p&gt;
+   <title>DOM feedback with JavaScript Jasmine</title>
+   <link href="http://mulderp.github.com/DOM-feedback-with-JavaScript-Jasmine"/>
+   <updated>2012-12-18T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/DOM-feedback-with-JavaScript-Jasmine</id>
+   <content type="html">&lt;p&gt;In my first attempts to develop frontend interactions with Backbone.js, I discovered some blind spots in my understanding of Backbone views. Especially, I find the different options to organize views with parent and child-views, as well as attaching views to DOM nodes difficult. A nice overview on Backbone pitfalls is given here.&lt;/p&gt;
 
-&lt;p&gt;in my vropbox. You con finv thi vifoult liychoin ot
-&lt;code&gt;~/Librory/liychoins/lopin.liychoin&lt;/code&gt;. Onci you’vi moviv it to your vropbox, opin
-&lt;code&gt;liychoin occiss&lt;/code&gt; onv ovv it from thi fili minu. Most of your possworvs will 
-olriovy bi in thiri. Thot’s fini.&lt;/p&gt;
+&lt;p&gt;As in many programming matters, thinking about outcomes and tests can help to write better code. This is where Jasmine can help in the development of Backbone applications.&lt;/p&gt;
 
-&lt;p&gt;You mipht olso wont to chonpi thi possworv to thi liychoin. By vifoult thi
-possworv to thi lopin liychoin is your usir lopin. You chonpi it by ripht
-cliclinp it in thi lift-honv poni.&lt;/p&gt;
+&lt;p&gt;First, there are several options to run Jasmine:&lt;/p&gt;
 
-&lt;p&gt;Whinivir I crioti o niw occount, or chonpi o possworv, I comi up with o 
-&lt;a href=&quot;http://xlcv.com/936/&quot;&gt;ronvom possworv&lt;/a&gt; mysilf onv put it in my clipboorv. Posti
-it whin sipninp up, onv whin sipninp in. On sipn in I ollow Sofori/Chromi to rimimbir my possworv, which mions 
-it storis thi possworv in liychoin. &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The most common option for running Jasmine specs is by having your default web browser loading a test DOM (from e.g. spec/index.html or spec/SpecRunner.html). Within this option you can declare a number of JavaScript dependencies that contain the actual specs, and that will be executed as soon as the Jasmine execution is triggered (with jasmine.getEnv().execute(); ).
+Another option is to run Jasmine specs through rake. This option seems to be very popular in the Rails community; but as I am thinking more towards development of stand-alone frontend applications, I don’t want to have a tight Rails coupling. I could not get rake jasmine to render my specs from the Backbone setup; so, I will postpone this approach for a while. Maybe someone of you has made some more successful experiments?&lt;/li&gt;
+  &lt;li&gt;Another interesting attempt to get feedback from the DOM is to run Jasmine through a headless browser. PhantomJS comes naturally to mind in this context, and some interesting article is here.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;commonv lini or in thi liychoin opp, os lonp os thi “whiri” ottributi (os shown on thi
-picturi obovi) is ripht.&lt;/p&gt;
+&lt;p&gt;As a first step to testing a Backbone application, I wanted to test some basic Backbone view properties. Now, one of the difficulties that I found was, how to actually load all dependencies into a browser with SpecRunner.html including RequireJS; and, execute some specs.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;sicurity&lt;/code&gt; olso ollows you to iosily ovv niw possworvs with thi
-&lt;code&gt;ovv-intirnit-possworv&lt;/code&gt; commonv:&lt;/p&gt;
+&lt;p&gt;I found two approaches that work for me:&lt;/p&gt;
 
-&lt;p&gt;ossworv to thi liychoin, thin output thi vicryptiv
-worv. honvy for &lt;a href=&quot;http://www.mutt.orp/&quot;&gt;vorious&lt;/a&gt; &lt;a href=&quot;https://pithub.com/vifunlt/pist/#outhinticotion&quot;&gt;poclopis&lt;/a&gt; thot riquiri possworvs.&lt;/p&gt;
+&lt;h1 id=&quot;global-declaration-of-backbone-dependencies&quot;&gt;Global declaration of backbone dependencies&lt;/h1&gt;
+&lt;p&gt;References to JQuery, Underscore and BackboneJS can be declared in a global way in the SpecRunner.html as follows:
+* This should give access to the Backbone library where you need them. It works good enough, but maybe it’s useful to load your dependencies more in a dynamic way if your application grows. For this, the next option might be more interesting.
+# Loading Backbone dependencies with RequireJS
+When using several dependencies (including custom views, collections, routers, etc.), requiring every module in the global scope of SpecRunner.html might result into increased editing efforts. Here is an attempt to re-use some module definitions with requirejs that could in principle be shared between your tests and the real application.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.jinx.vi/liychoin2po.html&quot;&gt;liychoin2po&lt;/a&gt; ixists if you wont to brinp it to your iPhoni.&lt;/p&gt;
+&lt;p&gt;First, to load dependencies with requirejs, the following lines are needed in the specrunner.html&lt;/p&gt;
 
-&lt;p&gt;You con olso ovv incryptiv notis to your liychoin, thisi con bi usiv for crivit corv
-numbirs, imopis, bonl occount informotion, sicrit vocumints itc.&lt;/p&gt;
+&lt;p&gt;The first line refers to the jasmine-require project by Scott Burch that helps to require dependencies from within specs. Some example how this can be used with a JavaScript framework is shown here from the Pattern JS project.&lt;/p&gt;
 
+&lt;p&gt;With Backbone this might look like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  requireDependencies([&quot;underscore&quot;, &quot;backbone&quot;], function(_, Backbone) {
+    View = Backbone.View.extend({tagName: &quot;li&quot; });
+    view = new View();
+  });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Other approaches&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Another option to load dependencies with requirejs was described in this discussion in the Jasmine user group by using  testr.js However, I did not understand yet, how this is better than the previous option. (Maybe someone wants to comment?)&lt;/p&gt;
+
+&lt;p&gt;Last but not least, there is an interesting Jasmine setup with RequireJS here by Peter Toomberg’s Shortcut project. This one does not require any additional setup declarations, but I did not yet look into this too much.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Before actually running a succesful Jasmine spec for a Backbone view, we need a library to actually match DOM nodes with expected values. The common library for doing this are the Jasmine-JQuery matchers These allow to express many things, among if the .el property of a Backbone view actually match a DOM node as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;View = Backbone.View.extend({tagName: &quot;li&quot; });   view = new View();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;it(“has el property”, function() {
+    expect(view.el).toBe(“li”);                                                                                                            &lt;br /&gt;
+  });&lt;/p&gt;
+
+&lt;p&gt;My current setup can be found here: https://github.com/mulderp/backbone-require-test/tree/view_specs&lt;/p&gt;
+
+&lt;p&gt;Well, so far my findings. Maybe they are helpful for others. I would be curious to hear what you think? How you approach testing of DOM nodes.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Tools for asset heavy rails development</title>
+   <link href="http://mulderp.github.com/tools-for-asset-heavy-Rails-development"/>
+   <updated>2012-12-14T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/tools-for-asset-heavy-Rails-development</id>
+   <content type="html">&lt;p&gt;Nowadays mobile browsers and changing use cases for web applications, require programmers to understand detailed DOM abstractions (usually html5 tags, css, js) as well as API’s that talk to a number of different client setups. Although Ruby-on-Rails has brought us a long way to easily meet our business goals, I had the feeling to be stuck when it came to use Backbone with Rails.&lt;/p&gt;
+
+&lt;p&gt;There is Sprockets; and as long as I work with JQuery and use Twitter Bootstrap as default assets, Sprockets worked nicely: Sprockets gives some nice abstractions to bundle external asset dependencies, but if you want to develop your own client-side assets (e.g. Backbone programming and work with a Sass precompiler and Compass) Sprockets has some learning curve, and debugging asset problems is often painful. Also, for client-side development dealing with problems through a Rails stack is in my opinion not so ideal.&lt;/p&gt;
+
+&lt;p&gt;Now, over the last months, I’ve found some options for a new toolchain that allows a better combination of client- and server-side programming. Here are my findings:&lt;/p&gt;
+
+&lt;h2 id=&quot;rake-pipeline&quot;&gt;Rake-Pipeline&lt;/h2&gt;
+
+&lt;p&gt;I’ve discovered this tool shortly after the great Baruco conference 2012 in Barcelona. After talks from Josh Kalderimis and Konstantin Haase on software development at Travis, it was a nice discovery to see how Travis manages a modular asset repository. The tool that makes this work is: rake-pipeline. Here some background information on rake-pipeline:&lt;/p&gt;
+
+&lt;h1 id=&quot;the-assetfile&quot;&gt;The Assetfile&lt;/h1&gt;
+&lt;p&gt;defines how precompilers, concat and copy commands can be combined to generate your assets as needed from a bunch of asset source files.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; rakep build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command reads the Assetfile definition and performs the actions on the sources. It’s the asset build step so to say.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; rakep server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, when developing your client-side assets, you actually don’t need to run rakep build from the command line. rakep server gives you a Sinatra server that nicely serves assets as they change during development.
+Also, as a nice debugger for rake-pipeline, is a minimalistic Python webserver python -m SimpleHTTPServer that directly can serve all your files from the directory where you are in (e.g. /public). Quite handy if you just need some server, for quick-and-dirty browser debugging and experimentation.
+So far about building assets, next about serving data that assets want… we’ll move on to:&lt;/p&gt;
+
+&lt;h2 id=&quot;rails-api&quot;&gt;Rails-Api&lt;/h2&gt;
+
+&lt;p&gt;Some weeks ago at Rupy in Brno, there was a great melting pot of Ruby, Python and JavaScript programmers, and if you were looking for the lowest common denominator, it might have been JSON and REST. Now, there is some discussion recently headed by Steve Klabnik on how to interprete Roy Fielding’s ideas for modern Rails applications, but in this context, some nice tools are ready for use: The Rails-Api stack (and ActiveSerializer)&lt;/p&gt;
+
+&lt;p&gt;The Rails-Api removes the Rails ERB templates and Sprockets from your application. This is nice, because your Rack stack becomes lighter, and you can focus on the thing that matters: Serving data to clients. From first experiments, Rails-API combines very nicely with rake-pipeline. As you can see from my demo-project, the Rails app just servers JSON to client-side code that is built with rake-pipeline from the /source directory.&lt;/p&gt;
+
+&lt;h2 id=&quot;backbonejs-underscorejs-and-requirejs&quot;&gt;Backbone.js, Underscore.js and Require.js&lt;/h2&gt;
+
+&lt;p&gt;Last but not least, for my application design, I want to use a JS framework that allows to structure the interaction with the DOM and with the end-user. This framework is Backbone.js - but maybe first, a step back.&lt;/p&gt;
+
+&lt;p&gt;As a Ruby programmer, you think JavaScript has some problems: Incompatible browsers with different language implementations, as well as language constructs that leave you alone quite fast. At least part of the language problems are solved by JQuery and Underscore.js (which reminds on Ruby, see the collection stuff and enumerator constructs at underscorejs.org&lt;/p&gt;
+
+&lt;p&gt;For the rest, a lot of folks from the Node.js community is an example of disruptive innovation at work; especially it is interesting to see, that the JS community nowadays has a modular requirement setup to manage dependencies: require.js. In my view, this will make fancy browser (and maybe one day server) programming fun again.&lt;/p&gt;
+
+&lt;p&gt;What you need to know as Rails programmer, Require.js injects dependencies where they are needed, and as such prevents problems in the global scope. Additionally, you can inject HTML templates into your JS modules, which is very nice too. I’ll need to explore this, but you can actually take your Rails ERB templates and inject them 1-1 to Backbone templates, where you need them. Some ideas behind this technique are discussed by Thomas Davis, here. A boilerplate for backbone and require-js is here. Another nice overview on Backbone development is here and here (Backbone and Require.js).&lt;/p&gt;
+
+&lt;p&gt;That’s all for now.&lt;/p&gt;
+
+&lt;p&gt;Here some references to my Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>An experiment with Vagrant and Neo4J</title>
+   <link href="http://mulderp.github.com/An-experiment-with-Vagrant-and-Neo4J"/>
+   <updated>2012-12-10T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/An-experiment-with-Vagrant-and-Neo4J</id>
+   <content type="html">&lt;p&gt;The RuPy conference 2012 in Brno was very inspiring! Especially, there were some interesting talks on databases and scalable approaches to web development:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First,  the ArangoDB team from Cologne set the tone why #nosql matters (see http://www.arangodb.org/ ) . The triAGENS team has written a database which mixes elements from MongoDB and graph databases. The shell of Arangodb looks very clean, and additionally, the system is based on C++ (= integrates with V8 JS engine and MRuby). &lt;/li&gt;
+  &lt;li&gt;Another interesting talk was by Mitchell Hashimoto. He showed how Vagrant came into place, and why using isolated, virtual environments make sense for web integration. Some slides (not from Rupy) about this are here slideshare.net/mitchellh/sf-devops-introducing-vagrant&lt;/li&gt;
+  &lt;li&gt;Andreas Ronge gave a very nice talk on what graphs can do, and SQL can’t (well, it can, but not nicely … ) I can’t find his slides from RuPy right now, but he maintains a great blog on Neo4J here:  http://maxdemarzi.com/ Also, these slides are interesting: slideshare.net/andreasronge/neo4jrb&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, ok, coming home to Munich with all these interesting thoughts in my mind, it was clear, that I had to start playing with graph databases in isolated environments for new kind of web applications. Fortunately, I had great input for my learnings from Jorge Bianquetti and Nathen Harvey.&lt;/p&gt;
+
+&lt;p&gt;First about Vagrant and VirtualBox. It takes a bit of time to download virtual machines, but it’s not too difficult to get going. The single, most important command might be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This creates an environment for setting up a virtual machine. It’s very cool, because now, you can imagine to setup an Ubuntu, Debian, CentOS, or whatever system, and vagrant will try to go ahead, download or copies the VM and prepares it just that you can use it.&lt;/p&gt;
+
+&lt;p&gt;Ok, not quite, since next, you must tell Vagrant where to download the box; you do it in the Vagrantfile,  e.g.:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.vm.box = &quot;opscode-ubuntu-12.04&quot;
+config.vm.box_url = &quot;https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box&quot; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It’s the standard Ubuntu box from Opscode right now.
+Just do a:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and you would have an Ubuntu box running.&lt;/p&gt;
+
+&lt;p&gt;Well, we were charmed by graph databases, weren’t we?  Ok, so, let’s go ahead and add the setup for Neo4J. Some googling gives, that we have a Neo4J cookbook here: https://github.com/michaelklishin/neo4j-server-chef-cookbook&lt;/p&gt;
+
+&lt;p&gt;Hmm.. in this stage, we actually decided already for chef-solo. There is chef-solo and chef-server, and if you want to understand the difference, I suggest you look here: http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/&lt;/p&gt;
+
+&lt;p&gt;Chef-server is the approach you want to use in production. Chef-solo is the approach for quick-and-dirty experiments, like we do here. So, let’s assume, chef-solo is ok, and we just need to get the cookbooks dependencies right. Luckily, we have a tool for this: chef-librarian.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ chef-librarian init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This gives you a Cheffile. It’s similar to a Gemfile if you are used to Ruby.
+Let’s throw in the Neo4J dependency here:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cookbook 'apt'
+cookbook 'neo4j-server', :git =&amp;amp;gt; 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And now, similar to bundle install, we run librarian-chef install&lt;/p&gt;
+
+&lt;p&gt;Last, but not least, we need to tell our VM that interaction with chef-solo is needed. You’ll do this by adding something into the Vagrantfile :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.vm.provision :chef_solo do |chef|
+  chef.cookbooks_path = &quot;cookbooks&quot;
+  chef.add_recipe &quot;apt&quot;
+  chef.add_recipe &quot;neo4j-server::tarball&quot;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cool, now we only need to build our server, since our ingredients are prepared, and chef is ready for cooking. The magic command is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see something like: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[2012-12-10T20:33:58+00:00] INFO: *** Chef 10.14.4 ***
+[2012-12-10T20:33:59+00:00] INFO: Setting the run_list to [&quot;recipe[apt]&quot;, &quot;recipe[neo4j-server::tarball]&quot;] from JSON
+[2012-12-10T20:33:59+00:00] INFO: Run List is [recipe[apt], recipe[neo4j-server::tarball]]
+[2012-12-10T20:33:59+00:00] INFO: Run List expands to [apt, neo4j-server::tarball]
+[2012-12-10T20:33:59+00:00] INFO: Starting Chef Run for vagrant.vm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This takes a while…. &lt;/p&gt;
+
+&lt;p&gt;Eventually, you end up successfully, and you can do:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant ssh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, your VM has Neo4J running on it, and if you enable port forwarding in Vagrant, you might even go to: localhost:7474 and enjoy your fresh Neo4J server.&lt;/p&gt;
+
+&lt;h2 id=&quot;some-references&quot;&gt;Some References:&lt;/h2&gt;
+
+&lt;p&gt;Chef and Neo4J
+* Vimeo screencast: https://vimeo.com/55085049, see: 
+  Screencast Install Neo4j-server with Chef from Patrick Mulder on Vimeo.&lt;/p&gt;
+
+&lt;p&gt;Git repo: https://github.com/mulderp/chef-neo4j
+Chef basic steps with Nathen Harvey from Opscode
+Learning Chef Part 1
+Learning Chef Part 2
+Learning Chef Part 3&lt;/p&gt;
 </content>
  </entry>
  
