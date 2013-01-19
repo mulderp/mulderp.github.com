@@ -67,3 +67,8 @@ blog: true
  
 </article>
 <script src="../static/js/disqus.js" type="text/javascript"></script>
+<script type="text/javascript">
+  analytics.track('Post', {
+      title: {{ page.title }}
+    });
+</script>
