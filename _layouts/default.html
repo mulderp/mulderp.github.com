@@ -45,23 +45,23 @@
 
           <ul id="social">
             <li>
-              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" id="mail-to");" title="Say hi"></a>
+              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" id="mail-to"></a>
             </li>
 
             <li>
-              <a href="http://twitter.com/mulpat" class="icon-twitter" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Twitter']);" title="You should follow me" style="font-size: 28px;"></a>
+              <a href="http://twitter.com/mulpat" class="icon-twitter" id="twitter" style="font-size: 28px;"></a>
             </li>
 
             <li>
-              <a href="http://github.com/mulderp" class="icon-github" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Github']);" title="I share and fork code here"></a>
+              <a href="http://github.com/mulderp" class="icon-github" id="github" title="I share and fork code here"></a>
             </li>
 
             <li>
-              <a href="skype:patrickmulder__?add" class="icon-comment" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Skype']);" title="Feel free to add me on Skype"></a>
+              <a href="skype:patrickmulder__?add" class="icon-comment" id="skype" title="Feel free to add me on Skype"></a>
             </li>
 
             <li>
-              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar RSS']);" title="RSS"></a>
+              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" id="rss" title="RSS"></a>
             </li>
           </ul>
 
@@ -81,6 +81,9 @@
   analytics.load("t2dez1p4gw");
   $(document).ready(function() {
     analytics.trackLink( $("#mail-to"), 'mail_event', {source:"main"});
+    analytics.trackLink( $("#github"), 'contact-github', {source:"main"});
+    analytics.trackLink( $("#skype"), 'contact-skype', {source:"main"});
+    analytics.trackLink( $("#rss"), 'contact-rss', {source:"main"});
   });
 </script>
   </body>
