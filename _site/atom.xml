@@ -4,13 +4,43 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-01-18T15:56:03+01:00</updated>
+ <updated>2013-01-22T18:45:09+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>New kid on the Blog</title>
+   <link href="http://mulderp.github.com/new-kid-on-the-blog"/>
+   <updated>2013-01-18T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/new-kid-on-the-blog</id>
+   <content type="html">&lt;p&gt;The more I am getting into Ruby and Rails development, the more I experience that blogs help, inspire, connect, do business. So, it’s getting time to redefine my voice in the web, share memes on programming and web evolution. Maybe this post might inspire you or is helpful to you. Here is what inspired me and helped me:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;First, my motivation to share ideas in a blog was re-energized by meeting bloggers on conferences (BaRuCo, RuPy) and in the web, e.g. some include posts on Chef by &lt;a href=&quot;http://nathenharvey.com&quot;&gt;Nathen Harvey&lt;/a&gt;, Rails posts by &lt;a href=&quot;http://words.steveklabnik.com/&quot;&gt;Steve Klabnik&lt;/a&gt;, BDD posts by &lt;a href=&quot;http://blog.mattwynne.net/&quot;&gt;Matt Wynne&lt;/a&gt;, &lt;a href=&quot;http://businessmodelalchemist.com&quot;&gt;Alex Osterwalder&lt;/a&gt; on redefining business strategy, and last but not leasts product/software/devop posts by &lt;a href=&quot;http://svn.37signals.com&quot;&gt;37signals&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;When I restarted my blogging activities on blogger some weeks ago, I came across an article by &lt;a href=&quot;http://al3x.net/about.html&quot;&gt;Alex Payne&lt;/a&gt;, on how he ended up on hosting his blog on github pages. My last blogging activities were based on blogger.com; but programmers like editors, source control, and control of details in layouts and JavaScript interaction. So, time to say goodbye to blogger.com&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Somehow, I was reminded that in the &lt;a href=&quot;http://shop.oreilly.com/product/0636920019664.do&quot;&gt;Sinatra book&lt;/a&gt; by Konstantin Haase some Git/Sinatra workflow for blogging was mentioned. I tried this workflow, but Sinatra support on Github pages seems not to be the cutting edge. (If someone knows why, let me know). So, the cutting edge is &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;, a static site generator that “transforms your text into a monster”.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Luckily, it took not much, to let Jekyll render the words you are reading here, from my editor to your web browser, because of 2 great web resources:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The Jekyll parent blog of this blog came from &lt;a href=&quot;https://github.com/Sirupsen/sirupsen.github.com&quot;&gt;Sirupsen&lt;/a&gt;, who has put together a lot of nice design details into his templates.&lt;/li&gt;
+  &lt;li&gt;A small overview on how to add all kinds of widgets to your blog, such as comments, Twitter links, and more: http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Well, let me know what you think! I am happy to find out more about you readers, how you came hear, what you find helpful, when you read this. That’s all for now.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>DOM feedback with JavaScript Jasmine</title>
@@ -89,18 +119,23 @@ When using several dependencies (including custom views, collections, routers, e
 
 &lt;h2 id=&quot;rake-pipeline&quot;&gt;Rake-Pipeline&lt;/h2&gt;
 
-&lt;p&gt;I’ve discovered this tool shortly after the great Baruco conference 2012 in Barcelona. After talks from Josh Kalderimis and Konstantin Haase on software development at Travis, it was a nice discovery to see how Travis manages a modular asset repository. The tool that makes this work is: rake-pipeline. Here some background information on rake-pipeline:&lt;/p&gt;
+&lt;p&gt;I’ve discovered this tool shortly after the great &lt;a href=&quot;http://baruco.org/&quot;&gt;Baruco conference&lt;/a&gt; 2012 in Barcelona. After talks from &lt;a href=&quot;http://blog.cookiestack.com/&quot;&gt;Josh Kalderimis&lt;/a&gt; and &lt;a href=&quot;https://github.com/rkh&quot;&gt;Konstantin Haase&lt;/a&gt; on software development at Travis, it was a nice discovery to see how Travis manages a modular &lt;a href=&quot;http://github.com/travis-ci/travis-assets.git&quot;&gt;asset repository&lt;/a&gt;. The tool that makes this work is: rake-pipeline. Here some background information on rake-pipeline:&lt;/p&gt;
 
-&lt;h1 id=&quot;the-assetfile&quot;&gt;The Assetfile&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Assetfile&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;p&gt;defines how precompilers, concat and copy commands can be combined to generate your assets as needed from a bunch of asset source files.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; rakep build
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+  &lt;li&gt;rakep build&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;This command reads the Assetfile definition and performs the actions on the sources. It’s the asset build step so to say.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; rakep server
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+  &lt;li&gt;rakep server&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Now, when developing your client-side assets, you actually don’t need to run rakep build from the command line. rakep server gives you a Sinatra server that nicely serves assets as they change during development.
 Also, as a nice debugger for rake-pipeline, is a minimalistic Python webserver python -m SimpleHTTPServer that directly can serve all your files from the directory where you are in (e.g. /public). Quite handy if you just need some server, for quick-and-dirty browser debugging and experimentation.
@@ -108,9 +143,9 @@ So far about building assets, next about serving data that assets want… we’l
 
 &lt;h2 id=&quot;rails-api&quot;&gt;Rails-Api&lt;/h2&gt;
 
-&lt;p&gt;Some weeks ago at Rupy in Brno, there was a great melting pot of Ruby, Python and JavaScript programmers, and if you were looking for the lowest common denominator, it might have been JSON and REST. Now, there is some discussion recently headed by Steve Klabnik on how to interprete Roy Fielding’s ideas for modern Rails applications, but in this context, some nice tools are ready for use: The Rails-Api stack (and ActiveSerializer)&lt;/p&gt;
+&lt;p&gt;Some weeks ago at &lt;a href=&quot;http://rupy.eu/&quot;&gt;Rupy in Brno&lt;/a&gt;, there was a great melting pot of Ruby, Python and JavaScript programmers, and if you were looking for the lowest common denominator, it might have been JSON and REST. Now, there is some discussion recently headed by &lt;a href=&quot;http://designinghypermediaapis.com/&quot;&gt;Steve Klabnik&lt;/a&gt; on how to interprete Roy Fielding’s ideas for modern Rails applications, but in this context, some nice tools are ready for use: The Rails-Api stack (and ActiveSerializer)&lt;/p&gt;
 
-&lt;p&gt;The Rails-Api removes the Rails ERB templates and Sprockets from your application. This is nice, because your Rack stack becomes lighter, and you can focus on the thing that matters: Serving data to clients. From first experiments, Rails-API combines very nicely with rake-pipeline. As you can see from my demo-project, the Rails app just servers JSON to client-side code that is built with rake-pipeline from the /source directory.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/rails-api/rails-api&quot;&gt;Rails-Api&lt;/a&gt; removes the Rails ERB templates and Sprockets from your application. This is nice, because your Rack stack becomes lighter, and you can focus on the thing that matters: Serving data to clients. From first experiments, Rails-API combines very nicely with rake-pipeline. As you can see from my &lt;a href=&quot;https://github.com/mulderp/rails-api-backbone&quot;&gt;demo-project&lt;/a&gt;, the Rails app just servers JSON to client-side code that is built with rake-pipeline from the /source directory.&lt;/p&gt;
 
 &lt;h2 id=&quot;backbonejs-underscorejs-and-requirejs&quot;&gt;Backbone.js, Underscore.js and Require.js&lt;/h2&gt;
 
@@ -124,7 +159,7 @@ So far about building assets, next about serving data that assets want… we’l
 
 &lt;p&gt;That’s all for now.&lt;/p&gt;
 
-&lt;p&gt;Here some references to my Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.&lt;/p&gt;
+&lt;p&gt;Here some references to my &lt;a href=&quot;https://github.com/mulderp/rails-api-backbone&quot;&gt;Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment&lt;/a&gt;. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.&lt;/p&gt;
 </content>
  </entry>
  
