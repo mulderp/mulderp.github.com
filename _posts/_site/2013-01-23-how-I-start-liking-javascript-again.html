@@ -1,0 +1,23 @@
+<p>Having programmed in Assembler, C/C++, Java and in Ruby, I was always confused on how people are doing stuff in JavaScript - until recently luckily. In imperative languages, you learn to think about how to &#8216;control&#8217; data; in JavaScript however, you think about this: What are your data structures (DOM/HTML/API resources)? And, how do changes in data structures look like?</p>
+
+<ul>
+<li>
+<p>As a start, the <a href='http://www.json.org/'>JSON syntax</a>, which is used everywhere in JavaScript, forces you to think about embedding and grouping values in data structures. Showing a resource in JSON can easily give feedback, if your data contains garbage (or not). And additionally, JSON in JavaScript code allows you to easily access attributes and properties. E.g. compare:</p>
+
+<p>activity.friday.noon in JavaScript vs activity<span>:friday</span> in Ruby.</p>
+</li>
+
+<li>
+<p>Next, the <a href='http://underscorejs.org/'>underscore.js</a> library brings a lot of Ruby-like syntactic sugar into working with JavaScript. Especially, it helps you to hide nasty, dynamic loops, that would require you to use incrementors (e.g. for (i = 0; &#8230; ) ) or suddenly break a loop. Underscore.js gives a lot of nice, little tools to work with lists and functions.</p>
+</li>
+
+<li>
+<p>Your data structures can contain (anonymous) functions (= lambdas). This is great if you want to override default values with small computations when needed. Especially, using anonymous functions as properties is the core to understand how e.g. <a href='http://backbonejs.org/'>BackboneJS</a> enables a model-view-controller pattern (which is a rather complex topic, see <a href='http://coding.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/'>http://coding.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/</a>)</p>
+</li>
+
+<li>
+<p>Composition of functions is very easy with a library such as <a href='http://requirejs.org/'>requirejs</a>. This reminds me a bit on the concept of dependency injection, which in other languages is rather difficult to achieve (at least without getting lost). Anyway, there is also some discussion whether requiring JavaScript code with requirejs is actually <a href='http://stackoverflow.com/questions/7708194/dependency-injection-with-requirejs'>injecting dependencies</a>. Still, my experiments so far yield very, very modular code, something I like very much (getting out of the spaghetti code hell)</p>
+</li>
+</ul>
+
+<p>What are your experiences with JavaScript compared to other languages?</p>

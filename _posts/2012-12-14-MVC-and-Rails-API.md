@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tools for asset heavy rails development
+title: Rake-Pipeline, Rails-API, Backbone.JS
 ---
 
 Nowadays mobile browsers and changing use cases for web applications, require programmers to understand detailed DOM abstractions (usually html5 tags, css, js) as well as API's that talk to a number of different client setups. Although Ruby-on-Rails has brought us a long way to easily meet our business goals, I had the feeling to be stuck when it came to use Backbone with Rails.

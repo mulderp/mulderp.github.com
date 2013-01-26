@@ -1,0 +1,63 @@
+<p>In my first attempts to develop frontend interactions with Backbone.js, I discovered some blind spots in my understanding of Backbone views. Especially, I find the different options to organize views with parent and child-views, as well as attaching views to DOM nodes difficult. A nice overview on Backbone pitfalls is given <a href='http://blog.8thlight.com/cymen-vig/2012/12/13/reflections-on-using-backbone-js.html'>here</a>.</p>
+
+<p>As in many programming matters, thinking about outcomes and tests can help to write better code. This is where <a href='http://jasminejs.org/'>Jasmine</a> can help in the development of Backbone applications.</p>
+
+<p>First, there are several options to run Jasmine:</p>
+
+<ul>
+<li>The most common option for running Jasmine specs is by having your default web browser loading a test DOM (from e.g. spec/index.html or spec/SpecRunner.html). Within this option you can declare a number of JavaScript dependencies that contain the actual specs, and that will be executed as soon as the Jasmine execution is triggered (with jasmine.getEnv().execute(); ). Another option is to run Jasmine specs through rake. This option seems to be very popular in the Rails community; but as I am thinking more towards development of stand-alone frontend applications, I don&#8217;t want to have a tight Rails coupling. I could not get rake jasmine to render my specs from the Backbone setup; so, I will postpone this approach for a while. Maybe someone of you has made some more successful experiments?</li>
+
+<li>Another interesting attempt to get feedback from the DOM is to run Jasmine through a headless browser. PhantomJS comes naturally to mind in this context, and some interesting article is <a href='http://blog.jphpsf.com/2012/10/31/running-Jasmine-tests-with-Phantom-js-or-Webdriver/http://obtiva.com/blog/112-javascript-specs-with-jasmine-a-primer-for-rubyists-part-1'>here</a>.</li>
+</ul>
+
+<p>As a first step to testing a Backbone application, I wanted to test some basic Backbone view properties. Now, one of the difficulties that I found was, how to actually load all dependencies into a browser with SpecRunner.html including RequireJS; and, execute some specs.</p>
+
+<p>I found two approaches that work for me:</p>
+
+<ol>
+<li>
+<h2 id='global_declaration_of_backbone_dependencies'>Global declaration of backbone dependencies</h2>
+<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+ &lt;script type=&quot;text/javascript&quot; src=&quot;../public/js/libs/jquery/jquery.js&quot;&gt;</pre></li>
+</ol>
+
+<p>References to JQuery, Underscore and BackboneJS can be declared in a global way in the SpecRunner.html as follows: * This should give access to the Backbone library where you need them. It works good enough, but maybe it&#8217;s useful to load your dependencies more in a dynamic way if your application grows. For this, the next option might be more interesting.</p>
+
+<ol>
+<li>Loading Backbone dependencies with RequireJS</li>
+</ol>
+
+<p>When using several dependencies (including custom views, collections, routers, etc.), requiring every module in the global scope of SpecRunner.html might result into increased editing efforts. Here is an attempt to re-use some module definitions with requirejs that could in principle be shared between your tests and the real application.</p>
+
+<p>First, to load dependencies with requirejs, the following lines are needed in the specrunner.html</p>
+
+<p>The first line refers to the jasmine-require project by Scott Burch that helps to require dependencies from within specs. Some example how this can be used with a JavaScript framework is shown here from the Pattern JS project.</p>
+
+<p>With Backbone this might look like:</p>
+
+<pre><code>  requireDependencies([&quot;underscore&quot;, &quot;backbone&quot;], function(_, Backbone) {
+    View = Backbone.View.extend({tagName: &quot;li&quot; });
+    view = new View();
+  });</code></pre>
+
+<ol>
+<li>Other approaches</li>
+</ol>
+
+<p>Another option to load dependencies with requirejs was described in <a href='https://groups.google.com/forum/?hl=en_US&amp;fromgroups=#!searchin/jasmine-js/requireJS/jasmine-js/7HJYbi705PE/XkpLR2DwQ0sJ'>this discussion</a> in the Jasmine user group by using testr.js However, I did not understand yet, how this is better than the previous option. (Maybe someone wants to comment?)</p>
+
+<p>Last but not least, there is an interesting Jasmine setup with RequireJS here by Peter Toomberg&#8217;s Shortcut project. This one does not require any additional setup declarations, but I did not yet look into this too much.</p>
+
+<h2 id='conclusion'>Conclusion</h2>
+
+<p>Before actually running a succesful Jasmine spec for a Backbone view, we need a library to actually match DOM nodes with expected values. The common library for doing this are the Jasmine-JQuery matchers These allow to express many things, among if the .el property of a Backbone view actually match a DOM node as follows:</p>
+
+<pre><code>View = Backbone.View.extend({tagName: &quot;li&quot; });</code></pre>
+
+<p>view = new View();</p>
+
+<p>it(&#8220;has el property&#8221;, function() { expect(view.el).toBe(&#8220;li&#8221;); <br /> });</p>
+
+<p>My current setup can be found here: <a href='https://github.com/mulderp/backbone-require-test/tree/view_specs'>https://github.com/mulderp/backbone-require-test/tree/view_specs</a></p>
+
+<p>Well, so far my findings. Maybe they are helpful for others. I would be curious to hear what you think? How you approach testing of DOM nodes.</p>

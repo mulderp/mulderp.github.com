@@ -1,7 +1,7 @@
------
-title: What is modular code?
+---
 layout: post
--------
+title: What is modular code?
+---
 
 Designing the architecture of a web application is difficult. First, there are many different programming languages among which to chose, then there are many frameworks , some leave design decisions to the programmer, some come "opinionated' (= with default settings/strategies). Additionally, within each framework, a number of plugins exists that often solve similar problems, yet have different solution approaches.
 
@@ -11,21 +11,18 @@ Now, here is an overview of modular design decisions (and experiments) in the co
 
 1. Client/Server Separation
 ----------------------------
-Sinatra, Rails-API
+I wrote about working with assets in the context of "mobile-driven" web applications [here](http://thinkingonthinking.com/MVC-and-Rails-API/)
+For modularity purposes, the MVC pattern is changed such, that the V (=View) lives in its own context/application, whereas the data is managed with API accesses from the frontend. As far as I understand, that's Twitter's MVC that is accessed with a multitude of mobile clients.
 
 
 2. MVC on the client-side
 --------------------------------------------
 So, far in Backbone, my application structure starts to look as follows:
 
-app.js
-main.js
+    app.js
+    main.js
+    
+    /collections
+    /models
+    /views
 
-/collections
-/models
-/views
-
-
-How do we see, it's MVC? Why do we see it's MVC?
-
-MVC pattern helps to guide in the design of computer interaction. It'ls like the OSI abstraction layers, Publish-Subscriber Pattern one of the important pillars in web technology today.
