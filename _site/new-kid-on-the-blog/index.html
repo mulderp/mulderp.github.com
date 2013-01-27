@@ -27,13 +27,14 @@
     <!--[if IE 7]>
       <script src="/static/css/font-awesome-ie7.css"></script>
     <![endif]-->
+    <script tyoe="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
   </head>
   <body>
     <div class="container">	
       <div id='mobile' class='two columns hidden'>
         <ul>
           <li><span class="gray">Patrick Mulder</span></li>
-          <li><a href="mailto:mulder.patrick@gmail.com" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', 'Sidebar Email']);">mulder.patrick@gmail.com</a></li>
+          <li><a id="mail-to-mobile" href="mailto:mulder.patrick@gmail.com" onClick="">mulder.patrick@gmail.com</a></li>
           <li><a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', Sidebar Email']);">@mulpat</a></li>
         </ul>
       </div>
@@ -44,23 +45,23 @@
 
           <ul id="social">
             <li>
-              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Email']);" title="Say hi"></a>
+              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" id="mail-to"></a>
             </li>
 
             <li>
-              <a href="http://twitter.com/mulpat" class="icon-twitter" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Twitter']);" title="You should follow me" style="font-size: 28px;"></a>
+              <a href="http://twitter.com/mulpat" class="icon-twitter" id="twitter" style="font-size: 28px;"></a>
             </li>
 
             <li>
-              <a href="http://github.com/mulderp" class="icon-github" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Github']);" title="I share and fork code here"></a>
+              <a href="http://github.com/mulderp" class="icon-github" id="github" title="I share and fork code here"></a>
             </li>
 
             <li>
-              <a href="skype:patrickmulder__?add" class="icon-comment" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Skype']);" title="Feel free to add me on Skype"></a>
+              <a href="skype:patrickmulder__?add" class="icon-comment" id="skype" title="Feel free to add me on Skype"></a>
             </li>
 
             <li>
-              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar RSS']);" title="RSS"></a>
+              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" id="rss" title="RSS"></a>
             </li>
           </ul>
 
@@ -156,12 +157,25 @@
  
 </article>
 <script src="../static/js/disqus.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+  analytics.load("t2dez1p4gw");
+  analytics.track('Post', {
+      title: "New kid on the Blog"
+    });
+</script>
 
     </div>
 
 <script type="text/javascript">
-  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","pageview","ab"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])},
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
+  $(document).ready(function() {
+    analytics.trackLink( $("#mail-to"), 'mail_event', {source:"main"});
+    analytics.trackLink( $("#github"), 'contact-github', {source:"main"});
+    analytics.trackLink( $("#skype"), 'contact-skype', {source:"main"});
+    analytics.trackLink( $("#rss"), 'contact-rss', {source:"main"});
+  });
 </script>
   </body>
 </html> 

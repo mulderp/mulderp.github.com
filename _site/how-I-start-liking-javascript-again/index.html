@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>An experiment with Vagrant and Neo4J</title>
+    <title>How I am (re-)discovering working with JavaScript</title>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -75,110 +75,38 @@
 
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
-    <h1>An experiment with Vagrant and Neo4J</h1>
+    <h1>How I am (re-)discovering working with JavaScript</h1>
   </header>
 
   <div class='ten columns gray' id="date-header">
     <p>
-      Dec 2012
+      Jan 2013
   
     </p>
 
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>The RuPy conference 2012 in Brno was very inspiring! Especially, there were some interesting talks on databases and scalable approaches to web development:</p>
+    <p>Having programmed in Assembler, C/C++, Java and in Ruby, I was always confused on how people are doing stuff in JavaScript - until recently luckily. In imperative languages, you learn to think about how to ‘control’ data; in JavaScript however, you think about this: What are your data structures (DOM/HTML/API resources)? And, how do changes in data structures look like?</p>
 
 <ul>
-  <li>First,  the ArangoDB team from Cologne set the tone why #nosql matters (see http://www.arangodb.org/ ) . The triAGENS team has written a database which mixes elements from MongoDB and graph databases. The shell of Arangodb looks very clean, and additionally, the system is based on C++ (= integrates with V8 JS engine and MRuby). </li>
-  <li>Another interesting talk was by Mitchell Hashimoto. He showed how Vagrant came into place, and why using isolated, virtual environments make sense for web integration. Some slides (not from Rupy) about this are here slideshare.net/mitchellh/sf-devops-introducing-vagrant</li>
-  <li>Andreas Ronge gave a very nice talk on what graphs can do, and SQL can’t (well, it can, but not nicely … ) I can’t find his slides from RuPy right now, but he maintains a great blog on Neo4J here:  http://maxdemarzi.com/ Also, these slides are interesting: slideshare.net/andreasronge/neo4jrb</li>
+  <li>
+    <p>As a start, the <a href="http://www.json.org/">JSON syntax</a>, which is used everywhere in JavaScript, forces you to think about embedding and grouping values in data structures. Showing a resource in JSON can easily give feedback, if your data contains garbage (or not). And additionally, JSON in JavaScript code allows you to easily access attributes and properties. E.g. compare:</p>
+
+    <p>activity.friday.noon in JavaScript vs activity[:friday][:noon] in Ruby.</p>
+  </li>
+  <li>
+    <p>Next, the <a href="http://underscorejs.org/">underscore.js</a> library brings a lot of Ruby-like syntactic sugar into working with JavaScript. Especially, it helps you to hide nasty, dynamic loops, that would require you to use incrementors (e.g. for (i = 0; … ) ) or suddenly break a loop. Underscore.js gives a lot of nice, little tools to work with lists and functions. </p>
+  </li>
+  <li>
+    <p>Your data structures can contain (anonymous) functions (= lambdas). This is great if you want to override default values with small computations when needed. Especially, using anonymous functions as properties is the core to understand how e.g. <a href="http://backbonejs.org/">BackboneJS</a> enables a model-view-controller pattern (which is a rather complex topic, see <a href="http://coding.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/">http://coding.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/</a>) </p>
+  </li>
+  <li>
+    <p>Composition of functions is very easy with a library such as <a href="http://requirejs.org/">requirejs</a>. This reminds me a bit on the concept of dependency injection, which in other languages is rather difficult to achieve (at least without getting lost). Anyway, there is also some discussion whether requiring JavaScript code with requirejs is actually <a href="http://stackoverflow.com/questions/7708194/dependency-injection-with-requirejs">injecting dependencies</a>. Still, my experiments so far yield very, very modular code, something I like very much (getting out of the spaghetti code hell)</p>
+  </li>
 </ul>
 
-<p>So, ok, coming home to Munich with all these interesting thoughts in my mind, it was clear, that I had to start playing with graph databases in isolated environments for new kind of web applications. Fortunately, I had great input for my learnings from Jorge Bianquetti and Nathen Harvey.</p>
-
-<p>First about Vagrant and VirtualBox. It takes a bit of time to download virtual machines, but it’s not too difficult to get going. The single, most important command might be:</p>
-
-<pre><code>$ vagrant init
-</code></pre>
-
-<p>This creates an environment for setting up a virtual machine. It’s very cool, because now, you can imagine to setup an Ubuntu, Debian, CentOS, or whatever system, and vagrant will try to go ahead, download or copies the VM and prepares it just that you can use it.</p>
-
-<p>Ok, not quite, since next, you must tell Vagrant where to download the box; you do it in the Vagrantfile,  e.g.:</p>
-
-<pre><code>config.vm.box = "opscode-ubuntu-12.04"
-config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box" 
-</code></pre>
-
-<p>It’s the standard Ubuntu box from Opscode right now.
-Just do a:</p>
-
-<pre><code>$ vagrant up
-</code></pre>
-
-<p>and you would have an Ubuntu box running.</p>
-
-<p>Well, we were charmed by graph databases, weren’t we?  Ok, so, let’s go ahead and add the setup for Neo4J. Some googling gives, that we have a Neo4J cookbook here: https://github.com/michaelklishin/neo4j-server-chef-cookbook</p>
-
-<p>Hmm.. in this stage, we actually decided already for chef-solo. There is chef-solo and chef-server, and if you want to understand the difference, I suggest you look here: http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/</p>
-
-<p>Chef-server is the approach you want to use in production. Chef-solo is the approach for quick-and-dirty experiments, like we do here. So, let’s assume, chef-solo is ok, and we just need to get the cookbooks dependencies right. Luckily, we have a tool for this: chef-librarian.</p>
-
-<pre><code> $ chef-librarian init
-</code></pre>
-
-<p>This gives you a Cheffile. It’s similar to a Gemfile if you are used to Ruby.
-Let’s throw in the Neo4J dependency here:</p>
-
-<pre><code>cookbook 'apt'
-cookbook 'neo4j-server', :git =&amp;gt; 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
-</code></pre>
-
-<p>And now, similar to bundle install, we run librarian-chef install</p>
-
-<p>Last, but not least, we need to tell our VM that interaction with chef-solo is needed. You’ll do this by adding something into the Vagrantfile :</p>
-
-<pre><code>config.vm.provision :chef_solo do |chef|
-  chef.cookbooks_path = "cookbooks"
-  chef.add_recipe "apt"
-  chef.add_recipe "neo4j-server::tarball"
-end
-</code></pre>
-
-<p>Cool, now we only need to build our server, since our ingredients are prepared, and chef is ready for cooking. The magic command is:</p>
-
-<pre><code>$ vagrant up
-</code></pre>
-
-<p>You should see something like: </p>
-
-<pre><code>[2012-12-10T20:33:58+00:00] INFO: *** Chef 10.14.4 ***
-[2012-12-10T20:33:59+00:00] INFO: Setting the run_list to ["recipe[apt]", "recipe[neo4j-server::tarball]"] from JSON
-[2012-12-10T20:33:59+00:00] INFO: Run List is [recipe[apt], recipe[neo4j-server::tarball]]
-[2012-12-10T20:33:59+00:00] INFO: Run List expands to [apt, neo4j-server::tarball]
-[2012-12-10T20:33:59+00:00] INFO: Starting Chef Run for vagrant.vm
-</code></pre>
-
-<p>This takes a while…. </p>
-
-<p>Eventually, you end up successfully, and you can do:</p>
-
-<pre><code>$ vagrant ssh
-</code></pre>
-
-<p>Now, your VM has Neo4J running on it, and if you enable port forwarding in Vagrant, you might even go to: localhost:7474 and enjoy your fresh Neo4J server.</p>
-
-<h2 id="some-references">Some References:</h2>
-
-<p>Chef and Neo4J
-* Vimeo screencast: https://vimeo.com/55085049, see: 
-  Screencast Install Neo4j-server with Chef from Patrick Mulder on Vimeo.</p>
-
-<p>Git repo: https://github.com/mulderp/chef-neo4j
-Chef basic steps with Nathen Harvey from Opscode
-Learning Chef Part 1
-Learning Chef Part 2
-Learning Chef Part 3</p>
+<p>What are your experiences with JavaScript compared to other languages?</p>
 
   </div>
 
@@ -231,7 +159,7 @@ Learning Chef Part 3</p>
   var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
   analytics.track('Post', {
-      title: "An experiment with Vagrant and Neo4J"
+      title: "How I am (re-)discovering working with JavaScript"
     });
 </script>
 

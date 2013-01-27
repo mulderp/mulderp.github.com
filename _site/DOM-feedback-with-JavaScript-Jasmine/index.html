@@ -27,13 +27,14 @@
     <!--[if IE 7]>
       <script src="/static/css/font-awesome-ie7.css"></script>
     <![endif]-->
+    <script tyoe="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
   </head>
   <body>
     <div class="container">	
       <div id='mobile' class='two columns hidden'>
         <ul>
           <li><span class="gray">Patrick Mulder</span></li>
-          <li><a href="mailto:mulder.patrick@gmail.com" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', 'Sidebar Email']);">mulder.patrick@gmail.com</a></li>
+          <li><a id="mail-to-mobile" href="mailto:mulder.patrick@gmail.com" onClick="">mulder.patrick@gmail.com</a></li>
           <li><a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', Sidebar Email']);">@mulpat</a></li>
         </ul>
       </div>
@@ -44,23 +45,23 @@
 
           <ul id="social">
             <li>
-              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Email']);" title="Say hi"></a>
+              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" id="mail-to"></a>
             </li>
 
             <li>
-              <a href="http://twitter.com/mulpat" class="icon-twitter" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Twitter']);" title="You should follow me" style="font-size: 28px;"></a>
+              <a href="http://twitter.com/mulpat" class="icon-twitter" id="twitter" style="font-size: 28px;"></a>
             </li>
 
             <li>
-              <a href="http://github.com/mulderp" class="icon-github" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Github']);" title="I share and fork code here"></a>
+              <a href="http://github.com/mulderp" class="icon-github" id="github" title="I share and fork code here"></a>
             </li>
 
             <li>
-              <a href="skype:patrickmulder__?add" class="icon-comment" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar Skype']);" title="Feel free to add me on Skype"></a>
+              <a href="skype:patrickmulder__?add" class="icon-comment" id="skype" title="Feel free to add me on Skype"></a>
             </li>
 
             <li>
-              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Sidebar RSS']);" title="RSS"></a>
+              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" id="rss" title="RSS"></a>
             </li>
           </ul>
 
@@ -86,27 +87,41 @@
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>In my first attempts to develop frontend interactions with Backbone.js, I discovered some blind spots in my understanding of Backbone views. Especially, I find the different options to organize views with parent and child-views, as well as attaching views to DOM nodes difficult. A nice overview on Backbone pitfalls is given here.</p>
+    <p>In my first attempts to develop frontend interactions with Backbone.js, I discovered some blind spots in my understanding of Backbone views. Especially, I find the different options to organize views with parent and child-views, as well as attaching views to DOM nodes difficult. A nice overview on Backbone pitfalls is given <a href="http://blog.8thlight.com/cymen-vig/2012/12/13/reflections-on-using-backbone-js.html">here</a>.</p>
 
-<p>As in many programming matters, thinking about outcomes and tests can help to write better code. This is where Jasmine can help in the development of Backbone applications.</p>
+<p>As in many programming matters, thinking about outcomes and tests can help to write better code. This is where <a href="http://jasminejs.org/">Jasmine</a> can help in the development of Backbone applications.</p>
 
 <p>First, there are several options to run Jasmine:</p>
 
 <ul>
   <li>The most common option for running Jasmine specs is by having your default web browser loading a test DOM (from e.g. spec/index.html or spec/SpecRunner.html). Within this option you can declare a number of JavaScript dependencies that contain the actual specs, and that will be executed as soon as the Jasmine execution is triggered (with jasmine.getEnv().execute(); ).
 Another option is to run Jasmine specs through rake. This option seems to be very popular in the Rails community; but as I am thinking more towards development of stand-alone frontend applications, I don’t want to have a tight Rails coupling. I could not get rake jasmine to render my specs from the Backbone setup; so, I will postpone this approach for a while. Maybe someone of you has made some more successful experiments?</li>
-  <li>Another interesting attempt to get feedback from the DOM is to run Jasmine through a headless browser. PhantomJS comes naturally to mind in this context, and some interesting article is here.</li>
+  <li>Another interesting attempt to get feedback from the DOM is to run Jasmine through a headless browser. PhantomJS comes naturally to mind in this context, and some interesting article is <a href="http://blog.jphpsf.com/2012/10/31/running-Jasmine-tests-with-Phantom-js-or-Webdriver/http://obtiva.com/blog/112-javascript-specs-with-jasmine-a-primer-for-rubyists-part-1">here</a>.</li>
 </ul>
 
 <p>As a first step to testing a Backbone application, I wanted to test some basic Backbone view properties. Now, one of the difficulties that I found was, how to actually load all dependencies into a browser with SpecRunner.html including RequireJS; and, execute some specs.</p>
 
 <p>I found two approaches that work for me:</p>
 
-<h1 id="global-declaration-of-backbone-dependencies">Global declaration of backbone dependencies</h1>
+<ol>
+  <li>
+    <h2 id="global-declaration-of-backbone-dependencies">Global declaration of backbone dependencies</h2>
+
+    <script type="text/javascript" src="../public/js/libs/jquery/jquery.js">
+
+</script>
+  </li>
+</ol>
 <p>References to JQuery, Underscore and BackboneJS can be declared in a global way in the SpecRunner.html as follows:
-* This should give access to the Backbone library where you need them. It works good enough, but maybe it’s useful to load your dependencies more in a dynamic way if your application grows. For this, the next option might be more interesting.
-# Loading Backbone dependencies with RequireJS
-When using several dependencies (including custom views, collections, routers, etc.), requiring every module in the global scope of SpecRunner.html might result into increased editing efforts. Here is an attempt to re-use some module definitions with requirejs that could in principle be shared between your tests and the real application.</p>
+* This should give access to the Backbone library where you need them. It works good enough, but maybe it’s useful to load your dependencies more in a dynamic way if your application grows. For this, the next option might be more interesting.</p>
+
+<ol>
+  <li>
+    <h2 id="loading-backbone-dependencies-with-requirejs">Loading Backbone dependencies with RequireJS</h2>
+  </li>
+</ol>
+
+<p>When using several dependencies (including custom views, collections, routers, etc.), requiring every module in the global scope of SpecRunner.html might result into increased editing efforts. Here is an attempt to re-use some module definitions with requirejs that could in principle be shared between your tests and the real application.</p>
 
 <p>First, to load dependencies with requirejs, the following lines are needed in the specrunner.html</p>
 
@@ -121,10 +136,12 @@ When using several dependencies (including custom views, collections, routers, e
 </code></pre>
 
 <ol>
-  <li>Other approaches</li>
+  <li>
+    <h2 id="other-approaches">Other approaches</h2>
+  </li>
 </ol>
 
-<p>Another option to load dependencies with requirejs was described in this discussion in the Jasmine user group by using  testr.js However, I did not understand yet, how this is better than the previous option. (Maybe someone wants to comment?)</p>
+<p>Another option to load dependencies with requirejs was described in <a href="https://groups.google.com/forum/?hl=en_US&amp;fromgroups=#!searchin/jasmine-js/requireJS/jasmine-js/7HJYbi705PE/XkpLR2DwQ0sJ">this discussion</a> in the Jasmine user group by using  testr.js However, I did not understand yet, how this is better than the previous option. (Maybe someone wants to comment?)</p>
 
 <p>Last but not least, there is an interesting Jasmine setup with RequireJS here by Peter Toomberg’s Shortcut project. This one does not require any additional setup declarations, but I did not yet look into this too much.</p>
 
@@ -139,7 +156,7 @@ When using several dependencies (including custom views, collections, routers, e
     expect(view.el).toBe(“li”);                                                                                                            <br />
   });</p>
 
-<p>My current setup can be found here: https://github.com/mulderp/backbone-require-test/tree/view_specs</p>
+<p>My current setup can be found here: <a href="https://github.com/mulderp/backbone-require-test/tree/view_specs">https://github.com/mulderp/backbone-require-test/tree/view_specs</a></p>
 
 <p>Well, so far my findings. Maybe they are helpful for others. I would be curious to hear what you think? How you approach testing of DOM nodes.</p>
 
@@ -190,12 +207,25 @@ When using several dependencies (including custom views, collections, routers, e
  
 </article>
 <script src="../static/js/disqus.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+  analytics.load("t2dez1p4gw");
+  analytics.track('Post', {
+      title: "DOM feedback with JavaScript Jasmine"
+    });
+</script>
 
     </div>
 
 <script type="text/javascript">
-  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","pageview","ab"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])},
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
+  $(document).ready(function() {
+    analytics.trackLink( $("#mail-to"), 'mail_event', {source:"main"});
+    analytics.trackLink( $("#github"), 'contact-github', {source:"main"});
+    analytics.trackLink( $("#skype"), 'contact-skype', {source:"main"});
+    analytics.trackLink( $("#rss"), 'contact-rss', {source:"main"});
+  });
 </script>
   </body>
 </html> 

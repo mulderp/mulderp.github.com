@@ -7,16 +7,27 @@ Designing the architecture of a web application is difficult. First, there are m
 
 In order to help application designers to make decisions, programmers talk about applying "patterns" or using a "pattern language". Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in [this book](http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction) some years ago. Modular code (and data) should be easier to re-use, and allow to extend and adapt ideas where needed. 
 
-Now, here is an overview of modular design decisions (and experiments) in the context of Ruby and JavaScript for a web application, that would be able to deal with a number of different (mobile) use cases in the future.
+One of the most important pattern in a web application is called Model-View-Controller (MVC). a nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found [here](https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8), I will use the following definitions for MVC:
 
-1. Client/Server Separation
-----------------------------
-I wrote about working with assets in the context of "mobile-driven" web applications [here](http://thinkingonthinking.com/MVC-and-Rails-API/)
-For modularity purposes, the MVC pattern is changed such, that the V (=View) lives in its own context/application, whereas the data is managed with API accesses from the frontend. As far as I understand, that's Twitter's MVC that is accessed with a multitude of mobile clients.
+* Model: All data items are representations of the real things; they make up the Model. 
+* View: A View is componenent that transforms a model into something visible. A View is both input and output. A View is also a filter showing the interesting parts only [to a user].
+* Controller: The Controller sets up and coordinates one or more Views. 
+
+However, in the context of (mobile) web applications, where views are livining in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: 
+
+1. How do we serve "views" to a client?
+----------------------------------------
+As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.
+
+In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs need to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with assets [here](http://thinkingonthinking.com/MVC-and-Rails-API/).
+
+Since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Node.JS based might be interesting to look at too.
 
 
-2. MVC on the client-side
---------------------------------------------
+2. How to organize "view" modules? 
+-----------------------------------
+This is the second important part of the application where I have been doing some experiments the last months
+
 So, far in Backbone, my application structure starts to look as follows:
 
     app.js

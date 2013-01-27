@@ -4,13 +4,91 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-01-22T18:45:09+01:00</updated>
+ <updated>2013-01-27T15:55:38+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>What is modular code?</title>
+   <link href="http://mulderp.github.com/what-is-modular-architecture"/>
+   <updated>2013-01-26T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/what-is-modular-architecture</id>
+   <content type="html">&lt;p&gt;Designing the architecture of a web application is difficult. First, there are many different programming languages among which to chose, then there are many frameworks , some leave design decisions to the programmer, some come “opinionated’ (= with default settings/strategies). Additionally, within each framework, a number of plugins exists that often solve similar problems, yet have different solution approaches.&lt;/p&gt;
+
+&lt;p&gt;In order to help system designers to make decisions, programmers talk about applying “patterns” or using a “pattern language”. Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in a book some years ago. Modular code (and data) should be easier to re-use, and allow to extend and adapt ideas where needed. &lt;/p&gt;
+
+&lt;p&gt;One of the most important pattern in a web application is called Model-View-Controller (MVC). a nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found &lt;a href=&quot;https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8&quot;&gt;here&lt;/a&gt;, I will use the following definitions for MVC:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Model: All data items are representations of the real things; they make up the Model. &lt;/li&gt;
+  &lt;li&gt;View: A View is componenent that transforms a model into something visible. A View is both input and output. A View is also a filter showing the interesting parts only [to a user].&lt;/li&gt;
+  &lt;li&gt;Controller: The Controller sets up and coordinates one or more Views. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;However, in the context of (mobile) web applications, where views are livining in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;how-do-we-serve-views-to-a-client&quot;&gt;How do we serve “views” to a client?&lt;/h2&gt;
+    &lt;p&gt;As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs need to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with assets &lt;a href=&quot;http://thinkingonthinking.com/MVC-and-Rails-API/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Node.JS based might be interesting to look at too.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;how-to-organize-view-modules&quot;&gt;How to organize “view” modules?&lt;/h2&gt;
+    &lt;p&gt;This is the second important part of the application where I have been doing some experiments the last months&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So, far in Backbone, my application structure starts to look as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;app.js
+main.js
+
+/collections
+/models
+/views
+&lt;/code&gt;&lt;/pre&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>How I am (re-)discovering working with JavaScript</title>
+   <link href="http://mulderp.github.com/how-I-start-liking-javascript-again"/>
+   <updated>2013-01-23T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/how-I-start-liking-javascript-again</id>
+   <content type="html">&lt;p&gt;Having programmed in Assembler, C/C++, Java and in Ruby, I was always confused on how people are doing stuff in JavaScript - until recently luckily. In imperative languages, you learn to think about how to ‘control’ data; in JavaScript however, you think about this: What are your data structures (DOM/HTML/API resources)? And, how do changes in data structures look like?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;As a start, the &lt;a href=&quot;http://www.json.org/&quot;&gt;JSON syntax&lt;/a&gt;, which is used everywhere in JavaScript, forces you to think about embedding and grouping values in data structures. Showing a resource in JSON can easily give feedback, if your data contains garbage (or not). And additionally, JSON in JavaScript code allows you to easily access attributes and properties. E.g. compare:&lt;/p&gt;
+
+    &lt;p&gt;activity.friday.noon in JavaScript vs activity[:friday][:noon] in Ruby.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Next, the &lt;a href=&quot;http://underscorejs.org/&quot;&gt;underscore.js&lt;/a&gt; library brings a lot of Ruby-like syntactic sugar into working with JavaScript. Especially, it helps you to hide nasty, dynamic loops, that would require you to use incrementors (e.g. for (i = 0; … ) ) or suddenly break a loop. Underscore.js gives a lot of nice, little tools to work with lists and functions. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Your data structures can contain (anonymous) functions (= lambdas). This is great if you want to override default values with small computations when needed. Especially, using anonymous functions as properties is the core to understand how e.g. &lt;a href=&quot;http://backbonejs.org/&quot;&gt;BackboneJS&lt;/a&gt; enables a model-view-controller pattern (which is a rather complex topic, see &lt;a href=&quot;http://coding.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/&quot;&gt;http://coding.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/&lt;/a&gt;) &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Composition of functions is very easy with a library such as &lt;a href=&quot;http://requirejs.org/&quot;&gt;requirejs&lt;/a&gt;. This reminds me a bit on the concept of dependency injection, which in other languages is rather difficult to achieve (at least without getting lost). Anyway, there is also some discussion whether requiring JavaScript code with requirejs is actually &lt;a href=&quot;http://stackoverflow.com/questions/7708194/dependency-injection-with-requirejs&quot;&gt;injecting dependencies&lt;/a&gt;. Still, my experiments so far yield very, very modular code, something I like very much (getting out of the spaghetti code hell)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What are your experiences with JavaScript compared to other languages?&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>New kid on the Blog</title>
@@ -47,27 +125,41 @@
    <link href="http://mulderp.github.com/DOM-feedback-with-JavaScript-Jasmine"/>
    <updated>2012-12-18T00:00:00+01:00</updated>
    <id>http:/mulderp.github.com/DOM-feedback-with-JavaScript-Jasmine</id>
-   <content type="html">&lt;p&gt;In my first attempts to develop frontend interactions with Backbone.js, I discovered some blind spots in my understanding of Backbone views. Especially, I find the different options to organize views with parent and child-views, as well as attaching views to DOM nodes difficult. A nice overview on Backbone pitfalls is given here.&lt;/p&gt;
+   <content type="html">&lt;p&gt;In my first attempts to develop frontend interactions with Backbone.js, I discovered some blind spots in my understanding of Backbone views. Especially, I find the different options to organize views with parent and child-views, as well as attaching views to DOM nodes difficult. A nice overview on Backbone pitfalls is given &lt;a href=&quot;http://blog.8thlight.com/cymen-vig/2012/12/13/reflections-on-using-backbone-js.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;As in many programming matters, thinking about outcomes and tests can help to write better code. This is where Jasmine can help in the development of Backbone applications.&lt;/p&gt;
+&lt;p&gt;As in many programming matters, thinking about outcomes and tests can help to write better code. This is where &lt;a href=&quot;http://jasminejs.org/&quot;&gt;Jasmine&lt;/a&gt; can help in the development of Backbone applications.&lt;/p&gt;
 
 &lt;p&gt;First, there are several options to run Jasmine:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;The most common option for running Jasmine specs is by having your default web browser loading a test DOM (from e.g. spec/index.html or spec/SpecRunner.html). Within this option you can declare a number of JavaScript dependencies that contain the actual specs, and that will be executed as soon as the Jasmine execution is triggered (with jasmine.getEnv().execute(); ).
 Another option is to run Jasmine specs through rake. This option seems to be very popular in the Rails community; but as I am thinking more towards development of stand-alone frontend applications, I don’t want to have a tight Rails coupling. I could not get rake jasmine to render my specs from the Backbone setup; so, I will postpone this approach for a while. Maybe someone of you has made some more successful experiments?&lt;/li&gt;
-  &lt;li&gt;Another interesting attempt to get feedback from the DOM is to run Jasmine through a headless browser. PhantomJS comes naturally to mind in this context, and some interesting article is here.&lt;/li&gt;
+  &lt;li&gt;Another interesting attempt to get feedback from the DOM is to run Jasmine through a headless browser. PhantomJS comes naturally to mind in this context, and some interesting article is &lt;a href=&quot;http://blog.jphpsf.com/2012/10/31/running-Jasmine-tests-with-Phantom-js-or-Webdriver/http://obtiva.com/blog/112-javascript-specs-with-jasmine-a-primer-for-rubyists-part-1&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;As a first step to testing a Backbone application, I wanted to test some basic Backbone view properties. Now, one of the difficulties that I found was, how to actually load all dependencies into a browser with SpecRunner.html including RequireJS; and, execute some specs.&lt;/p&gt;
 
 &lt;p&gt;I found two approaches that work for me:&lt;/p&gt;
 
-&lt;h1 id=&quot;global-declaration-of-backbone-dependencies&quot;&gt;Global declaration of backbone dependencies&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;global-declaration-of-backbone-dependencies&quot;&gt;Global declaration of backbone dependencies&lt;/h2&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../public/js/libs/jquery/jquery.js&quot;&gt;
+
+&lt;/script&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;References to JQuery, Underscore and BackboneJS can be declared in a global way in the SpecRunner.html as follows:
-* This should give access to the Backbone library where you need them. It works good enough, but maybe it’s useful to load your dependencies more in a dynamic way if your application grows. For this, the next option might be more interesting.
-# Loading Backbone dependencies with RequireJS
-When using several dependencies (including custom views, collections, routers, etc.), requiring every module in the global scope of SpecRunner.html might result into increased editing efforts. Here is an attempt to re-use some module definitions with requirejs that could in principle be shared between your tests and the real application.&lt;/p&gt;
+* This should give access to the Backbone library where you need them. It works good enough, but maybe it’s useful to load your dependencies more in a dynamic way if your application grows. For this, the next option might be more interesting.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;loading-backbone-dependencies-with-requirejs&quot;&gt;Loading Backbone dependencies with RequireJS&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;When using several dependencies (including custom views, collections, routers, etc.), requiring every module in the global scope of SpecRunner.html might result into increased editing efforts. Here is an attempt to re-use some module definitions with requirejs that could in principle be shared between your tests and the real application.&lt;/p&gt;
 
 &lt;p&gt;First, to load dependencies with requirejs, the following lines are needed in the specrunner.html&lt;/p&gt;
 
@@ -82,10 +174,12 @@ When using several dependencies (including custom views, collections, routers, e
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Other approaches&lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;other-approaches&quot;&gt;Other approaches&lt;/h2&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Another option to load dependencies with requirejs was described in this discussion in the Jasmine user group by using  testr.js However, I did not understand yet, how this is better than the previous option. (Maybe someone wants to comment?)&lt;/p&gt;
+&lt;p&gt;Another option to load dependencies with requirejs was described in &lt;a href=&quot;https://groups.google.com/forum/?hl=en_US&amp;amp;fromgroups=#!searchin/jasmine-js/requireJS/jasmine-js/7HJYbi705PE/XkpLR2DwQ0sJ&quot;&gt;this discussion&lt;/a&gt; in the Jasmine user group by using  testr.js However, I did not understand yet, how this is better than the previous option. (Maybe someone wants to comment?)&lt;/p&gt;
 
 &lt;p&gt;Last but not least, there is an interesting Jasmine setup with RequireJS here by Peter Toomberg’s Shortcut project. This one does not require any additional setup declarations, but I did not yet look into this too much.&lt;/p&gt;
 
@@ -100,17 +194,17 @@ When using several dependencies (including custom views, collections, routers, e
     expect(view.el).toBe(“li”);                                                                                                            &lt;br /&gt;
   });&lt;/p&gt;
 
-&lt;p&gt;My current setup can be found here: https://github.com/mulderp/backbone-require-test/tree/view_specs&lt;/p&gt;
+&lt;p&gt;My current setup can be found here: &lt;a href=&quot;https://github.com/mulderp/backbone-require-test/tree/view_specs&quot;&gt;https://github.com/mulderp/backbone-require-test/tree/view_specs&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Well, so far my findings. Maybe they are helpful for others. I would be curious to hear what you think? How you approach testing of DOM nodes.&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
-   <title>Tools for asset heavy rails development</title>
-   <link href="http://mulderp.github.com/tools-for-asset-heavy-Rails-development"/>
+   <title>Rake-Pipeline, Rails-API, Backbone.JS</title>
+   <link href="http://mulderp.github.com/MVC-and-Rails-API"/>
    <updated>2012-12-14T00:00:00+01:00</updated>
-   <id>http:/mulderp.github.com/tools-for-asset-heavy-Rails-development</id>
+   <id>http:/mulderp.github.com/MVC-and-Rails-API</id>
    <content type="html">&lt;p&gt;Nowadays mobile browsers and changing use cases for web applications, require programmers to understand detailed DOM abstractions (usually html5 tags, css, js) as well as API’s that talk to a number of different client setups. Although Ruby-on-Rails has brought us a long way to easily meet our business goals, I had the feeling to be stuck when it came to use Backbone with Rails.&lt;/p&gt;
 
 &lt;p&gt;There is Sprockets; and as long as I work with JQuery and use Twitter Bootstrap as default assets, Sprockets worked nicely: Sprockets gives some nice abstractions to bundle external asset dependencies, but if you want to develop your own client-side assets (e.g. Backbone programming and work with a Sass precompiler and Compass) Sprockets has some learning curve, and debugging asset problems is often painful. Also, for client-side development dealing with problems through a Rails stack is in my opinion not so ideal.&lt;/p&gt;
