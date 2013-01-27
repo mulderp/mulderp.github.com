@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>An experiment with Vagrant and Neo4J</title>
+    <title>What is modular code?</title>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -75,110 +75,60 @@
 
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
-    <h1>An experiment with Vagrant and Neo4J</h1>
+    <h1>What is modular code?</h1>
   </header>
 
   <div class='ten columns gray' id="date-header">
     <p>
-      Dec 2012
+      Jan 2013
   
     </p>
 
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>The RuPy conference 2012 in Brno was very inspiring! Especially, there were some interesting talks on databases and scalable approaches to web development:</p>
+    <p>Designing the architecture of a web application is difficult. First, there are many different programming languages among which to chose, then there are many frameworks , some leave design decisions to the programmer, some come “opinionated’ (= with default settings/strategies). Additionally, within each framework, a number of plugins exists that often solve similar problems, yet have different solution approaches.</p>
+
+<p>In order to help system designers to make decisions, programmers talk about applying “patterns” or using a “pattern language”. Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in a book some years ago. Modular code (and data) should be easier to re-use, and allow to extend and adapt ideas where needed. </p>
+
+<p>One of the most important pattern in a web application is called Model-View-Controller (MVC). a nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found <a href="https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8">here</a>, I will use the following definitions for MVC:</p>
 
 <ul>
-  <li>First,  the ArangoDB team from Cologne set the tone why #nosql matters (see http://www.arangodb.org/ ) . The triAGENS team has written a database which mixes elements from MongoDB and graph databases. The shell of Arangodb looks very clean, and additionally, the system is based on C++ (= integrates with V8 JS engine and MRuby). </li>
-  <li>Another interesting talk was by Mitchell Hashimoto. He showed how Vagrant came into place, and why using isolated, virtual environments make sense for web integration. Some slides (not from Rupy) about this are here slideshare.net/mitchellh/sf-devops-introducing-vagrant</li>
-  <li>Andreas Ronge gave a very nice talk on what graphs can do, and SQL can’t (well, it can, but not nicely … ) I can’t find his slides from RuPy right now, but he maintains a great blog on Neo4J here:  http://maxdemarzi.com/ Also, these slides are interesting: slideshare.net/andreasronge/neo4jrb</li>
+  <li>Model: All data items are representations of the real things; they make up the Model. </li>
+  <li>View: A View is componenent that transforms a model into something visible. A View is both input and output. A View is also a filter showing the interesting parts only [to a user].</li>
+  <li>Controller: The Controller sets up and coordinates one or more Views. </li>
 </ul>
 
-<p>So, ok, coming home to Munich with all these interesting thoughts in my mind, it was clear, that I had to start playing with graph databases in isolated environments for new kind of web applications. Fortunately, I had great input for my learnings from Jorge Bianquetti and Nathen Harvey.</p>
+<p>However, in the context of (mobile) web applications, where views are livining in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: </p>
 
-<p>First about Vagrant and VirtualBox. It takes a bit of time to download virtual machines, but it’s not too difficult to get going. The single, most important command might be:</p>
+<ol>
+  <li>
+    <h2 id="how-do-we-serve-views-to-a-client">How do we serve “views” to a client?</h2>
+    <p>As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.</p>
+  </li>
+</ol>
 
-<pre><code>$ vagrant init
+<p>In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs need to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with assets <a href="http://thinkingonthinking.com/MVC-and-Rails-API/">here</a>.</p>
+
+<p>Since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Node.JS based might be interesting to look at too.</p>
+
+<ol>
+  <li>
+    <h2 id="how-to-organize-view-modules">How to organize “view” modules?</h2>
+    <p>This is the second important part of the application where I have been doing some experiments the last months</p>
+  </li>
+</ol>
+
+<p>So, far in Backbone, my application structure starts to look as follows:</p>
+
+<pre><code>app.js
+main.js
+
+/collections
+/models
+/views
 </code></pre>
 
-<p>This creates an environment for setting up a virtual machine. It’s very cool, because now, you can imagine to setup an Ubuntu, Debian, CentOS, or whatever system, and vagrant will try to go ahead, download or copies the VM and prepares it just that you can use it.</p>
-
-<p>Ok, not quite, since next, you must tell Vagrant where to download the box; you do it in the Vagrantfile,  e.g.:</p>
-
-<pre><code>config.vm.box = "opscode-ubuntu-12.04"
-config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box" 
-</code></pre>
-
-<p>It’s the standard Ubuntu box from Opscode right now.
-Just do a:</p>
-
-<pre><code>$ vagrant up
-</code></pre>
-
-<p>and you would have an Ubuntu box running.</p>
-
-<p>Well, we were charmed by graph databases, weren’t we?  Ok, so, let’s go ahead and add the setup for Neo4J. Some googling gives, that we have a Neo4J cookbook here: https://github.com/michaelklishin/neo4j-server-chef-cookbook</p>
-
-<p>Hmm.. in this stage, we actually decided already for chef-solo. There is chef-solo and chef-server, and if you want to understand the difference, I suggest you look here: http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/</p>
-
-<p>Chef-server is the approach you want to use in production. Chef-solo is the approach for quick-and-dirty experiments, like we do here. So, let’s assume, chef-solo is ok, and we just need to get the cookbooks dependencies right. Luckily, we have a tool for this: chef-librarian.</p>
-
-<pre><code> $ chef-librarian init
-</code></pre>
-
-<p>This gives you a Cheffile. It’s similar to a Gemfile if you are used to Ruby.
-Let’s throw in the Neo4J dependency here:</p>
-
-<pre><code>cookbook 'apt'
-cookbook 'neo4j-server', :git =&amp;gt; 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
-</code></pre>
-
-<p>And now, similar to bundle install, we run librarian-chef install</p>
-
-<p>Last, but not least, we need to tell our VM that interaction with chef-solo is needed. You’ll do this by adding something into the Vagrantfile :</p>
-
-<pre><code>config.vm.provision :chef_solo do |chef|
-  chef.cookbooks_path = "cookbooks"
-  chef.add_recipe "apt"
-  chef.add_recipe "neo4j-server::tarball"
-end
-</code></pre>
-
-<p>Cool, now we only need to build our server, since our ingredients are prepared, and chef is ready for cooking. The magic command is:</p>
-
-<pre><code>$ vagrant up
-</code></pre>
-
-<p>You should see something like: </p>
-
-<pre><code>[2012-12-10T20:33:58+00:00] INFO: *** Chef 10.14.4 ***
-[2012-12-10T20:33:59+00:00] INFO: Setting the run_list to ["recipe[apt]", "recipe[neo4j-server::tarball]"] from JSON
-[2012-12-10T20:33:59+00:00] INFO: Run List is [recipe[apt], recipe[neo4j-server::tarball]]
-[2012-12-10T20:33:59+00:00] INFO: Run List expands to [apt, neo4j-server::tarball]
-[2012-12-10T20:33:59+00:00] INFO: Starting Chef Run for vagrant.vm
-</code></pre>
-
-<p>This takes a while…. </p>
-
-<p>Eventually, you end up successfully, and you can do:</p>
-
-<pre><code>$ vagrant ssh
-</code></pre>
-
-<p>Now, your VM has Neo4J running on it, and if you enable port forwarding in Vagrant, you might even go to: localhost:7474 and enjoy your fresh Neo4J server.</p>
-
-<h2 id="some-references">Some References:</h2>
-
-<p>Chef and Neo4J
-* Vimeo screencast: https://vimeo.com/55085049, see: 
-  Screencast Install Neo4j-server with Chef from Patrick Mulder on Vimeo.</p>
-
-<p>Git repo: https://github.com/mulderp/chef-neo4j
-Chef basic steps with Nathen Harvey from Opscode
-Learning Chef Part 1
-Learning Chef Part 2
-Learning Chef Part 3</p>
 
   </div>
 
@@ -231,7 +181,7 @@ Learning Chef Part 3</p>
   var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
   analytics.track('Post', {
-      title: "An experiment with Vagrant and Neo4J"
+      title: "What is modular code?"
     });
 </script>
 
