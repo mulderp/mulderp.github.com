@@ -76,6 +76,7 @@
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
     <h1>What is modular code?</h1>
+    <i class="icon-tags"></i>  <a href="/tags/MVC" title="View posts tagged with &quot;MVC&quot;"><u>MVC</u></a>     <a href="/tags/JavaScript" title="View posts tagged with &quot;JavaScript&quot;"><u>JavaScript</u></a>     <a href="/tags/Ruby" title="View posts tagged with &quot;Ruby&quot;"><u>Ruby</u></a>     <a href="/tags/Mobile" title="View posts tagged with &quot;Mobile&quot;"><u>Mobile</u></a>   
   </header>
 
   <div class='ten columns gray' id="date-header">
@@ -89,7 +90,7 @@
   <div class="ten columns" id="article-content">
     <p>Designing the architecture of a web application is difficult. First, there are many different programming languages among which to chose, then there are many frameworks , some leave design decisions to the programmer, some come “opinionated’ (= with default settings/strategies). Additionally, within each framework, a number of plugins exists that often solve similar problems, yet have different solution approaches.</p>
 
-<p>In order to help system designers to make decisions, programmers talk about applying “patterns” or using a “pattern language”. Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in a book some years ago. Modular code (and data) should be easier to re-use, and allow to extend and adapt ideas where needed. </p>
+<p>In order to help application designers to make decisions, programmers talk about applying “patterns” or using a “pattern language”. Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in <a href="http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction">this book</a> some years ago. Modular code (and data) should be easier to re-use, and allows to extend and adapt ideas where needed. </p>
 
 <p>One of the most important pattern in a web application is called Model-View-Controller (MVC). a nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found <a href="https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8">here</a>, I will use the following definitions for MVC:</p>
 
@@ -114,19 +115,32 @@
 
 <ol>
   <li>
-    <h2 id="how-to-organize-view-modules">How to organize “view” modules?</h2>
-    <p>This is the second important part of the application where I have been doing some experiments the last months</p>
+    <h2 id="how-to-organize-mvc-modules-on-the-client">How to organize “MVC” modules on the client?</h2>
+    <p>When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.</p>
   </li>
 </ol>
 
+<p>Additionally, there might be multiple MVC’s defined on a client, depending on the current scope of a HTTP conversation (e.g. /protected or /guest or /admin).</p>
+
 <p>So, far in Backbone, my application structure starts to look as follows:</p>
 
-<pre><code>app.js
-main.js
+<pre><code>/dashboard
+  app.js
+  main.js
+  
+  /collections
+  /models
+  /views
+  /templates
 
-/collections
-/models
-/views
+/welcome
+  app.js
+  main.js
+  
+  /collections
+  /models
+  /views
+  /templates
 </code></pre>
 
 

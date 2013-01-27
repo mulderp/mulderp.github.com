@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How I am (re-)discovering working with JavaScript
+tags: JavaScript Programming Modules RequireJS Backbone
 ---
 
 Having programmed in Assembler, C/C++, Java and in Ruby, I was always confused on how people are doing stuff in JavaScript - until recently luckily. In imperative languages, you learn to think about how to 'control' data; in JavaScript however, you think about this: What are your data structures (DOM/HTML/API resources)? And, how do changes in data structures look like?

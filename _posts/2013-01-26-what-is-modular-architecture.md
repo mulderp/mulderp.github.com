@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What is modular code?
+tags: MVC JavaScript Ruby Mobile
 ---
 
 Designing the architecture of a web application is difficult. First, there are many different programming languages among which to chose, then there are many frameworks , some leave design decisions to the programmer, some come "opinionated' (= with default settings/strategies). Additionally, within each framework, a number of plugins exists that often solve similar problems, yet have different solution approaches.

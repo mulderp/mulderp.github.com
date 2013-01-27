@@ -4,7 +4,7 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-01-27T15:55:38+01:00</updated>
+ <updated>2013-01-27T22:57:45+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
@@ -19,7 +19,7 @@
    <id>http:/mulderp.github.com/what-is-modular-architecture</id>
    <content type="html">&lt;p&gt;Designing the architecture of a web application is difficult. First, there are many different programming languages among which to chose, then there are many frameworks , some leave design decisions to the programmer, some come “opinionated’ (= with default settings/strategies). Additionally, within each framework, a number of plugins exists that often solve similar problems, yet have different solution approaches.&lt;/p&gt;
 
-&lt;p&gt;In order to help system designers to make decisions, programmers talk about applying “patterns” or using a “pattern language”. Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in a book some years ago. Modular code (and data) should be easier to re-use, and allow to extend and adapt ideas where needed. &lt;/p&gt;
+&lt;p&gt;In order to help application designers to make decisions, programmers talk about applying “patterns” or using a “pattern language”. Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in &lt;a href=&quot;http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction&quot;&gt;this book&lt;/a&gt; some years ago. Modular code (and data) should be easier to re-use, and allows to extend and adapt ideas where needed. &lt;/p&gt;
 
 &lt;p&gt;One of the most important pattern in a web application is called Model-View-Controller (MVC). a nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found &lt;a href=&quot;https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8&quot;&gt;here&lt;/a&gt;, I will use the following definitions for MVC:&lt;/p&gt;
 
@@ -44,19 +44,32 @@
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;h2 id=&quot;how-to-organize-view-modules&quot;&gt;How to organize “view” modules?&lt;/h2&gt;
-    &lt;p&gt;This is the second important part of the application where I have been doing some experiments the last months&lt;/p&gt;
+    &lt;h2 id=&quot;how-to-organize-mvc-modules-on-the-client&quot;&gt;How to organize “MVC” modules on the client?&lt;/h2&gt;
+    &lt;p&gt;When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;Additionally, there might be multiple MVC’s defined on a client, depending on the current scope of a HTTP conversation (e.g. /protected or /guest or /admin).&lt;/p&gt;
+
 &lt;p&gt;So, far in Backbone, my application structure starts to look as follows:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;app.js
-main.js
+&lt;pre&gt;&lt;code&gt;/dashboard
+  app.js
+  main.js
+  
+  /collections
+  /models
+  /views
+  /templates
 
-/collections
-/models
-/views
+/welcome
+  app.js
+  main.js
+  
+  /collections
+  /models
+  /views
+  /templates
 &lt;/code&gt;&lt;/pre&gt;
 
 </content>
@@ -187,12 +200,14 @@ Another option is to run Jasmine specs through rake. This option seems to be ver
 
 &lt;p&gt;Before actually running a succesful Jasmine spec for a Backbone view, we need a library to actually match DOM nodes with expected values. The common library for doing this are the Jasmine-JQuery matchers These allow to express many things, among if the .el property of a Backbone view actually match a DOM node as follows:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;View = Backbone.View.extend({tagName: &quot;li&quot; });   view = new View();
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;View = Backbone.View.extend({tagName: &quot;li&quot; });
+view = new View();
 
-&lt;p&gt;it(“has el property”, function() {
-    expect(view.el).toBe(“li”);                                                                                                            &lt;br /&gt;
-  });&lt;/p&gt;
+
+it(&quot;has el property&quot;, function() {
+  expect(view.el).toBe(&quot;li&quot;);                                                                                                              
+});
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;My current setup can be found here: &lt;a href=&quot;https://github.com/mulderp/backbone-require-test/tree/view_specs&quot;&gt;https://github.com/mulderp/backbone-require-test/tree/view_specs&lt;/a&gt;&lt;/p&gt;
 

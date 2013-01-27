@@ -76,6 +76,7 @@
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
     <h1>DOM feedback with JavaScript Jasmine</h1>
+    <i class="icon-tags"></i>  <a href="/tags/frontend" title="View posts tagged with &quot;frontend&quot;"><u>frontend</u></a>     <a href="/tags/JavaScript" title="View posts tagged with &quot;JavaScript&quot;"><u>JavaScript</u></a>     <a href="/tags/Jasmine" title="View posts tagged with &quot;Jasmine&quot;"><u>Jasmine</u></a>     <a href="/tags/TDD" title="View posts tagged with &quot;TDD&quot;"><u>TDD</u></a>     <a href="/tags/Specs" title="View posts tagged with &quot;Specs&quot;"><u>Specs</u></a>     <a href="/tags/DOM" title="View posts tagged with &quot;DOM&quot;"><u>DOM</u></a>   
   </header>
 
   <div class='ten columns gray' id="date-header">
@@ -149,12 +150,14 @@ Another option is to run Jasmine specs through rake. This option seems to be ver
 
 <p>Before actually running a succesful Jasmine spec for a Backbone view, we need a library to actually match DOM nodes with expected values. The common library for doing this are the Jasmine-JQuery matchers These allow to express many things, among if the .el property of a Backbone view actually match a DOM node as follows:</p>
 
-<pre><code>View = Backbone.View.extend({tagName: "li" });   view = new View();
-</code></pre>
+<pre><code>View = Backbone.View.extend({tagName: "li" });
+view = new View();
 
-<p>it(“has el property”, function() {
-    expect(view.el).toBe(“li”);                                                                                                            <br />
-  });</p>
+
+it("has el property", function() {
+  expect(view.el).toBe("li");                                                                                                              
+});
+</code></pre>
 
 <p>My current setup can be found here: <a href="https://github.com/mulderp/backbone-require-test/tree/view_specs">https://github.com/mulderp/backbone-require-test/tree/view_specs</a></p>
 

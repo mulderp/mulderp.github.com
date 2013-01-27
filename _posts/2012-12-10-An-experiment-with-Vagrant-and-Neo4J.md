@@ -1,6 +1,7 @@
 ---
 layout: post
 title: An experiment with Vagrant and Neo4J
+tags: Chef Persistence Databases Graphs Neo4J ArangoDB
 ---
 
 The RuPy conference 2012 in Brno was very inspiring! Especially, there were some interesting talks on databases and scalable approaches to web development:

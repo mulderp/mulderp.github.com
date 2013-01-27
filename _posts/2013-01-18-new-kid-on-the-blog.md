@@ -1,7 +1,7 @@
 ---
 layout: post
 title: New kid on the Blog 
-tags: blogging
+tags: blogger blogging jekyll github sinatra
 ---
 
 The more I am getting into Ruby and Rails development, the more I experience that blogs help, inspire, connect, do business. So, it's getting time to redefine my voice in the web, share memes on programming and web evolution. Maybe this post might inspire you or is helpful to you. Here is what inspired me and helped me:

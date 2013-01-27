@@ -1,6 +1,7 @@
 ---
 layout: post
 title: DOM feedback with JavaScript Jasmine
+tags: frontend JavaScript Jasmine TDD Specs DOM
 ---
 
 In my first attempts to develop frontend interactions with Backbone.js, I discovered some blind spots in my understanding of Backbone views. Especially, I find the different options to organize views with parent and child-views, as well as attaching views to DOM nodes difficult. A nice overview on Backbone pitfalls is given [here](http://blog.8thlight.com/cymen-vig/2012/12/13/reflections-on-using-backbone-js.html).
@@ -57,12 +58,12 @@ Before actually running a succesful Jasmine spec for a Backbone view, we need a 
 
 
     View = Backbone.View.extend({tagName: "li" });
-  view = new View();
+    view = new View();
 
 
-  it("has el property", function() {
-    expect(view.el).toBe("li");                                                                                                              
-  });
+    it("has el property", function() {
+      expect(view.el).toBe("li");                                                                                                              
+    });
 
 
 My current setup can be found here: [https://github.com/mulderp/backbone-require-test/tree/view_specs](https://github.com/mulderp/backbone-require-test/tree/view_specs)
