@@ -15,6 +15,6 @@ The more I am getting into Ruby and Rails development, the more I experience tha
 Luckily, it took not much, to let Jekyll render the words you are reading here, from my editor to your web browser, because of 2 great web resources:
 
 1. The Jekyll parent blog of this blog came from [Sirupsen](https://github.com/Sirupsen/sirupsen.github.com), who has put together a lot of nice design details into his templates.
-2. A small overview on how to add all kinds of widgets to your blog, such as comments, Twitter links, and more: http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/
+2. A small overview on how to add all kinds of widgets to your blog, such as comments, Twitter links, and more: [http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/](http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/)
 
 Well, let me know what you think! I am happy to find out more about you readers, how you came hear, what you find helpful, when you read this. That's all for now.
