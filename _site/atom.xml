@@ -4,13 +4,28 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-01-27T22:57:45+01:00</updated>
+ <updated>2013-01-29T21:26:15+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Building Infrastructure with Chef</title>
+   <link href="http://mulderp.github.com/building-infrastructure"/>
+   <updated>2013-01-29T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/building-infrastructure</id>
+   <content type="html">&lt;p&gt;It might have been the end of 90ies, when I first saw books on PHP and ‘dynamic’ web pages that looked much more complicated and powerful than simple HTML pages. In that time, I was still playing with software on single workstations for engineering studies. I could not imagine however, the disruption that was going on by connecting computers (and humans) with Linux and open-source software. Now, after experiences with Perl, Python, Debian, Gentoo, Emacs, Linux Kernels, Torrents, Apache, Nginx, MySQL, Ruby, Rails, Dovecot, Vim, MongoDB, Neo4J, ArangoDB, Postgres (and probably 10 more open-source software projects), one tool struck my eyes recently: Chef.&lt;/p&gt;
+
+&lt;p&gt;Chef is a configuration tool for computing infrastructure, esp. cloud infrastructure and helps to share infrastructure across projects, teams and products. What I like best on the Chef concept is, that it enables experiments with infrastucture, something wich otherwise would be costly or pointless, since in the past building software is often more of an art, as a science. I remember browsing through a multitude of discussions in forum posts like “oh, I had to patch the lib-whatever header to make it woversion 3.2.x, not sure if this will work for version 3.1.y too”. So, in some senses, Chef is bringing defaults and shared efforts to infrastructure, similary to what Rails brought to building database driven web applications.&lt;/p&gt;
+
+&lt;p&gt;han running virtual machines and OS’s on top of other machines. &lt;/p&gt;
+
+&lt;p&gt;Web applications only come with good infrastructure.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>What is modular code?</title>
@@ -21,7 +36,7 @@
 
 &lt;p&gt;In order to help application designers to make decisions, programmers talk about applying “patterns” or using a “pattern language”. Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in &lt;a href=&quot;http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction&quot;&gt;this book&lt;/a&gt; some years ago. Modular code (and data) should be easier to re-use, and allows to extend and adapt ideas where needed. &lt;/p&gt;
 
-&lt;p&gt;One of the most important pattern in a web application is called Model-View-Controller (MVC). a nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found &lt;a href=&quot;https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8&quot;&gt;here&lt;/a&gt;, I will use the following definitions for MVC:&lt;/p&gt;
+&lt;p&gt;One of the most important pattern in a web application is called Model-View-Controller (MVC). A nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found &lt;a href=&quot;https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8&quot;&gt;here&lt;/a&gt;, I will use the following definitions for MVC:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Model: All data items are representations of the real things; they make up the Model. &lt;/li&gt;
@@ -29,7 +44,7 @@
   &lt;li&gt;Controller: The Controller sets up and coordinates one or more Views. &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;However, in the context of (mobile) web applications, where views are livining in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: &lt;/p&gt;
+&lt;p&gt;However, in the context of (mobile) web applications, where views are living in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: &lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -38,9 +53,9 @@
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs need to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with assets &lt;a href=&quot;http://thinkingonthinking.com/MVC-and-Rails-API/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs require servers to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with new tools for asset management &lt;a href=&quot;http://thinkingonthinking.com/MVC-and-Rails-API/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Node.JS based might be interesting to look at too.&lt;/p&gt;
+&lt;p&gt;Also, for serving frontends assets, no full application stack is needed. And since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Express.JS and other Node.JS approaches might be interesting to look at too.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -126,7 +141,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;The Jekyll parent blog of this blog came from &lt;a href=&quot;https://github.com/Sirupsen/sirupsen.github.com&quot;&gt;Sirupsen&lt;/a&gt;, who has put together a lot of nice design details into his templates.&lt;/li&gt;
-  &lt;li&gt;A small overview on how to add all kinds of widgets to your blog, such as comments, Twitter links, and more: http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/&lt;/li&gt;
+  &lt;li&gt;A small overview on how to add all kinds of widgets to your blog, such as comments, Twitter links, and more: &lt;a href=&quot;http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/&quot;&gt;http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Well, let me know what you think! I am happy to find out more about you readers, how you came hear, what you find helpful, when you read this. That’s all for now.&lt;/p&gt;
