@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Building a Vagrant base box
+tags: vagrant vewee devops
 ---
 As explained in my previous [post](http://thinkingonthinking.com/building-infrastructure), Chef allows to develop, test and experiment with computing or cloud infrastructure.
 
