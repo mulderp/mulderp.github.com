@@ -33,14 +33,19 @@ Here are some steps:
 
 4. Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:
 
+<pre>
     ubuntu-base/definitions/Ubuntu-11.04/definition.rb
+</pre>
 
 5. Start the build of the basebox:
 
+<pre>
      vagrant basebox build Ubuntu-11.04
+</pre>
 
 
 
+That's basically it. Thanks to [Zac Sprackett](http://zac.sprackett.com/resume/) for writing on setting up a CentOS basebox  [here](http://devops.me/2011/10/06/building-baseboxes/)
 
 
 
