@@ -14,16 +14,22 @@ Here are some steps:
 
 2. Make sure you have the gems VeeWee and Vagrant installed:
 
+<pre>
      gem install vagrant
      gem install veewee
+</pre>
 
 2. Now, You'll want to get a list with possible ISO images for baseboxes. This command list baseboxes:
 
+<pre>
     vagrant basebox templates
+</pre>
 
 3. As you'll see in the list you have quite a lot of options. Do a:
 
+<pre>
      vagrant basebox define Ubuntu-11.04 ubuntu-11.04-server-amd64 -d
+</pre>
 
 4. Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:
 
