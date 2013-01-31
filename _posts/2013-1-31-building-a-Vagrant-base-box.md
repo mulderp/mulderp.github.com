@@ -43,10 +43,16 @@ Here are some steps:
      vagrant basebox build Ubuntu-11.04
 </pre>
 
-6. Export the box:
+6. Export the basebox:
 
 <pre>
    vagrant basebox export Ubuntu-11.04
+</pre>
+
+7. Add the basebox:
+
+<pre>
+   vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
 </pre>
 
 That's basically it. Thanks to [Zac Sprackett](http://zac.sprackett.com/resume/) for writing on setting up a CentOS basebox  [here](http://devops.me/2011/10/06/building-baseboxes/)
