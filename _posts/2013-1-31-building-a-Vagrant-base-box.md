@@ -14,8 +14,8 @@ Here are some steps:
 
 2. Make sure you have the gems VeeWee and Vagrant installed:
 
-    gem install vagrant
-    gem install veewee
+     gem install vagrant
+     gem install veewee
 
 2. Now, You'll want to get a list with possible ISO images for baseboxes. This command list baseboxes:
 
