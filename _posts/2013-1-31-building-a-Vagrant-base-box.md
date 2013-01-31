@@ -4,7 +4,7 @@ title: Building a Vagrant base box
 ---
 As explained in my previous [post](http://thinkingonthinking.com/building-infrastructure), Chef allows to develop, test and experiment with computing or cloud infrastructure.
 
-In order to locally build nodes to test the setup of a single node, [Vagrant](http://vagrantup.com) allows to play with ISO images from a certain operating system. There is a list of ISO images ready for Chef here at [Vagrantbox.es](http://vagrantbox.es). However, a common use case is, that you are running some other Linux version already, or, you want to work with fresh Ubuntu image, that you know what it contains.
+In order to locally build nodes to test the setup of a node, [Vagrant](http://vagrantup.com) is a great automation tool that helps to play with ISO images from a certain operating system. There is a list of ISO images ready for Chef here at [Vagrantbox.es](http://vagrantbox.es). However, a common use case is, that you are running some other Linux version already, or, you want to work with fresh Ubuntu image, that you know what it contains.
 
 So, how to create a new Vagrant basebox?
 
