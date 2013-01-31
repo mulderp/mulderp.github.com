@@ -11,7 +11,7 @@ So, how to create a new Vagrant basebox?
 
 Here are some steps:
 
-1. Upgrade your VirtualBox to the latest Version; as time of writing this was 1.6.2. This gives you less headache when Vagrant is downloading so called ISO image additions (which for older VirtualBox version might be difficult to fetch)
+1. Upgrade your VirtualBox to the latest Version; as time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (which for older VirtualBox version might be difficult to fetch)
 
 2. Make sure you have the gems VeeWee and Vagrant installed:
 
