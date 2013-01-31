@@ -22,31 +22,22 @@ Here are some steps:
     vagrant basebox templates
 </pre>
 4. As you'll see in the list you have quite a lot of options. Do a:
-
 <pre>
      vagrant basebox define Ubuntu-11.04 ubuntu-11.04-server-amd64 -d
 </pre>
-
-4. Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:
-
+5. Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:
 <pre>
     ubuntu-base/definitions/Ubuntu-11.04/definition.rb
 </pre>
-
-5. Start the build of the basebox:
-
+6. Start the build of the basebox:
 <pre>
      vagrant basebox build Ubuntu-11.04
 </pre>
-
-6. Export the basebox:
-
+7. Export the basebox:
 <pre>
    vagrant basebox export Ubuntu-11.04
 </pre>
-
-7. Add the basebox:
-
+8. Add the basebox:
 <pre>
    vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
 </pre>
