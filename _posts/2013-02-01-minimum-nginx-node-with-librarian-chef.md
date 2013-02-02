@@ -13,7 +13,7 @@ When developing servers or clients that talk HTTP, it's great to have mock syste
 
 ## Init librarian-chef
 
-To get started, we need to get file where we can specifiy a node's cookbooks:
+To get started, we need a file where we can specifiy a node's cookbooks:
 
 <pre>
    $ librarian-chef init
@@ -38,7 +38,7 @@ This means we are going to write a small application cookbook 'nginx-app' that l
 
 ## Create the application cookbook
 
-In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. They are derived from e.g. community cookbooks, but contain custom stuff. So, let's create an application cookbook for our webserver:
+In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. Some background on this can be found [here](http://devopsanywhere.blogspot.de/2012/11/how-to-write-reusable-chef-cookbooks.html) They are derived from e.g. community cookbooks, but contain custom stuff. So, let's create an application cookbook for our webserver:
 
 <pre>
     knife cookbook create nginx-app -o application-cookbooks
