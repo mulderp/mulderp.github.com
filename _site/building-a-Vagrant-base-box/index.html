@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>New kid on the Blog</title>
+    <title>Building a Vagrant base box</title>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -79,8 +79,8 @@
 
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
-    <h1>New kid on the Blog</h1>
-    <i class="icon-tags"></i>  <a href="/tags/blogger" title="View posts tagged with &quot;blogger&quot;"><u>blogger</u></a>     <a href="/tags/blogging" title="View posts tagged with &quot;blogging&quot;"><u>blogging</u></a>     <a href="/tags/jekyll" title="View posts tagged with &quot;jekyll&quot;"><u>jekyll</u></a>     <a href="/tags/github" title="View posts tagged with &quot;github&quot;"><u>github</u></a>     <a href="/tags/sinatra" title="View posts tagged with &quot;sinatra&quot;"><u>sinatra</u></a>   
+    <h1>Building a Vagrant base box</h1>
+    <i class="icon-tags"></i>  <a href="/tags/vagrant" title="View posts tagged with &quot;vagrant&quot;"><u>vagrant</u></a>     <a href="/tags/vewee" title="View posts tagged with &quot;vewee&quot;"><u>vewee</u></a>     <a href="/tags/devops" title="View posts tagged with &quot;devops&quot;"><u>devops</u></a>   
   </header>
 
   <div class='ten columns gray' id="date-header">
@@ -92,28 +92,61 @@
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>The more I am getting into Ruby and Rails development, the more I experience that blogs help, inspire, connect, do business. So, it’s getting time to redefine my voice in the web, share memes on programming and web evolution. Maybe this post might inspire you or is helpful to you. Here is what inspired me and helped me:</p>
+    <p>As explained in my previous <a href="http://thinkingonthinking.com/building-infrastructure">post</a>, Chef allows to develop, test and experiment with computing or cloud infrastructure.</p>
 
-<ul>
-  <li>
-    <p>First, my motivation to share ideas in a blog was re-energized by meeting bloggers on conferences (BaRuCo, RuPy) and in the web, e.g. some include posts on Chef by <a href="http://nathenharvey.com">Nathen Harvey</a>, Rails posts by <a href="http://words.steveklabnik.com/">Steve Klabnik</a>, BDD posts by <a href="http://blog.mattwynne.net/">Matt Wynne</a>, <a href="http://businessmodelalchemist.com">Alex Osterwalder</a> on redefining business strategy, and last but not leasts product/software/devop posts by <a href="http://svn.37signals.com">37signals</a></p>
-  </li>
-  <li>
-    <p>When I restarted my blogging activities on blogger some weeks ago, I came across an article by <a href="http://al3x.net/about.html">Alex Payne</a>, on how he ended up on hosting his blog on github pages. My last blogging activities were based on blogger.com; but programmers like editors, source control, and control of details in layouts and JavaScript interaction. So, time to say goodbye to blogger.com</p>
-  </li>
-  <li>
-    <p>Somehow, I was reminded that in the <a href="http://shop.oreilly.com/product/0636920019664.do">Sinatra book</a> by Konstantin Haase some Git/Sinatra workflow for blogging was mentioned. I tried this workflow, but Sinatra support on Github pages seems not to be the cutting edge. (If someone knows why, let me know). So, the cutting edge is <a href="http://jekyllrb.com/">Jekyll</a>, a static site generator that “transforms your text into a monster”.</p>
-  </li>
-</ul>
+<p>In order to locally build nodes to test the setup of a node, <a href="http://vagrantup.com">Vagrant</a> is a great automation tool that helps to play with ISO images from a certain operating system. There is a list of ISO images ready for Chef here at <a href="http://vagrantbox.es">Vagrantbox.es</a>. However, a common use case is, that you are running some other Linux version already, or, you want to work with fresh Ubuntu image, that you know what it contains.</p>
 
-<p>Luckily, it took not much, to let Jekyll render the words you are reading here, from my editor to your web browser, because of 2 great web resources:</p>
+<p>So, how to create a new Vagrant basebox?</p>
+
+<p>Here are some steps:</p>
 
 <ol>
-  <li>The Jekyll parent blog of this blog came from <a href="https://github.com/Sirupsen/sirupsen.github.com">Sirupsen</a>, who has put together a lot of nice design details into his templates.</li>
-  <li>A small overview on how to add all kinds of widgets to your blog, such as comments, Twitter links, and more: <a href="http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/">http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/</a></li>
+  <li>Upgrade your VirtualBox to the latest Version; as time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue <a href="https://github.com/jedi4ever/veewee/issues/519">here</a> )</li>
+  <li>Make sure you have the gems VeeWee and Vagrant installed:</li>
 </ol>
+<pre>
+     gem install vagrant
+     gem install veewee
+</pre>
+<ol>
+  <li>Now, You’ll want to get a list with possible ISO images for baseboxes. This command list baseboxes:</li>
+</ol>
+<pre>
+    vagrant basebox templates
+</pre>
+<ol>
+  <li>As you’ll see in the list you have quite a lot of options. Do a:</li>
+</ol>
+<pre>
+     vagrant basebox define Ubuntu-11.04 ubuntu-11.04-server-amd64 -d
+</pre>
+<ol>
+  <li>Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:</li>
+</ol>
+<pre>
+    ubuntu-base/definitions/Ubuntu-11.04/definition.rb
+</pre>
+<ol>
+  <li>Start the build of the basebox:</li>
+</ol>
+<pre>
+     vagrant basebox build Ubuntu-11.04
+</pre>
+<ol>
+  <li>Export the basebox:</li>
+</ol>
+<pre>
+   vagrant basebox export Ubuntu-11.04
+</pre>
+<ol>
+  <li>Add the basebox:</li>
+</ol>
+<pre>
+   vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
+</pre>
 
-<p>Well, let me know what you think! I am happy to find out more about you readers, how you came hear, what you find helpful, when you read this. That’s all for now.</p>
+<p>That’s basically it. Thanks to <a href="http://zac.sprackett.com/resume/">Zac Sprackett</a> for writing on setting up a CentOS basebox  <a href="http://devops.me/2011/10/06/building-baseboxes/">here</a></p>
+
 
   </div>
 
@@ -166,7 +199,7 @@
   var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
   analytics.track('Post', {
-      title: "New kid on the Blog"
+      title: "Building a Vagrant base box"
     });
 </script>
 
