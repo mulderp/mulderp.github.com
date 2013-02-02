@@ -3,7 +3,7 @@ layout: post
 title: A Vagrant based Minimum Viable Webserver
 tags: vagrant chef nginx
 ---
-When developing servers or clients that talk HTTP, it's great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and [Librarian-Chef](https://github.com/applicationsonline/librarian). Librarian-Chef is conceptually very close to Ruby's bundler.
+When developing servers or clients that talk HTTP, it's great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and [Librarian-Chef](https://github.com/applicationsonline/librarian). Librarian-Chef is conceptually very close to the Ruby Bundler gem.
 
 ## Install librarian-chef
 
@@ -19,7 +19,7 @@ To get started, we need to get file where we can specifiy a node's cookbooks:
    $ librarian-chef init
 </pre>
 
-This gives us the 'Cheffile', which is conceptually close to Ruby's 'Gemfile'.
+This gives us the 'Cheffile', which is conceptually close to Bundler's 'Gemfile'.
 
 ## Edit Cheffile
 
