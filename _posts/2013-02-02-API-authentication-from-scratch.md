@@ -59,3 +59,6 @@ yes, this means you'll have some duplicated stuff, but this is how it should wor
 ... question:  how would code look like to actually access the API with AJAX from the user's browser?
 
 So, how can the client talk to a server, depending on whether a user logged in, or not?
+
+
+evt. also mentioning:  https://github.com/lostisland/faraday/blob/master/test/authentication_middleware_test.rb
