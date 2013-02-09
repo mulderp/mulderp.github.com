@@ -41,7 +41,7 @@
 
       <div class="four columns sidebar">
         <section>
-          <a id="avatar" href="/"></a>
+          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking @main</a>
 
           <ul id="social">
             <li>
@@ -92,7 +92,7 @@
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>When developing servers or clients that talk HTTP, it’s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and <a href="https://github.com/applicationsonline/librarian">Librarian-Chef</a>. Librarian-Chef is conceptually very close to Ruby’s bundler.</p>
+    <p>When developing servers or clients that talk HTTP, it’s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and <a href="https://github.com/applicationsonline/librarian">Librarian-Chef</a>. Librarian-Chef is conceptually very close to the Ruby Bundler gem.</p>
 
 <h2 id="install-librarian-chef">Install librarian-chef</h2>
 
@@ -102,17 +102,32 @@
 
 <h2 id="init-librarian-chef">Init librarian-chef</h2>
 
-<p>To get started, we need to get file where we can specifiy a node’s cookbooks:</p>
+<p>To get started, we need a file where we can specifiy a node’s cookbooks:</p>
 
 <pre>
    $ librarian-chef init
 </pre>
 
-<p>This gives us the &lt;pre&gt;Cheffile&lt;/pre&gt;, which is conceptually close to Ruby’s &lt;pre&gt;Gemfile&lt;/pre&gt;.</p>
+<p>This gives us the ‘Cheffile’, which is conceptually close to Bundler’s ‘Gemfile’.</p>
 
-<h2 id="create-an-application-cookbook">Create an application cookbook</h2>
+<h2 id="edit-cheffile">Edit Cheffile</h2>
 
-<p>In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:</p>
+<p>We are going to modify the Cheffile to define our node’s dependencies as follows:</p>
+
+<pre>
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'nginx-app', :path =&gt; "./application-cookbooks"
+</pre>
+
+<p>This means we are going to write a small application cookbook ‘nginx-app’ that lives in the path ‘/application-cookbooks’</p>
+
+<h2 id="create-the-application-cookbook">Create the application cookbook</h2>
+
+<p>In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. Some background on this can be found <a href="http://devopsanywhere.blogspot.de/2012/11/how-to-write-reusable-chef-cookbooks.html">here</a> They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:</p>
 
 <pre>
     knife cookbook create nginx-app -o application-cookbooks
@@ -137,7 +152,7 @@
    |-----default
 </pre>
 
-<h1 id="setup-the-webservers-resources">Setup the webserver’s resources</h1>
+<h2 id="setup-the-webservers-resources">Setup the webserver’s resources</h2>
 
 <p>Nginx can be installed with a simple <a href="http://wiki.opscode.com/display/chef/Resources#Resources-Package">package resource</a>. This is an abstraction around a package installer such as aptitude or yum. Also we need to use a template resource for defining a virtual host:</p>
 
@@ -156,7 +171,7 @@
    end
 </pre>
 
-<h3 id="template-in-nginx-apptemplates">Template in /nginx-app/templates</h3>
+<h3 id="template-in-nginx-apptemplatesnginxconferb">Template in /nginx-app/templates/nginx.conf.erb</h3>
 <pre>
   user www-data;
   worker_processes  &lt;%= @node[:nginx][:worker_processes] %&gt;;
@@ -194,6 +209,113 @@
 <pre>
   default[:nginx][:dir] = "/etc/nginx"
   default[:nginx][:worker_processes] = 4
+</pre>
+
+<h2 id="bundle-the-cookbooks">Bundle the cookbooks</h2>
+
+<p>Now, we have everything in place and we can bundle the cookbooks with the command:</p>
+
+<pre>
+    $ librarian-chef install
+</pre>
+
+<p>Now all cookbooks are downloaded an placed into the local /cookbooks path. Two outputs can be observed, the dependencies were written into Cheffile.lock</p>
+
+<pre>
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    build-essential (1.3.2)
+    nginx (1.2.0)
+      build-essential (&gt;= 0.0.0)
+      ohai (&gt;= 1.1.4)
+    ohai (1.1.6)
+
+PATH
+  remote: ./application-cookbooks
+  specs:
+    nginx-app (0.1.0)
+      nginx (&gt;= 0.0.0)
+
+DEPENDENCIES
+  nginx-app (&gt;= 0
+</pre>
+
+<p>This shows that our node get some additional cookbooks that are required by the nginx-app cookbook.
+Let’s also look at the cookbook path:</p>
+
+<pre>
+   cookbooks
+   |-build-essential
+   |---attributes
+   |---recipes
+   |-nginx
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |-------tests
+   |---------minitest
+   |-----------support
+   |---recipes
+   |---templates
+   |-----debian
+   |-----default
+   |-------modules
+   |-------plugins
+   |-----gentoo
+   |-----ubuntu
+   |-nginx-app
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |---libraries
+   |---providers
+   |---recipes
+   |---resources
+   |---templates
+   |-----default
+   |-ohai
+   |---attributes
+   |---files
+   |-----default
+   |-------plugins
+   |---recipes
+</pre>
+
+<p>As we can see, all cookbooks were bundled.</p>
+
+<h2 id="setup-vagrant">Setup Vagrant</h2>
+<p>Now, we have all things in place to provision the web server. It’s time to setup Vagrant:</p>
+
+<pre>
+    $ vagrant init Ubuntu-11.04
+</pre>
+
+<p>Edit the Vagrantfile:</p>
+<pre>
+
+<pre>
+Vagrant::Config.run do |config|
+  config.vm.box = "Ubuntu-11.04"
+  config.vm.network :hostonly, "192.168.33.10"
+  config.vm.forward_port 80, 8080
+  config.vm.forward_port 9292, 9292
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "./cookbooks"
+    chef.add_recipe "nginx-app"
+  end
+end
+</pre>
+
+And provision:
+<pre>
+  $ vagrant up
+</pre>
+
+So, that's all to get the webserver running. Now, it would be cool to get some basic Ruby/Rack interface running too. Maybe in the next post with the help of a unicorn cookbook.
 </pre>
 
   </div>

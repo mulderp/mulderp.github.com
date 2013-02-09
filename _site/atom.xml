@@ -4,7 +4,7 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-02-02T09:53:40+01:00</updated>
+ <updated>2013-02-09T19:20:41+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
@@ -13,11 +13,276 @@
 
  
  <entry>
+   <title>Transforming collections in Ruby</title>
+   <link href="http://mulderp.github.com/map-reduce-in-ruby"/>
+   <updated>2013-02-09T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/map-reduce-in-ruby</id>
+   <content type="html">&lt;p&gt;Combinations of Arrays and Hashes in Ruby are very powerful, as shown in &lt;a href=&quot;http://gistflow.com/posts/670-visualising-database-1&quot;&gt;this nice article&lt;/a&gt; on visualizing user registrations and activity in a web application with Google Charts. After starting my own visualization experiments, I felt that I had some blind spots in understanding Ruby’s &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html&quot;&gt;Enumerable Module&lt;/a&gt;. This post attempts to share some insights on expanding and reducing Arrays of objects.&lt;/p&gt;
+
+&lt;p&gt;First, let’s assume our data looks like:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups = [&quot;2011-08&quot;=&amp;gt;1433, &quot;2011-09&quot;=&amp;gt;2972, &quot;2011-10&quot;=&amp;gt;2480, &quot;2011-11&quot;=&amp;gt;2456]
+logins = [&quot;2011-08&quot;=&amp;gt;2832, &quot;2011-09&quot;=&amp;gt;4172, &quot;2011-10&quot;=&amp;gt;3480, &quot;2011-11&quot;=&amp;gt;5456]
+&lt;/pre&gt;
+
+&lt;p&gt;My goal was to combine the two collections and transform the result into:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+activity = [ &quot;2011-08&quot; =&amp;gt; { :signups =&amp;gt; 1433, :logins =&amp;gt; 2832 } ...
+&lt;/pre&gt;
+
+&lt;p&gt;In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let’s start.
+## Splitting a Hash
+My first step was to split the larger collection hash into single hashes. For this &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first&quot;&gt;first&lt;/a&gt; and &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a&quot;&gt;to_a&lt;/a&gt; methods help like this:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups.first.to_a
+=&amp;gt; [[&quot;2011-08&quot;, 1433], [&quot;2011-09&quot;, 2972], [&quot;2011-10&quot;, 2480], [&quot;2011-11&quot;, 2456]]
+&lt;/pre&gt;
+
+&lt;p&gt;There is one caveat with inverse transformation, i.e. converting above Array back to Hashes. I knew that:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+Hash[1,2]
+=&amp;gt; {1 =&amp;gt; 2}
+&lt;/pre&gt;
+
+&lt;p&gt;but this does not work:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[[&quot;2011-08&quot;, 1433], [&quot;2011-09&quot;, 2972], [&quot;2011-10&quot;, 2480], [&quot;2011-11&quot;, 2456]].map { |a| Hash[a] }
+=&amp;gt; [{}, {}, {}, {}]
+&lt;/pre&gt;
+
+&lt;p&gt;In order to have the conversion working, the arguments must be ‘splatted’ with *, see e.g. &lt;a href=&quot;http://theplana.wordpress.com/2007/03/03/ruby-idioms-the-splat-operator/&quot;&gt;this discussion&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So, this means by splating the input values with Hash[*a] we get:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups = [[&quot;2011-08&quot;, 1433], [&quot;2011-09&quot;, 2972], [&quot;2011-10&quot;, 2480], [&quot;2011-11&quot;, 2456]].map { |a| Hash[*a] }
+=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;1433}, {&quot;2011-09&quot;=&amp;gt;2972}, {&quot;2011-10&quot;=&amp;gt;2480}, {&quot;2011-11&quot;=&amp;gt;2456}]
+&lt;/pre&gt;
+
+&lt;p&gt;Now we have an Array of Hashes for the signups (while we started with one Hash wrapped in an Array)
+As I want some key in the collection that I could use later for grouping, let’s introduce a :signup symbol as key like this:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups.map { |h| h.map { |k, v| { k =&amp;gt; { signups: v }}}}.flatten
+=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;{:signups=&amp;gt;1433}}, {&quot;2011-09&quot;=&amp;gt;{:signups=&amp;gt;2972}}, {&quot;2011-10&quot;=&amp;gt;{:signups=&amp;gt;2480}}, {&quot;2011-11&quot;=&amp;gt;{:signups=&amp;gt;2456}}]
+&lt;/pre&gt;
+
+&lt;p&gt;Notice, there are two &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-map&quot;&gt;#map&lt;/a&gt; calls here: The first #map is about walking on the elements of an Array, while the second #map walks on the key and values of a Hash. For me, a common mistoke is trying to walk an Array with pair elements, while these are only available in the Hash #map.&lt;/p&gt;
+
+&lt;p&gt;Let’s apply a the transformation so far also to our second collection, the logins collections with:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[&quot;2011-08&quot;=&amp;gt;2832, &quot;2011-09&quot;=&amp;gt;4172, &quot;2011-10&quot;=&amp;gt;3480, &quot;2011-11&quot;=&amp;gt;5456].first.to_a.map { |a| Hash[*a] }.map { |h| h.map { |k, v| { k =&amp;gt; { logins: v }}}}.flatten
+=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832}}, {&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172}}, {&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480}}, {&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456}}]
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;reduce-and-grouping&quot;&gt;Reduce and Grouping&lt;/h2&gt;
+&lt;p&gt;The steps above were basically joining and expanding our collection that should now be reduced back to the final structure. To get this new, combined collection, let’s summarize the structure we have so far:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups = [{&quot;2011-08&quot;=&amp;gt;{:signups=&amp;gt;1433}}, {&quot;2011-09&quot;=&amp;gt;{:signups=&amp;gt;2972}}, {&quot;2011-10&quot;=&amp;gt;{:signups=&amp;gt;2480}}, {&quot;2011-11&quot;=&amp;gt;{:signups=&amp;gt;2456}}]
+logins = [{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832}}, {&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172}}, {&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480}}, {&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456}}]
+&lt;/pre&gt;
+
+&lt;p&gt;Before we are going to mix up the collections, let’s shortly review how #reduce works.&lt;/p&gt;
+
+&lt;h3 id=&quot;reduce-or-inject&quot;&gt;Reduce (or Inject)&lt;/h3&gt;
+
+&lt;p&gt;The methods #reduce and #inject do the same (they are aliased). The process is sometimes known as ‘folding’ a collection (see &lt;a href=&quot;http://en.wikipedia.org/wiki/Fold_(higher-order_function)&quot;&gt;wikipedia&lt;/a&gt;). Here are two observations I made:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reduce let apply operators in an Enumerable list:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[1,2,3].reduce(:+)
+=&amp;gt; 6
+&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The effect of Reduce is a bit like chaining method calls:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{a: 1},{b:2}].reduce(:merge)
+=&amp;gt; {:a=&amp;gt;1, :b=&amp;gt;2}
+&lt;/pre&gt;
+
+&lt;p&gt;This reminds me on {:a=&amp;gt;1}.merge({:b=&amp;gt;2}) that has the same outcome: {:a=&amp;gt;1, :b=&amp;gt;2}&lt;/p&gt;
+
+&lt;p&gt;Inject is very handy to walk a list, and at the same time keep some notes in memory on the progress. Sometimes an additional step might be necessary, to apply folding, e.g. prepare the collection with &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-group_by&quot;&gt;#group_by&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;groupby&quot;&gt;Group_by&lt;/h3&gt;
+
+&lt;p&gt;My observation on the #group_by method is that it allows to group data according to ‘meta-data’. Consider grouping a number of objects according to their class. For example:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[&quot;12&quot;, 12, &quot;patrick&quot;, Object.new].group_by(&amp;amp;:class)
+=&amp;gt; {String=&amp;gt;[&quot;12&quot;, &quot;patrick&quot;], Fixnum=&amp;gt;[12], Object =&amp;gt; ...]}
+&lt;/pre&gt;
+
+&lt;p&gt;Now, we could also group this collection according to their String values like this:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[&quot;12&quot;, 12, &quot;patrick&quot;, Object.new].group_by(&amp;amp;:to_s)
+=&amp;gt; {&quot;12&quot;=&amp;gt;[&quot;12&quot;, 12], &quot;patrick&quot;=&amp;gt;[&quot;patrick&quot;], Object:0x007f =&amp;gt;[...&amp;gt;]}
+&lt;/pre&gt;
+
+&lt;p&gt;The same data, different groupings. However, so far we can go ahead again with our signup and login collections, and apply some #inject calls.&lt;/p&gt;
+
+&lt;h3 id=&quot;applying-inject&quot;&gt;Applying #inject&lt;/h3&gt;
+
+&lt;p&gt;My first goal is to transform a structure as this:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10 }}, { :a =&amp;gt; { :c =&amp;gt; 20 }}]
+&lt;/pre&gt;
+
+&lt;p&gt;into:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}]
+&lt;/pre&gt;
+
+&lt;p&gt;This can be done with:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{:a=&amp;gt;{:b=&amp;gt;10}}, {:a=&amp;gt;{:c=&amp;gt;20}}].map { |k| k.values }.flatten.reduce(:merge)
+=&amp;gt; {:b=&amp;gt;10, :c=&amp;gt;20}
+&lt;/pre&gt;
+
+&lt;p&gt;The explanation: We reduce an Array of a nested Hash with the values from the start.&lt;/p&gt;
+
+&lt;p&gt;Our next step is to remove the extra Hashes here:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}, { :d =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}]
+&lt;/pre&gt;
+
+&lt;p&gt;This can be done with:
+&amp;lt;pre style=&quot;font-size:11px&quot;&amp;gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}, { :d =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}].reduce(:merge)
+=&amp;gt; {:a=&amp;gt;{:b=&amp;gt;10, :c=&amp;gt;20}, :d=&amp;gt;{:b=&amp;gt;10, :c=&amp;gt;20}}
+&amp;lt;/pre&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;Be careful: With a minor change the values from the first Hash are lost:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}, { :a =&amp;gt; { :f =&amp;gt; 10, :d =&amp;gt; 20 }}].reduce(:merge)
+=&amp;gt; {:a=&amp;gt;{:f=&amp;gt;10, :d=&amp;gt;20}}
+&lt;/pre&gt;
+
+&lt;p&gt;Note: The reason that the merge does not work as expected is, that a merge does not walk recursively into a nested Hash. To get the proper merge operation, we need to apply #inject with an empty hash as accumulator like this: &lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}, { :a =&amp;gt; { :f =&amp;gt; 10, :d =&amp;gt; 20 }}].inject({}) {|o,h| o.merge!(h[:a]); o }
+=&amp;gt; {:b=&amp;gt;10, :c=&amp;gt;20, :f=&amp;gt;10, :d=&amp;gt;20}
+&lt;/pre&gt;
+
+&lt;p&gt;Now, a similar transformation can be applied to my joined signup and login collection. First, let’s combine the collections:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[logins, signups].flatten.group_by { |a| a.keys.first }
+=&amp;gt; {&quot;2011-08&quot;=&amp;gt;[{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832}}, {&quot;2011-08&quot;=&amp;gt;{:signups=&amp;gt;1433}}], &quot;2011-09&quot;=&amp;gt;[{&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172}}, {&quot;2011-09&quot;=&amp;gt;{:signups=&amp;gt;2972}}], &quot;2011-10&quot;=&amp;gt;[{&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480}}, {&quot;2011-10&quot;=&amp;gt;{:signups=&amp;gt;2480}}], &quot;2011-11&quot;=&amp;gt;[{&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456}}, {&quot;2011-11&quot;=&amp;gt;{:signups=&amp;gt;2456}}]}
+&lt;/pre&gt;
+
+&lt;p&gt;Now, let’s reduce the set to the basics:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+login_signups = [logins, signups].flatten.inject({}) { |h,v| h[v.keys.first] ||= []; h[v.keys.first] &amp;lt;&amp;lt; v.values; puts v.inspect; h}
+{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832}}
+{&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172}}
+{&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480}}
+{&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456}}
+{&quot;2011-08&quot;=&amp;gt;{:signups=&amp;gt;1433}}
+{&quot;2011-09&quot;=&amp;gt;{:signups=&amp;gt;2972}}
+{&quot;2011-10&quot;=&amp;gt;{:signups=&amp;gt;2480}}
+{&quot;2011-11&quot;=&amp;gt;{:signups=&amp;gt;2456}}
+=&amp;gt; {&quot;2011-08&quot;=&amp;gt;[[{:logins=&amp;gt;2832}], [{:signups=&amp;gt;1433}]], &quot;2011-09&quot;=&amp;gt;[[{:logins=&amp;gt;4172}], [{:signups=&amp;gt;2972}]], &quot;2011-10&quot;=&amp;gt;[[{:logins=&amp;gt;3480}], [{:signups=&amp;gt;2480}]], &quot;2011-11&quot;=&amp;gt;[[{:logins=&amp;gt;5456}], [{:signups=&amp;gt;2456}]]}
+&lt;/pre&gt;
+
+&lt;p&gt;Now, we are almost there. Let’s clean up the combined hashes and arrays within the date keys:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+activities = login_signups.map { |m| {m.first =&amp;gt; m.last.flatten.inject(:merge)} }=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832, :signups=&amp;gt;1433}}, {&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172, :signups=&amp;gt;2972}}, {&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480, :signups=&amp;gt;2480}}, {&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456, :signups=&amp;gt;2456}}]
+=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832, :signups=&amp;gt;1433}}, {&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172, :signups=&amp;gt;2972}}, {&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480, :signups=&amp;gt;2480}}, {&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456, :signups=&amp;gt;2456}}]
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;My conclusion of this post are the following:
+* Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.
+* A lot of transformation can be approached with standard Array methods like ‘each’ and ‘map’; however they are sometimes not optimal, and in a way are limited to ‘simple’ transformation only.
+* Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.
+* I didn’t use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on &lt;a href=&quot;http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash&quot;&gt;StackOverflow&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Logging in Rack middleware with Clogger</title>
+   <link href="http://mulderp.github.com/log-requests-with-rack-middleware-and-clogger"/>
+   <updated>2013-02-05T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/log-requests-with-rack-middleware-and-clogger</id>
+   <content type="html">&lt;p&gt;Thanks to Rack middleware and &lt;a href=&quot;http://api.rubyonrails.org/files/railties/lib/rails/engine_rb.html&quot;&gt;Rails engines&lt;/a&gt;, it is possible to easily combine web application modules in Ruby. Good examples of this pattern are the &lt;a href=&quot;https://github.com/spree/spree&quot;&gt;Spree engine&lt;/a&gt; or some chapters of Josè Valim’s book &lt;a href=&quot;http://plataformatec.com.br/crafting-rails-applications&quot;&gt;“Crafting Rails Applications”&lt;/a&gt;. In the context of the design of &lt;a href=&quot;http://thinkingonthinking.com/what-is-modular-architecture/&quot;&gt;modular web applications&lt;/a&gt;, I found logging specifics of HTTP requests with &lt;a href=&quot;http://clogger.rubyforge.org/&quot;&gt;Clogger&lt;/a&gt; very helpful.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-clogger&quot;&gt;What is Clogger?&lt;/h2&gt;
+&lt;p&gt;The main function of Clogger is to print and format parameters in a &lt;a href=&quot;http://rack.rubyforge.org/doc/Rack/Request.html&quot;&gt;Rack::Request&lt;/a&gt;. It’s a bit like ‘sprintf’ for HTTP requests, and can be mounted as middleware in a Rack application. So far, I mainly used the logger with Sinatra or in Rails application. Here are 2 examples:&lt;/p&gt;
+
+&lt;h2 id=&quot;logging-http-headers-in-a-rails-application&quot;&gt;Logging HTTP headers in a Rails application&lt;/h2&gt;
+&lt;p&gt;Authentication over the web can be tricky. For development purposes, it’s often helpful to see some more details of a HTTP header. For this, let’s write a simple client sending some header tokens to a Rails app.&lt;/p&gt;
+
+&lt;p&gt;The client:&lt;/p&gt;
+
+&lt;pre&gt;
+require 'faraday'
+client = Faraday::Connection.new(:url =&amp;gt; &quot;http://0.0.0.0:3000/&quot;)
+client.get '/example' do |req|
+  req.headers['x_token'] = 'some meta data'
+end
+&lt;/pre&gt;
+
+&lt;p&gt;The Clogger setup in a Rails server config/application.rb:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:10px&quot;&gt;
+class Application &amp;lt; Rails::Application
+  config.middleware.use Clogger, :format =&amp;gt; '&quot;$request&quot; ? $query_string $status $body_bytes_sent &quot;$http_referer&quot; &quot;$http_user_agent&quot; $request_time -- $http_x_token', :logger =&amp;gt; $stdout 
+end
+&lt;/pre&gt;
+
+&lt;p&gt;Results in:&lt;/p&gt;
+
+&lt;pre&gt;
+  &quot;GET http://0.0.0.0:3000/profiles HTTP/1.1&quot; ?  200 1083 &quot;-&quot; &quot;Ruby&quot; 0.502 -- some meta data
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;monitoring-cookies-in-sinatra&quot;&gt;Monitoring cookies in Sinatra&lt;/h2&gt;
+&lt;p&gt;A similar logging setup can easily be done in Sinatra. Simply include Clogger in config.ru&lt;/p&gt;
+
+&lt;pre&gt;
+require 'clogger'
+
+use Clogger, :format =&amp;gt; '&quot;$request&quot; ?$query_string $status &quot;$http_cookie&quot; $request_time $http_host', :logger =&amp;gt; $stdout
+&lt;/pre&gt;
+
+&lt;p&gt;Now the cookies are dumped for every request. This can be helpful for debugging once in a while.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;The take away from this post is that the Rack middleware can be a nice tool for debugging HTTP header content. Rack can bring modular code back to a web application, and this is great to create ‘layers’ of functionality upon which other applications can build on. A similar approach was derived in the Faraday stack to write &lt;a href=&quot;http://adventuresincoding.com/2010/09/writing-modular-http-client-code-with-faraday/&quot;&gt;modular client-side middleware&lt;/a&gt;, and will may be discussed in a later post.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
    <title>A Vagrant based Minimum Viable Webserver</title>
    <link href="http://mulderp.github.com/minimum-nginx-node-with-librarian-chef"/>
    <updated>2013-02-01T00:00:00+01:00</updated>
    <id>http:/mulderp.github.com/minimum-nginx-node-with-librarian-chef</id>
-   <content type="html">&lt;p&gt;When developing servers or clients that talk HTTP, it’s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and &lt;a href=&quot;https://github.com/applicationsonline/librarian&quot;&gt;Librarian-Chef&lt;/a&gt;. Librarian-Chef is conceptually very close to Ruby’s bundler.&lt;/p&gt;
+   <content type="html">&lt;p&gt;When developing servers or clients that talk HTTP, it’s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and &lt;a href=&quot;https://github.com/applicationsonline/librarian&quot;&gt;Librarian-Chef&lt;/a&gt;. Librarian-Chef is conceptually very close to the Ruby Bundler gem.&lt;/p&gt;
 
 &lt;h2 id=&quot;install-librarian-chef&quot;&gt;Install librarian-chef&lt;/h2&gt;
 
@@ -27,17 +292,32 @@
 
 &lt;h2 id=&quot;init-librarian-chef&quot;&gt;Init librarian-chef&lt;/h2&gt;
 
-&lt;p&gt;To get started, we need to get file where we can specifiy a node’s cookbooks:&lt;/p&gt;
+&lt;p&gt;To get started, we need a file where we can specifiy a node’s cookbooks:&lt;/p&gt;
 
 &lt;pre&gt;
    $ librarian-chef init
 &lt;/pre&gt;
 
-&lt;p&gt;This gives us the &amp;lt;pre&amp;gt;Cheffile&amp;lt;/pre&amp;gt;, which is conceptually close to Ruby’s &amp;lt;pre&amp;gt;Gemfile&amp;lt;/pre&amp;gt;.&lt;/p&gt;
+&lt;p&gt;This gives us the ‘Cheffile’, which is conceptually close to Bundler’s ‘Gemfile’.&lt;/p&gt;
 
-&lt;h2 id=&quot;create-an-application-cookbook&quot;&gt;Create an application cookbook&lt;/h2&gt;
+&lt;h2 id=&quot;edit-cheffile&quot;&gt;Edit Cheffile&lt;/h2&gt;
 
-&lt;p&gt;In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:&lt;/p&gt;
+&lt;p&gt;We are going to modify the Cheffile to define our node’s dependencies as follows:&lt;/p&gt;
+
+&lt;pre&gt;
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'nginx-app', :path =&amp;gt; &quot;./application-cookbooks&quot;
+&lt;/pre&gt;
+
+&lt;p&gt;This means we are going to write a small application cookbook ‘nginx-app’ that lives in the path ‘/application-cookbooks’&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-application-cookbook&quot;&gt;Create the application cookbook&lt;/h2&gt;
+
+&lt;p&gt;In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. Some background on this can be found &lt;a href=&quot;http://devopsanywhere.blogspot.de/2012/11/how-to-write-reusable-chef-cookbooks.html&quot;&gt;here&lt;/a&gt; They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:&lt;/p&gt;
 
 &lt;pre&gt;
     knife cookbook create nginx-app -o application-cookbooks
@@ -62,7 +342,7 @@
    |-----default
 &lt;/pre&gt;
 
-&lt;h1 id=&quot;setup-the-webservers-resources&quot;&gt;Setup the webserver’s resources&lt;/h1&gt;
+&lt;h2 id=&quot;setup-the-webservers-resources&quot;&gt;Setup the webserver’s resources&lt;/h2&gt;
 
 &lt;p&gt;Nginx can be installed with a simple &lt;a href=&quot;http://wiki.opscode.com/display/chef/Resources#Resources-Package&quot;&gt;package resource&lt;/a&gt;. This is an abstraction around a package installer such as aptitude or yum. Also we need to use a template resource for defining a virtual host:&lt;/p&gt;
 
@@ -81,7 +361,7 @@
    end
 &lt;/pre&gt;
 
-&lt;h3 id=&quot;template-in-nginx-apptemplates&quot;&gt;Template in /nginx-app/templates&lt;/h3&gt;
+&lt;h3 id=&quot;template-in-nginx-apptemplatesnginxconferb&quot;&gt;Template in /nginx-app/templates/nginx.conf.erb&lt;/h3&gt;
 &lt;pre&gt;
   user www-data;
   worker_processes  &amp;lt;%= @node[:nginx][:worker_processes] %&amp;gt;;
@@ -119,6 +399,113 @@
 &lt;pre&gt;
   default[:nginx][:dir] = &quot;/etc/nginx&quot;
   default[:nginx][:worker_processes] = 4
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;bundle-the-cookbooks&quot;&gt;Bundle the cookbooks&lt;/h2&gt;
+
+&lt;p&gt;Now, we have everything in place and we can bundle the cookbooks with the command:&lt;/p&gt;
+
+&lt;pre&gt;
+    $ librarian-chef install
+&lt;/pre&gt;
+
+&lt;p&gt;Now all cookbooks are downloaded an placed into the local /cookbooks path. Two outputs can be observed, the dependencies were written into Cheffile.lock&lt;/p&gt;
+
+&lt;pre&gt;
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    build-essential (1.3.2)
+    nginx (1.2.0)
+      build-essential (&amp;gt;= 0.0.0)
+      ohai (&amp;gt;= 1.1.4)
+    ohai (1.1.6)
+
+PATH
+  remote: ./application-cookbooks
+  specs:
+    nginx-app (0.1.0)
+      nginx (&amp;gt;= 0.0.0)
+
+DEPENDENCIES
+  nginx-app (&amp;gt;= 0
+&lt;/pre&gt;
+
+&lt;p&gt;This shows that our node get some additional cookbooks that are required by the nginx-app cookbook.
+Let’s also look at the cookbook path:&lt;/p&gt;
+
+&lt;pre&gt;
+   cookbooks
+   |-build-essential
+   |---attributes
+   |---recipes
+   |-nginx
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |-------tests
+   |---------minitest
+   |-----------support
+   |---recipes
+   |---templates
+   |-----debian
+   |-----default
+   |-------modules
+   |-------plugins
+   |-----gentoo
+   |-----ubuntu
+   |-nginx-app
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |---libraries
+   |---providers
+   |---recipes
+   |---resources
+   |---templates
+   |-----default
+   |-ohai
+   |---attributes
+   |---files
+   |-----default
+   |-------plugins
+   |---recipes
+&lt;/pre&gt;
+
+&lt;p&gt;As we can see, all cookbooks were bundled.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-vagrant&quot;&gt;Setup Vagrant&lt;/h2&gt;
+&lt;p&gt;Now, we have all things in place to provision the web server. It’s time to setup Vagrant:&lt;/p&gt;
+
+&lt;pre&gt;
+    $ vagrant init Ubuntu-11.04
+&lt;/pre&gt;
+
+&lt;p&gt;Edit the Vagrantfile:&lt;/p&gt;
+&lt;pre&gt;
+
+&lt;pre&gt;
+Vagrant::Config.run do |config|
+  config.vm.box = &quot;Ubuntu-11.04&quot;
+  config.vm.network :hostonly, &quot;192.168.33.10&quot;
+  config.vm.forward_port 80, 8080
+  config.vm.forward_port 9292, 9292
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = &quot;./cookbooks&quot;
+    chef.add_recipe &quot;nginx-app&quot;
+  end
+end
+&lt;/pre&gt;
+
+And provision:
+&lt;pre&gt;
+  $ vagrant up
+&lt;/pre&gt;
+
+So, that's all to get the webserver running. Now, it would be cool to get some basic Ruby/Rack interface running too. Maybe in the next post with the help of a unicorn cookbook.
 &lt;/pre&gt;
 </content>
  </entry>
@@ -486,95 +873,106 @@ So far about building assets, next about serving data that assets want… we’l
    <content type="html">&lt;p&gt;The RuPy conference 2012 in Brno was very inspiring! Especially, there were some interesting talks on databases and scalable approaches to web development:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;First,  the ArangoDB team from Cologne set the tone why #nosql matters (see http://www.arangodb.org/ ) . The triAGENS team has written a database which mixes elements from MongoDB and graph databases. The shell of Arangodb looks very clean, and additionally, the system is based on C++ (= integrates with V8 JS engine and MRuby). &lt;/li&gt;
-  &lt;li&gt;Another interesting talk was by Mitchell Hashimoto. He showed how Vagrant came into place, and why using isolated, virtual environments make sense for web integration. Some slides (not from Rupy) about this are here slideshare.net/mitchellh/sf-devops-introducing-vagrant&lt;/li&gt;
-  &lt;li&gt;Andreas Ronge gave a very nice talk on what graphs can do, and SQL can’t (well, it can, but not nicely … ) I can’t find his slides from RuPy right now, but he maintains a great blog on Neo4J here:  http://maxdemarzi.com/ Also, these slides are interesting: slideshare.net/andreasronge/neo4jrb&lt;/li&gt;
+  &lt;li&gt;First,  the &lt;a href=&quot;http://www.arangodb.org&quot;&gt;ArangoDB&lt;/a&gt; team from Cologne set the tone why #nosql matters. The triAGENS team has written a database which mixes elements from MongoDB and graph databases. The shell of Arangodb looks very clean, and additionally, the system is based on C++ (= integrates with V8 JS engine and MRuby). &lt;/li&gt;
+  &lt;li&gt;Another interesting talk was by Mitchell Hashimoto. He showed how Vagrant came into place, and why using isolated, virtual environments make sense for web integration. Some slides (not from Rupy) about this are &lt;a href=&quot;slideshare.net/mitchellh/sf-devops-introducing-vagrant&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Andreas Ronge gave a very nice talk on what graphs can do, and SQL can’t (well, it can, but not nicely … ) I can’t find his slides from RuPy right now, but he maintains a great blog on Neo4J here:  &lt;a href=&quot;http://maxdemarzi.com/&quot;&gt;http://maxdemarzi.com/&lt;/a&gt;  Also, these slides are interesting: &lt;a href=&quot;http://slideshare.net/andreasronge/neo4jrb&quot;&gt;slideshare.net/andreasronge/neo4jrb&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;So, ok, coming home to Munich with all these interesting thoughts in my mind, it was clear, that I had to start playing with graph databases in isolated environments for new kind of web applications. Fortunately, I had great input for my learnings from Jorge Bianquetti and Nathen Harvey.&lt;/p&gt;
 
 &lt;p&gt;First about Vagrant and VirtualBox. It takes a bit of time to download virtual machines, but it’s not too difficult to get going. The single, most important command might be:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vagrant init
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ vagrant init
+&lt;/pre&gt;
 
 &lt;p&gt;This creates an environment for setting up a virtual machine. It’s very cool, because now, you can imagine to setup an Ubuntu, Debian, CentOS, or whatever system, and vagrant will try to go ahead, download or copies the VM and prepares it just that you can use it.&lt;/p&gt;
 
 &lt;p&gt;Ok, not quite, since next, you must tell Vagrant where to download the box; you do it in the Vagrantfile,  e.g.:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;config.vm.box = &quot;opscode-ubuntu-12.04&quot;
+&lt;pre&gt;
+config.vm.box = &quot;opscode-ubuntu-12.04&quot;
 config.vm.box_url = &quot;https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box&quot; 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;It’s the standard Ubuntu box from Opscode right now.
 Just do a:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vagrant up
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ vagrant up
+&lt;/pre&gt;
 
 &lt;p&gt;and you would have an Ubuntu box running.&lt;/p&gt;
 
-&lt;p&gt;Well, we were charmed by graph databases, weren’t we?  Ok, so, let’s go ahead and add the setup for Neo4J. Some googling gives, that we have a Neo4J cookbook here: https://github.com/michaelklishin/neo4j-server-chef-cookbook&lt;/p&gt;
+&lt;p&gt;Well, we were charmed by graph databases, weren’t we?  Ok, so, let’s go ahead and add the setup for Neo4J. Some googling gives, that we have a Neo4J cookbook here: &lt;a href=&quot;https://github.com/michaelklishin/neo4j-server-chef-cookbook&quot;&gt;https://github.com/michaelklishin/neo4j-server-chef-cookbook&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Hmm.. in this stage, we actually decided already for chef-solo. There is chef-solo and chef-server, and if you want to understand the difference, I suggest you look here: http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/&lt;/p&gt;
+&lt;p&gt;Hmm.. in this stage, we actually decided already for chef-solo. There is chef-solo and chef-server, and if you want to understand the difference, I suggest you look &lt;a href=&quot;http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Chef-server is the approach you want to use in production. Chef-solo is the approach for quick-and-dirty experiments, like we do here. So, let’s assume, chef-solo is ok, and we just need to get the cookbooks dependencies right. Luckily, we have a tool for this: chef-librarian.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; $ chef-librarian init
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ chef-librarian init
+&lt;/pre&gt;
 
 &lt;p&gt;This gives you a Cheffile. It’s similar to a Gemfile if you are used to Ruby.
 Let’s throw in the Neo4J dependency here:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cookbook 'apt'
-cookbook 'neo4j-server', :git =&amp;amp;gt; 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+cookbook 'apt'
+cookbook 'neo4j-server', :git =&amp;gt; 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
+&lt;/pre&gt;
 
 &lt;p&gt;And now, similar to bundle install, we run librarian-chef install&lt;/p&gt;
 
 &lt;p&gt;Last, but not least, we need to tell our VM that interaction with chef-solo is needed. You’ll do this by adding something into the Vagrantfile :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;config.vm.provision :chef_solo do |chef|
+&lt;pre&gt;
+config.vm.provision :chef_solo do |chef|
   chef.cookbooks_path = &quot;cookbooks&quot;
   chef.add_recipe &quot;apt&quot;
   chef.add_recipe &quot;neo4j-server::tarball&quot;
 end
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;Cool, now we only need to build our server, since our ingredients are prepared, and chef is ready for cooking. The magic command is:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vagrant up
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ vagrant up
+&lt;/pre&gt;
 
 &lt;p&gt;You should see something like: &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;[2012-12-10T20:33:58+00:00] INFO: *** Chef 10.14.4 ***
+&lt;pre&gt;
+[2012-12-10T20:33:58+00:00] INFO: *** Chef 10.14.4 ***
 [2012-12-10T20:33:59+00:00] INFO: Setting the run_list to [&quot;recipe[apt]&quot;, &quot;recipe[neo4j-server::tarball]&quot;] from JSON
 [2012-12-10T20:33:59+00:00] INFO: Run List is [recipe[apt], recipe[neo4j-server::tarball]]
 [2012-12-10T20:33:59+00:00] INFO: Run List expands to [apt, neo4j-server::tarball]
 [2012-12-10T20:33:59+00:00] INFO: Starting Chef Run for vagrant.vm
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;This takes a while…. &lt;/p&gt;
 
 &lt;p&gt;Eventually, you end up successfully, and you can do:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vagrant ssh
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ vagrant ssh
+&lt;/pre&gt;
 
 &lt;p&gt;Now, your VM has Neo4J running on it, and if you enable port forwarding in Vagrant, you might even go to: localhost:7474 and enjoy your fresh Neo4J server.&lt;/p&gt;
 
 &lt;h2 id=&quot;some-references&quot;&gt;Some References:&lt;/h2&gt;
 
 &lt;p&gt;Chef and Neo4J
-* Vimeo screencast: https://vimeo.com/55085049, see: 
+* Vimeo screencast: &lt;a href=&quot;https://vimeo.com/55085049&quot;&gt;https://vimeo.com/55085049&lt;/a&gt; , see: 
   Screencast Install Neo4j-server with Chef from Patrick Mulder on Vimeo.&lt;/p&gt;
 
-&lt;p&gt;Git repo: https://github.com/mulderp/chef-neo4j
-Chef basic steps with Nathen Harvey from Opscode
-Learning Chef Part 1
-Learning Chef Part 2
-Learning Chef Part 3&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Git repo: &lt;a href=&quot;https://github.com/mulderp/chef-neo4j&quot;&gt;https://github.com/mulderp/chef-neo4j&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Chef basic steps with Nathen Harvey from Opscode
+** &lt;a href=&quot;http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/&quot;&gt;Learning Chef Part 1&lt;/a&gt;
+** &lt;a href=&quot;http://nathenharvey.com/blog/2012/12/07/learning-chef-part-2/&quot;&gt;Learning Chef Part 2&lt;/a&gt;
+** &lt;a href=&quot;http://nathenharvey.com/blog/2012/12/14/learning-chef-part-3/&quot;&gt;Learning Chef Part 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  

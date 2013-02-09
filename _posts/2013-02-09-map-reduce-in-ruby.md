@@ -19,7 +19,6 @@ activity = [ "2011-08" => { :signups => 1433, :logins => 2832 } ...
 </pre>
 
 In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let's start.
-
 ## Splitting a Hash
 My first step was to split the larger collection hash into single hashes. For this [first](http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first) and [to_a](http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a) methods help like this:
 
@@ -84,19 +83,19 @@ The methods #reduce and #inject do the same (they are aliased). The process is s
 
 * Reduce let apply operators in an Enumerable list:
 
-  <pre style="font-size:11px">
-  [1,2,3].reduce(:+)
-  => 6
-  </pre>
+<pre style="font-size:11px">
+[1,2,3].reduce(:+)
+=> 6
+</pre>
 
 * The effect of Reduce is a bit like chaining method calls:
 
-  <pre style="font-size:11px">
-  [{a: 1},{b:2}].reduce(:merge)
-  => {:a=>1, :b=>2}
-  </pre>
+<pre style="font-size:11px">
+[{a: 1},{b:2}].reduce(:merge)
+=> {:a=>1, :b=>2}
+</pre>
 
-  This reminds me on {:a=>1}.merge({:b=>2}) that has the same outcome: {:a=>1, :b=>2}
+This reminds me on {:a=>1}.merge({:b=>2}) that has the same outcome: {:a=>1, :b=>2}
 
 Inject is very handy to walk a list, and at the same time keep some notes in memory on the progress. Sometimes an additional step might be necessary, to apply folding, e.g. prepare the collection with [#group_by](http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-group_by).
 
@@ -106,14 +105,14 @@ My observation on the #group_by method is that it allows to group data according
 
 <pre style="font-size:11px">
 ["12", 12, "patrick", Object.new].group_by(&:class)
-=> {String=>["12", "patrick"], Fixnum=>[12], Object=>[#<Object:0x007fd3b32d0aa8>]}
+=> {String=>["12", "patrick"], Fixnum=>[12], Object => ...]}
 </pre>
 
 Now, we could also group this collection according to their String values like this:
 
 <pre style="font-size:11px">
 ["12", 12, "patrick", Object.new].group_by(&:to_s)
-=> {"12"=>["12", 12], "patrick"=>["patrick"], "#<Object:0x007fd3b32bffa0>"=>[#<Object:0x007fd3b32bffa0>]}
+=> {"12"=>["12", 12], "patrick"=>["patrick"], Object:0x007f =>[...>]}
 </pre>
 
 The same data, different groupings. However, so far we can go ahead again with our signup and login collections, and apply some #inject calls.
@@ -133,6 +132,7 @@ into:
 </pre>
 
 This can be done with:
+
 <pre style="font-size:11px">
 [{:a=>{:b=>10}}, {:a=>{:c=>20}}].map { |k| k.values }.flatten.reduce(:merge)
 => {:b=>10, :c=>20}
@@ -152,14 +152,14 @@ This can be done with:
 => {:a=>{:b=>10, :c=>20}, :d=>{:b=>10, :c=>20}}
 </pre>
 
-Be careful, with a minor change the values from the first Hash are lost:
+Be careful: With a minor change the values from the first Hash are lost:
 
 <pre style="font-size:11px">
 [{ :a => { :b => 10, :c => 20 }}, { :a => { :f => 10, :d => 20 }}].reduce(:merge)
 => {:a=>{:f=>10, :d=>20}}
 </pre>
 
-Not: The reason that the merge does not work as espected is, that a merge does not walk recursively into a nested Hash. To get the proper merge operation, we need to apply #inject with an empty hash as accumulator like this: 
+Note: The reason that the merge does not work as expected is, that a merge does not walk recursively into a nested Hash. To get the proper merge operation, we need to apply #inject with an empty hash as accumulator like this: 
 
 <pre style="font-size:11px">
 [{ :a => { :b => 10, :c => 20 }}, { :a => { :f => 10, :d => 20 }}].inject({}) {|o,h| o.merge!(h[:a]); o }

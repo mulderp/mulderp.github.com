@@ -1,0 +1,367 @@
+
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> 	
+<html lang="en"> 
+<!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
+    <title>Transforming collections in Ruby</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href="http://feeds.feedburner.com/ThinkingOnThinking" rel="alternate" title="mulderp" type="application/atom+xml" /> 
+    <link rel="shortcut icon" href="/static/images/favicon.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!--[if IE 7]>
+      <script src="/static/css/font-awesome-ie7.css"></script>
+    <![endif]-->
+    <script tyoe="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+  </head>
+  <body>
+    <div class="container">	
+      <div id='mobile' class='two columns hidden'>
+        <ul>
+          <li><span class="gray">Patrick Mulder</span></li>
+          <li><a id="mail-to-mobile" href="mailto:mulder.patrick@gmail.com" onClick="">mulder.patrick@gmail.com</a></li>
+          <li><a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', Sidebar Email']);">@mulpat</a></li>
+        </ul>
+      </div>
+
+      <div class="four columns sidebar">
+        <section>
+          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking @main</a>
+
+          <ul id="social">
+            <li>
+              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" id="mail-to"></a>
+            </li>
+
+            <li>
+              <a href="http://twitter.com/mulpat" class="icon-twitter" id="twitter" style="font-size: 28px;"></a>
+            </li>
+
+            <li>
+              <a href="http://github.com/mulderp" class="icon-github" id="github" title="I share and fork code here"></a>
+            </li>
+
+            <li>
+              <a href="skype:patrickmulder__?add" class="icon-comment" id="skype" title="Feel free to add me on Skype"></a>
+            </li>
+
+            <li>
+              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" id="rss" title="RSS"></a>
+            </li>
+          </ul>
+
+          <ul id="me">
+            <li>Patrick Mulder</span></li>
+            <li class="gray">I like Ruby. JavaScript. Vim. Chef. NoSQL</li>
+          </ul>
+  
+  <ul>
+          <li>Get notified.</li>
+          <li><form style="font-size: 8px;" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=ThinkingOnThinking', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Enter your email address:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="ThinkingOnThinking" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://feedburner.google.com" target="_blank">FeedBurner</a></p></form></li>
+</ul>
+        </section>
+      </div>
+
+      <article class='ten columns offset-by-four' id="article-content">
+  <header class="ten columns" id="article-header">
+    <h1>Transforming collections in Ruby</h1>
+    <i class="icon-tags"></i>  <a href="/tags/ruby" title="View posts tagged with &quot;ruby&quot;"><u>ruby</u></a>   
+  </header>
+
+  <div class='ten columns gray' id="date-header">
+    <p>
+      Feb 2013
+  
+    </p>
+
+  </div>
+
+  <div class="ten columns" id="article-content">
+    <p>Combinations of Arrays and Hashes in Ruby are very powerful, as shown in <a href="http://gistflow.com/posts/670-visualising-database-1">this nice article</a> on visualizing user registrations and activity in a web application with Google Charts. After starting my own visualization experiments, I felt that I had some blind spots in understanding Ruby’s <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html">Enumerable Module</a>. This post attempts to share some insights on expanding and reducing Arrays of objects.</p>
+
+<p>First, let’s assume our data looks like:</p>
+
+<pre style="font-size:11px">
+signups = ["2011-08"=&gt;1433, "2011-09"=&gt;2972, "2011-10"=&gt;2480, "2011-11"=&gt;2456]
+logins = ["2011-08"=&gt;2832, "2011-09"=&gt;4172, "2011-10"=&gt;3480, "2011-11"=&gt;5456]
+</pre>
+
+<p>My goal was to combine the two collections and transform the result into:</p>
+
+<pre style="font-size:11px">
+activity = [ "2011-08" =&gt; { :signups =&gt; 1433, :logins =&gt; 2832 } ...
+</pre>
+
+<p>In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let’s start.
+## Splitting a Hash
+My first step was to split the larger collection hash into single hashes. For this <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first">first</a> and <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a">to_a</a> methods help like this:</p>
+
+<pre style="font-size:11px">
+signups.first.to_a
+=&gt; [["2011-08", 1433], ["2011-09", 2972], ["2011-10", 2480], ["2011-11", 2456]]
+</pre>
+
+<p>There is one caveat with inverse transformation, i.e. converting above Array back to Hashes. I knew that:</p>
+
+<pre style="font-size:11px">
+Hash[1,2]
+=&gt; {1 =&gt; 2}
+</pre>
+
+<p>but this does not work:</p>
+
+<pre style="font-size:11px">
+[["2011-08", 1433], ["2011-09", 2972], ["2011-10", 2480], ["2011-11", 2456]].map { |a| Hash[a] }
+=&gt; [{}, {}, {}, {}]
+</pre>
+
+<p>In order to have the conversion working, the arguments must be ‘splatted’ with *, see e.g. <a href="http://theplana.wordpress.com/2007/03/03/ruby-idioms-the-splat-operator/">this discussion</a>.</p>
+
+<p>So, this means by splating the input values with Hash[*a] we get:</p>
+
+<pre style="font-size:11px">
+signups = [["2011-08", 1433], ["2011-09", 2972], ["2011-10", 2480], ["2011-11", 2456]].map { |a| Hash[*a] }
+=&gt; [{"2011-08"=&gt;1433}, {"2011-09"=&gt;2972}, {"2011-10"=&gt;2480}, {"2011-11"=&gt;2456}]
+</pre>
+
+<p>Now we have an Array of Hashes for the signups (while we started with one Hash wrapped in an Array)
+As I want some key in the collection that I could use later for grouping, let’s introduce a :signup symbol as key like this:</p>
+
+<pre style="font-size:11px">
+signups.map { |h| h.map { |k, v| { k =&gt; { signups: v }}}}.flatten
+=&gt; [{"2011-08"=&gt;{:signups=&gt;1433}}, {"2011-09"=&gt;{:signups=&gt;2972}}, {"2011-10"=&gt;{:signups=&gt;2480}}, {"2011-11"=&gt;{:signups=&gt;2456}}]
+</pre>
+
+<p>Notice, there are two <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-map">#map</a> calls here: The first #map is about walking on the elements of an Array, while the second #map walks on the key and values of a Hash. For me, a common mistoke is trying to walk an Array with pair elements, while these are only available in the Hash #map.</p>
+
+<p>Let’s apply a the transformation so far also to our second collection, the logins collections with:</p>
+
+<pre style="font-size:11px">
+["2011-08"=&gt;2832, "2011-09"=&gt;4172, "2011-10"=&gt;3480, "2011-11"=&gt;5456].first.to_a.map { |a| Hash[*a] }.map { |h| h.map { |k, v| { k =&gt; { logins: v }}}}.flatten
+=&gt; [{"2011-08"=&gt;{:logins=&gt;2832}}, {"2011-09"=&gt;{:logins=&gt;4172}}, {"2011-10"=&gt;{:logins=&gt;3480}}, {"2011-11"=&gt;{:logins=&gt;5456}}]
+</pre>
+
+<h2 id="reduce-and-grouping">Reduce and Grouping</h2>
+<p>The steps above were basically joining and expanding our collection that should now be reduced back to the final structure. To get this new, combined collection, let’s summarize the structure we have so far:</p>
+
+<pre style="font-size:11px">
+signups = [{"2011-08"=&gt;{:signups=&gt;1433}}, {"2011-09"=&gt;{:signups=&gt;2972}}, {"2011-10"=&gt;{:signups=&gt;2480}}, {"2011-11"=&gt;{:signups=&gt;2456}}]
+logins = [{"2011-08"=&gt;{:logins=&gt;2832}}, {"2011-09"=&gt;{:logins=&gt;4172}}, {"2011-10"=&gt;{:logins=&gt;3480}}, {"2011-11"=&gt;{:logins=&gt;5456}}]
+</pre>
+
+<p>Before we are going to mix up the collections, let’s shortly review how #reduce works.</p>
+
+<h3 id="reduce-or-inject">Reduce (or Inject)</h3>
+
+<p>The methods #reduce and #inject do the same (they are aliased). The process is sometimes known as ‘folding’ a collection (see <a href="http://en.wikipedia.org/wiki/Fold_(higher-order_function)">wikipedia</a>). Here are two observations I made:</p>
+
+<ul>
+  <li>Reduce let apply operators in an Enumerable list:</li>
+</ul>
+
+<pre style="font-size:11px">
+[1,2,3].reduce(:+)
+=&gt; 6
+</pre>
+
+<ul>
+  <li>The effect of Reduce is a bit like chaining method calls:</li>
+</ul>
+
+<pre style="font-size:11px">
+[{a: 1},{b:2}].reduce(:merge)
+=&gt; {:a=&gt;1, :b=&gt;2}
+</pre>
+
+<p>This reminds me on {:a=&gt;1}.merge({:b=&gt;2}) that has the same outcome: {:a=&gt;1, :b=&gt;2}</p>
+
+<p>Inject is very handy to walk a list, and at the same time keep some notes in memory on the progress. Sometimes an additional step might be necessary, to apply folding, e.g. prepare the collection with <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-group_by">#group_by</a>.</p>
+
+<h3 id="groupby">Group_by</h3>
+
+<p>My observation on the #group_by method is that it allows to group data according to ‘meta-data’. Consider grouping a number of objects according to their class. For example:</p>
+
+<pre style="font-size:11px">
+["12", 12, "patrick", Object.new].group_by(&amp;:class)
+=&gt; {String=&gt;["12", "patrick"], Fixnum=&gt;[12], Object =&gt; ...]}
+</pre>
+
+<p>Now, we could also group this collection according to their String values like this:</p>
+
+<pre style="font-size:11px">
+["12", 12, "patrick", Object.new].group_by(&amp;:to_s)
+=&gt; {"12"=&gt;["12", 12], "patrick"=&gt;["patrick"], Object:0x007f =&gt;[...&gt;]}
+</pre>
+
+<p>The same data, different groupings. However, so far we can go ahead again with our signup and login collections, and apply some #inject calls.</p>
+
+<h3 id="applying-inject">Applying #inject</h3>
+
+<p>My first goal is to transform a structure as this:</p>
+
+<pre style="font-size:11px">
+[{ :a =&gt; { :b =&gt; 10 }}, { :a =&gt; { :c =&gt; 20 }}]
+</pre>
+
+<p>into:</p>
+
+<pre style="font-size:11px">
+[{ :a =&gt; { :b =&gt; 10, :c =&gt; 20 }}]
+</pre>
+
+<p>This can be done with:</p>
+
+<pre style="font-size:11px">
+[{:a=&gt;{:b=&gt;10}}, {:a=&gt;{:c=&gt;20}}].map { |k| k.values }.flatten.reduce(:merge)
+=&gt; {:b=&gt;10, :c=&gt;20}
+</pre>
+
+<p>The explanation: We reduce an Array of a nested Hash with the values from the start.</p>
+
+<p>Our next step is to remove the extra Hashes here:</p>
+
+<pre style="font-size:11px">
+[{ :a =&gt; { :b =&gt; 10, :c =&gt; 20 }}, { :d =&gt; { :b =&gt; 10, :c =&gt; 20 }}]
+</pre>
+
+<p>This can be done with:
+&lt;pre style="font-size:11px"&gt;
+[{ :a =&gt; { :b =&gt; 10, :c =&gt; 20 }}, { :d =&gt; { :b =&gt; 10, :c =&gt; 20 }}].reduce(:merge)
+=&gt; {:a=&gt;{:b=&gt;10, :c=&gt;20}, :d=&gt;{:b=&gt;10, :c=&gt;20}}
+&lt;/pre&gt;</p>
+
+<p>Be careful: With a minor change the values from the first Hash are lost:</p>
+
+<pre style="font-size:11px">
+[{ :a =&gt; { :b =&gt; 10, :c =&gt; 20 }}, { :a =&gt; { :f =&gt; 10, :d =&gt; 20 }}].reduce(:merge)
+=&gt; {:a=&gt;{:f=&gt;10, :d=&gt;20}}
+</pre>
+
+<p>Note: The reason that the merge does not work as expected is, that a merge does not walk recursively into a nested Hash. To get the proper merge operation, we need to apply #inject with an empty hash as accumulator like this: </p>
+
+<pre style="font-size:11px">
+[{ :a =&gt; { :b =&gt; 10, :c =&gt; 20 }}, { :a =&gt; { :f =&gt; 10, :d =&gt; 20 }}].inject({}) {|o,h| o.merge!(h[:a]); o }
+=&gt; {:b=&gt;10, :c=&gt;20, :f=&gt;10, :d=&gt;20}
+</pre>
+
+<p>Now, a similar transformation can be applied to my joined signup and login collection. First, let’s combine the collections:</p>
+
+<pre style="font-size:11px">
+[logins, signups].flatten.group_by { |a| a.keys.first }
+=&gt; {"2011-08"=&gt;[{"2011-08"=&gt;{:logins=&gt;2832}}, {"2011-08"=&gt;{:signups=&gt;1433}}], "2011-09"=&gt;[{"2011-09"=&gt;{:logins=&gt;4172}}, {"2011-09"=&gt;{:signups=&gt;2972}}], "2011-10"=&gt;[{"2011-10"=&gt;{:logins=&gt;3480}}, {"2011-10"=&gt;{:signups=&gt;2480}}], "2011-11"=&gt;[{"2011-11"=&gt;{:logins=&gt;5456}}, {"2011-11"=&gt;{:signups=&gt;2456}}]}
+</pre>
+
+<p>Now, let’s reduce the set to the basics:</p>
+
+<pre style="font-size:11px">
+login_signups = [logins, signups].flatten.inject({}) { |h,v| h[v.keys.first] ||= []; h[v.keys.first] &lt;&lt; v.values; puts v.inspect; h}
+{"2011-08"=&gt;{:logins=&gt;2832}}
+{"2011-09"=&gt;{:logins=&gt;4172}}
+{"2011-10"=&gt;{:logins=&gt;3480}}
+{"2011-11"=&gt;{:logins=&gt;5456}}
+{"2011-08"=&gt;{:signups=&gt;1433}}
+{"2011-09"=&gt;{:signups=&gt;2972}}
+{"2011-10"=&gt;{:signups=&gt;2480}}
+{"2011-11"=&gt;{:signups=&gt;2456}}
+=&gt; {"2011-08"=&gt;[[{:logins=&gt;2832}], [{:signups=&gt;1433}]], "2011-09"=&gt;[[{:logins=&gt;4172}], [{:signups=&gt;2972}]], "2011-10"=&gt;[[{:logins=&gt;3480}], [{:signups=&gt;2480}]], "2011-11"=&gt;[[{:logins=&gt;5456}], [{:signups=&gt;2456}]]}
+</pre>
+
+<p>Now, we are almost there. Let’s clean up the combined hashes and arrays within the date keys:</p>
+
+<pre style="font-size:11px">
+activities = login_signups.map { |m| {m.first =&gt; m.last.flatten.inject(:merge)} }=&gt; [{"2011-08"=&gt;{:logins=&gt;2832, :signups=&gt;1433}}, {"2011-09"=&gt;{:logins=&gt;4172, :signups=&gt;2972}}, {"2011-10"=&gt;{:logins=&gt;3480, :signups=&gt;2480}}, {"2011-11"=&gt;{:logins=&gt;5456, :signups=&gt;2456}}]
+=&gt; [{"2011-08"=&gt;{:logins=&gt;2832, :signups=&gt;1433}}, {"2011-09"=&gt;{:logins=&gt;4172, :signups=&gt;2972}}, {"2011-10"=&gt;{:logins=&gt;3480, :signups=&gt;2480}}, {"2011-11"=&gt;{:logins=&gt;5456, :signups=&gt;2456}}]
+</pre>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>My conclusion of this post are the following:
+* Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.
+* A lot of transformation can be approached with standard Array methods like ‘each’ and ‘map’; however they are sometimes not optimal, and in a way are limited to ‘simple’ transformation only.
+* Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.
+* I didn’t use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on <a href="http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash">StackOverflow</a></p>
+
+  </div>
+
+  <footer class="ten columns">
+    <p>
+    <a class="btn btn-mini btn-info" href="https://github.com/mulderp/mulderp.github.com/issues/new" title="Leave feedback using GitHub" target="_blank"><i class="icon-comment icon-white"></i> Leave me feedback</a>
+    </p>
+    <p id='follow'>
+      Follow me on Twitter <a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Post Twitter']);">here.</a>
+    </p>
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="mulpat">Tweet</a>
+       
+      <!-- Put this just before the closing body tag -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </p>
+    <p>
+       <!-- Google + -->
+       <p><g:plusone size="medium"></g:plusone></p>
+        
+       <!-- Add this just before the closing body tag of your web page -->	
+       <script type="text/javascript">
+         (function() {
+           var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+           po.src = 'https://apis.google.com/js/plusone.js';
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+         })();
+       </script>
+    </p>
+  </footer>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'thinkingonthinking'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+ 
+</article>
+<script src="../static/js/disqus.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+  analytics.load("t2dez1p4gw");
+  analytics.track('Post', {
+      title: "Transforming collections in Ruby"
+    });
+</script>
+
+    </div>
+
+<script type="text/javascript">
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+  analytics.load("t2dez1p4gw");
+  $(document).ready(function() {
+    analytics.trackLink( $("#mail-to"), 'mail_event', {source:"main"});
+    analytics.trackLink( $("#github"), 'contact-github', {source:"main"});
+    analytics.trackLink( $("#skype"), 'contact-skype', {source:"main"});
+    analytics.trackLink( $("#rss"), 'contact-rss', {source:"main"});
+  });
+</script>
+  </body>
+</html> 
