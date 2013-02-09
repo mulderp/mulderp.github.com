@@ -4,13 +4,132 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-02-02T09:53:40+01:00</updated>
+ <updated>2013-02-05T23:13:48+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Logging in Rack middleware with Clogger</title>
+   <link href="http://mulderp.github.com/log-requests-with-rack-middleware-and-clogger"/>
+   <updated>2013-02-05T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/log-requests-with-rack-middleware-and-clogger</id>
+   <content type="html">&lt;p&gt;Thanks to Rack middleware and &lt;a href=&quot;http://api.rubyonrails.org/files/railties/lib/rails/engine_rb.html&quot;&gt;Rails engines&lt;/a&gt;, it is possible to easily combine web application modules in Ruby. Good examples of this pattern are the &lt;a href=&quot;https://github.com/spree/spree&quot;&gt;Spree engine&lt;/a&gt; or some chapters of Josè Valim’s book &lt;a href=&quot;http://plataformatec.com.br/crafting-rails-applications&quot;&gt;“Crafting Rails Applications”&lt;/a&gt;. In the context of the design of &lt;a href=&quot;http://thinkingonthinking.com/what-is-modular-architecture/&quot;&gt;modular web applications&lt;/a&gt;, I found logging specifics of HTTP requests with &lt;a href=&quot;http://clogger.rubyforge.org/&quot;&gt;Clogger&lt;/a&gt; very helpful.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-clogger&quot;&gt;What is Clogger?&lt;/h2&gt;
+&lt;p&gt;The main function of Clogger is to print and format parameters in a &lt;a href=&quot;http://rack.rubyforge.org/doc/Rack/Request.html&quot;&gt;Rack::Request&lt;/a&gt;. It’s a bit like ‘sprintf’ for HTTP requests, and can be mounted as middleware in a Rack application. So far, I mainly used the logger with Sinatra or in Rails application. Here are 2 examples:&lt;/p&gt;
+
+&lt;h2 id=&quot;logging-http-headers-in-a-rails-application&quot;&gt;Logging HTTP headers in a Rails application&lt;/h2&gt;
+&lt;p&gt;Authentication over the web can be tricky. For development purposes, it’s often helpful to see some more details of a HTTP header. For this, let’s write a simple client sending some header tokens to a Rails app.&lt;/p&gt;
+
+&lt;p&gt;The client:&lt;/p&gt;
+
+&lt;pre&gt;
+require 'faraday'
+client = Faraday::Connection.new(:url =&amp;gt; &quot;http://0.0.0.0:3000/&quot;)
+client.get '/example' do |req|
+  req.headers['x_token'] = 'some meta data'
+end
+&lt;/pre&gt;
+
+&lt;p&gt;The Clogger setup in a Rails server config/application.rb:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:10px&quot;&gt;
+class Application &amp;lt; Rails::Application
+  config.middleware.use Clogger, :format =&amp;gt; '&quot;$request&quot; ? $query_string $status $body_bytes_sent &quot;$http_referer&quot; &quot;$http_user_agent&quot; $request_time -- $http_x_token', :logger =&amp;gt; $stdout 
+end
+&lt;/pre&gt;
+
+&lt;p&gt;Results in:&lt;/p&gt;
+
+&lt;pre&gt;
+  &quot;GET http://0.0.0.0:3000/profiles HTTP/1.1&quot; ?  200 1083 &quot;-&quot; &quot;Ruby&quot; 0.502 -- some meta data
+&lt;/pre&gt;
+
+&lt;h1 id=&quot;monitoring-cookies-in-sinatra&quot;&gt;Monitoring cookies in Sinatra&lt;/h1&gt;
+&lt;p&gt;A similar logging setup can easily be done in Sinatra. Simply include Clogger in config.ru&lt;/p&gt;
+
+&lt;pre&gt;
+require 'clogger'
+
+use Clogger, :format =&amp;gt; '&quot;$request&quot; ?$query_string $status &quot;$http_cookie&quot; $request_time $http_host', :logger =&amp;gt; $stdout
+&lt;/pre&gt;
+
+&lt;p&gt;Now the cookies are dumped for every request. This can be helpful for debugging once in a while.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;The take away from this post is that the Rack middleware can be a nice tool for debugging HTTP header content. Rack can bring modular code back to a web application, and this is great to create ‘layers’ of functionality upon which other applications can build on. A similar approach was derived in the Faraday stack to write &lt;a href=&quot;http://adventuresincoding.com/2010/09/writing-modular-http-client-code-with-faraday/&quot;&gt;modular client-side middleware&lt;/a&gt;, and will may be discussed in a later post.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>API Authentication from scratch</title>
+   <link href="http://mulderp.github.com/API-authentication-from-scratch"/>
+   <updated>2013-02-02T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/API-authentication-from-scratch</id>
+   <content type="html">&lt;p&gt;If HTTP is like sending messages in an enveloppe, authentication is about determining a sender’s identity. Now, in the context of &lt;a href=&quot;http://en.wikipedia.org/wiki/Representational_state_transfer#Key_goals&quot;&gt;REST&lt;/a&gt;, each sender must include authentication credentials as is very nicely discussed in e.g. Amazon’s &lt;a href=&quot;http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html&quot;&gt;RESTAuthentication docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;http-authorization-header&quot;&gt;HTTP authorization header&lt;/h2&gt;
+
+&lt;p&gt;There are many ways to pass authentication tokens between client and servers, and the discussion how to grant access to data in distributed systems remains ongoing (see e.g. OAuth2). A basic approach, however, can be found in the HTTP specs (&lt;a href=&quot;http://www.ietf.org/rfc/rfc2616.txt&quot;&gt;RFC2616&lt;/a&gt; and &lt;a href=&quot;http://www.ietf.org/rfc/rfc2617.txt&quot;&gt;RFC2617&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;The specs are a bit ‘difficult’ to read, so, it’s best to keep a request with Curl in the back of the head:&lt;/p&gt;
+
+&lt;pre&gt;
+curl http://example.com/some_action -H 'Authorization: Token token=&quot;79d4d9ee34e3f589ee94d080357afd8e&quot;
+&lt;/pre&gt;
+
+&lt;p&gt;So, what does it mean?&lt;/p&gt;
+
+&lt;p&gt;In RFC2616, there is the following definition for a HTTP header field (section 14: “Header Field Definitions”):&lt;/p&gt;
+&lt;pre&gt;
+Authorization  = &quot;Authorization&quot; &quot;:&quot; credentials
+&lt;/pre&gt;
+
+&lt;p&gt;We need to look in RFC2617, to see what ‘credentials’ might be:&lt;/p&gt;
+
+&lt;pre&gt;
+credentials = auth-scheme #auth-param
+&lt;/pre&gt;
+
+&lt;p&gt;This can be interpreted as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;‘auth-scheme’ specifies an authentication method. From RFC2617, this might be ‘Token’, ‘Basic’ or ‘Digest’, but it can be ‘AWS’ too, as in the case of Amazon.&lt;/li&gt;
+  &lt;li&gt;‘auth-param’ is the actual authentication string. This part of the header field contains the sequence that grants access or should result into a 401 (Unauthorized) response.  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;request-authorization-with-rack&quot;&gt;Request authorization with Rack&lt;/h2&gt;
+
+&lt;p&gt;In order to have an API talk to a client (= API consumer), let’s assume the server and client can work with the same database backend, and as such can access the same data for an user.&lt;/p&gt;
+
+&lt;p&gt;Now, when the user issues a request, we can simply pass a HTTP header token as explained above. In a Rails based server, the API authentication could look like:&lt;/p&gt;
+
+&lt;pre&gt;
+def require_api_auth
+  authenticate_or_request_with_http_token do |token, options|
+    !(@current_user = User.where(access_token: token).first).nil?
+  end
+end
+&lt;/pre&gt;
+
+&lt;p&gt;Rails comes with these helpers built in (see &lt;a href=&quot;https://github.com/rails/rails/blob/27311fef5efa598f281649074255834546d2b4ec/actionpack/lib/action_controller/metal/http_authentication.rb#L389&quot;&gt;ActionController::Metal&lt;/a&gt;. But there might be cases where your API (or client) is a Rack application, and it’s actually some Rack methods too that are behind the helpers above, see &lt;a href=&quot;https://github.com/rails/rails/blob/27311fef5efa598f281649074255834546d2b4ec/actionpack/lib/action_controller/metal/http_authentication.rb#L429&quot;&gt;token_and_options&lt;/a&gt;. So, this check could easily be moved to Rack middleware.&lt;/p&gt;
+
+&lt;h2 id=&quot;cookies-and-web-interfaces&quot;&gt;Cookies and web interfaces&lt;/h2&gt;
+
+&lt;p&gt;Now if your client-side applications have state (such as in single-page apps), cookies enter the authentication game. However, cookies serve a different need  …&lt;/p&gt;
+
+&lt;p&gt;yes, this means you’ll have some duplicated stuff, but this is how it should work, because they serve different needs and they should be decoupled (ex: you might want to shut down API access but web access should keep up and running)&lt;/p&gt;
+
+&lt;p&gt;… question:  how would code look like to actually access the API with AJAX from the user’s browser?&lt;/p&gt;
+
+&lt;p&gt;So, how can the client talk to a server, depending on whether a user logged in, or not?&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>A Vagrant based Minimum Viable Webserver</title>
@@ -33,9 +152,24 @@
    $ librarian-chef init
 &lt;/pre&gt;
 
-&lt;p&gt;This gives us the &amp;lt;pre&amp;gt;Cheffile&amp;lt;/pre&amp;gt;, which is conceptually close to Ruby’s &amp;lt;pre&amp;gt;Gemfile&amp;lt;/pre&amp;gt;.&lt;/p&gt;
+&lt;p&gt;This gives us the ‘Cheffile’, which is conceptually close to Ruby’s ‘Gemfile’.&lt;/p&gt;
 
-&lt;h2 id=&quot;create-an-application-cookbook&quot;&gt;Create an application cookbook&lt;/h2&gt;
+&lt;h2 id=&quot;edit-cheffile&quot;&gt;Edit Cheffile&lt;/h2&gt;
+
+&lt;p&gt;We are going to modify the Cheffile to define our node’s dependencies as follows:&lt;/p&gt;
+
+&lt;pre&gt;
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'nginx-app', :path =&amp;gt; &quot;./application-cookbooks&quot;
+&lt;/pre&gt;
+
+&lt;p&gt;This means we are going to write a small application cookbook ‘nginx-app’ that lives in the path ‘/application-cookbooks’&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-application-cookbook&quot;&gt;Create the application cookbook&lt;/h2&gt;
 
 &lt;p&gt;In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:&lt;/p&gt;
 
@@ -62,7 +196,7 @@
    |-----default
 &lt;/pre&gt;
 
-&lt;h1 id=&quot;setup-the-webservers-resources&quot;&gt;Setup the webserver’s resources&lt;/h1&gt;
+&lt;h2 id=&quot;setup-the-webservers-resources&quot;&gt;Setup the webserver’s resources&lt;/h2&gt;
 
 &lt;p&gt;Nginx can be installed with a simple &lt;a href=&quot;http://wiki.opscode.com/display/chef/Resources#Resources-Package&quot;&gt;package resource&lt;/a&gt;. This is an abstraction around a package installer such as aptitude or yum. Also we need to use a template resource for defining a virtual host:&lt;/p&gt;
 
@@ -81,7 +215,7 @@
    end
 &lt;/pre&gt;
 
-&lt;h3 id=&quot;template-in-nginx-apptemplates&quot;&gt;Template in /nginx-app/templates&lt;/h3&gt;
+&lt;h3 id=&quot;template-in-nginx-apptemplatesnginxconferb&quot;&gt;Template in /nginx-app/templates/nginx.conf.erb&lt;/h3&gt;
 &lt;pre&gt;
   user www-data;
   worker_processes  &amp;lt;%= @node[:nginx][:worker_processes] %&amp;gt;;
@@ -119,6 +253,113 @@
 &lt;pre&gt;
   default[:nginx][:dir] = &quot;/etc/nginx&quot;
   default[:nginx][:worker_processes] = 4
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;bundle-the-cookbooks&quot;&gt;Bundle the cookbooks&lt;/h2&gt;
+
+&lt;p&gt;Now, we have everything in place and we can bundle the cookbooks with the command:&lt;/p&gt;
+
+&lt;pre&gt;
+    $ librarian-chef install
+&lt;/pre&gt;
+
+&lt;p&gt;Now all cookbooks are downloaded an placed into the local /cookbooks path. Two outputs can be observed, the dependencies were written into Cheffile.lock&lt;/p&gt;
+
+&lt;pre&gt;
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    build-essential (1.3.2)
+    nginx (1.2.0)
+      build-essential (&amp;gt;= 0.0.0)
+      ohai (&amp;gt;= 1.1.4)
+    ohai (1.1.6)
+
+PATH
+  remote: ./application-cookbooks
+  specs:
+    nginx-app (0.1.0)
+      nginx (&amp;gt;= 0.0.0)
+
+DEPENDENCIES
+  nginx-app (&amp;gt;= 0
+&lt;/pre&gt;
+
+&lt;p&gt;This shows that our node get some additional cookbooks that are required by the nginx-app cookbook.
+Let’s also look at the cookbook path:&lt;/p&gt;
+
+&lt;pre&gt;
+   cookbooks
+   |-build-essential
+   |---attributes
+   |---recipes
+   |-nginx
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |-------tests
+   |---------minitest
+   |-----------support
+   |---recipes
+   |---templates
+   |-----debian
+   |-----default
+   |-------modules
+   |-------plugins
+   |-----gentoo
+   |-----ubuntu
+   |-nginx-app
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |---libraries
+   |---providers
+   |---recipes
+   |---resources
+   |---templates
+   |-----default
+   |-ohai
+   |---attributes
+   |---files
+   |-----default
+   |-------plugins
+   |---recipes
+&lt;/pre&gt;
+
+&lt;p&gt;As we can see, all cookbooks were bundled.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-vagrant&quot;&gt;Setup Vagrant&lt;/h2&gt;
+&lt;p&gt;Now, we have all things in place to provision the web server. It’s time to setup Vagrant:&lt;/p&gt;
+
+&lt;pre&gt;
+    $ vagrant init Ubuntu-11.04
+&lt;/pre&gt;
+
+&lt;p&gt;Edit the Vagrantfile:&lt;/p&gt;
+&lt;pre&gt;
+
+&lt;pre&gt;
+Vagrant::Config.run do |config|
+  config.vm.box = &quot;Ubuntu-11.04&quot;
+  config.vm.network :hostonly, &quot;192.168.33.10&quot;
+  config.vm.forward_port 80, 8080
+  config.vm.forward_port 9292, 9292
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = &quot;./cookbooks&quot;
+    chef.add_recipe &quot;nginx-app&quot;
+  end
+end
+&lt;/pre&gt;
+
+And provision:
+&lt;pre&gt;
+  $ vagrant up
+&lt;/pre&gt;
+
+So, that's all to get the webserver running. Now, it would be cool to get some basic Ruby/Rack interface running too. Maybe in the next post with the help of a unicorn cookbook.
 &lt;/pre&gt;
 </content>
  </entry>
