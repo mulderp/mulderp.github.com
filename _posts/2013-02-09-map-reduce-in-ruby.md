@@ -19,6 +19,7 @@ activity = [ "2011-08" => { :signups => 1433, :logins => 2832 } ...
 </pre>
 
 In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let's start.
+
 ## Splitting a Hash
 My first step was to split the larger collection hash into single hashes. For this [first](http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first) and [to_a](http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a) methods help like this:
 
