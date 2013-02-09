@@ -199,7 +199,13 @@ activities = login_signups.map { |m| {m.first => m.last.flatten.inject(:merge)} 
 ### Conclusion
 
 My conclusion of this post are the following:
+
 * Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.
+
 * A lot of transformation can be approached with standard Array methods like 'each' and 'map'; however they are sometimes not optimal, and in a way are limited to 'simple' transformation only.
+
 * Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.
+
 * I didn't use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on [StackOverflow](http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash)
+
+* Probably a nice topic for exploration would also be using value objects for this kind of filtering and collection transformation
