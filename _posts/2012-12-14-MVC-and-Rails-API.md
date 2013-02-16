@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Rake-Pipeline, Rails-API, Backbone.JS
+tags: rails ruby
 ---
 
 Nowadays mobile browsers and changing use cases for web applications, require programmers to understand detailed DOM abstractions (usually html5 tags, css, js) as well as API's that talk to a number of different client setups. Although Ruby-on-Rails has brought us a long way to easily meet our business goals, I had the feeling to be stuck when it came to use Backbone with Rails.
@@ -35,18 +36,4 @@ Some weeks ago at [Rupy in Brno](http://rupy.eu/), there was a great melting pot
 
 The [Rails-Api](https://github.com/rails-api/rails-api) removes the Rails ERB templates and Sprockets from your application. This is nice, because your Rack stack becomes lighter, and you can focus on the thing that matters: Serving data to clients. From first experiments, Rails-API combines very nicely with rake-pipeline. As you can see from my [demo-project](https://github.com/mulderp/rails-api-backbone), the Rails app just servers JSON to client-side code that is built with rake-pipeline from the /source directory.
 
-
-Backbone.js, Underscore.js and Require.js
------------------------------------------
-
-Last but not least, for my application design, I want to use a JS framework that allows to structure the interaction with the DOM and with the end-user. This framework is Backbone.js - but maybe first, a step back.
-
-As a Ruby programmer, you think JavaScript has some problems: Incompatible browsers with different language implementations, as well as language constructs that leave you alone quite fast. At least part of the language problems are solved by JQuery and Underscore.js (which reminds on Ruby, see the collection stuff and enumerator constructs at underscorejs.org
-
-For the rest, a lot of folks from the Node.js community is an example of disruptive innovation at work; especially it is interesting to see, that the JS community nowadays has a modular requirement setup to manage dependencies: require.js. In my view, this will make fancy browser (and maybe one day server) programming fun again.
-
-What you need to know as Rails programmer, Require.js injects dependencies where they are needed, and as such prevents problems in the global scope. Additionally, you can inject HTML templates into your JS modules, which is very nice too. I'll need to explore this, but you can actually take your Rails ERB templates and inject them 1-1 to Backbone templates, where you need them. Some ideas behind this technique are discussed by Thomas Davis, here. A boilerplate for backbone and require-js is here. Another nice overview on Backbone development is here and here (Backbone and Require.js).
-
 That's all for now.
-
-Here some references to my [Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment](https://github.com/mulderp/rails-api-backbone). I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.

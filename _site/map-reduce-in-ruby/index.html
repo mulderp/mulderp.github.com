@@ -41,7 +41,7 @@
 
       <div class="four columns sidebar">
         <section>
-          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking main</a>
+          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking</a>
 
           <ul id="social">
             <li>
@@ -80,7 +80,7 @@
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
     <h1>Transforming collections in Ruby</h1>
-    <i class="icon-tags"></i>  <a href="/tags/ruby" title="View posts tagged with &quot;ruby&quot;"><u>ruby</u></a>   
+    <i class="icon-tags"></i>  <a href="/tags/Ruby" title="View posts tagged with &quot;Ruby&quot;"><u>Ruby</u></a>   
   </header>
 
   <div class='ten columns gray' id="date-header">
@@ -107,9 +107,10 @@ logins = ["2011-08"=&gt;2832, "2011-09"=&gt;4172, "2011-10"=&gt;3480, "2011-11"=
 activity = [ "2011-08" =&gt; { :signups =&gt; 1433, :logins =&gt; 2832 } ...
 </pre>
 
-<p>In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let’s start.
-## Splitting a Hash
-My first step was to split the larger collection hash into single hashes. For this <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first">first</a> and <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a">to_a</a> methods help like this:</p>
+<p>In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let’s start.</p>
+
+<h2 id="splitting-a-hash">Splitting a Hash</h2>
+<p>My first step was to split the larger collection hash into single hashes. For this <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first">first</a> and <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a">to_a</a> methods help like this:</p>
 
 <pre style="font-size:11px">
 signups.first.to_a
@@ -290,11 +291,25 @@ activities = login_signups.map { |m| {m.first =&gt; m.last.flatten.inject(:merge
 
 <h3 id="conclusion">Conclusion</h3>
 
-<p>My conclusion of this post are the following:
-* Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.
-* A lot of transformation can be approached with standard Array methods like ‘each’ and ‘map’; however they are sometimes not optimal, and in a way are limited to ‘simple’ transformation only.
-* Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.
-* I didn’t use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on <a href="http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash">StackOverflow</a></p>
+<p>My conclusion of this post are the following:</p>
+
+<ul>
+  <li>
+    <p>Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.</p>
+  </li>
+  <li>
+    <p>A lot of transformation can be approached with standard Array methods like ‘each’ and ‘map’; however they are sometimes not optimal, and in a way are limited to ‘simple’ transformation only.</p>
+  </li>
+  <li>
+    <p>Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.</p>
+  </li>
+  <li>
+    <p>I didn’t use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on <a href="http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash">StackOverflow</a></p>
+  </li>
+  <li>
+    <p>Probably a nice topic for exploration would also be using value objects for this kind of filtering and collection transformation</p>
+  </li>
+</ul>
 
   </div>
 

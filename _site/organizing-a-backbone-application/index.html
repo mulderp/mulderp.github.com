@@ -41,7 +41,7 @@
 
       <div class="four columns sidebar">
         <section>
-          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking main</a>
+          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking</a>
 
           <ul id="social">
             <li>
@@ -171,10 +171,13 @@ collection.fetch(...)
 
 <ul>
   <li>
-    <p>For the main structure of a frontend application, it’s good to start thinking in views first. Views fetch data when needed.</p>
+    <p>For the main structure of a Backbone application, I find the directories /collections, /models, /views/ and /templates helpful.</p>
   </li>
   <li>
-    <p>There are views that manage other views, and views that render templates. So far, my ‘umbrella-views’ just instantiate sub-views, that fetch data respectively.</p>
+    <p>Start thinking in Views first (a good option is on paper). Then, think on how Views fetch data when needed.</p>
+  </li>
+  <li>
+    <p>There are views that manage other Views, and Views that render templates.</p>
   </li>
   <li>
     <p>There seems to be some conventions on naming views in Backbone. So far, I use ‘ListView’ and ‘ItemView’ to name views on collections, or the elements (= items) in a collection.</p>

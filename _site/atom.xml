@@ -4,7 +4,7 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-02-16T13:48:41+01:00</updated>
+ <updated>2013-02-16T14:08:03+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
@@ -96,10 +96,13 @@ collection.fetch(...)
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;For the main structure of a frontend application, it’s good to start thinking in views first. Views fetch data when needed.&lt;/p&gt;
+    &lt;p&gt;For the main structure of a Backbone application, I find the directories /collections, /models, /views/ and /templates helpful.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;There are views that manage other views, and views that render templates. So far, my ‘umbrella-views’ just instantiate sub-views, that fetch data respectively.&lt;/p&gt;
+    &lt;p&gt;Start thinking in Views first (a good option is on paper). Then, think on how Views fetch data when needed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There are views that manage other Views, and Views that render templates.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;There seems to be some conventions on naming views in Backbone. So far, I use ‘ListView’ and ‘ItemView’ to name views on collections, or the elements (= items) in a collection.&lt;/p&gt;
@@ -128,9 +131,10 @@ logins = [&quot;2011-08&quot;=&amp;gt;2832, &quot;2011-09&quot;=&amp;gt;4172, &q
 activity = [ &quot;2011-08&quot; =&amp;gt; { :signups =&amp;gt; 1433, :logins =&amp;gt; 2832 } ...
 &lt;/pre&gt;
 
-&lt;p&gt;In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let’s start.
-## Splitting a Hash
-My first step was to split the larger collection hash into single hashes. For this &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first&quot;&gt;first&lt;/a&gt; and &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a&quot;&gt;to_a&lt;/a&gt; methods help like this:&lt;/p&gt;
+&lt;p&gt;In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let’s start.&lt;/p&gt;
+
+&lt;h2 id=&quot;splitting-a-hash&quot;&gt;Splitting a Hash&lt;/h2&gt;
+&lt;p&gt;My first step was to split the larger collection hash into single hashes. For this &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first&quot;&gt;first&lt;/a&gt; and &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a&quot;&gt;to_a&lt;/a&gt; methods help like this:&lt;/p&gt;
 
 &lt;pre style=&quot;font-size:11px&quot;&gt;
 signups.first.to_a
@@ -311,11 +315,25 @@ activities = login_signups.map { |m| {m.first =&amp;gt; m.last.flatten.inject(:m
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
-&lt;p&gt;My conclusion of this post are the following:
-* Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.
-* A lot of transformation can be approached with standard Array methods like ‘each’ and ‘map’; however they are sometimes not optimal, and in a way are limited to ‘simple’ transformation only.
-* Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.
-* I didn’t use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on &lt;a href=&quot;http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash&quot;&gt;StackOverflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My conclusion of this post are the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A lot of transformation can be approached with standard Array methods like ‘each’ and ‘map’; however they are sometimes not optimal, and in a way are limited to ‘simple’ transformation only.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I didn’t use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on &lt;a href=&quot;http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash&quot;&gt;StackOverflow&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Probably a nice topic for exploration would also be using value objects for this kind of filtering and collection transformation&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
@@ -905,6 +923,23 @@ it(&quot;has el property&quot;, function() {
  </entry>
  
  <entry>
+   <title>Backbone.js, Underscore.js and Require.js</title>
+   <link href="http://mulderp.github.com/RequireJS-and-Backbone"/>
+   <updated>2012-12-15T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/RequireJS-and-Backbone</id>
+   <content type="html">&lt;p&gt;As explained in the &lt;a href=&quot;http://thinkingonthinking.com/MVC-and-Rails-API/&quot;&gt;previous post&lt;/a&gt;, mobile clients change the use case of web applications, especially the model-view-controller pattern. I think a frontend model-view-controller setup, or a Single-Page-Application setup, will be very important when addressing mobile browsers. Backbone.JS is a JavaScript framework that can help you getting there.&lt;/p&gt;
+
+&lt;p&gt;Now, as a Ruby programmer, you think JavaScript has some problems: Incompatible browsers with different language implementations, as well as language constructs that leave you alone quite fast. At least part of the language problems are solved by JQuery and Underscore.js (which reminds on Ruby, see the collection stuff and enumerator constructs at &lt;a href=&quot;http://underscorejs.org&quot;&gt;underscorejs.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;About the problem of global scope in JavaScript, it is interesting to see, that the JavaScript community nowadays has a modular requirement setup to manage dependencies: &lt;a href=&quot;http://requirejs.org/&quot;&gt;require.js&lt;/a&gt;. In my view, this will make fancy browser (and maybe also server) programming fun again.&lt;/p&gt;
+
+&lt;p&gt;What you need to know as Rails programmer, Require.js injects dependencies where they are needed, and as such prevents problems in the global scope. Additionally, you can inject HTML templates into your JavaScript modules, which is very nice too. I’ll need to explore this, but you can actually take your Rails ERB templates and inject them 1-1 to Backbone templates, where you need them. Some ideas behind this technique are discussed by Thomas Davis, &lt;a href=&quot;http://backbonetutorials.com/&quot;&gt;here&lt;/a&gt;. A boilerplate for backbone and require-js is &lt;a href=&quot;https://github.com/thomasdavis/backbonetutorials/tree/gh-pages/examples/modular-backbone&quot;&gt;here&lt;/a&gt;. Another nice overview on Backbone development is &lt;a href=&quot;https://www.youtube.com/watch?v=PqtYcHyyWJA&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://kilon.org/blog/2012/08/build-backbone-apps-using-requirejs/&quot;&gt;here (Backbone and Require.js)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here some references to my &lt;a href=&quot;https://github.com/mulderp/rails-api-backbone&quot;&gt;Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment&lt;/a&gt;. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Rake-Pipeline, Rails-API, Backbone.JS</title>
    <link href="http://mulderp.github.com/MVC-and-Rails-API"/>
    <updated>2012-12-14T00:00:00+01:00</updated>
@@ -945,19 +980,7 @@ So far about building assets, next about serving data that assets want… we’l
 
 &lt;p&gt;The &lt;a href=&quot;https://github.com/rails-api/rails-api&quot;&gt;Rails-Api&lt;/a&gt; removes the Rails ERB templates and Sprockets from your application. This is nice, because your Rack stack becomes lighter, and you can focus on the thing that matters: Serving data to clients. From first experiments, Rails-API combines very nicely with rake-pipeline. As you can see from my &lt;a href=&quot;https://github.com/mulderp/rails-api-backbone&quot;&gt;demo-project&lt;/a&gt;, the Rails app just servers JSON to client-side code that is built with rake-pipeline from the /source directory.&lt;/p&gt;
 
-&lt;h2 id=&quot;backbonejs-underscorejs-and-requirejs&quot;&gt;Backbone.js, Underscore.js and Require.js&lt;/h2&gt;
-
-&lt;p&gt;Last but not least, for my application design, I want to use a JS framework that allows to structure the interaction with the DOM and with the end-user. This framework is Backbone.js - but maybe first, a step back.&lt;/p&gt;
-
-&lt;p&gt;As a Ruby programmer, you think JavaScript has some problems: Incompatible browsers with different language implementations, as well as language constructs that leave you alone quite fast. At least part of the language problems are solved by JQuery and Underscore.js (which reminds on Ruby, see the collection stuff and enumerator constructs at underscorejs.org&lt;/p&gt;
-
-&lt;p&gt;For the rest, a lot of folks from the Node.js community is an example of disruptive innovation at work; especially it is interesting to see, that the JS community nowadays has a modular requirement setup to manage dependencies: require.js. In my view, this will make fancy browser (and maybe one day server) programming fun again.&lt;/p&gt;
-
-&lt;p&gt;What you need to know as Rails programmer, Require.js injects dependencies where they are needed, and as such prevents problems in the global scope. Additionally, you can inject HTML templates into your JS modules, which is very nice too. I’ll need to explore this, but you can actually take your Rails ERB templates and inject them 1-1 to Backbone templates, where you need them. Some ideas behind this technique are discussed by Thomas Davis, here. A boilerplate for backbone and require-js is here. Another nice overview on Backbone development is here and here (Backbone and Require.js).&lt;/p&gt;
-
 &lt;p&gt;That’s all for now.&lt;/p&gt;
-
-&lt;p&gt;Here some references to my &lt;a href=&quot;https://github.com/mulderp/rails-api-backbone&quot;&gt;Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment&lt;/a&gt;. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.&lt;/p&gt;
 </content>
  </entry>
  
