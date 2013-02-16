@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rake-Pipeline, Rails-API, Backbone.JS
+title: Rake-Pipeline and Rails-API
 tags: rails ruby
 ---
 
