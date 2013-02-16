@@ -4,13 +4,109 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-02-09T19:20:41+01:00</updated>
+ <updated>2013-02-16T13:48:41+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Organizing a Backbone Application</title>
+   <link href="http://mulderp.github.com/organizing-a-backbone-application"/>
+   <updated>2013-02-15T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/organizing-a-backbone-application</id>
+   <content type="html">&lt;p&gt;Backbone should help to organize your frontend JavaScript stack, but as an application grows, this is not so easy. I am grateful to &lt;a href=&quot;https://twitter.com/netzzwerg&quot;&gt;Bela Varga&lt;/a&gt; with whom I lately discussed patterns of Backbone code organization. By the way, the idea of this post came from these slides: &lt;a href=&quot;http://backbone-patterns.heroku.com/&quot;&gt;these patterns&lt;/a&gt; by &lt;a href=&quot;http://twitter.com/julio_ody&quot;&gt;julio_ody&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;top-level-organization-of-a-backbone-project&quot;&gt;Top-level organization of a Backbone project&lt;/h2&gt;
+
+&lt;p&gt;This pattern is helpful to quickly find and re-use structures and logic of Backbone modules. As Backbone comes with no directory structure as default, it leaves the decisions up to the developer how to setup files and directories. One directory layout that is often found in a Backbone project is this:&lt;/p&gt;
+
+&lt;pre&gt;
+   |-collections
+   |-libs
+   |---backbone
+   |---isotope
+   |---jquery
+   |---jquery-fileupload
+   |---jquery-ui
+   |---require
+   |---underscore
+   |-models
+   |-templates
+   |-views
+&lt;/pre&gt;
+
+&lt;p&gt;This works very well for me now: There are directories for the Models, Collections, Views and Templates, as well as a directory for the dependencies. If you want to learn more on how a RequireJS based setup works, &lt;a href=&quot;http://backbonetutorials.com/&quot;&gt;here&lt;/a&gt; is a nice tutorial.&lt;/p&gt;
+
+&lt;h2 id=&quot;appjs-contains-views---not-collections&quot;&gt;App.js contains views - not collections&lt;/h2&gt;
+
+&lt;p&gt;In a single-page application, there will be many views that need to be arranged. Now, in my first experiments, I instantiated views in the Router with: &lt;/p&gt;
+
+&lt;pre&gt;
+new SomeView(...)
+&lt;/pre&gt;
+
+&lt;p&gt;together with:&lt;/p&gt;
+
+&lt;pre&gt;
+collection.fetch(...) 
+&lt;/pre&gt;
+
+&lt;p&gt;to populate a view with data. This quickly leads to exploding dependencies in the Router. A better way to organize views is the following:&lt;/p&gt;
+
+&lt;pre&gt;
+    var AppRouter = Backbone.Router.extend({
+        routes: {
+	      '': 'showPostListView',
+	      '/posts/:id': 'showPostDetailView',
+        },
+
+        showPostListView: function() {
+	      new PostListView();
+        },
+
+       	showPostDetailView: function(post) {
+	      new PostDetailView({id: post});
+        }
+    });
+
+&lt;/pre&gt;
+
+&lt;p&gt;The idea is that the Views know which collection and models they bind too, and whether to fetch data or not. Here, we don’t need to require any Collection or Model since this will be done from within a view.&lt;/p&gt;
+
+&lt;h2 id=&quot;naming-views&quot;&gt;Naming Views&lt;/h2&gt;
+&lt;p&gt;Naming is always hard. And I found naming things on the frontend to be slightly different from naming things in the backend. In the Backend, you might want to orientate at naming things to entities from a domain; in a single-page app, you might want to name things after how you want to show or interact with data.&lt;/p&gt;
+
+&lt;p&gt;For example, one common frontend pattern is to show and interact with items in a collection. It’s what the basic Backbone &lt;a href=&quot;http://backbonejs.org/examples/todos/index.html&quot;&gt;ToDo&lt;/a&gt; shows, but what I understand now is the importance of naming:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A ‘ListView’ identifies a view that belongs to a collection.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;An ‘ItemView’ identifies a view that belogns to a model.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, when you break up your single-page app into different views, having this simple rule above helps in structuring the different states of the frontend. Also, ListView are slightly less bound to templates, but rather act as parent views for different item sub-views.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;For the main structure of a frontend application, it’s good to start thinking in views first. Views fetch data when needed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There are views that manage other views, and views that render templates. So far, my ‘umbrella-views’ just instantiate sub-views, that fetch data respectively.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There seems to be some conventions on naming views in Backbone. So far, I use ‘ListView’ and ‘ItemView’ to name views on collections, or the elements (= items) in a collection.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Transforming collections in Ruby</title>
@@ -600,7 +696,7 @@ So, that's all to get the webserver running. Now, it would be cool to get some b
 
 &lt;p&gt;In the meanwhile, I was able to work with cookbooks for a basic setup of Postgres and ArangoDB. And today, I just launched a basic web server instance on Amazon-EC2 with just a simple knife command. &lt;/p&gt;
 
-&lt;p&gt;Last but not lwast, I got connected to some more DevOps, such as &lt;a href=&quot;https://github.com/jbianquetti&quot;&gt;Jorge Bianquetti&lt;/a&gt; who helped with librarian-chef and Cassiano Leal with whom I discussed &lt;a href=&quot;https://github.com/cassianoleal/vagrant-butcher/issues/3&quot;&gt;Vagrant-Butcher&lt;/a&gt;. Also, &lt;a href=&quot;http://mlafeldt.github.com/blog/2012/09/learning-chef/&quot;&gt;Mathias Lafeldt&lt;/a&gt; has some great discussions on his experiences on #learningchef. That’s all for now, looking forward to hear your feeedback, your insights, discoveries and problems with infrastructure automation.&lt;/p&gt;
+&lt;p&gt;Last but not lwast, I got connected to some more DevOps, such as &lt;a href=&quot;https://github.com/jbianquetti&quot;&gt;Jorge Bianquetti&lt;/a&gt; who helped with librarian-chef and Cassiano Leal with whom I discussed &lt;a href=&quot;https://github.com/cassianoleal/vagrant-butcher/issues/3&quot;&gt;Vagrant-Butcher&lt;/a&gt;. Also, &lt;a href=&quot;http://mlafeldt.github.com/blog/2012/09/learning-chef/&quot;&gt;Mathias Lafeldt&lt;/a&gt; has some great discussions on his experiences on #learningchef. That’s all for now, looking forward to hear your feeedback, your insights, discoveries and problems with infrastructure automation. If you want to get more details on &lt;a href=&quot;http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/&quot;&gt;learning-chef&lt;/a&gt; check out the blog of &lt;a href=&quot;http://nathenharvey.com&quot;&gt;Nathen Harvey&lt;/a&gt; too.&lt;/p&gt;
 
 </content>
  </entry>

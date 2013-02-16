@@ -59,11 +59,12 @@ to populate a view with data. This quickly leads to exploding dependencies in th
         }
     });
 </div>
+</pre>
 
 The idea is that the Views know which collection and models they bind too, and whether to fetch data or not. Here, we don't need to require any Collection or Model since this will be done from within a view.
 
 ## Naming Views
-Naming is always hard. And I found naming things on the frontend to be slightly different from naming things in the backend. In the Backend, you might want to orientate at naming things to entities from a domain; in the frontend, you might want to name things after how you want to show or interact with data.
+Naming is always hard. And I found naming things on the frontend to be slightly different from naming things in the backend. In the Backend, you might want to orientate at naming things to entities from a domain; in a single-page app, you might want to name things after how you want to show or interact with data.
 
 For example, one common frontend pattern is to show and interact with items in a collection. It's what the basic Backbone [ToDo](http://backbonejs.org/examples/todos/index.html) shows, but what I understand now is the importance of naming:
 
@@ -75,8 +76,10 @@ Now, when you break up your single-page app into different views, having this si
 
 ## Conclusions
 
-* For the main structure of a frontend application, it's good to start thinking in views first. Views fetch data when needed.
+* For the main structure of a Backbone application, I find the directories /collections, /models, /views/ and /templates helpful.
 
-* There are views that manage other views, and views that render templates. So far, my 'umbrella-views' just instantiate sub-views, that fetch data respectively.
+* Start thinking in Views first (a good option is on paper). Then, think on how Views fetch data when needed.
+
+* There are views that manage other Views, and Views that render templates.
 
 * There seems to be some conventions on naming views in Backbone. So far, I use 'ListView' and 'ItemView' to name views on collections, or the elements (= items) in a collection.
