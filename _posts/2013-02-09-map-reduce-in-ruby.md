@@ -3,7 +3,7 @@ layout: post
 title: Transforming collections in Ruby
 tags: Ruby
 ---
-Combinations of Arrays and Hashes in Ruby are very powerful, as shown in [this nice article](http://gistflow.com/posts/670-visualising-database-1) on visualizing user registrations and activity in a web application with Google Charts. After starting my own visualization experiments, I felt that I had some blind spots in understanding Ruby's [Enumerable Module](http://ruby-doc.org/core-1.9.3/Enumerable.html). This post attempts to share some insights on expanding and reducing Arrays of objects.
+Recently, I've read some strategy to visualize user registrations and activity in a web application with Ruby and Google Charts in [this article](http://gistflow.com/posts/670-visualising-database-1) . After starting my own visualization experiments, I felt that I had some blind spots in understanding Ruby's [Enumerable Module](http://ruby-doc.org/core-1.9.3/Enumerable.html). This post attempts to share some insights on expanding and reducing Arrays of objects.
 
 First, let's assume our data looks like:
 
