@@ -4,13 +4,76 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-02-16T14:08:03+01:00</updated>
+ <updated>2013-02-20T21:47:24+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>What is Erlang?</title>
+   <link href="http://mulderp.github.com/what-is-erlang"/>
+   <updated>2013-02-20T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/what-is-erlang</id>
+   <content type="html">&lt;p&gt;You will touch Erlang at some point, if you follow the development of distributed systems. Erlang is a remedy to the pains of a monolithic application. And great programmers such as &lt;a href=&quot;http://about.adamwiggins.com/&quot;&gt;Adam Wiggins&lt;/a&gt; or &lt;a href=&quot;http://plataformatec.com.br/crafting-rails-applications&quot;&gt;Jose Valim&lt;/a&gt; name Erlang in the context of scalable systems e.g. in &lt;a href=&quot;http://adam.heroku.com/past/2009/9/28/background_jobs_with_rabbitmq_and_minion/&quot;&gt;this article&lt;/a&gt; or &lt;a href=&quot;http://blog.plataformatec.com.br/2011/03/why-rubyists-should-try-elixir/&quot;&gt;here&lt;/a&gt;. So, I was curious enough to attend a great, small conference on Erlang:  &lt;a href=&quot;http://www.erlang-factory.com/conference/Munich2013&quot;&gt;Munich Erlang Factory Lite 2013&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As someone who is new to Erlang, a first question must be asked: What is Erlang? Let’s look at different aspects.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-does-erlang-code-look&quot;&gt;How does Erlang code look?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You’ll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console (“erl”), the Erlang Emulator. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Looking more at the code, you’ll see that lines of code sometimes end with a “dot”. This triggers code execution. As a beginner, it’s the moment when you see error messages and interpretation of error messages is rather difficult. To me, Erlang errors are cryptic, and apparently line numbers in errors were a late innovation. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Further, the code you’ll see may contain tuples and atoms, some of the main data types in Erlang. Nota bene, the concept of String is not a data type in Erlang, but rather an Array of characters as in e.g. C. Some people say this make string operations more difficult than in other languages. Other people say, it’s less error prone too. To a beginner, it’s hard to judge.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;erlang-modules-and-libraries&quot;&gt;Erlang modules and libraries&lt;/h2&gt;
+
+&lt;p&gt;Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming language, libraries makes a programmer’s life fun. &lt;/p&gt;
+
+&lt;p&gt;The magic command to import libraries into your Erlang project is &lt;a href=&quot;https://github.com/basho/rebar&quot;&gt;“rebar”&lt;/a&gt;. Rebar also allows to easily create a new Erlang project. And, rebar is from &lt;a href=&quot;http://basho.com/&quot;&gt;Basho&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-erlang&quot;&gt;Why Erlang?&lt;/h2&gt;
+
+&lt;p&gt;So far, so good. Erlang programming is about functions and values, and that sounds like no big deal to some. However, the main aspects of Erlang are reflecting on errors when needed, and reliably running concurrent processes. It’s here where the Erlang fun part starts, and other languages just suck (for the skeptics, maybe you can read &lt;a href=&quot;http://stackoverflow.com/questions/6923480/java-thread-programming-book&quot;&gt;these books&lt;/a&gt;).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;In Erlang, there seems to be the idea of “let it crash”. In a monolithic application, this may mean the death of an application. In a Unix system, this may mean to kill the process. In Erlang, you get a &lt;a href=&quot;http://www.erlang.org/doc/design_principles/sup_princ.html&quot;&gt;supervisor&lt;/a&gt; that may take care of idling or conflicting processes, and the supervisor may decide to retry, continue, or check later. This is new to me, but I haven’t come across this mentality in any other pogramming language so far.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Having better ways to deal with exceptions, you’ll also get better ways to deal with concurrency. It’s rather new to me, but think of a monolithic application that triggers delayed jobs. I can solve this, ok. But maybe in your server cluster, you run multiple applications, and eventually multiple delayed jobs. Hmm… ok, from my experience, you can get &lt;a href=&quot;http://en.wikipedia.org/wiki/Race_condition&quot;&gt;race conditions&lt;/a&gt; and other problems, that are really hard to debug. Erlang to the rescue. With Erlang, you’ll get some ways to have processes check what another process is doing. The mechanisms that you’ll hear people take about seem [monitoringj(http://learnyousomeerlang.com/errors-and-processes#monitors) or linking processes, resulting into process &lt;a href=&quot;http://www.erlang.org/doc/getting_started/robustness.html&quot;&gt;robustness&lt;/a&gt;. Eventuall, you want to study the code of &lt;a href=&quot;http://www.rabbitmq.com/&quot;&gt;RabbitMQ&lt;/a&gt; to see clever ways to deal with message concurrency.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;So, my main conclusions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Erlang provides a dynamic toolchain that helps rethinking concurrency and fault-tolerance. Some more meta-discussions and exmaples on Erlang are these: John-Paul Bader discusses more on &lt;a href=&quot;http://smyck.net/2012/04/22/why-erlang/&quot;&gt;why erlang here&lt;/a&gt;. Peer Stritzinger together with &lt;a href=&quot;http://www.embedded-brains.de/index.php?id=1&amp;amp;L=1&quot;&gt;Embedded-brains&lt;/a&gt; use Erlang for &lt;a href=&quot;http://www.stritzinger.com/Peer-Stritzinger.GmbH/Hydraprog-3.html&quot;&gt;scalable hardware&lt;/a&gt;. &lt;a href=&quot;https://github.com/basho&quot;&gt;Basho&lt;/a&gt; implemented &lt;a href=&quot;http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html&quot;&gt;Amazon’s Dynamo&lt;/a&gt; with Erlang, and the company is a great contributor and promotor to the Erlang community.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Good places to get started with Erlang are &lt;a href=&quot;http://smyck.net/2013/02/17/how-to-set-up-a-basic-http-api-with-erlang-in-10-minutes/&quot;&gt;Setup an API in 10 minutes&lt;/a&gt; and &lt;a href=&quot;http://learnyousomeerlang.com/&quot;&gt;http://learnyousomeerlang.com/&lt;/a&gt;. Also, this blog post is a great overview: &lt;a href=&quot;http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html&quot;&gt;http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;OTP are the Erlang libraries that help in designing distributed applications. See &lt;a href=&quot;http://learnyousomeerlang.com/what-is-otp&quot;&gt;http://learnyousomeerlang.com/what-is-otp&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you are into web development, see &lt;a href=&quot;https://github.com/elixir-lang/elixir&quot;&gt;Elixir&lt;/a&gt; and &lt;a href=&quot;https://github.com/elixir-lang/dynamo&quot;&gt;Dynamo&lt;/a&gt;. This looks the place to start writing your next hit-in-one API.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Organizing a Backbone Application</title>
@@ -116,7 +179,7 @@ collection.fetch(...)
    <link href="http://mulderp.github.com/map-reduce-in-ruby"/>
    <updated>2013-02-09T00:00:00+01:00</updated>
    <id>http:/mulderp.github.com/map-reduce-in-ruby</id>
-   <content type="html">&lt;p&gt;Combinations of Arrays and Hashes in Ruby are very powerful, as shown in &lt;a href=&quot;http://gistflow.com/posts/670-visualising-database-1&quot;&gt;this nice article&lt;/a&gt; on visualizing user registrations and activity in a web application with Google Charts. After starting my own visualization experiments, I felt that I had some blind spots in understanding Ruby’s &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html&quot;&gt;Enumerable Module&lt;/a&gt;. This post attempts to share some insights on expanding and reducing Arrays of objects.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Recently, I’ve read some strategy to visualize user registrations and activity in a web application with Ruby and Google Charts in &lt;a href=&quot;http://gistflow.com/posts/670-visualising-database-1&quot;&gt;this article&lt;/a&gt; . After starting my own visualization experiments, I felt that I had some blind spots in understanding Ruby’s &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html&quot;&gt;Enumerable Module&lt;/a&gt;. This post attempts to share some insights on expanding and reducing Arrays of objects.&lt;/p&gt;
 
 &lt;p&gt;First, let’s assume our data looks like:&lt;/p&gt;
 
@@ -720,7 +783,7 @@ So, that's all to get the webserver running. Now, it would be cool to get some b
  </entry>
  
  <entry>
-   <title>What is modular code?</title>
+   <title>What is a modular web application?</title>
    <link href="http://mulderp.github.com/what-is-modular-architecture"/>
    <updated>2013-01-26T00:00:00+01:00</updated>
    <id>http:/mulderp.github.com/what-is-modular-architecture</id>
@@ -738,23 +801,18 @@ So, that's all to get the webserver running. Now, it would be cool to get some b
 
 &lt;p&gt;However, in the context of (mobile) web applications, where views are living in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: &lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;how-do-we-serve-views-to-a-client&quot;&gt;How do we serve “views” to a client?&lt;/h2&gt;
-    &lt;p&gt;As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&quot;how-do-we-serve-views-to-a-client&quot;&gt;1. How do we serve “views” to a client?&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.&lt;/p&gt;
 
 &lt;p&gt;In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs require servers to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with new tools for asset management &lt;a href=&quot;http://thinkingonthinking.com/MVC-and-Rails-API/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Also, for serving frontends assets, no full application stack is needed. And since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Express.JS and other Node.JS approaches might be interesting to look at too.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;how-to-organize-mvc-modules-on-the-client&quot;&gt;How to organize “MVC” modules on the client?&lt;/h2&gt;
-    &lt;p&gt;When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&quot;how-to-organize-mvc-modules-on-the-client&quot;&gt;2. How to organize “MVC” modules on the client?&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.&lt;/p&gt;
 
 &lt;p&gt;Additionally, there might be multiple MVC’s defined on a client, depending on the current scope of a HTTP conversation (e.g. /protected or /guest or /admin).&lt;/p&gt;
 
@@ -940,7 +998,7 @@ it(&quot;has el property&quot;, function() {
  </entry>
  
  <entry>
-   <title>Rake-Pipeline, Rails-API, Backbone.JS</title>
+   <title>Rake-Pipeline and Rails-API</title>
    <link href="http://mulderp.github.com/MVC-and-Rails-API"/>
    <updated>2012-12-14T00:00:00+01:00</updated>
    <id>http:/mulderp.github.com/MVC-and-Rails-API</id>

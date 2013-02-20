@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>What is a modular web application?</title>
+    <title>What is Erlang?</title>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -79,69 +79,74 @@
 
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
-    <h1>What is a modular web application?</h1>
-    <i class="icon-tags"></i>  <a href="/tags/MVC" title="View posts tagged with &quot;MVC&quot;"><u>MVC</u></a>     <a href="/tags/JavaScript" title="View posts tagged with &quot;JavaScript&quot;"><u>JavaScript</u></a>     <a href="/tags/Ruby" title="View posts tagged with &quot;Ruby&quot;"><u>Ruby</u></a>     <a href="/tags/Mobile" title="View posts tagged with &quot;Mobile&quot;"><u>Mobile</u></a>   
+    <h1>What is Erlang?</h1>
+    <i class="icon-tags"></i>  <a href="/tags/erlang" title="View posts tagged with &quot;erlang&quot;"><u>erlang</u></a>   
   </header>
 
   <div class='ten columns gray' id="date-header">
     <p>
-      Jan 2013
+      Feb 2013
   
     </p>
 
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>Designing the architecture of a web application is difficult. First, there are many different programming languages among which to chose, then there are many frameworks , some leave design decisions to the programmer, some come “opinionated’ (= with default settings/strategies). Additionally, within each framework, a number of plugins exists that often solve similar problems, yet have different solution approaches.</p>
+    <p>You will touch Erlang at some point, if you follow the development of distributed systems. Erlang is a remedy to the pains of a monolithic application. And great programmers such as <a href="http://about.adamwiggins.com/">Adam Wiggins</a> or <a href="http://plataformatec.com.br/crafting-rails-applications">Jose Valim</a> name Erlang in the context of scalable systems e.g. in <a href="http://adam.heroku.com/past/2009/9/28/background_jobs_with_rabbitmq_and_minion/">this article</a> or <a href="http://blog.plataformatec.com.br/2011/03/why-rubyists-should-try-elixir/">here</a>. So, I was curious enough to attend a great, small conference on Erlang:  <a href="http://www.erlang-factory.com/conference/Munich2013">Munich Erlang Factory Lite 2013</a></p>
 
-<p>In order to help application designers to make decisions, programmers talk about applying “patterns” or using a “pattern language”. Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in <a href="http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction">this book</a> some years ago. Modular code (and data) should be easier to re-use, and allows to extend and adapt ideas where needed. </p>
+<p>As someone who is new to Erlang, a first question must be asked: What is Erlang? Let’s look at different aspects.</p>
 
-<p>One of the most important pattern in a web application is called Model-View-Controller (MVC). A nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found <a href="https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8">here</a>, I will use the following definitions for MVC:</p>
+<h2 id="how-does-erlang-code-look">How does Erlang code look?</h2>
 
 <ul>
-  <li>Model: All data items are representations of the real things; they make up the Model. </li>
-  <li>View: A View is componenent that transforms a model into something visible. A View is both input and output. A View is also a filter showing the interesting parts only [to a user].</li>
-  <li>Controller: The Controller sets up and coordinates one or more Views. </li>
+  <li>
+    <p>At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You’ll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console (“erl”), the Erlang Emulator. </p>
+  </li>
+  <li>
+    <p>Looking more at the code, you’ll see that lines of code sometimes end with a “dot”. This triggers code execution. As a beginner, it’s the moment when you see error messages and interpretation of error messages is rather difficult. To me, Erlang errors are cryptic, and apparently line numbers in errors were a late innovation. </p>
+  </li>
+  <li>
+    <p>Further, the code you’ll see may contain tuples and atoms, some of the main data types in Erlang. Nota bene, the concept of String is not a data type in Erlang, but rather an Array of characters as in e.g. C. Some people say this make string operations more difficult than in other languages. Other people say, it’s less error prone too. To a beginner, it’s hard to judge.</p>
+  </li>
 </ul>
 
-<p>However, in the context of (mobile) web applications, where views are living in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: </p>
+<h2 id="erlang-modules-and-libraries">Erlang modules and libraries</h2>
 
-<h2 id="how-do-we-serve-views-to-a-client">1. How do we serve “views” to a client?</h2>
-<hr />
-<p>As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.</p>
+<p>Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming language, libraries makes a programmer’s life fun. </p>
 
-<p>In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs require servers to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with new tools for asset management <a href="http://thinkingonthinking.com/MVC-and-Rails-API/">here</a>.</p>
+<p>The magic command to import libraries into your Erlang project is <a href="https://github.com/basho/rebar">“rebar”</a>. Rebar also allows to easily create a new Erlang project. And, rebar is from <a href="http://basho.com/">Basho</a>.</p>
 
-<p>Also, for serving frontends assets, no full application stack is needed. And since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Express.JS and other Node.JS approaches might be interesting to look at too.</p>
+<h2 id="why-erlang">Why Erlang?</h2>
 
-<h2 id="how-to-organize-mvc-modules-on-the-client">2. How to organize “MVC” modules on the client?</h2>
-<hr />
+<p>So far, so good. Erlang programming is about functions and values, and that sounds like no big deal to some. However, the main aspects of Erlang are reflecting on errors when needed, and reliably running concurrent processes. It’s here where the Erlang fun part starts, and other languages just suck (for the skeptics, maybe you can read <a href="http://stackoverflow.com/questions/6923480/java-thread-programming-book">these books</a>).</p>
 
-<p>When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.</p>
+<ul>
+  <li>
+    <p>In Erlang, there seems to be the idea of “let it crash”. In a monolithic application, this may mean the death of an application. In a Unix system, this may mean to kill the process. In Erlang, you get a <a href="http://www.erlang.org/doc/design_principles/sup_princ.html">supervisor</a> that may take care of idling or conflicting processes, and the supervisor may decide to retry, continue, or check later. This is new to me, but I haven’t come across this mentality in any other pogramming language so far.</p>
+  </li>
+  <li>
+    <p>Having better ways to deal with exceptions, you’ll also get better ways to deal with concurrency. It’s rather new to me, but think of a monolithic application that triggers delayed jobs. I can solve this, ok. But maybe in your server cluster, you run multiple applications, and eventually multiple delayed jobs. Hmm… ok, from my experience, you can get <a href="http://en.wikipedia.org/wiki/Race_condition">race conditions</a> and other problems, that are really hard to debug. Erlang to the rescue. With Erlang, you’ll get some ways to have processes check what another process is doing. The mechanisms that you’ll hear people take about seem [monitoringj(http://learnyousomeerlang.com/errors-and-processes#monitors) or linking processes, resulting into process <a href="http://www.erlang.org/doc/getting_started/robustness.html">robustness</a>. Eventuall, you want to study the code of <a href="http://www.rabbitmq.com/">RabbitMQ</a> to see clever ways to deal with message concurrency.</p>
+  </li>
+</ul>
 
-<p>Additionally, there might be multiple MVC’s defined on a client, depending on the current scope of a HTTP conversation (e.g. /protected or /guest or /admin).</p>
+<h2 id="conclusions">Conclusions</h2>
 
-<p>So, far in Backbone, my application structure starts to look as follows:</p>
+<p>So, my main conclusions:</p>
 
-<pre><code>/dashboard
-  app.js
-  main.js
-  
-  /collections
-  /models
-  /views
-  /templates
-
-/welcome
-  app.js
-  main.js
-  
-  /collections
-  /models
-  /views
-  /templates
-</code></pre>
-
+<ul>
+  <li>
+    <p>Erlang provides a dynamic toolchain that helps rethinking concurrency and fault-tolerance. Some more meta-discussions and exmaples on Erlang are these: John-Paul Bader discusses more on <a href="http://smyck.net/2012/04/22/why-erlang/">why erlang here</a>. Peer Stritzinger together with <a href="http://www.embedded-brains.de/index.php?id=1&amp;L=1">Embedded-brains</a> use Erlang for <a href="http://www.stritzinger.com/Peer-Stritzinger.GmbH/Hydraprog-3.html">scalable hardware</a>. <a href="https://github.com/basho">Basho</a> implemented <a href="http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html">Amazon’s Dynamo</a> with Erlang, and the company is a great contributor and promotor to the Erlang community.</p>
+  </li>
+  <li>
+    <p>Good places to get started with Erlang are <a href="http://smyck.net/2013/02/17/how-to-set-up-a-basic-http-api-with-erlang-in-10-minutes/">Setup an API in 10 minutes</a> and <a href="http://learnyousomeerlang.com/">http://learnyousomeerlang.com/</a>. Also, this blog post is a great overview: <a href="http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html">http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html</a>.</p>
+  </li>
+  <li>
+    <p>OTP are the Erlang libraries that help in designing distributed applications. See <a href="http://learnyousomeerlang.com/what-is-otp">http://learnyousomeerlang.com/what-is-otp</a></p>
+  </li>
+  <li>
+    <p>If you are into web development, see <a href="https://github.com/elixir-lang/elixir">Elixir</a> and <a href="https://github.com/elixir-lang/dynamo">Dynamo</a>. This looks the place to start writing your next hit-in-one API.</p>
+  </li>
+</ul>
 
   </div>
 
@@ -194,7 +199,7 @@
   var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
   analytics.track('Post', {
-      title: "What is a modular web application?"
+      title: "What is Erlang?"
     });
 </script>
 
