@@ -17,7 +17,7 @@ As someone who is new to Erlang, a first question must be asked: What is Erlang?
 
 ## Erlang modules and libraries
 
-Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming languages, libraries make a programmer's life fun. 
+Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming language, libraries make a programmer's life fun. 
 
 The magic command to import libraries into your Erlang project is ["rebar"](https://github.com/basho/rebar). Rebar also allows to easily create a new Erlang project. And, rebar is from [Basho](http://basho.com/).
 
