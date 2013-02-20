@@ -7,7 +7,7 @@ You will touch Erlang at some point, if you follow the development of distribute
 
 As someone who is new to Erlang, a first question must be asked: What is Erlang? Let's look at different aspects.
 
-## How does Erlang code look? 
+## How does Erlang code look like? 
 
 * At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You'll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console ("erl"), the Erlang Emulator. 
 
