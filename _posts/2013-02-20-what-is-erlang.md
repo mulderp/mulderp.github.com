@@ -9,7 +9,7 @@ As someone who is new to Erlang, a first question must be asked: What is Erlang?
 
 ## How does Erlang code look like? 
 
-* At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You'll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console ("erl"), the Erlang Emulator. 
+* At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You'll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console, the Erlang Emulator ("ERL"). 
 
 * Looking more at the code, you'll see that lines of code sometimes end with a "dot". This triggers code execution. As a beginner, it's the moment when you see error messages and interpretation of error messages is rather difficult. To me, Erlang errors are cryptic, and apparently line numbers in errors were a late innovation. 
 
