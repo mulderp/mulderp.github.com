@@ -32,7 +32,7 @@ What Rails is to a database-driven web application, Chef might be to infrastruct
 
 * Vagrant is your infrastructure lab. I wrote about some first steps with Vagrant, [here](http://thinkingonthinking.com/An-experiment-with-Vagrant-and-Neo4J/), [here](http://thinkingonthinking.com/building-a-Vagrant-base-box/) and [here](http://thinkingonthinking.com/minimum-nginx-node-with-librarian-chef/).
 
-## 1. Your shiny new Ruby 2.0 and Rails 4.0 beta stack
+## 2. Your shiny new Ruby 2.0 and Rails 4.0 beta stack
 
 I hope the abstractions above can give you some taste of what is coming up in this section. First, let's think on a Rails application stack:
 
@@ -91,13 +91,58 @@ Here are some learnings:
 
 * Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see [chef-rvm](https://github.com/fnichol/chef-rvm) and [chef-rbenv](https://github.com/fnichol/chef-rbenv). Also, I found [this Ruby wrapper cookbook](https://github.com/mlafeldt/ruby-cookbook) by Matthias Lafeldt interesting, and this is certainly on my list for further investigation.
 
-* Passenger's setup is either build
+* Passenger is a Ruby gem that is partly compiled into Nginx or loaded as module in Apache. Let's look at the nginx setup. The tricky parts are the system paths, thanks a lot to [@jtimberman](https://twitter.com/jtimberman) for helping me understand this better. There are interesting details behind this in yesterday's [office hours with Joshua](http://www.youtube.com/watch?v=ddMLvMvOUfg&feature=youtu.be).
 
 <pre>
-
+  ...
+  "nginx": {
+    "version": "1.2.5",
+    "user": "deploy",
+    "init_style": "init",
+    "modules": [
+      "http_stub_status_module",
+      "http_ssl_module",
+      "http_gzip_static_module"
+    ],
+    "passenger": {
+      "version": "3.0.18",
+      "gem_binary": "/usr/local/rvm/wrappers/ruby-2.0.0-p0/gem"
+    },
+    "configure_flags": [
+      "--add-module=/usr/local/rvm/gems/ruby-2.0.0-p0/gems/passenger-3.0.18/ext/nginx"
+    ],
+  ...
 </pre>
 
 
+* Add some gems that you mostly will need: Rake, Bundler and Rails:
+
+<pre>
+  ...
+  "rvm": {
+    "rubies": ["2.0.0-p0"],
+    "default_ruby": "2.0.0-p0",
+    "vagrant": { "system_chef_solo" : "/opt/ruby/bin/chef-solo" },
+    "gems": {
+      "1.9.3-p0": [
+        {"name": "bundler"},
+        {"name": "rake"},
+        {"name": "rails", "version": "4.0.0.beta1" }
+      ]
+    }
+  ...
+</pre>
+
+Maybe there are more details, but maybe you are curious to just see the [chef-rails-stack](https://github.com/mulderp/chef-rails-stack/tree/rails4_stack) at work.
+
+Let's try a provisioning.
+
+<pre>
+  vagrant up
+</pre>
+
+
+So, what do you think?
 
 
 
