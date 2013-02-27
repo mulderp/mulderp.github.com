@@ -26,7 +26,7 @@ What Rails is to a database-driven web application, Chef might be to infrastruct
 
 * One of the most important abstractions in Chef are cookbooks. Cookbooks are similar to Gems in Ruby. Cookbooks bundle code (= "recipes") that can be configured with "attributes" and configuration "templates". In a way, cookbooks apply the MVC pattern: Data models are attributes, views are templates, and controllers are recipes. Cookbooks are opinionated, some more than others, but my advice for installation of services, is to look at [community cookbooks](http://community.opscode.com) first, and then at opinions found in cookbooks found at Github.
 
-* As we just tackle a single node setup, Chef-Solo provisioning with Vagrant is a sweet combination. Vagrant takes care of your Unix VM, and Chef-Solo can easily load cookbooks from your local environment.
+* As we just tackle a single node setup, Vagrant and Chef-Solo are a sweet combination. Vagrant takes care of your Unix VM, and Chef-Solo can easily load cookbooks from your local environment.
 
 * The setup of a web infrastructure stack will require multiple cookbooks, and you'll quickly feel that downloading cookbooks yourself, and variation of cookbooks should be managed with some tool. So far, I tried 2 tools to manage cookbooks: Berkshelf and Librarian-Chef. Whereas Librarian manages quite well the download part, Berkshelf helps in solving package problems at hand. Think of Berkshelf as the Bundler for Ruby gems and in let's say 80% of cases, you'll just want to download cookbooks and can live with cookbook defaults, rather than deriving your own version of a cookbook. Berkshelf helps to abstract away the details when needed.
 
@@ -41,7 +41,9 @@ I hope the abstractions above can give you some taste of what is coming up in th
 * PostgreSQL to deal with data storage
 * Nginx as proxy for logging
 
-We could define the stack's dependencies with Berkshelf in the Berksfile as follows:
+In Chef language, you would want to look at application cookbooks, such as [application_ruby](http://community.opscode.com/cookbooks/application_ruby) or [passenger_apache2](http://community.opscode.com/cookbooks/passenger_apache2), however, for fun and for learning let's look into the setup of a custom stack.
+
+The dependencies for above's stack could be defined with Berkshelf in the Berksfile as follows:
 
 <pre>
 site :opscode
@@ -60,10 +62,9 @@ Running a:
   berks install
 </pre>
 
-imports all cookbooks to your local Chef environment. Next, we need to setup the Vagrantfile to use Chef-solo provisioning:
+imports the cookbooks to your local Chef environment. Next, we need to setup the Vagrantfile to use Chef-solo provisioning:
 
 <pre>
-
 require 'multi_json'
 require 'berkshelf/vagrant'
 
@@ -82,12 +83,17 @@ Vagrant::Config.run do |config|
 end
 </pre>
 
-Ha, there is node.json loaded, and that is Chef's way to define a node setup. Looking more carefully above, there are 2 details: The "run_list" and the "chef.json" part. The run_list defines, how a node conversion flows, while the json overrides attributes from cookbooks. The setup of these can be tricky. Here are some learnings.
+Ha, there is node.json loaded, and that is Chef's way to define a node setup. Looking more carefully above, there are 2 details: The "run_list" and the "chef.json" part. The run_list defines, how a node conversion flows, while the json overrides attributes from cookbooks. 
 
-This stack can be formalized in a so-called '''node.json''':
+The setup of these can be tricky.
+
+Here are some learnings:
+
+* Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see [chef-rvm](https://github.com/fnichol/chef-rvm) and [chef-rbenv](https://github.com/fnichol/chef-rbenv). Also, I found [this Ruby wrapper cookbook](https://github.com/mlafeldt/ruby-cookbook) by Matthias Lafeldt interesting, and this is certainly on my list for further investigation.
+
+* Passenger's setup is either build
 
 <pre>
-
 
 </pre>
 
