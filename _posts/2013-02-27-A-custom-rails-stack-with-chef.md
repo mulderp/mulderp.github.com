@@ -18,7 +18,7 @@ With all these choices, how can you test opinions on a web stack that are good f
 
 Particulary, how can you test opinions in the context of a database-driven web application such as Ruby-on-Rails? 
 
-I try to answer this with the help of 3 tools: Chef-solo, Berkshelf and Vagrant.
+I try to answer this with the help of 3 tools: [Chef-solo](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) and [Berkshelf](http://berkshelf.com/).
 
 ## 1. Abstractions in Chef
 
@@ -28,7 +28,7 @@ What Rails is to a database-driven web application, Chef might be to infrastruct
 
 * As we just tackle a single node setup, Vagrant and Chef-Solo are a sweet combination. Vagrant takes care of your Unix VM, and Chef-Solo can easily load cookbooks from your local environment.
 
-* The setup of a web infrastructure stack will require multiple cookbooks, and you'll quickly feel that downloading cookbooks yourself, and variation of cookbooks should be managed with some tool. So far, I tried 2 tools to manage cookbooks: Berkshelf and Librarian-Chef. Whereas Librarian manages quite well the download part, Berkshelf helps in solving package problems at hand. Think of Berkshelf as the Bundler for Ruby gems and in let's say 80% of cases, you'll just want to download cookbooks and can live with cookbook defaults, rather than deriving your own version of a cookbook. Berkshelf helps to abstract away the details when needed.
+* The setup of a web infrastructure stack will require multiple cookbooks, and you'll quickly feel that downloading cookbooks yourself, and variation of cookbooks should be managed with some tool. So far, I tried 2 tools to manage cookbooks: [Berkshelf](http://berkshelf.com/) and [Librarian-Chef](https://github.com/applicationsonline/librarian). Whereas Librarian manages quite well the download part, Berkshelf helps in solving package problems at hand. Think of Berkshelf as the Bundler for Ruby gems and in let's say 80% of cases, you'll just want to download cookbooks and can live with cookbook defaults, rather than deriving your own version of a cookbook. Berkshelf helps to abstract away the details when needed.
 
 * Vagrant is your infrastructure lab. I wrote about some first steps with Vagrant, [here](http://thinkingonthinking.com/An-experiment-with-Vagrant-and-Neo4J/), [here](http://thinkingonthinking.com/building-a-Vagrant-base-box/) and [here](http://thinkingonthinking.com/minimum-nginx-node-with-librarian-chef/).
 
@@ -43,7 +43,7 @@ I hope the abstractions above can give you some taste of what is coming up in th
 
 In Chef language, you would want to look at application cookbooks, such as [application_ruby](http://community.opscode.com/cookbooks/application_ruby) or [passenger_apache2](http://community.opscode.com/cookbooks/passenger_apache2), however, for fun and for learning let's look into the setup of a custom stack.
 
-The dependencies for above's stack could be defined with Berkshelf in the Berksfile as follows:
+The dependencies for above's stack could be defined with [Berkshelf](http://berkshelf.com/) in the Berksfile as follows:
 
 <pre>
 site :opscode
@@ -89,7 +89,7 @@ The setup of these can be tricky.
 
 Here are some learnings:
 
-* Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see [chef-rvm](https://github.com/fnichol/chef-rvm) and [chef-rbenv](https://github.com/fnichol/chef-rbenv). Also, I found [this Ruby wrapper cookbook](https://github.com/mlafeldt/ruby-cookbook) by Matthias Lafeldt interesting, and this is certainly on my list for further investigation.
+* Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see [chef-rvm](https://github.com/fnichol/chef-rvm) and [chef-rbenv](https://github.com/fnichol/chef-rbenv). Also, I found [this Ruby wrapper cookbook](https://github.com/mlafeldt/ruby-cookbook) by [Matthias Lafeldt](https://twitter.com/mlafeldt) interesting, and this is certainly on my list for further investigation.
 
 * Passenger is a Ruby gem that is partly compiled into Nginx or loaded as module in Apache. Let's look at the nginx setup. The tricky parts are the system paths, thanks a lot to [@jtimberman](https://twitter.com/jtimberman) for helping me understand this better. There are interesting details behind this in yesterday's [office hours with Joshua](http://www.youtube.com/watch?v=ddMLvMvOUfg&feature=youtu.be).
 
@@ -138,11 +138,21 @@ Maybe there are more details, but maybe you are curious to just see the [chef-ra
 Let's try a provisioning.
 
 <pre>
-  vagrant up
+  $ bin/vagrant up
+  $ bin/vagrant ssh
+</pre>
+
+And:
+
+<pre>
+  vagrant@Ubuntu-11:~$ ruby -v
+  ruby 2.0.0p0 (2013-02-24 revision 39474) [x86_64-linux]
+  vagrant@Ubuntu-11:~$ rails -v
+  Rails 4.0.0.beta1
 </pre>
 
 
-So, what do you think?
+So, what do you think? There is more tuning needed, like setup of the nginx virtual host that connect to the Rails application. Also, the nginx conversion step might break, and users are missing. Any feedback would be interesting. Thanks for reading and sharing!
 
 
 
