@@ -18,7 +18,7 @@ With all these choices, how can you test opinions on a web stack that are good f
 
 Particulary, how can you test opinions in the context of a database-driven web application such as Ruby-on-Rails? 
 
-I try to answer this with the help of 3 tools: [Chef-solo](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) and [Berkshelf](http://berkshelf.com/).
+I try to answer this with the help of 2 tools: [Chef-solo](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) and [Berkshelf](http://berkshelf.com/).
 
 ## 1. Abstractions in Chef
 
@@ -41,7 +41,9 @@ I hope the abstractions above can give you some taste of what is coming up in th
 * PostgreSQL to deal with data storage
 * Nginx as proxy for logging
 
-In Chef language, you would want to look at application cookbooks, such as [application_ruby](http://community.opscode.com/cookbooks/application_ruby) or [passenger_apache2](http://community.opscode.com/cookbooks/passenger_apache2), however, for fun and for learning let's look into the setup of a custom stack.
+In Chef language, you would want to look at application cookbooks, such as [application_ruby](http://community.opscode.com/cookbooks/application_ruby) or [passenger_apache2](http://community.opscode.com/cookbooks/passenger_apache2). Nathen Harvey shows how to get going with the passenger_apache2 cookbook in his [blog](http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/).
+
+But for fun and for learning let's look into the setup of a custom stack.
 
 The dependencies for above's stack could be defined with [Berkshelf](http://berkshelf.com/) in the Berksfile as follows:
 
@@ -89,7 +91,7 @@ The setup of these can be tricky.
 
 Here are some learnings:
 
-* Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see [chef-rvm](https://github.com/fnichol/chef-rvm) and [chef-rbenv](https://github.com/fnichol/chef-rbenv). Also, I found [this Ruby wrapper cookbook](https://github.com/mlafeldt/ruby-cookbook) by [Matthias Lafeldt](https://twitter.com/mlafeldt) interesting, and this is certainly on my list for further investigation.
+* Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see [chef-rvm](https://github.com/fnichol/chef-rvm) and [chef-rbenv](https://github.com/fnichol/chef-rbenv). Also, I found [this Ruby wrapper cookbook](https://github.com/mlafeldt/ruby-cookbook) by [Mathias Lafeldt](https://twitter.com/mlafeldt) interesting, and this is certainly on my list for further investigation.
 
 * Passenger is a Ruby gem that is partly compiled into Nginx or loaded as module in Apache. Let's look at the nginx setup. The tricky parts are the system paths, thanks a lot to [@jtimberman](https://twitter.com/jtimberman) for helping me understand this better. There are interesting details behind this in yesterday's [office hours with Joshua](http://www.youtube.com/watch?v=ddMLvMvOUfg&feature=youtu.be).
 
