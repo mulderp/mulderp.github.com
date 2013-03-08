@@ -4,13 +4,202 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-02-20T21:47:24+01:00</updated>
+ <updated>2013-03-08T18:15:50+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Fashion and Business models</title>
+   <link href="http://mulderp.github.com/fashion-and-business-models"/>
+   <updated>2013-03-08T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/fashion-and-business-models</id>
+   <content type="html">&lt;p&gt;In the lean startup circle there was recently a discussion on how small companies have actually enough resources to experiment with a business model. As a software developer with &lt;a href=&quot;....&quot;&gt;sideprojects&lt;/a&gt;, I think this question applies even more. How can let’s say 1-2 persons, who work as full-time employees, actually generate viable options for future products or businesses? Strangely, a look at the world of fashion may give some ideas.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The first core idea is about prototyping and design. In general, it’s hard to to explain what prototyping is. Protoyping is more about how something works, than what was initially defined. When a picture is worth a thousands words, a prototype is worth a thousand pictures. The important thing on a prototype is that it quickly tells you how an idea can look, how it feels and why you could like it. In the &lt;a href=&quot;http://www.fashionindie.com/runway-to-red-carpet-in-armani-prive-haute-couture/&quot;&gt;fashion pyramid&lt;/a&gt;, prototyping is about what happens at the top of the pyramid. It’s about handcrafting and materializing an idea. But it is also about providing ideas to a whole industrial branch, since the memes that are shown on runways easily spread through magazines and television shows, and blogs nowadays.&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Building a flexible Rails Stack with Chef</title>
+   <link href="http://mulderp.github.com/A-custom-rails-stack-with-chef"/>
+   <updated>2013-02-27T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/A-custom-rails-stack-with-chef</id>
+   <content type="html">&lt;p&gt;Most of us who develop Ruby based web applications will know that the setup and configuration of a stack of web infrastructure can be tricky:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;building Rubies including Gemsets often require libraries that look like strings of &lt;a href=&quot;http://en.wikipedia.org/wiki/CAPTCHA&quot;&gt;captcha’s&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;setup of webservers (nginx or apache) have special compile flags and configuration settings too&lt;/li&gt;
+  &lt;li&gt;adaptors for Rack (Passenger or Unicorn nowadays) need to be built or wrapped in scripts&lt;/li&gt;
+  &lt;li&gt;databases are evolving (RDBMS, document-stores, key-value stores, graph db’s … ) and often come in pairs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additionally, your Unix most likely will need some essential build packages such as compilers, git, image processors, messaging queues, mailservers, etc, as well as Unix users and groups for basic security settings. Last but not least, there are different Unix distributions which bring additional surprises. &lt;/p&gt;
+
+&lt;p&gt;So, even when opinions in Rails keep some decisions simple, a web development stack might differ from the one that you or your customer will use in production.&lt;/p&gt;
+
+&lt;p&gt;With all these choices, how can you test opinions on a web stack that are good for you? &lt;/p&gt;
+
+&lt;p&gt;Particulary, how can you test opinions in the context of a database-driven web application such as Ruby-on-Rails? &lt;/p&gt;
+
+&lt;p&gt;I try to answer this with the help of 3 tools: &lt;a href=&quot;http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html&quot;&gt;Chef-solo&lt;/a&gt; and &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;abstractions-in-chef&quot;&gt;1. Abstractions in Chef&lt;/h2&gt;
+
+&lt;p&gt;What Rails is to a database-driven web application, Chef might be to infrastructure: Opinions in code. But as far as I can judge, the ecosystem of infrastructure is much more diverse, than the different components of a model-view-controller design. Let’s see how Chef attempts to abstract away the diversity in infrastructure:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;One of the most important abstractions in Chef are cookbooks. Cookbooks are similar to Gems in Ruby. Cookbooks bundle code (= “recipes”) that can be configured with “attributes” and configuration “templates”. In a way, cookbooks apply the MVC pattern: Data models are attributes, views are templates, and controllers are recipes. Cookbooks are opinionated, some more than others, but my advice for installation of services, is to look at &lt;a href=&quot;http://community.opscode.com&quot;&gt;community cookbooks&lt;/a&gt; first, and then at opinions found in cookbooks found at Github.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As we just tackle a single node setup, Vagrant and Chef-Solo are a sweet combination. Vagrant takes care of your Unix VM, and Chef-Solo can easily load cookbooks from your local environment.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The setup of a web infrastructure stack will require multiple cookbooks, and you’ll quickly feel that downloading cookbooks yourself, and variation of cookbooks should be managed with some tool. So far, I tried 2 tools to manage cookbooks: &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt; and &lt;a href=&quot;https://github.com/applicationsonline/librarian&quot;&gt;Librarian-Chef&lt;/a&gt;. Whereas Librarian manages quite well the download part, Berkshelf helps in solving package problems at hand. Think of Berkshelf as the Bundler for Ruby gems and in let’s say 80% of cases, you’ll just want to download cookbooks and can live with cookbook defaults, rather than deriving your own version of a cookbook. Berkshelf helps to abstract away the details when needed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Vagrant is your infrastructure lab. I wrote about some first steps with Vagrant, &lt;a href=&quot;http://thinkingonthinking.com/An-experiment-with-Vagrant-and-Neo4J/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;http://thinkingonthinking.com/building-a-Vagrant-base-box/&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://thinkingonthinking.com/minimum-nginx-node-with-librarian-chef/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;your-shiny-new-ruby-20-and-rails-40-beta-stack&quot;&gt;2. Your shiny new Ruby 2.0 and Rails 4.0 beta stack&lt;/h2&gt;
+
+&lt;p&gt;I hope the abstractions above can give you some taste of what is coming up in this section. First, let’s think on a Rails application stack:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RVM to manage Rubies (could be rbenv too)&lt;/li&gt;
+  &lt;li&gt;Passenger to consume and respond with requests for/from Rack (could be Unicorn)&lt;/li&gt;
+  &lt;li&gt;PostgreSQL to deal with data storage&lt;/li&gt;
+  &lt;li&gt;Nginx as proxy for logging&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In Chef language, you would want to look at application cookbooks, such as &lt;a href=&quot;http://community.opscode.com/cookbooks/application_ruby&quot;&gt;application_ruby&lt;/a&gt; or &lt;a href=&quot;http://community.opscode.com/cookbooks/passenger_apache2&quot;&gt;passenger_apache2&lt;/a&gt;, however, for fun and for learning let’s look into the setup of a custom stack.&lt;/p&gt;
+
+&lt;p&gt;The dependencies for above’s stack could be defined with &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt; in the Berksfile as follows:&lt;/p&gt;
+
+&lt;pre&gt;
+site :opscode
+
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'users'
+cookbook 'rvm', :git =&amp;gt; &quot;https://github.com/fnichol/chef-rvm&quot;
+cookbook 'nginx'
+cookbook 'postgresql'
+&lt;/pre&gt;
+
+&lt;p&gt;Running a:&lt;/p&gt;
+
+&lt;pre&gt;
+  berks install
+&lt;/pre&gt;
+
+&lt;p&gt;imports the cookbooks to your local Chef environment. Next, we need to setup the Vagrantfile to use Chef-solo provisioning:&lt;/p&gt;
+
+&lt;pre&gt;
+require 'multi_json'
+require 'berkshelf/vagrant'
+
+Vagrant::Config.run do |config|
+  VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('.', 'node.json').read)
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = [&quot;cookbooks&quot;]
+    chef.json = VAGRANT_JSON
+    chef.log_level = :debug
+  
+    VAGRANT_JSON['run_list'].each do |recipe|
+      chef.add_recipe(recipe)
+    end if VAGRANT_JSON['run_list']
+  end
+end
+&lt;/pre&gt;
+
+&lt;p&gt;Ha, there is node.json loaded, and that is Chef’s way to define a node setup. Looking more carefully above, there are 2 details: The “run_list” and the “chef.json” part. The run_list defines, how a node conversion flows, while the json overrides attributes from cookbooks. &lt;/p&gt;
+
+&lt;p&gt;The setup of these can be tricky.&lt;/p&gt;
+
+&lt;p&gt;Here are some learnings:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see &lt;a href=&quot;https://github.com/fnichol/chef-rvm&quot;&gt;chef-rvm&lt;/a&gt; and &lt;a href=&quot;https://github.com/fnichol/chef-rbenv&quot;&gt;chef-rbenv&lt;/a&gt;. Also, I found &lt;a href=&quot;https://github.com/mlafeldt/ruby-cookbook&quot;&gt;this Ruby wrapper cookbook&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/mlafeldt&quot;&gt;Matthias Lafeldt&lt;/a&gt; interesting, and this is certainly on my list for further investigation.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Passenger is a Ruby gem that is partly compiled into Nginx or loaded as module in Apache. Let’s look at the nginx setup. The tricky parts are the system paths, thanks a lot to &lt;a href=&quot;https://twitter.com/jtimberman&quot;&gt;@jtimberman&lt;/a&gt; for helping me understand this better. There are interesting details behind this in yesterday’s &lt;a href=&quot;http://www.youtube.com/watch?v=ddMLvMvOUfg&amp;amp;feature=youtu.be&quot;&gt;office hours with Joshua&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+  ...
+  &quot;nginx&quot;: {
+    &quot;version&quot;: &quot;1.2.5&quot;,
+    &quot;user&quot;: &quot;deploy&quot;,
+    &quot;init_style&quot;: &quot;init&quot;,
+    &quot;modules&quot;: [
+      &quot;http_stub_status_module&quot;,
+      &quot;http_ssl_module&quot;,
+      &quot;http_gzip_static_module&quot;
+    ],
+    &quot;passenger&quot;: {
+      &quot;version&quot;: &quot;3.0.18&quot;,
+      &quot;gem_binary&quot;: &quot;/usr/local/rvm/wrappers/ruby-2.0.0-p0/gem&quot;
+    },
+    &quot;configure_flags&quot;: [
+      &quot;--add-module=/usr/local/rvm/gems/ruby-2.0.0-p0/gems/passenger-3.0.18/ext/nginx&quot;
+    ],
+  ...
+&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add some gems that you mostly will need: Rake, Bundler and Rails:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+  ...
+  &quot;rvm&quot;: {
+    &quot;rubies&quot;: [&quot;2.0.0-p0&quot;],
+    &quot;default_ruby&quot;: &quot;2.0.0-p0&quot;,
+    &quot;vagrant&quot;: { &quot;system_chef_solo&quot; : &quot;/opt/ruby/bin/chef-solo&quot; },
+    &quot;gems&quot;: {
+      &quot;1.9.3-p0&quot;: [
+        {&quot;name&quot;: &quot;bundler&quot;},
+        {&quot;name&quot;: &quot;rake&quot;},
+        {&quot;name&quot;: &quot;rails&quot;, &quot;version&quot;: &quot;4.0.0.beta1&quot; }
+      ]
+    }
+  ...
+&lt;/pre&gt;
+
+&lt;p&gt;Maybe there are more details, but maybe you are curious to just see the &lt;a href=&quot;https://github.com/mulderp/chef-rails-stack/tree/rails4_stack&quot;&gt;chef-rails-stack&lt;/a&gt; at work.&lt;/p&gt;
+
+&lt;p&gt;Let’s try a provisioning.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ bin/vagrant up
+  $ bin/vagrant ssh
+&lt;/pre&gt;
+
+&lt;p&gt;And:&lt;/p&gt;
+
+&lt;pre&gt;
+  vagrant@Ubuntu-11:~$ ruby -v
+  ruby 2.0.0p0 (2013-02-24 revision 39474) [x86_64-linux]
+  vagrant@Ubuntu-11:~$ rails -v
+  Rails 4.0.0.beta1
+&lt;/pre&gt;
+
+&lt;p&gt;So, what do you think? There is more tuning needed, like setup of the nginx virtual host that connect to the Rails application. Also, the nginx conversion step might break, and users are missing. Any feedback would be interesting. Thanks for reading and sharing!&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>What is Erlang?</title>
@@ -21,36 +210,36 @@
 
 &lt;p&gt;As someone who is new to Erlang, a first question must be asked: What is Erlang? Let’s look at different aspects.&lt;/p&gt;
 
-&lt;h2 id=&quot;how-does-erlang-code-look&quot;&gt;How does Erlang code look?&lt;/h2&gt;
+&lt;h2 id=&quot;how-does-erlang-code-look-like&quot;&gt;How does Erlang code look like?&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You’ll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console (“erl”), the Erlang Emulator. &lt;/p&gt;
+    &lt;p&gt;At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You’ll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console, the Erlang Emulator (“ERL”). &lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Looking more at the code, you’ll see that lines of code sometimes end with a “dot”. This triggers code execution. As a beginner, it’s the moment when you see error messages and interpretation of error messages is rather difficult. To me, Erlang errors are cryptic, and apparently line numbers in errors were a late innovation. &lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Further, the code you’ll see may contain tuples and atoms, some of the main data types in Erlang. Nota bene, the concept of String is not a data type in Erlang, but rather an Array of characters as in e.g. C. Some people say this make string operations more difficult than in other languages. Other people say, it’s less error prone too. To a beginner, it’s hard to judge.&lt;/p&gt;
+    &lt;p&gt;Further, the code you’ll see may contain tuples and atoms, some of the main data types in Erlang. Nota bene, the concept of String is not a data type in Erlang, but rather an Array of characters as in e.g. C. Some people say this makes string operations more difficult than in other languages. Other people say, it’s less error prone too. To a beginner, it’s hard to judge.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;erlang-modules-and-libraries&quot;&gt;Erlang modules and libraries&lt;/h2&gt;
 
-&lt;p&gt;Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming language, libraries makes a programmer’s life fun. &lt;/p&gt;
+&lt;p&gt;Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming language, libraries make a programmer’s life fun. &lt;/p&gt;
 
 &lt;p&gt;The magic command to import libraries into your Erlang project is &lt;a href=&quot;https://github.com/basho/rebar&quot;&gt;“rebar”&lt;/a&gt;. Rebar also allows to easily create a new Erlang project. And, rebar is from &lt;a href=&quot;http://basho.com/&quot;&gt;Basho&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;why-erlang&quot;&gt;Why Erlang?&lt;/h2&gt;
 
-&lt;p&gt;So far, so good. Erlang programming is about functions and values, and that sounds like no big deal to some. However, the main aspects of Erlang are reflecting on errors when needed, and reliably running concurrent processes. It’s here where the Erlang fun part starts, and other languages just suck (for the skeptics, maybe you can read &lt;a href=&quot;http://stackoverflow.com/questions/6923480/java-thread-programming-book&quot;&gt;these books&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;So far, so good. Erlang programming is about functions and values, and that sounds like no big deal to some. However, the main aspects of Erlang are reflecting on errors when needed, and reliably running concurrent processes. It’s here where the Erlang fun part starts, and other languages just suck (for the skeptics, maybe you can read &lt;a href=&quot;http://stackoverflow.com/questions/6923480/java-thread-programming-book&quot;&gt;the books suggested here&lt;/a&gt;).&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;In Erlang, there seems to be the idea of “let it crash”. In a monolithic application, this may mean the death of an application. In a Unix system, this may mean to kill the process. In Erlang, you get a &lt;a href=&quot;http://www.erlang.org/doc/design_principles/sup_princ.html&quot;&gt;supervisor&lt;/a&gt; that may take care of idling or conflicting processes, and the supervisor may decide to retry, continue, or check later. This is new to me, but I haven’t come across this mentality in any other pogramming language so far.&lt;/p&gt;
+    &lt;p&gt;In Erlang, there seems to be the idea of “let it crash”. In a monolithic application, this usually means the death of an application. In a Unix system, this may mean to kill a process. In Erlang, you get a &lt;a href=&quot;http://www.erlang.org/doc/design_principles/sup_princ.html&quot;&gt;supervisor&lt;/a&gt; that may take care of this, when a process is idling or conflicting with another process. The supervisor may decide to retry, continue, or check later. This is new to me, but I haven’t come across this mentality in any other pogramming language so far.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Having better ways to deal with exceptions, you’ll also get better ways to deal with concurrency. It’s rather new to me, but think of a monolithic application that triggers delayed jobs. I can solve this, ok. But maybe in your server cluster, you run multiple applications, and eventually multiple delayed jobs. Hmm… ok, from my experience, you can get &lt;a href=&quot;http://en.wikipedia.org/wiki/Race_condition&quot;&gt;race conditions&lt;/a&gt; and other problems, that are really hard to debug. Erlang to the rescue. With Erlang, you’ll get some ways to have processes check what another process is doing. The mechanisms that you’ll hear people take about seem [monitoringj(http://learnyousomeerlang.com/errors-and-processes#monitors) or linking processes, resulting into process &lt;a href=&quot;http://www.erlang.org/doc/getting_started/robustness.html&quot;&gt;robustness&lt;/a&gt;. Eventuall, you want to study the code of &lt;a href=&quot;http://www.rabbitmq.com/&quot;&gt;RabbitMQ&lt;/a&gt; to see clever ways to deal with message concurrency.&lt;/p&gt;
+    &lt;p&gt;Having better ways to deal with exceptions, you’ll also get better ways to deal with concurrency. It’s rather new to me, but to understand why this helps, think of a monolithic application that triggers delayed jobs. If you run you run multiple applications in your server cluster, and have eventually multiple delayed jobs, from my experience, you can get &lt;a href=&quot;http://en.wikipedia.org/wiki/Race_condition&quot;&gt;race conditions&lt;/a&gt; and other problems, that are really hard to debug. Erlang to the rescue. With Erlang, you’ll get some ways to have processes check what another process is doing. The mechanisms that you’ll hear people talk about are &lt;a href=&quot;http://learnyousomeerlang.com/errors-and-processes#monitors&quot;&gt;monitoring&lt;/a&gt; or linking processes, resulting into process &lt;a href=&quot;http://www.erlang.org/doc/getting_started/robustness.html&quot;&gt;robustness&lt;/a&gt;. The code of &lt;a href=&quot;http://www.rabbitmq.com/&quot;&gt;RabbitMQ&lt;/a&gt; must show clever ways to deal with message concurrency.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -60,13 +249,13 @@
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Erlang provides a dynamic toolchain that helps rethinking concurrency and fault-tolerance. Some more meta-discussions and exmaples on Erlang are these: John-Paul Bader discusses more on &lt;a href=&quot;http://smyck.net/2012/04/22/why-erlang/&quot;&gt;why erlang here&lt;/a&gt;. Peer Stritzinger together with &lt;a href=&quot;http://www.embedded-brains.de/index.php?id=1&amp;amp;L=1&quot;&gt;Embedded-brains&lt;/a&gt; use Erlang for &lt;a href=&quot;http://www.stritzinger.com/Peer-Stritzinger.GmbH/Hydraprog-3.html&quot;&gt;scalable hardware&lt;/a&gt;. &lt;a href=&quot;https://github.com/basho&quot;&gt;Basho&lt;/a&gt; implemented &lt;a href=&quot;http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html&quot;&gt;Amazon’s Dynamo&lt;/a&gt; with Erlang, and the company is a great contributor and promotor to the Erlang community.&lt;/p&gt;
+    &lt;p&gt;Erlang provides a dynamic toolchain that helps rethinking concurrency and fault-tolerance. Some more meta-discussions and examples on Erlang are John-Paul Bader introduction on &lt;a href=&quot;http://smyck.net/2012/04/22/why-erlang/&quot;&gt;why erlang here&lt;/a&gt;. &lt;a href=&quot;http://jlouisramblings.blogspot.de/&quot;&gt;JLouis&lt;/a&gt; ramblings on fault tolerant systems in Erlang. &lt;a href=&quot;https://github.com/basho&quot;&gt;Basho&lt;/a&gt; implemented &lt;a href=&quot;http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html&quot;&gt;Amazon’s Dynamo&lt;/a&gt; with Erlang, and the company is a great contributor and promotor to the Erlang community. And if you are not so much into web, Peer Stritzinger together with &lt;a href=&quot;http://www.embedded-brains.de/index.php?id=1&amp;amp;L=1&quot;&gt;Embedded-brains&lt;/a&gt; use Erlang for &lt;a href=&quot;http://www.stritzinger.com/Peer-Stritzinger.GmbH/Hydraprog-3.html&quot;&gt;scalable hardware&lt;/a&gt;.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Good places to get started with Erlang are &lt;a href=&quot;http://smyck.net/2013/02/17/how-to-set-up-a-basic-http-api-with-erlang-in-10-minutes/&quot;&gt;Setup an API in 10 minutes&lt;/a&gt; and &lt;a href=&quot;http://learnyousomeerlang.com/&quot;&gt;http://learnyousomeerlang.com/&lt;/a&gt;. Also, this blog post is a great overview: &lt;a href=&quot;http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html&quot;&gt;http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html&lt;/a&gt;.&lt;/p&gt;
+    &lt;p&gt;Good places to get started with Erlang are John Paul’s &lt;a href=&quot;http://smyck.net/2013/02/17/how-to-set-up-a-basic-http-api-with-erlang-in-10-minutes/&quot;&gt;Setup an API in 10 minutes&lt;/a&gt; and &lt;a href=&quot;http://learnyousomeerlang.com/&quot;&gt;http://learnyousomeerlang.com/&lt;/a&gt;. Also, this blog post is a great overview: &lt;a href=&quot;http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html&quot;&gt;http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html&lt;/a&gt;. And &lt;a href=&quot;http://de.slideshare.net/pavlobaron/let-it-crash-seacon11-pavlo-baron&quot;&gt;Pavlo Baron&lt;/a&gt; does a lot of convincing work on &lt;a href=&quot;http://de.slideshare.net/pavlobaron/erlang-is-a-one-way&quot;&gt;using Erlang&lt;/a&gt;.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;OTP are the Erlang libraries that help in designing distributed applications. See &lt;a href=&quot;http://learnyousomeerlang.com/what-is-otp&quot;&gt;http://learnyousomeerlang.com/what-is-otp&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;OTP are the Erlang libraries that help in designing distributed applications. See &lt;a href=&quot;http://learnyousomeerlang.com/what-is-otp&quot;&gt;http://learnyousomeerlang.com/what-is-otp&lt;/a&gt;. The guy to ask on what’s OTP is &lt;a href=&quot;https://www.erlang-factory.com/upload/presentations/719/francesco-otp.pdf&quot;&gt;Francesco Cesarini&lt;/a&gt;.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;If you are into web development, see &lt;a href=&quot;https://github.com/elixir-lang/elixir&quot;&gt;Elixir&lt;/a&gt; and &lt;a href=&quot;https://github.com/elixir-lang/dynamo&quot;&gt;Dynamo&lt;/a&gt;. This looks the place to start writing your next hit-in-one API.&lt;/p&gt;
@@ -700,47 +889,59 @@ So, that's all to get the webserver running. Now, it would be cool to get some b
 
 &lt;p&gt;Here are some steps:&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Upgrade your VirtualBox to the latest Version; as time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue &lt;a href=&quot;https://github.com/jedi4ever/veewee/issues/519&quot;&gt;here&lt;/a&gt; )&lt;/li&gt;
-  &lt;li&gt;Make sure you have the gems VeeWee and Vagrant installed:&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&quot;upgrade-your-virtualbox-to-the-latest-version&quot;&gt;1.  Upgrade your VirtualBox to the latest Version&lt;/h2&gt;
+
+&lt;p&gt;As time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue &lt;a href=&quot;https://github.com/jedi4ever/veewee/issues/519&quot;&gt;here&lt;/a&gt; )&lt;/p&gt;
+
+&lt;h2 id=&quot;veewee-and-vagrant&quot;&gt;2.  VeeWee and Vagrant;&lt;/h2&gt;
+
+&lt;p&gt;Make sure you have the gems VeeWee and Vagrant installed:&lt;/p&gt;
+
 &lt;pre&gt;
-     gem install vagrant
-     gem install veewee
+         gem install vagrant
+         gem install veewee
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Now, You’ll want to get a list with possible ISO images for baseboxes. This command list baseboxes:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;list-baseboxes&quot;&gt;3.  List baseboxes&lt;/h2&gt;
+
+&lt;p&gt;Now, You’ll want to get a list with possible ISO images for baseboxes. This command list baseboxes:&lt;/p&gt;
+
 &lt;pre&gt;
-    vagrant basebox templates
+        vagrant basebox templates
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;As you’ll see in the list you have quite a lot of options. Do a:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;define-a-basebox&quot;&gt;4.  Define a basebox&lt;/h2&gt;
+
+&lt;p&gt;As you’ll see in the list you have quite a lot of options. Do a:&lt;/p&gt;
+
 &lt;pre&gt;
      vagrant basebox define Ubuntu-11.04 ubuntu-11.04-server-amd64 -d
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;check-the-iso-image&quot;&gt;5. Check the ISO Image&lt;/h2&gt;
+
+&lt;p&gt;Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:&lt;/p&gt;
+
 &lt;pre&gt;
     ubuntu-base/definitions/Ubuntu-11.04/definition.rb
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Start the build of the basebox:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;build-the-basebox&quot;&gt;6.  Build the basebox&lt;/h2&gt;
+
+&lt;p&gt;Start the build of the basebox:&lt;/p&gt;
+
 &lt;pre&gt;
      vagrant basebox build Ubuntu-11.04
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Export the basebox:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;export-the-basebox&quot;&gt;7.  Export the basebox:&lt;/h2&gt;
+
 &lt;pre&gt;
    vagrant basebox export Ubuntu-11.04
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Add the basebox:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;add-the-basebox&quot;&gt;8.  Add the basebox:&lt;/h2&gt;
+
 &lt;pre&gt;
    vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
 &lt;/pre&gt;

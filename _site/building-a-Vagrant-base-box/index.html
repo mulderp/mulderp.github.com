@@ -20,7 +20,8 @@
     <link href="http://feeds.feedburner.com/ThinkingOnThinking" rel="alternate" title="mulderp" type="application/atom+xml" /> 
     <link rel="shortcut icon" href="/static/images/favicon.png" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="javascript, backbonejs, ruby, chef, rails, erlang">
 
     <link rel="stylesheet" href="/static/css/style.css">
 
@@ -100,47 +101,59 @@
 
 <p>Here are some steps:</p>
 
-<ol>
-  <li>Upgrade your VirtualBox to the latest Version; as time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue <a href="https://github.com/jedi4ever/veewee/issues/519">here</a> )</li>
-  <li>Make sure you have the gems VeeWee and Vagrant installed:</li>
-</ol>
+<h2 id="upgrade-your-virtualbox-to-the-latest-version">1.  Upgrade your VirtualBox to the latest Version</h2>
+
+<p>As time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue <a href="https://github.com/jedi4ever/veewee/issues/519">here</a> )</p>
+
+<h2 id="veewee-and-vagrant">2.  VeeWee and Vagrant;</h2>
+
+<p>Make sure you have the gems VeeWee and Vagrant installed:</p>
+
 <pre>
-     gem install vagrant
-     gem install veewee
+         gem install vagrant
+         gem install veewee
 </pre>
-<ol>
-  <li>Now, You’ll want to get a list with possible ISO images for baseboxes. This command list baseboxes:</li>
-</ol>
+
+<h2 id="list-baseboxes">3.  List baseboxes</h2>
+
+<p>Now, You’ll want to get a list with possible ISO images for baseboxes. This command list baseboxes:</p>
+
 <pre>
-    vagrant basebox templates
+        vagrant basebox templates
 </pre>
-<ol>
-  <li>As you’ll see in the list you have quite a lot of options. Do a:</li>
-</ol>
+
+<h2 id="define-a-basebox">4.  Define a basebox</h2>
+
+<p>As you’ll see in the list you have quite a lot of options. Do a:</p>
+
 <pre>
      vagrant basebox define Ubuntu-11.04 ubuntu-11.04-server-amd64 -d
 </pre>
-<ol>
-  <li>Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:</li>
-</ol>
+
+<h2 id="check-the-iso-image">5. Check the ISO Image</h2>
+
+<p>Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:</p>
+
 <pre>
     ubuntu-base/definitions/Ubuntu-11.04/definition.rb
 </pre>
-<ol>
-  <li>Start the build of the basebox:</li>
-</ol>
+
+<h2 id="build-the-basebox">6.  Build the basebox</h2>
+
+<p>Start the build of the basebox:</p>
+
 <pre>
      vagrant basebox build Ubuntu-11.04
 </pre>
-<ol>
-  <li>Export the basebox:</li>
-</ol>
+
+<h2 id="export-the-basebox">7.  Export the basebox:</h2>
+
 <pre>
    vagrant basebox export Ubuntu-11.04
 </pre>
-<ol>
-  <li>Add the basebox:</li>
-</ol>
+
+<h2 id="add-the-basebox">8.  Add the basebox:</h2>
+
 <pre>
    vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
 </pre>
