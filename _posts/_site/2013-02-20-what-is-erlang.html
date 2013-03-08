@@ -1,0 +1,61 @@
+<p>You will touch Erlang at some point, if you follow the development of distributed systems. Erlang is a remedy to the pains of a monolithic application. And great programmers such as <a href='http://about.adamwiggins.com/'>Adam Wiggins</a> or <a href='http://plataformatec.com.br/crafting-rails-applications'>Jose Valim</a> name Erlang in the context of scalable systems e.g. in <a href='http://adam.heroku.com/past/2009/9/28/background_jobs_with_rabbitmq_and_minion/'>this article</a> or <a href='http://blog.plataformatec.com.br/2011/03/why-rubyists-should-try-elixir/'>here</a>. So, I was curious enough to attend a great, small conference on Erlang: <a href='http://www.erlang-factory.com/conference/Munich2013'>Munich Erlang Factory Lite 2013</a></p>
+
+<p>As someone who is new to Erlang, a first question must be asked: What is Erlang? Let&#8217;s look at different aspects.</p>
+
+<h2 id='how_does_erlang_code_look'>How does Erlang code look?</h2>
+
+<ul>
+<li>
+<p>At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You&#8217;ll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console (&#8220;erl&#8221;), the Erlang Emulator.</p>
+</li>
+
+<li>
+<p>Looking more at the code, you&#8217;ll see that lines of code sometimes end with a &#8220;dot&#8221;. This triggers code execution. As a beginner, it&#8217;s the moment when you see error messages and interpretation of error messages is rather difficult. To me, Erlang errors are cryptic, and apparently line numbers in errors were a late innovation.</p>
+</li>
+
+<li>
+<p>Further, the code you&#8217;ll see may contain tuples and atoms, some of the main data types in Erlang. Nota bene, the concept of String is not a data type in Erlang, but rather an Array of characters as in e.g. C. Some people say this makes string operations more difficult than in other languages. Other people say, it&#8217;s less error prone too. To a beginner, it&#8217;s hard to judge.</p>
+</li>
+</ul>
+
+<h2 id='erlang_modules_and_libraries'>Erlang modules and libraries</h2>
+
+<p>Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming languages, libraries make a programmer&#8217;s life fun.</p>
+
+<p>The magic command to import libraries into your Erlang project is <a href='https://github.com/basho/rebar'>&#8220;rebar&#8221;</a>. Rebar also allows to easily create a new Erlang project. And, rebar is from <a href='http://basho.com/'>Basho</a>.</p>
+
+<h2 id='why_erlang'>Why Erlang?</h2>
+
+<p>So far, so good. Erlang programming is about functions and values, and that sounds like no big deal to some. However, the main aspects of Erlang are reflecting on errors when needed, and reliably running concurrent processes. It&#8217;s here where the Erlang fun part starts, and other languages just suck (for the skeptics, maybe you can read <a href='http://stackoverflow.com/questions/6923480/java-thread-programming-book'>the books suggested here</a>).</p>
+
+<ul>
+<li>
+<p>In Erlang, there seems to be the idea of &#8220;let it crash&#8221;. In a monolithic application, this usually means the death of an application. In a Unix system, this may mean to kill a process. In Erlang, you get a <a href='http://www.erlang.org/doc/design_principles/sup_princ.html'>supervisor</a> that may take care of this, when a process is idling or conflicting with another process. The supervisor may decide to retry, continue, or check later. This is new to me, but I haven&#8217;t come across this mentality in any other pogramming language so far.</p>
+</li>
+
+<li>
+<p>Having better ways to deal with exceptions, you&#8217;ll also get better ways to deal with concurrency. It&#8217;s rather new to me, but to understand why this helps, think of a monolithic application that triggers delayed jobs. If you run you run multiple applications in your server cluster, and have eventually multiple delayed jobs, from my experience, you can get <a href='http://en.wikipedia.org/wiki/Race_condition'>race conditions</a> and other problems, that are really hard to debug. Erlang to the rescue. With Erlang, you&#8217;ll get some ways to have processes check what another process is doing. The mechanisms that you&#8217;ll hear people talk about are <a href='http://learnyousomeerlang.com/errors-and-processes#monitors'>monitoring</a> or linking processes, resulting into process <a href='http://www.erlang.org/doc/getting_started/robustness.html'>robustness</a>. The code of <a href='http://www.rabbitmq.com/'>RabbitMQ</a> must show clever ways to deal with message concurrency.</p>
+</li>
+</ul>
+
+<h2 id='conclusions'>Conclusions</h2>
+
+<p>So, my main conclusions:</p>
+
+<ul>
+<li>
+<p>Erlang provides a dynamic toolchain that helps rethinking concurrency and fault-tolerance. Some more meta-discussions and examples on Erlang are these: John-Paul Bader discusses more on <a href='http://smyck.net/2012/04/22/why-erlang/'>why erlang here</a>. <a href='https://github.com/basho'>Basho</a> implemented <a href='http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html'>Amazon&#8217;s Dynamo</a> with Erlang, and the company is a great contributor and promotor to the Erlang community. And if you are not so much into web, Peer Stritzinger together with <a href='http://www.embedded-brains.de/index.php?id=1&amp;L=1'>Embedded-brains</a> use Erlang for <a href='http://www.stritzinger.com/Peer-Stritzinger.GmbH/Hydraprog-3.html'>scalable hardware</a>.</p>
+</li>
+
+<li>
+<p>Good places to get started with Erlang are John Paul&#8217;s <a href='http://smyck.net/2013/02/17/how-to-set-up-a-basic-http-api-with-erlang-in-10-minutes/'>Setup an API in 10 minutes</a> and <a href='http://learnyousomeerlang.com/'>http://learnyousomeerlang.com/</a>. Also, this blog post is a great overview: <a href='http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html'>http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html</a>. <a href='http://de.slideshare.net/pavlobaron/let-it-crash-seacon11-pavlo-baron'>Pavlo Baron</a> does a lot of convincing work on <a href='http://de.slideshare.net/pavlobaron/erlang-is-a-one-way'>using Erlang</a>.</p>
+</li>
+
+<li>
+<p>OTP are the Erlang libraries that help in designing distributed applications. See <a href='http://learnyousomeerlang.com/what-is-otp'>http://learnyousomeerlang.com/what-is-otp</a>. The guy to ask on what&#8217;s OTP is <a href='https://www.erlang-factory.com/upload/presentations/719/francesco-otp.pdf'>Francesco Cesarini</a>.</p>
+</li>
+
+<li>
+<p>If you are into web development, see <a href='https://github.com/elixir-lang/elixir'>Elixir</a> and <a href='https://github.com/elixir-lang/dynamo'>Dynamo</a>. This looks the place to start writing your next hit-in-one API.</p>
+</li>
+</ul>

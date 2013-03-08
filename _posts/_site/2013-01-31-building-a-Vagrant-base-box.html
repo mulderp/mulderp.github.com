@@ -1,0 +1,42 @@
+<p>As explained in my previous <a href='http://thinkingonthinking.com/building-infrastructure'>post</a>, Chef allows to develop, test and experiment with computing or cloud infrastructure.</p>
+
+<p>In order to locally build nodes to test the setup of a node, <a href='http://vagrantup.com'>Vagrant</a> is a great automation tool that helps to play with ISO images from a certain operating system. There is a list of ISO images ready for Chef here at <a href='http://vagrantbox.es'>Vagrantbox.es</a>. However, a common use case is, that you are running some other Linux version already, or, you want to work with fresh Ubuntu image, that you know what it contains.</p>
+
+<p>So, how to create a new Vagrant basebox?</p>
+
+<p>Here are some steps:</p>
+
+<p>1. Upgrade your VirtualBox to the latest Version; as time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue <a href='https://github.com/jedi4ever/veewee/issues/519'>here</a> )</p>
+
+<p>2. Make sure you have the gems VeeWee and Vagrant installed:</p>
+<pre>
+     gem install vagrant
+     gem install veewee
+</pre>
+<p>3. Now, You&#8217;ll want to get a list with possible ISO images for baseboxes. This command list baseboxes:</p>
+<pre>
+    vagrant basebox templates
+</pre>
+<p>4. As you&#8217;ll see in the list you have quite a lot of options. Do a:</p>
+<pre>
+     vagrant basebox define Ubuntu-11.04 ubuntu-11.04-server-amd64 -d
+</pre>
+<ol>
+<li>Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in: <pre>
+ ubuntu-base/definitions/Ubuntu-11.04/definition.rb
+</pre></li>
+
+<li>Start the build of the basebox: <pre>
+  vagrant basebox build Ubuntu-11.04
+</pre></li>
+
+<li>Export the basebox: <pre>
+vagrant basebox export Ubuntu-11.04
+</pre></li>
+
+<li>Add the basebox: <pre>
+vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
+</pre></li>
+</ol>
+
+<p>That&#8217;s basically it. Thanks to <a href='http://zac.sprackett.com/resume/'>Zac Sprackett</a> for writing on setting up a CentOS basebox <a href='http://devops.me/2011/10/06/building-baseboxes/'>here</a></p>

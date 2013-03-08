@@ -1,0 +1,182 @@
+<p>Recently, I&#8217;ve read some strategy to visualize user registrations and activity in a web application with Ruby and Google Charts in <a href='http://gistflow.com/posts/670-visualising-database-1'>this article</a> . After starting my own visualization experiments, I felt that I had some blind spots in understanding Ruby&#8217;s <a href='http://ruby-doc.org/core-1.9.3/Enumerable.html'>Enumerable Module</a>. This post attempts to share some insights on expanding and reducing Arrays of objects.</p>
+
+<p>First, let&#8217;s assume our data looks like:</p>
+<pre style='font-size:11px'>
+signups = ["2011-08"=>1433, "2011-09"=>2972, "2011-10"=>2480, "2011-11"=>2456]
+logins = ["2011-08"=>2832, "2011-09"=>4172, "2011-10"=>3480, "2011-11"=>5456]
+</pre>
+<p>My goal was to combine the two collections and transform the result into:</p>
+<pre style='font-size:11px'>
+activity = [ "2011-08" => { :signups => 1433, :logins => 2832 } ...
+</pre>
+<p>In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let&#8217;s start.</p>
+
+<h2 id='splitting_a_hash'>Splitting a Hash</h2>
+
+<p>My first step was to split the larger collection hash into single hashes. For this <a href='http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first'>first</a> and <a href='http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a'>to_a</a> methods help like this:</p>
+<pre style='font-size:11px'>
+signups.first.to_a
+=> [["2011-08", 1433], ["2011-09", 2972], ["2011-10", 2480], ["2011-11", 2456]]
+</pre>
+<p>There is one caveat with inverse transformation, i.e. converting above Array back to Hashes. I knew that:</p>
+<pre style='font-size:11px'>
+Hash[1,2]
+=> {1 => 2}
+</pre>
+<p>but this does not work:</p>
+<pre style='font-size:11px'>
+[["2011-08", 1433], ["2011-09", 2972], ["2011-10", 2480], ["2011-11", 2456]].map { |a| Hash[a] }
+=> [{}, {}, {}, {}]
+</pre>
+<p>In order to have the conversion working, the arguments must be &#8216;splatted&#8217; with <em>, see e.g. <a href='http://theplana.wordpress.com/2007/03/03/ruby-idioms-the-splat-operator/'>this discussion</a>.</em></p>
+
+<p>So, this means by splating the input values with Hash<span><em>a] we get:</em></span></p>
+<pre style='font-size:11px'>
+signups = [["2011-08", 1433], ["2011-09", 2972], ["2011-10", 2480], ["2011-11", 2456]].map { |a| Hash[*a] }
+=> [{"2011-08"=>1433}, {"2011-09"=>2972}, {"2011-10"=>2480}, {"2011-11"=>2456}]
+</pre>
+<p>Now we have an Array of Hashes for the signups (while we started with one Hash wrapped in an Array) As I want some key in the collection that I could use later for grouping, let&#8217;s introduce a :signup symbol as key like this:</p>
+<pre style='font-size:11px'>
+signups.map { |h| h.map { |k, v| { k => { signups: v }}}}.flatten
+=> [{"2011-08"=>{:signups=>1433}}, {"2011-09"=>{:signups=>2972}}, {"2011-10"=>{:signups=>2480}}, {"2011-11"=>{:signups=>2456}}]
+</pre>
+<p>Notice, there are two <a href='http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-map'>#map</a> calls here: The first #map is about walking on the elements of an Array, while the second #map walks on the key and values of a Hash. For me, a common mistoke is trying to walk an Array with pair elements, while these are only available in the Hash #map.</p>
+
+<p>Let&#8217;s apply a the transformation so far also to our second collection, the logins collections with:</p>
+<pre style='font-size:11px'>
+["2011-08"=>2832, "2011-09"=>4172, "2011-10"=>3480, "2011-11"=>5456].first.to_a.map { |a| Hash[*a] }.map { |h| h.map { |k, v| { k => { logins: v }}}}.flatten
+=> [{"2011-08"=>{:logins=>2832}}, {"2011-09"=>{:logins=>4172}}, {"2011-10"=>{:logins=>3480}}, {"2011-11"=>{:logins=>5456}}]
+</pre>
+<h2 id='reduce_and_grouping'>Reduce and Grouping</h2>
+
+<p>The steps above were basically joining and expanding our collection that should now be reduced back to the final structure. To get this new, combined collection, let&#8217;s summarize the structure we have so far:</p>
+<pre style='font-size:11px'>
+signups = [{"2011-08"=>{:signups=>1433}}, {"2011-09"=>{:signups=>2972}}, {"2011-10"=>{:signups=>2480}}, {"2011-11"=>{:signups=>2456}}]
+logins = [{"2011-08"=>{:logins=>2832}}, {"2011-09"=>{:logins=>4172}}, {"2011-10"=>{:logins=>3480}}, {"2011-11"=>{:logins=>5456}}]
+</pre>
+<p>Before we are going to mix up the collections, let&#8217;s shortly review how #reduce works.</p>
+
+<h3 id='reduce_or_inject'>Reduce (or Inject)</h3>
+
+<p>The methods #reduce and #inject do the same (they are aliased). The process is sometimes known as &#8216;folding&#8217; a collection (see <a href='http://en.wikipedia.org/wiki/Fold_(higher-order_function'>wikipedia</a>)). Here are two observations I made:</p>
+
+<ul>
+<li>Reduce let apply operators in an Enumerable list:</li>
+</ul>
+<pre style='font-size:11px'>
+[1,2,3].reduce(:+)
+=> 6
+</pre>
+<ul>
+<li>The effect of Reduce is a bit like chaining method calls:</li>
+</ul>
+<pre style='font-size:11px'>
+[{a: 1},{b:2}].reduce(:merge)
+=> {:a=>1, :b=>2}
+</pre>
+<p>This reminds me on ) that has the same outcome:</p>
+
+<p>Inject is very handy to walk a list, and at the same time keep some notes in memory on the progress. Sometimes an additional step might be necessary, to apply folding, e.g. prepare the collection with <a href='http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-group_by'>#group_by</a>.</p>
+
+<h3 id='group_by'>Group_by</h3>
+
+<p>My observation on the #group_by method is that it allows to group data according to &#8216;meta-data&#8217;. Consider grouping a number of objects according to their class. For example:</p>
+<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[&quot;12&quot;, 12, &quot;patrick&quot;, Object.new].group_by(&amp;:class)
+=&gt; {String=&gt;[&quot;12&quot;, &quot;patrick&quot;], Fixnum=&gt;[12], Object =&gt; ...]}
+&lt;/pre&gt;</pre>
+<p>Now, we could also group this collection according to their String values like this:</p>
+<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[&quot;12&quot;, 12, &quot;patrick&quot;, Object.new].group_by(&amp;:to_s)
+=&gt; {&quot;12&quot;=&gt;[&quot;12&quot;, 12], &quot;patrick&quot;=&gt;[&quot;patrick&quot;], Object:0x007f =&gt;[...&gt;]}
+&lt;/pre&gt;</pre>
+<p>The same data, different groupings. However, so far we can go ahead again with our signup and login collections, and apply some #inject calls.</p>
+
+<h3 id='applying_inject'>Applying #inject</h3>
+
+<p>My first goal is to transform a structure as this:</p>
+<pre style='font-size:11px'>
+[{ :a => { :b => 10 }}, { :a => { :c => 20 }}]
+</pre>
+<p>into:</p>
+<pre style='font-size:11px'>
+[{ :a => { :b => 10, :c => 20 }}]
+</pre>
+<p>This can be done with:</p>
+<pre style='font-size:11px'>
+[{:a=>{:b=>10}}, {:a=>{:c=>20}}].map { |k| k.values }.flatten.reduce(:merge)
+=> {:b=>10, :c=>20}
+</pre>
+<p>The explanation: We reduce an Array of a nested Hash with the values from the start.</p>
+
+<p>Our next step is to remove the extra Hashes here:</p>
+<pre style='font-size:11px'>
+[{ :a => { :b => 10, :c => 20 }}, { :d => { :b => 10, :c => 20 }}]
+</pre>
+<p>This can be done with: <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;pre style=&quot;font-size:11px&quot;&gt;</pre></p>
+
+<h1 id='_a___b__10_c__20___d___b__10_c__20_reducemerge'><span>{ :a =&gt; { :b =&gt; 10, :c =&gt; 20 }}, { :d =&gt; { :b =&gt; 10, :c =&gt; 20 }}</span>.reduce(:merge)</h1>
+<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;/pre&gt;</pre>
+<p>Be careful: With a minor change the values from the first Hash are lost:</p>
+<pre style='font-size:11px'>
+[{ :a => { :b => 10, :c => 20 }}, { :a => { :f => 10, :d => 20 }}].reduce(:merge)
+=> {:a=>{:f=>10, :d=>20}}
+</pre>
+<p>Note: The reason that the merge does not work as expected is, that a merge does not walk recursively into a nested Hash. To get the proper merge operation, we need to apply #inject with an empty hash as accumulator like this:</p>
+<pre style='font-size:11px'>
+[{ :a => { :b => 10, :c => 20 }}, { :a => { :f => 10, :d => 20 }}].inject({}) {|o,h| o.merge!(h[:a]); o }
+=> {:b=>10, :c=>20, :f=>10, :d=>20}
+</pre>
+<p>Now, a similar transformation can be applied to my joined signup and login collection. First, let&#8217;s combine the collections:</p>
+<pre style='font-size:11px'>
+[logins, signups].flatten.group_by { |a| a.keys.first }
+=> {"2011-08"=>[{"2011-08"=>{:logins=>2832}}, {"2011-08"=>{:signups=>1433}}], "2011-09"=>[{"2011-09"=>{:logins=>4172}}, {"2011-09"=>{:signups=>2972}}], "2011-10"=>[{"2011-10"=>{:logins=>3480}}, {"2011-10"=>{:signups=>2480}}], "2011-11"=>[{"2011-11"=>{:logins=>5456}}, {"2011-11"=>{:signups=>2456}}]}
+</pre>
+<p>Now, let&#8217;s reduce the set to the basics:</p>
+<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+login_signups = [logins, signups].flatten.inject({}) { |h,v| h[v.keys.first] ||= []; h[v.keys.first] &lt;&lt; v.values; puts v.inspect; h}
+{&quot;2011-08&quot;=&gt;{:logins=&gt;2832}}
+{&quot;2011-09&quot;=&gt;{:logins=&gt;4172}}
+{&quot;2011-10&quot;=&gt;{:logins=&gt;3480}}
+{&quot;2011-11&quot;=&gt;{:logins=&gt;5456}}
+{&quot;2011-08&quot;=&gt;{:signups=&gt;1433}}
+{&quot;2011-09&quot;=&gt;{:signups=&gt;2972}}
+{&quot;2011-10&quot;=&gt;{:signups=&gt;2480}}
+{&quot;2011-11&quot;=&gt;{:signups=&gt;2456}}
+=&gt; {&quot;2011-08&quot;=&gt;[[{:logins=&gt;2832}], [{:signups=&gt;1433}]], &quot;2011-09&quot;=&gt;[[{:logins=&gt;4172}], [{:signups=&gt;2972}]], &quot;2011-10&quot;=&gt;[[{:logins=&gt;3480}], [{:signups=&gt;2480}]], &quot;2011-11&quot;=&gt;[[{:logins=&gt;5456}], [{:signups=&gt;2456}]]}
+&lt;/pre&gt;</pre>
+<p>Now, we are almost there. Let&#8217;s clean up the combined hashes and arrays within the date keys:</p>
+<pre style='font-size:11px'>
+activities = login_signups.map { |m| {m.first => m.last.flatten.inject(:merge)} }=> [{"2011-08"=>{:logins=>2832, :signups=>1433}}, {"2011-09"=>{:logins=>4172, :signups=>2972}}, {"2011-10"=>{:logins=>3480, :signups=>2480}}, {"2011-11"=>{:logins=>5456, :signups=>2456}}]
+=> [{"2011-08"=>{:logins=>2832, :signups=>1433}}, {"2011-09"=>{:logins=>4172, :signups=>2972}}, {"2011-10"=>{:logins=>3480, :signups=>2480}}, {"2011-11"=>{:logins=>5456, :signups=>2456}}]
+</pre>
+<h3 id='conclusion'>Conclusion</h3>
+
+<p>My conclusion of this post are the following:</p>
+
+<ul>
+<li>
+<p>Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.</p>
+</li>
+
+<li>
+<p>A lot of transformation can be approached with standard Array methods like &#8216;each&#8217; and &#8216;map&#8217;; however they are sometimes not optimal, and in a way are limited to &#8216;simple&#8217; transformation only.</p>
+</li>
+
+<li>
+<p>Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.</p>
+</li>
+
+<li>
+<p>I didn&#8217;t use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on <a href='http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash'>StackOverflow</a></p>
+</li>
+
+<li>
+<p>Probably a nice topic for exploration would also be using value objects for this kind of filtering and collection transformation</p>
+</li>
+</ul>
