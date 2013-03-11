@@ -3,7 +3,7 @@ layout: post
 title: A Vagrant based Minimum Viable Webserver
 tags: vagrant chef nginx
 ---
-When developing servers or clients that talk HTTP, it's great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and [Librarian-Chef](https://github.com/applicationsonline/librarian). Librarian-Chef is conceptually very close to Ruby's bundler.
+When developing servers or clients that talk HTTP, it's great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and [Librarian-Chef](https://github.com/applicationsonline/librarian). Librarian-Chef is conceptually very close to the Ruby Bundler gem.
 
 ## Install librarian-chef
 
@@ -13,13 +13,13 @@ When developing servers or clients that talk HTTP, it's great to have mock syste
 
 ## Init librarian-chef
 
-To get started, we need to get file where we can specifiy a node's cookbooks:
+To get started, we need a file where we can specifiy a node's cookbooks:
 
 <pre>
    $ librarian-chef init
 </pre>
 
-This gives us the 'Cheffile', which is conceptually close to Ruby's 'Gemfile'.
+This gives us the 'Cheffile', which is conceptually close to Bundler's 'Gemfile'.
 
 ## Edit Cheffile
 
@@ -38,7 +38,7 @@ This means we are going to write a small application cookbook 'nginx-app' that l
 
 ## Create the application cookbook
 
-In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. They are derived from e.g. community cookbooks, but contain custom stuff. So, let's create an application cookbook for our webserver:
+In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. Some background on this can be found [here](http://devopsanywhere.blogspot.de/2012/11/how-to-write-reusable-chef-cookbooks.html) They are derived from e.g. community cookbooks, but contain custom stuff. So, let's create an application cookbook for our webserver:
 
 <pre>
     knife cookbook create nginx-app -o application-cookbooks

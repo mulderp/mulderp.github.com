@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>Rake-Pipeline, Rails-API, Backbone.JS</title>
+    <title>Rake-Pipeline and Rails-API</title>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,8 @@
     <link href="http://feeds.feedburner.com/ThinkingOnThinking" rel="alternate" title="mulderp" type="application/atom+xml" /> 
     <link rel="shortcut icon" href="/static/images/favicon.png" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="javascript, backbonejs, ruby, chef, rails, erlang">
 
     <link rel="stylesheet" href="/static/css/style.css">
 
@@ -41,7 +42,7 @@
 
       <div class="four columns sidebar">
         <section>
-          <a id="avatar" href="/"></a>
+          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking</a>
 
           <ul id="social">
             <li>
@@ -79,8 +80,8 @@
 
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
-    <h1>Rake-Pipeline, Rails-API, Backbone.JS</h1>
-    <i class="icon-tags"></i> 
+    <h1>Rake-Pipeline and Rails-API</h1>
+    <i class="icon-tags"></i>  <a href="/tags/rails" title="View posts tagged with &quot;rails&quot;"><u>rails</u></a>     <a href="/tags/ruby" title="View posts tagged with &quot;ruby&quot;"><u>ruby</u></a>   
   </header>
 
   <div class='ten columns gray' id="date-header">
@@ -128,19 +129,7 @@ So far about building assets, next about serving data that assets want… we’l
 
 <p>The <a href="https://github.com/rails-api/rails-api">Rails-Api</a> removes the Rails ERB templates and Sprockets from your application. This is nice, because your Rack stack becomes lighter, and you can focus on the thing that matters: Serving data to clients. From first experiments, Rails-API combines very nicely with rake-pipeline. As you can see from my <a href="https://github.com/mulderp/rails-api-backbone">demo-project</a>, the Rails app just servers JSON to client-side code that is built with rake-pipeline from the /source directory.</p>
 
-<h2 id="backbonejs-underscorejs-and-requirejs">Backbone.js, Underscore.js and Require.js</h2>
-
-<p>Last but not least, for my application design, I want to use a JS framework that allows to structure the interaction with the DOM and with the end-user. This framework is Backbone.js - but maybe first, a step back.</p>
-
-<p>As a Ruby programmer, you think JavaScript has some problems: Incompatible browsers with different language implementations, as well as language constructs that leave you alone quite fast. At least part of the language problems are solved by JQuery and Underscore.js (which reminds on Ruby, see the collection stuff and enumerator constructs at underscorejs.org</p>
-
-<p>For the rest, a lot of folks from the Node.js community is an example of disruptive innovation at work; especially it is interesting to see, that the JS community nowadays has a modular requirement setup to manage dependencies: require.js. In my view, this will make fancy browser (and maybe one day server) programming fun again.</p>
-
-<p>What you need to know as Rails programmer, Require.js injects dependencies where they are needed, and as such prevents problems in the global scope. Additionally, you can inject HTML templates into your JS modules, which is very nice too. I’ll need to explore this, but you can actually take your Rails ERB templates and inject them 1-1 to Backbone templates, where you need them. Some ideas behind this technique are discussed by Thomas Davis, here. A boilerplate for backbone and require-js is here. Another nice overview on Backbone development is here and here (Backbone and Require.js).</p>
-
 <p>That’s all for now.</p>
-
-<p>Here some references to my <a href="https://github.com/mulderp/rails-api-backbone">Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment</a>. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.</p>
 
   </div>
 
@@ -193,7 +182,7 @@ So far about building assets, next about serving data that assets want… we’l
   var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
   analytics.track('Post', {
-      title: "Rake-Pipeline, Rails-API, Backbone.JS"
+      title: "Rake-Pipeline and Rails-API"
     });
 </script>
 

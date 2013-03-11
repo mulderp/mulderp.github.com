@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>What is modular code?</title>
+    <title>What is a modular web application?</title>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,8 @@
     <link href="http://feeds.feedburner.com/ThinkingOnThinking" rel="alternate" title="mulderp" type="application/atom+xml" /> 
     <link rel="shortcut icon" href="/static/images/favicon.png" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="javascript, backbonejs, ruby, chef, rails, erlang">
 
     <link rel="stylesheet" href="/static/css/style.css">
 
@@ -41,7 +42,7 @@
 
       <div class="four columns sidebar">
         <section>
-          <a id="avatar" href="/"></a>
+          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking</a>
 
           <ul id="social">
             <li>
@@ -79,7 +80,7 @@
 
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
-    <h1>What is modular code?</h1>
+    <h1>What is a modular web application?</h1>
     <i class="icon-tags"></i>  <a href="/tags/MVC" title="View posts tagged with &quot;MVC&quot;"><u>MVC</u></a>     <a href="/tags/JavaScript" title="View posts tagged with &quot;JavaScript&quot;"><u>JavaScript</u></a>     <a href="/tags/Ruby" title="View posts tagged with &quot;Ruby&quot;"><u>Ruby</u></a>     <a href="/tags/Mobile" title="View posts tagged with &quot;Mobile&quot;"><u>Mobile</u></a>   
   </header>
 
@@ -106,23 +107,18 @@
 
 <p>However, in the context of (mobile) web applications, where views are living in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: </p>
 
-<ol>
-  <li>
-    <h2 id="how-do-we-serve-views-to-a-client">How do we serve “views” to a client?</h2>
-    <p>As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.</p>
-  </li>
-</ol>
+<h2 id="how-do-we-serve-views-to-a-client">1. How do we serve “views” to a client?</h2>
+<hr />
+<p>As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.</p>
 
 <p>In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs require servers to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with new tools for asset management <a href="http://thinkingonthinking.com/MVC-and-Rails-API/">here</a>.</p>
 
 <p>Also, for serving frontends assets, no full application stack is needed. And since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Express.JS and other Node.JS approaches might be interesting to look at too.</p>
 
-<ol>
-  <li>
-    <h2 id="how-to-organize-mvc-modules-on-the-client">How to organize “MVC” modules on the client?</h2>
-    <p>When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.</p>
-  </li>
-</ol>
+<h2 id="how-to-organize-mvc-modules-on-the-client">2. How to organize “MVC” modules on the client?</h2>
+<hr />
+
+<p>When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.</p>
 
 <p>Additionally, there might be multiple MVC’s defined on a client, depending on the current scope of a HTTP conversation (e.g. /protected or /guest or /admin).</p>
 
@@ -199,7 +195,7 @@
   var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
   analytics.track('Post', {
-      title: "What is modular code?"
+      title: "What is a modular web application?"
     });
 </script>
 

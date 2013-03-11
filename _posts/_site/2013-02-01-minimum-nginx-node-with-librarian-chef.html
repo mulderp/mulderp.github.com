@@ -1,0 +1,199 @@
+<p>When developing servers or clients that talk HTTP, it&#8217;s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and <a href='https://github.com/applicationsonline/librarian'>Librarian-Chef</a>. Librarian-Chef is conceptually very close to the Ruby Bundler gem.</p>
+
+<h2 id='install_librarianchef'>Install librarian-chef</h2>
+<pre>
+   $ gem install librarian
+</pre>
+<h2 id='init_librarianchef'>Init librarian-chef</h2>
+
+<p>To get started, we need a file where we can specifiy a node&#8217;s cookbooks:</p>
+<pre>
+   $ librarian-chef init
+</pre>
+<p>This gives us the &#8216;Cheffile&#8217;, which is conceptually close to Bundler&#8217;s &#8216;Gemfile&#8217;.</p>
+
+<h2 id='edit_cheffile'>Edit Cheffile</h2>
+
+<p>We are going to modify the Cheffile to define our node&#8217;s dependencies as follows:</p>
+<pre>
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'nginx-app', :path => "./application-cookbooks"
+</pre>
+<p>This means we are going to write a small application cookbook &#8216;nginx-app&#8217; that lives in the path &#8216;/application-cookbooks&#8217;</p>
+
+<h2 id='create_the_application_cookbook'>Create the application cookbook</h2>
+
+<p>In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. Some background on this can be found <a href='http://devopsanywhere.blogspot.de/2012/11/how-to-write-reusable-chef-cookbooks.html'>here</a> They are derived from e.g. community cookbooks, but contain custom stuff. So, let&#8217;s create an application cookbook for our webserver:</p>
+<pre>
+    knife cookbook create nginx-app -o application-cookbooks
+</pre>
+<p>(Eventually, you need to have knife-solo on your system to get this command to work)</p>
+
+<p>This should give something like:</p>
+<pre>
+  application-cookbooks
+   |-nginx-app
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |---libraries
+   |---providers
+   |---recipes
+   |---resources
+   |---templates
+   |-----default
+</pre>
+<h2 id='setup_the_webservers_resources'>Setup the webserver&#8217;s resources</h2>
+
+<p>Nginx can be installed with a simple <a href='http://wiki.opscode.com/display/chef/Resources#Resources-Package'>package resource</a>. This is an abstraction around a package installer such as aptitude or yum. Also we need to use a template resource for defining a virtual host:</p>
+
+<h3 id='recipe_in_nginxapprecipesdefaultrb'>Recipe in /nginx-app/recipes/default.rb</h3>
+<pre>
+   package "nginx"
+   
+   service "nginx" do
+     supports :status => true, :restart => true, :reload => true
+     action [:enable, :start]
+   end
+   
+   template "/etc/nginx/nginx.conf" do
+     notifies :reload, "service[nginx]"
+   end
+</pre>
+<h3 id='template_in_nginxapptemplatesnginxconferb'>Template in /nginx-app/templates/nginx.conf.erb</h3>
+<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;pre&gt;
+  user www-data;
+  worker_processes  &lt;%= @node[:nginx][:worker_processes] %&gt;;
+  
+  error_log  /var/log/nginx/error.log;
+  pid        /var/run/nginx.pid;
+  
+  events {
+      worker_connections  1024;
+      # multi_accept on;
+  }
+  
+  http {
+      include       /etc/nginx/mime.types;
+  
+      access_log	/var/log/nginx/access.log;
+  
+      sendfile        on;
+      #tcp_nopush     on;
+  
+      keepalive_timeout  5;
+      tcp_nodelay        on;
+  
+      gzip  on;
+      gzip_disable &quot;MSIE [1-6]\.(?!.*SV1)&quot;;
+  
+      include /etc/nginx/conf.d/*.conf;
+      include /etc/nginx/sites-enabled/*;
+  }
+
+&lt;/pre&gt;</pre>
+<p>We use an attribute above for the worker, so we also need to define that variable:</p>
+<pre>
+  default[:nginx][:dir] = "/etc/nginx"
+  default[:nginx][:worker_processes] = 4
+</pre>
+<h2 id='bundle_the_cookbooks'>Bundle the cookbooks</h2>
+
+<p>Now, we have everything in place and we can bundle the cookbooks with the command:</p>
+<pre>
+    $ librarian-chef install
+</pre>
+<p>Now all cookbooks are downloaded an placed into the local /cookbooks path. Two outputs can be observed, the dependencies were written into Cheffile.lock</p>
+<pre>
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    build-essential (1.3.2)
+    nginx (1.2.0)
+      build-essential (>= 0.0.0)
+      ohai (>= 1.1.4)
+    ohai (1.1.6)
+
+PATH
+  remote: ./application-cookbooks
+  specs:
+    nginx-app (0.1.0)
+      nginx (>= 0.0.0)
+
+DEPENDENCIES
+  nginx-app (>= 0
+</pre>
+<p>This shows that our node get some additional cookbooks that are required by the nginx-app cookbook. Let&#8217;s also look at the cookbook path:</p>
+<pre>
+   cookbooks
+   |-build-essential
+   |---attributes
+   |---recipes
+   |-nginx
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |-------tests
+   |---------minitest
+   |-----------support
+   |---recipes
+   |---templates
+   |-----debian
+   |-----default
+   |-------modules
+   |-------plugins
+   |-----gentoo
+   |-----ubuntu
+   |-nginx-app
+   |---attributes
+   |---definitions
+   |---files
+   |-----default
+   |---libraries
+   |---providers
+   |---recipes
+   |---resources
+   |---templates
+   |-----default
+   |-ohai
+   |---attributes
+   |---files
+   |-----default
+   |-------plugins
+   |---recipes
+</pre>
+<p>As we can see, all cookbooks were bundled.</p>
+
+<h2 id='setup_vagrant'>Setup Vagrant</h2>
+
+<p>Now, we have all things in place to provision the web server. It&#8217;s time to setup Vagrant:</p>
+<pre>
+    $ vagrant init Ubuntu-11.04
+</pre>
+<p>Edit the Vagrantfile: <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;pre&gt;</pre></p>
+<pre>
+Vagrant::Config.run do |config|
+  config.vm.box = "Ubuntu-11.04"
+  config.vm.network :hostonly, "192.168.33.10"
+  config.vm.forward_port 80, 8080
+  config.vm.forward_port 9292, 9292
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "./cookbooks"
+    chef.add_recipe "nginx-app"
+  end
+end
+</pre>
+<p>And provision: <pre>
+  $ vagrant up
+</pre></p>
+
+<p>So, that&#8217;s all to get the webserver running. Now, it would be cool to get some basic Ruby/Rack interface running too. Maybe in the next post with the help of a unicorn cookbook.</p>

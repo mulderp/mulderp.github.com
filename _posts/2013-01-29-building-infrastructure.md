@@ -19,7 +19,7 @@ Ok, that is a summary of my Chef learnings so far. There are more insights relat
 
 In the meanwhile, I was able to work with cookbooks for a basic setup of Postgres and ArangoDB. And today, I just launched a basic web server instance on Amazon-EC2 with just a simple knife command. 
 
-Last but not lwast, I got connected to some more DevOps, such as [Jorge Bianquetti](https://github.com/jbianquetti) who helped with librarian-chef and Cassiano Leal with whom I discussed [Vagrant-Butcher](https://github.com/cassianoleal/vagrant-butcher/issues/3). Also, [Mathias Lafeldt](http://mlafeldt.github.com/blog/2012/09/learning-chef/) has some great discussions on his experiences on #learningchef. That's all for now, looking forward to hear your feeedback, your insights, discoveries and problems with infrastructure automation.
+Last but not lwast, I got connected to some more DevOps, such as [Jorge Bianquetti](https://github.com/jbianquetti) who helped with librarian-chef and Cassiano Leal with whom I discussed [Vagrant-Butcher](https://github.com/cassianoleal/vagrant-butcher/issues/3). Also, [Mathias Lafeldt](http://mlafeldt.github.com/blog/2012/09/learning-chef/) has some great discussions on his experiences on #learningchef. That's all for now, looking forward to hear your feeedback, your insights, discoveries and problems with infrastructure automation. If you want to get more details on [learning-chef](http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/) check out the blog of [Nathen Harvey](http://nathenharvey.com) too.
 
 EC2:
 

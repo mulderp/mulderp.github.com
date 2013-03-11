@@ -20,7 +20,8 @@
     <link href="http://feeds.feedburner.com/ThinkingOnThinking" rel="alternate" title="mulderp" type="application/atom+xml" /> 
     <link rel="shortcut icon" href="/static/images/favicon.png" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="javascript, backbonejs, ruby, chef, rails, erlang">
 
     <link rel="stylesheet" href="/static/css/style.css">
 
@@ -41,7 +42,7 @@
 
       <div class="four columns sidebar">
         <section>
-          <a id="avatar" href="/"></a>
+          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking</a>
 
           <ul id="social">
             <li>
@@ -92,7 +93,7 @@
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>When developing servers or clients that talk HTTP, it’s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and <a href="https://github.com/applicationsonline/librarian">Librarian-Chef</a>. Librarian-Chef is conceptually very close to Ruby’s bundler.</p>
+    <p>When developing servers or clients that talk HTTP, it’s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and <a href="https://github.com/applicationsonline/librarian">Librarian-Chef</a>. Librarian-Chef is conceptually very close to the Ruby Bundler gem.</p>
 
 <h2 id="install-librarian-chef">Install librarian-chef</h2>
 
@@ -102,13 +103,13 @@
 
 <h2 id="init-librarian-chef">Init librarian-chef</h2>
 
-<p>To get started, we need to get file where we can specifiy a node’s cookbooks:</p>
+<p>To get started, we need a file where we can specifiy a node’s cookbooks:</p>
 
 <pre>
    $ librarian-chef init
 </pre>
 
-<p>This gives us the ‘Cheffile’, which is conceptually close to Ruby’s ‘Gemfile’.</p>
+<p>This gives us the ‘Cheffile’, which is conceptually close to Bundler’s ‘Gemfile’.</p>
 
 <h2 id="edit-cheffile">Edit Cheffile</h2>
 
@@ -127,7 +128,7 @@ cookbook 'nginx-app', :path =&gt; "./application-cookbooks"
 
 <h2 id="create-the-application-cookbook">Create the application cookbook</h2>
 
-<p>In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:</p>
+<p>In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. Some background on this can be found <a href="http://devopsanywhere.blogspot.de/2012/11/how-to-write-reusable-chef-cookbooks.html">here</a> They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:</p>
 
 <pre>
     knife cookbook create nginx-app -o application-cookbooks

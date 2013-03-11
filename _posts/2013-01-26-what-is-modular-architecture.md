@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What is modular code?
+title: What is a modular web application?
 tags: MVC JavaScript Ruby Mobile
 ---
 
@@ -16,7 +16,7 @@ One of the most important pattern in a web application is called Model-View-Cont
 
 However, in the context of (mobile) web applications, where views are living in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: 
 
-1. How do we serve "views" to a client?
+## 1. How do we serve "views" to a client?
 ----------------------------------------
 As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.
 
@@ -25,8 +25,9 @@ In a mobile context however, the view rendering might happen on the client-side 
 Also, for serving frontends assets, no full application stack is needed. And since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Express.JS and other Node.JS approaches might be interesting to look at too.
 
 
-2. How to organize "MVC" modules on the client? 
+## 2. How to organize "MVC" modules on the client? 
 -----------------------------------
+
 When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.
 
 Additionally, there might be multiple MVC's defined on a client, depending on the current scope of a HTTP conversation (e.g. /protected or /guest or /admin).

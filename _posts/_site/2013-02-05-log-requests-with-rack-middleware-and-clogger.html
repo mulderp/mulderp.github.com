@@ -1,0 +1,42 @@
+<p>Thanks to Rack middleware and <a href='http://api.rubyonrails.org/files/railties/lib/rails/engine_rb.html'>Rails engines</a>, it is possible to easily combine web application modules in Ruby. Good examples of this pattern are the <a href='https://github.com/spree/spree'>Spree engine</a> or some chapters of Josè Valim&#8217;s book <a href='http://plataformatec.com.br/crafting-rails-applications'>&#8220;Crafting Rails Applications&#8221;</a>. In the context of the design of <a href='http://thinkingonthinking.com/what-is-modular-architecture/'>modular web applications</a>, I found logging specifics of HTTP requests with <a href='http://clogger.rubyforge.org/'>Clogger</a> very helpful.</p>
+
+<h2 id='what_is_clogger'>What is Clogger?</h2>
+
+<p>The main function of Clogger is to print and format parameters in a <a href='http://rack.rubyforge.org/doc/Rack/Request.html'>Rack::Request</a>. It&#8217;s a bit like &#8216;sprintf&#8217; for HTTP requests, and can be mounted as middleware in a Rack application. So far, I mainly used the logger with Sinatra or in Rails application. Here are 2 examples:</p>
+
+<h2 id='logging_http_headers_in_a_rails_application'>Logging HTTP headers in a Rails application</h2>
+
+<p>Authentication over the web can be tricky. For development purposes, it&#8217;s often helpful to see some more details of a HTTP header. For this, let&#8217;s write a simple client sending some header tokens to a Rails app.</p>
+
+<p>The client:</p>
+<pre>
+require 'faraday'
+client = Faraday::Connection.new(:url => "http://0.0.0.0:3000/")
+client.get '/example' do |req|
+  req.headers['x_token'] = 'some meta data'
+end
+</pre>
+<p>The Clogger setup in a Rails server config/application.rb:</p>
+<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;pre style=&quot;font-size:10px&quot;&gt;
+class Application &lt; Rails::Application
+  config.middleware.use Clogger, :format =&gt; &apos;&quot;$request&quot; ? $query_string $status $body_bytes_sent &quot;$http_referer&quot; &quot;$http_user_agent&quot; $request_time -- $http_x_token&apos;, :logger =&gt; $stdout 
+end
+&lt;/pre&gt;</pre>
+<p>Results in:</p>
+<pre>
+  "GET http://0.0.0.0:3000/profiles HTTP/1.1" ?  200 1083 "-" "Ruby" 0.502 -- some meta data
+</pre>
+<h2 id='monitoring_cookies_in_sinatra'>Monitoring cookies in Sinatra</h2>
+
+<p>A similar logging setup can easily be done in Sinatra. Simply include Clogger in config.ru</p>
+<pre>
+require 'clogger'
+
+use Clogger, :format => '"$request" ?$query_string $status "$http_cookie" $request_time $http_host', :logger => $stdout
+</pre>
+<p>Now the cookies are dumped for every request. This can be helpful for debugging once in a while.</p>
+
+<h2 id='conclusion'>Conclusion</h2>
+
+<p>The take away from this post is that the Rack middleware can be a nice tool for debugging HTTP header content. Rack can bring modular code back to a web application, and this is great to create &#8216;layers&#8217; of functionality upon which other applications can build on. A similar approach was derived in the Faraday stack to write <a href='http://adventuresincoding.com/2010/09/writing-modular-http-client-code-with-faraday/'>modular client-side middleware</a>, and will may be discussed in a later post.</p>

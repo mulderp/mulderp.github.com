@@ -4,13 +4,613 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-02-05T23:13:48+01:00</updated>
+ <updated>2013-03-08T18:54:33+01:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Fashion and Business models</title>
+   <link href="http://mulderp.github.com/fashion-and-business-models"/>
+   <updated>2013-03-08T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/fashion-and-business-models</id>
+   <content type="html">&lt;p&gt;In the lean startup circle there was recently &lt;a href=&quot;https://groups.google.com/forum/?hl=de&amp;amp;fromgroups=#!topic/lean-startup-circle/F2bk3MuOZDQ&quot;&gt;a discussion&lt;/a&gt; on how small companies can actually have enough resources to experiment with a business model. As a software developer with &lt;a href=&quot;http://sachagreif.com/the-side-project-project/&quot;&gt;sideprojects&lt;/a&gt;, I think this question applies even more. How can let’s say 1-2 persons, who work as full-time employees, actually generate viable options for future products or businesses? Strangely, a look at the world of fashion may give some ideas.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The first answer is about prototyping and design. In general, it’s hard to explain what prototyping is. Prototyping is more about how something works, rather than what was initially defined. The saying goes, a picture is worth a thousands words, and a prototype is worth a thousand pictures. The important thing on a prototype is that it quickly tells you how an idea can look, feel and why you could like it. In the &lt;a href=&quot;http://www.fashionindie.com/runway-to-red-carpet-in-armani-prive-haute-couture/&quot;&gt;fashion pyramid&lt;/a&gt;, prototyping is about what happens at the top of the pyramid. There, fashion designers are specialized sketching, observing and in handcrafting and materializing ideas. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Haute coutre in fashion is providing ideas to a whole industrial branch, since the memes that are shown on runways easily spread through magazines and television shows, and blogs nowadays.  In business models, prototyping is about something similar: Discovering unique and special recipes from sometimes common ingredients, sometimes rare and expensive ones (like patents or jewels). And in both, business models and fashion, it’s importat to learn what works for 1 or 2 customers, for 100 men or women, for a cultural region, or for a contintent. (Another example: Some companies seem to run prototypes of a business in Canada first, and scale them in a second phase in USA) &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Another answer on what entrepreneurs might learn from fashion designers, I got from this videa by Seth Godin: &lt;a href=&quot;http://www.ted.com/talks/seth_godin_on_sliced_bread.html&quot;&gt;How to get your ideas spread&lt;/a&gt;. In this video, he looks for explanations on how Jeff Koons or Frank Loyd became so successful. He also mentions, that sliced bread (that had nice patents and well-thought out bakery process by its inventor) got unnoticed for 15 years, and became only successful by having a company applying the right marketing techniques. His message is about looking at fashion, because fashion is all about making products ‘remarkable’. It’s actually this what makes up the customer relationship and sales channel part in the &lt;a href=&quot;http://bmfiddle.com/&quot;&gt;business model canvas&lt;/a&gt;. It’s about how I feel, when I touch a service, a shop or a product. It’s providing the right options to buy a product, or subscribe to a service. It’s about the setup of a flagship store or a landing page.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+&lt;p&gt;Here are some conclusions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Business models don’t need a lot of resources to experiment with. That’s the whole point of building prototypes. Fast, cheap and throw-away models to test ideas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A prototype might be seen as standing at the top of your fashion pyramid. It’s about making something unique and special, that can be simplified later on. Like in haute-couture fashion, there are companies specializing in bringing prototypes to the world; however, a whole lot profitable luxury fashion lines do both: Haute-couture and High-end retail. And besides, there is space for volume and mass market segments.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A business model is not just a product and a customer. Like in fashion, it’s about how you feel in a shop, are received by a nice sales person, get extras and feel special. That is the sales channel and customer relationship part in a business model.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Building a flexible Rails Stack with Chef</title>
+   <link href="http://mulderp.github.com/A-custom-rails-stack-with-chef"/>
+   <updated>2013-02-27T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/A-custom-rails-stack-with-chef</id>
+   <content type="html">&lt;p&gt;Most of us who develop Ruby based web applications will know that the setup and configuration of a stack of web infrastructure can be tricky:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;building Rubies including Gemsets often require libraries that look like strings of &lt;a href=&quot;http://en.wikipedia.org/wiki/CAPTCHA&quot;&gt;captcha’s&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;setup of webservers (nginx or apache) have special compile flags and configuration settings too&lt;/li&gt;
+  &lt;li&gt;adaptors for Rack (Passenger or Unicorn nowadays) need to be built or wrapped in scripts&lt;/li&gt;
+  &lt;li&gt;databases are evolving (RDBMS, document-stores, key-value stores, graph db’s … ) and often come in pairs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additionally, your Unix most likely will need some essential build packages such as compilers, git, image processors, messaging queues, mailservers, etc, as well as Unix users and groups for basic security settings. Last but not least, there are different Unix distributions which bring additional surprises. &lt;/p&gt;
+
+&lt;p&gt;So, even when opinions in Rails keep some decisions simple, a web development stack might differ from the one that you or your customer will use in production.&lt;/p&gt;
+
+&lt;p&gt;With all these choices, how can you test opinions on a web stack that are good for you? &lt;/p&gt;
+
+&lt;p&gt;Particulary, how can you test opinions in the context of a database-driven web application such as Ruby-on-Rails? &lt;/p&gt;
+
+&lt;p&gt;I try to answer this with the help of 3 tools: &lt;a href=&quot;http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html&quot;&gt;Chef-solo&lt;/a&gt; and &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;abstractions-in-chef&quot;&gt;1. Abstractions in Chef&lt;/h2&gt;
+
+&lt;p&gt;What Rails is to a database-driven web application, Chef might be to infrastructure: Opinions in code. But as far as I can judge, the ecosystem of infrastructure is much more diverse, than the different components of a model-view-controller design. Let’s see how Chef attempts to abstract away the diversity in infrastructure:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;One of the most important abstractions in Chef are cookbooks. Cookbooks are similar to Gems in Ruby. Cookbooks bundle code (= “recipes”) that can be configured with “attributes” and configuration “templates”. In a way, cookbooks apply the MVC pattern: Data models are attributes, views are templates, and controllers are recipes. Cookbooks are opinionated, some more than others, but my advice for installation of services, is to look at &lt;a href=&quot;http://community.opscode.com&quot;&gt;community cookbooks&lt;/a&gt; first, and then at opinions found in cookbooks found at Github.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As we just tackle a single node setup, Vagrant and Chef-Solo are a sweet combination. Vagrant takes care of your Unix VM, and Chef-Solo can easily load cookbooks from your local environment.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The setup of a web infrastructure stack will require multiple cookbooks, and you’ll quickly feel that downloading cookbooks yourself, and variation of cookbooks should be managed with some tool. So far, I tried 2 tools to manage cookbooks: &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt; and &lt;a href=&quot;https://github.com/applicationsonline/librarian&quot;&gt;Librarian-Chef&lt;/a&gt;. Whereas Librarian manages quite well the download part, Berkshelf helps in solving package problems at hand. Think of Berkshelf as the Bundler for Ruby gems and in let’s say 80% of cases, you’ll just want to download cookbooks and can live with cookbook defaults, rather than deriving your own version of a cookbook. Berkshelf helps to abstract away the details when needed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Vagrant is your infrastructure lab. I wrote about some first steps with Vagrant, &lt;a href=&quot;http://thinkingonthinking.com/An-experiment-with-Vagrant-and-Neo4J/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;http://thinkingonthinking.com/building-a-Vagrant-base-box/&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://thinkingonthinking.com/minimum-nginx-node-with-librarian-chef/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;your-shiny-new-ruby-20-and-rails-40-beta-stack&quot;&gt;2. Your shiny new Ruby 2.0 and Rails 4.0 beta stack&lt;/h2&gt;
+
+&lt;p&gt;I hope the abstractions above can give you some taste of what is coming up in this section. First, let’s think on a Rails application stack:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RVM to manage Rubies (could be rbenv too)&lt;/li&gt;
+  &lt;li&gt;Passenger to consume and respond with requests for/from Rack (could be Unicorn)&lt;/li&gt;
+  &lt;li&gt;PostgreSQL to deal with data storage&lt;/li&gt;
+  &lt;li&gt;Nginx as proxy for logging&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In Chef language, you would want to look at application cookbooks, such as &lt;a href=&quot;http://community.opscode.com/cookbooks/application_ruby&quot;&gt;application_ruby&lt;/a&gt; or &lt;a href=&quot;http://community.opscode.com/cookbooks/passenger_apache2&quot;&gt;passenger_apache2&lt;/a&gt;, however, for fun and for learning let’s look into the setup of a custom stack.&lt;/p&gt;
+
+&lt;p&gt;The dependencies for above’s stack could be defined with &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt; in the Berksfile as follows:&lt;/p&gt;
+
+&lt;pre&gt;
+site :opscode
+
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'users'
+cookbook 'rvm', :git =&amp;gt; &quot;https://github.com/fnichol/chef-rvm&quot;
+cookbook 'nginx'
+cookbook 'postgresql'
+&lt;/pre&gt;
+
+&lt;p&gt;Running a:&lt;/p&gt;
+
+&lt;pre&gt;
+  berks install
+&lt;/pre&gt;
+
+&lt;p&gt;imports the cookbooks to your local Chef environment. Next, we need to setup the Vagrantfile to use Chef-solo provisioning:&lt;/p&gt;
+
+&lt;pre&gt;
+require 'multi_json'
+require 'berkshelf/vagrant'
+
+Vagrant::Config.run do |config|
+  VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('.', 'node.json').read)
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = [&quot;cookbooks&quot;]
+    chef.json = VAGRANT_JSON
+    chef.log_level = :debug
+  
+    VAGRANT_JSON['run_list'].each do |recipe|
+      chef.add_recipe(recipe)
+    end if VAGRANT_JSON['run_list']
+  end
+end
+&lt;/pre&gt;
+
+&lt;p&gt;Ha, there is node.json loaded, and that is Chef’s way to define a node setup. Looking more carefully above, there are 2 details: The “run_list” and the “chef.json” part. The run_list defines, how a node conversion flows, while the json overrides attributes from cookbooks. &lt;/p&gt;
+
+&lt;p&gt;The setup of these can be tricky.&lt;/p&gt;
+
+&lt;p&gt;Here are some learnings:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see &lt;a href=&quot;https://github.com/fnichol/chef-rvm&quot;&gt;chef-rvm&lt;/a&gt; and &lt;a href=&quot;https://github.com/fnichol/chef-rbenv&quot;&gt;chef-rbenv&lt;/a&gt;. Also, I found &lt;a href=&quot;https://github.com/mlafeldt/ruby-cookbook&quot;&gt;this Ruby wrapper cookbook&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/mlafeldt&quot;&gt;Matthias Lafeldt&lt;/a&gt; interesting, and this is certainly on my list for further investigation.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Passenger is a Ruby gem that is partly compiled into Nginx or loaded as module in Apache. Let’s look at the nginx setup. The tricky parts are the system paths, thanks a lot to &lt;a href=&quot;https://twitter.com/jtimberman&quot;&gt;@jtimberman&lt;/a&gt; for helping me understand this better. There are interesting details behind this in yesterday’s &lt;a href=&quot;http://www.youtube.com/watch?v=ddMLvMvOUfg&amp;amp;feature=youtu.be&quot;&gt;office hours with Joshua&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+  ...
+  &quot;nginx&quot;: {
+    &quot;version&quot;: &quot;1.2.5&quot;,
+    &quot;user&quot;: &quot;deploy&quot;,
+    &quot;init_style&quot;: &quot;init&quot;,
+    &quot;modules&quot;: [
+      &quot;http_stub_status_module&quot;,
+      &quot;http_ssl_module&quot;,
+      &quot;http_gzip_static_module&quot;
+    ],
+    &quot;passenger&quot;: {
+      &quot;version&quot;: &quot;3.0.18&quot;,
+      &quot;gem_binary&quot;: &quot;/usr/local/rvm/wrappers/ruby-2.0.0-p0/gem&quot;
+    },
+    &quot;configure_flags&quot;: [
+      &quot;--add-module=/usr/local/rvm/gems/ruby-2.0.0-p0/gems/passenger-3.0.18/ext/nginx&quot;
+    ],
+  ...
+&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add some gems that you mostly will need: Rake, Bundler and Rails:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+  ...
+  &quot;rvm&quot;: {
+    &quot;rubies&quot;: [&quot;2.0.0-p0&quot;],
+    &quot;default_ruby&quot;: &quot;2.0.0-p0&quot;,
+    &quot;vagrant&quot;: { &quot;system_chef_solo&quot; : &quot;/opt/ruby/bin/chef-solo&quot; },
+    &quot;gems&quot;: {
+      &quot;1.9.3-p0&quot;: [
+        {&quot;name&quot;: &quot;bundler&quot;},
+        {&quot;name&quot;: &quot;rake&quot;},
+        {&quot;name&quot;: &quot;rails&quot;, &quot;version&quot;: &quot;4.0.0.beta1&quot; }
+      ]
+    }
+  ...
+&lt;/pre&gt;
+
+&lt;p&gt;Maybe there are more details, but maybe you are curious to just see the &lt;a href=&quot;https://github.com/mulderp/chef-rails-stack/tree/rails4_stack&quot;&gt;chef-rails-stack&lt;/a&gt; at work.&lt;/p&gt;
+
+&lt;p&gt;Let’s try a provisioning.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ bin/vagrant up
+  $ bin/vagrant ssh
+&lt;/pre&gt;
+
+&lt;p&gt;And:&lt;/p&gt;
+
+&lt;pre&gt;
+  vagrant@Ubuntu-11:~$ ruby -v
+  ruby 2.0.0p0 (2013-02-24 revision 39474) [x86_64-linux]
+  vagrant@Ubuntu-11:~$ rails -v
+  Rails 4.0.0.beta1
+&lt;/pre&gt;
+
+&lt;p&gt;So, what do you think? There is more tuning needed, like setup of the nginx virtual host that connect to the Rails application. Also, the nginx conversion step might break, and users are missing. Any feedback would be interesting. Thanks for reading and sharing!&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>What is Erlang?</title>
+   <link href="http://mulderp.github.com/what-is-erlang"/>
+   <updated>2013-02-20T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/what-is-erlang</id>
+   <content type="html">&lt;p&gt;You will touch Erlang at some point, if you follow the development of distributed systems. Erlang is a remedy to the pains of a monolithic application. And great programmers such as &lt;a href=&quot;http://about.adamwiggins.com/&quot;&gt;Adam Wiggins&lt;/a&gt; or &lt;a href=&quot;http://plataformatec.com.br/crafting-rails-applications&quot;&gt;Jose Valim&lt;/a&gt; name Erlang in the context of scalable systems e.g. in &lt;a href=&quot;http://adam.heroku.com/past/2009/9/28/background_jobs_with_rabbitmq_and_minion/&quot;&gt;this article&lt;/a&gt; or &lt;a href=&quot;http://blog.plataformatec.com.br/2011/03/why-rubyists-should-try-elixir/&quot;&gt;here&lt;/a&gt;. So, I was curious enough to attend a great, small conference on Erlang:  &lt;a href=&quot;http://www.erlang-factory.com/conference/Munich2013&quot;&gt;Munich Erlang Factory Lite 2013&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As someone who is new to Erlang, a first question must be asked: What is Erlang? Let’s look at different aspects.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-does-erlang-code-look-like&quot;&gt;How does Erlang code look like?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You’ll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console, the Erlang Emulator (“ERL”). &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Looking more at the code, you’ll see that lines of code sometimes end with a “dot”. This triggers code execution. As a beginner, it’s the moment when you see error messages and interpretation of error messages is rather difficult. To me, Erlang errors are cryptic, and apparently line numbers in errors were a late innovation. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Further, the code you’ll see may contain tuples and atoms, some of the main data types in Erlang. Nota bene, the concept of String is not a data type in Erlang, but rather an Array of characters as in e.g. C. Some people say this makes string operations more difficult than in other languages. Other people say, it’s less error prone too. To a beginner, it’s hard to judge.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;erlang-modules-and-libraries&quot;&gt;Erlang modules and libraries&lt;/h2&gt;
+
+&lt;p&gt;Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming language, libraries make a programmer’s life fun. &lt;/p&gt;
+
+&lt;p&gt;The magic command to import libraries into your Erlang project is &lt;a href=&quot;https://github.com/basho/rebar&quot;&gt;“rebar”&lt;/a&gt;. Rebar also allows to easily create a new Erlang project. And, rebar is from &lt;a href=&quot;http://basho.com/&quot;&gt;Basho&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-erlang&quot;&gt;Why Erlang?&lt;/h2&gt;
+
+&lt;p&gt;So far, so good. Erlang programming is about functions and values, and that sounds like no big deal to some. However, the main aspects of Erlang are reflecting on errors when needed, and reliably running concurrent processes. It’s here where the Erlang fun part starts, and other languages just suck (for the skeptics, maybe you can read &lt;a href=&quot;http://stackoverflow.com/questions/6923480/java-thread-programming-book&quot;&gt;the books suggested here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;In Erlang, there seems to be the idea of “let it crash”. In a monolithic application, this usually means the death of an application. In a Unix system, this may mean to kill a process. In Erlang, you get a &lt;a href=&quot;http://www.erlang.org/doc/design_principles/sup_princ.html&quot;&gt;supervisor&lt;/a&gt; that may take care of this, when a process is idling or conflicting with another process. The supervisor may decide to retry, continue, or check later. This is new to me, but I haven’t come across this mentality in any other pogramming language so far.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Having better ways to deal with exceptions, you’ll also get better ways to deal with concurrency. It’s rather new to me, but to understand why this helps, think of a monolithic application that triggers delayed jobs. If you run you run multiple applications in your server cluster, and have eventually multiple delayed jobs, from my experience, you can get &lt;a href=&quot;http://en.wikipedia.org/wiki/Race_condition&quot;&gt;race conditions&lt;/a&gt; and other problems, that are really hard to debug. Erlang to the rescue. With Erlang, you’ll get some ways to have processes check what another process is doing. The mechanisms that you’ll hear people talk about are &lt;a href=&quot;http://learnyousomeerlang.com/errors-and-processes#monitors&quot;&gt;monitoring&lt;/a&gt; or linking processes, resulting into process &lt;a href=&quot;http://www.erlang.org/doc/getting_started/robustness.html&quot;&gt;robustness&lt;/a&gt;. The code of &lt;a href=&quot;http://www.rabbitmq.com/&quot;&gt;RabbitMQ&lt;/a&gt; must show clever ways to deal with message concurrency.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;So, my main conclusions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Erlang provides a dynamic toolchain that helps rethinking concurrency and fault-tolerance. Some more meta-discussions and examples on Erlang are John-Paul Bader introduction on &lt;a href=&quot;http://smyck.net/2012/04/22/why-erlang/&quot;&gt;why erlang here&lt;/a&gt;. &lt;a href=&quot;http://jlouisramblings.blogspot.de/&quot;&gt;JLouis&lt;/a&gt; ramblings on fault tolerant systems in Erlang. &lt;a href=&quot;https://github.com/basho&quot;&gt;Basho&lt;/a&gt; implemented &lt;a href=&quot;http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html&quot;&gt;Amazon’s Dynamo&lt;/a&gt; with Erlang, and the company is a great contributor and promotor to the Erlang community. And if you are not so much into web, Peer Stritzinger together with &lt;a href=&quot;http://www.embedded-brains.de/index.php?id=1&amp;amp;L=1&quot;&gt;Embedded-brains&lt;/a&gt; use Erlang for &lt;a href=&quot;http://www.stritzinger.com/Peer-Stritzinger.GmbH/Hydraprog-3.html&quot;&gt;scalable hardware&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Good places to get started with Erlang are John Paul’s &lt;a href=&quot;http://smyck.net/2013/02/17/how-to-set-up-a-basic-http-api-with-erlang-in-10-minutes/&quot;&gt;Setup an API in 10 minutes&lt;/a&gt; and &lt;a href=&quot;http://learnyousomeerlang.com/&quot;&gt;http://learnyousomeerlang.com/&lt;/a&gt;. Also, this blog post is a great overview: &lt;a href=&quot;http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html&quot;&gt;http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html&lt;/a&gt;. And &lt;a href=&quot;http://de.slideshare.net/pavlobaron/let-it-crash-seacon11-pavlo-baron&quot;&gt;Pavlo Baron&lt;/a&gt; does a lot of convincing work on &lt;a href=&quot;http://de.slideshare.net/pavlobaron/erlang-is-a-one-way&quot;&gt;using Erlang&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;OTP are the Erlang libraries that help in designing distributed applications. See &lt;a href=&quot;http://learnyousomeerlang.com/what-is-otp&quot;&gt;http://learnyousomeerlang.com/what-is-otp&lt;/a&gt;. The guy to ask on what’s OTP is &lt;a href=&quot;https://www.erlang-factory.com/upload/presentations/719/francesco-otp.pdf&quot;&gt;Francesco Cesarini&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you are into web development, see &lt;a href=&quot;https://github.com/elixir-lang/elixir&quot;&gt;Elixir&lt;/a&gt; and &lt;a href=&quot;https://github.com/elixir-lang/dynamo&quot;&gt;Dynamo&lt;/a&gt;. This looks the place to start writing your next hit-in-one API.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Organizing a Backbone Application</title>
+   <link href="http://mulderp.github.com/organizing-a-backbone-application"/>
+   <updated>2013-02-15T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/organizing-a-backbone-application</id>
+   <content type="html">&lt;p&gt;Backbone should help to organize your frontend JavaScript stack, but as an application grows, this is not so easy. I am grateful to &lt;a href=&quot;https://twitter.com/netzzwerg&quot;&gt;Bela Varga&lt;/a&gt; with whom I lately discussed patterns of Backbone code organization. By the way, the idea of this post came from these slides: &lt;a href=&quot;http://backbone-patterns.heroku.com/&quot;&gt;these patterns&lt;/a&gt; by &lt;a href=&quot;http://twitter.com/julio_ody&quot;&gt;julio_ody&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;top-level-organization-of-a-backbone-project&quot;&gt;Top-level organization of a Backbone project&lt;/h2&gt;
+
+&lt;p&gt;This pattern is helpful to quickly find and re-use structures and logic of Backbone modules. As Backbone comes with no directory structure as default, it leaves the decisions up to the developer how to setup files and directories. One directory layout that is often found in a Backbone project is this:&lt;/p&gt;
+
+&lt;pre&gt;
+   |-collections
+   |-libs
+   |---backbone
+   |---isotope
+   |---jquery
+   |---jquery-fileupload
+   |---jquery-ui
+   |---require
+   |---underscore
+   |-models
+   |-templates
+   |-views
+&lt;/pre&gt;
+
+&lt;p&gt;This works very well for me now: There are directories for the Models, Collections, Views and Templates, as well as a directory for the dependencies. If you want to learn more on how a RequireJS based setup works, &lt;a href=&quot;http://backbonetutorials.com/&quot;&gt;here&lt;/a&gt; is a nice tutorial.&lt;/p&gt;
+
+&lt;h2 id=&quot;appjs-contains-views---not-collections&quot;&gt;App.js contains views - not collections&lt;/h2&gt;
+
+&lt;p&gt;In a single-page application, there will be many views that need to be arranged. Now, in my first experiments, I instantiated views in the Router with: &lt;/p&gt;
+
+&lt;pre&gt;
+new SomeView(...)
+&lt;/pre&gt;
+
+&lt;p&gt;together with:&lt;/p&gt;
+
+&lt;pre&gt;
+collection.fetch(...) 
+&lt;/pre&gt;
+
+&lt;p&gt;to populate a view with data. This quickly leads to exploding dependencies in the Router. A better way to organize views is the following:&lt;/p&gt;
+
+&lt;pre&gt;
+    var AppRouter = Backbone.Router.extend({
+        routes: {
+	      '': 'showPostListView',
+	      '/posts/:id': 'showPostDetailView',
+        },
+
+        showPostListView: function() {
+	      new PostListView();
+        },
+
+       	showPostDetailView: function(post) {
+	      new PostDetailView({id: post});
+        }
+    });
+
+&lt;/pre&gt;
+
+&lt;p&gt;The idea is that the Views know which collection and models they bind too, and whether to fetch data or not. Here, we don’t need to require any Collection or Model since this will be done from within a view.&lt;/p&gt;
+
+&lt;h2 id=&quot;naming-views&quot;&gt;Naming Views&lt;/h2&gt;
+&lt;p&gt;Naming is always hard. And I found naming things on the frontend to be slightly different from naming things in the backend. In the Backend, you might want to orientate at naming things to entities from a domain; in a single-page app, you might want to name things after how you want to show or interact with data.&lt;/p&gt;
+
+&lt;p&gt;For example, one common frontend pattern is to show and interact with items in a collection. It’s what the basic Backbone &lt;a href=&quot;http://backbonejs.org/examples/todos/index.html&quot;&gt;ToDo&lt;/a&gt; shows, but what I understand now is the importance of naming:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A ‘ListView’ identifies a view that belongs to a collection.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;An ‘ItemView’ identifies a view that belogns to a model.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, when you break up your single-page app into different views, having this simple rule above helps in structuring the different states of the frontend. Also, ListView are slightly less bound to templates, but rather act as parent views for different item sub-views.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;For the main structure of a Backbone application, I find the directories /collections, /models, /views/ and /templates helpful.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Start thinking in Views first (a good option is on paper). Then, think on how Views fetch data when needed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There are views that manage other Views, and Views that render templates.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There seems to be some conventions on naming views in Backbone. So far, I use ‘ListView’ and ‘ItemView’ to name views on collections, or the elements (= items) in a collection.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Transforming collections in Ruby</title>
+   <link href="http://mulderp.github.com/map-reduce-in-ruby"/>
+   <updated>2013-02-09T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/map-reduce-in-ruby</id>
+   <content type="html">&lt;p&gt;Recently, I’ve read some strategy to visualize user registrations and activity in a web application with Ruby and Google Charts in &lt;a href=&quot;http://gistflow.com/posts/670-visualising-database-1&quot;&gt;this article&lt;/a&gt; . After starting my own visualization experiments, I felt that I had some blind spots in understanding Ruby’s &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html&quot;&gt;Enumerable Module&lt;/a&gt;. This post attempts to share some insights on expanding and reducing Arrays of objects.&lt;/p&gt;
+
+&lt;p&gt;First, let’s assume our data looks like:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups = [&quot;2011-08&quot;=&amp;gt;1433, &quot;2011-09&quot;=&amp;gt;2972, &quot;2011-10&quot;=&amp;gt;2480, &quot;2011-11&quot;=&amp;gt;2456]
+logins = [&quot;2011-08&quot;=&amp;gt;2832, &quot;2011-09&quot;=&amp;gt;4172, &quot;2011-10&quot;=&amp;gt;3480, &quot;2011-11&quot;=&amp;gt;5456]
+&lt;/pre&gt;
+
+&lt;p&gt;My goal was to combine the two collections and transform the result into:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+activity = [ &quot;2011-08&quot; =&amp;gt; { :signups =&amp;gt; 1433, :logins =&amp;gt; 2832 } ...
+&lt;/pre&gt;
+
+&lt;p&gt;In the exploration, I touched questions on #merge and #to_a of Hashes combined with #first and #last of Arrays, and #map, #inject, #group_by for Enumerables. Let’s start.&lt;/p&gt;
+
+&lt;h2 id=&quot;splitting-a-hash&quot;&gt;Splitting a Hash&lt;/h2&gt;
+&lt;p&gt;My first step was to split the larger collection hash into single hashes. For this &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-first&quot;&gt;first&lt;/a&gt; and &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-to_a&quot;&gt;to_a&lt;/a&gt; methods help like this:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups.first.to_a
+=&amp;gt; [[&quot;2011-08&quot;, 1433], [&quot;2011-09&quot;, 2972], [&quot;2011-10&quot;, 2480], [&quot;2011-11&quot;, 2456]]
+&lt;/pre&gt;
+
+&lt;p&gt;There is one caveat with inverse transformation, i.e. converting above Array back to Hashes. I knew that:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+Hash[1,2]
+=&amp;gt; {1 =&amp;gt; 2}
+&lt;/pre&gt;
+
+&lt;p&gt;but this does not work:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[[&quot;2011-08&quot;, 1433], [&quot;2011-09&quot;, 2972], [&quot;2011-10&quot;, 2480], [&quot;2011-11&quot;, 2456]].map { |a| Hash[a] }
+=&amp;gt; [{}, {}, {}, {}]
+&lt;/pre&gt;
+
+&lt;p&gt;In order to have the conversion working, the arguments must be ‘splatted’ with *, see e.g. &lt;a href=&quot;http://theplana.wordpress.com/2007/03/03/ruby-idioms-the-splat-operator/&quot;&gt;this discussion&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So, this means by splating the input values with Hash[*a] we get:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups = [[&quot;2011-08&quot;, 1433], [&quot;2011-09&quot;, 2972], [&quot;2011-10&quot;, 2480], [&quot;2011-11&quot;, 2456]].map { |a| Hash[*a] }
+=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;1433}, {&quot;2011-09&quot;=&amp;gt;2972}, {&quot;2011-10&quot;=&amp;gt;2480}, {&quot;2011-11&quot;=&amp;gt;2456}]
+&lt;/pre&gt;
+
+&lt;p&gt;Now we have an Array of Hashes for the signups (while we started with one Hash wrapped in an Array)
+As I want some key in the collection that I could use later for grouping, let’s introduce a :signup symbol as key like this:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups.map { |h| h.map { |k, v| { k =&amp;gt; { signups: v }}}}.flatten
+=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;{:signups=&amp;gt;1433}}, {&quot;2011-09&quot;=&amp;gt;{:signups=&amp;gt;2972}}, {&quot;2011-10&quot;=&amp;gt;{:signups=&amp;gt;2480}}, {&quot;2011-11&quot;=&amp;gt;{:signups=&amp;gt;2456}}]
+&lt;/pre&gt;
+
+&lt;p&gt;Notice, there are two &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-map&quot;&gt;#map&lt;/a&gt; calls here: The first #map is about walking on the elements of an Array, while the second #map walks on the key and values of a Hash. For me, a common mistoke is trying to walk an Array with pair elements, while these are only available in the Hash #map.&lt;/p&gt;
+
+&lt;p&gt;Let’s apply a the transformation so far also to our second collection, the logins collections with:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[&quot;2011-08&quot;=&amp;gt;2832, &quot;2011-09&quot;=&amp;gt;4172, &quot;2011-10&quot;=&amp;gt;3480, &quot;2011-11&quot;=&amp;gt;5456].first.to_a.map { |a| Hash[*a] }.map { |h| h.map { |k, v| { k =&amp;gt; { logins: v }}}}.flatten
+=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832}}, {&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172}}, {&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480}}, {&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456}}]
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;reduce-and-grouping&quot;&gt;Reduce and Grouping&lt;/h2&gt;
+&lt;p&gt;The steps above were basically joining and expanding our collection that should now be reduced back to the final structure. To get this new, combined collection, let’s summarize the structure we have so far:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+signups = [{&quot;2011-08&quot;=&amp;gt;{:signups=&amp;gt;1433}}, {&quot;2011-09&quot;=&amp;gt;{:signups=&amp;gt;2972}}, {&quot;2011-10&quot;=&amp;gt;{:signups=&amp;gt;2480}}, {&quot;2011-11&quot;=&amp;gt;{:signups=&amp;gt;2456}}]
+logins = [{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832}}, {&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172}}, {&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480}}, {&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456}}]
+&lt;/pre&gt;
+
+&lt;p&gt;Before we are going to mix up the collections, let’s shortly review how #reduce works.&lt;/p&gt;
+
+&lt;h3 id=&quot;reduce-or-inject&quot;&gt;Reduce (or Inject)&lt;/h3&gt;
+
+&lt;p&gt;The methods #reduce and #inject do the same (they are aliased). The process is sometimes known as ‘folding’ a collection (see &lt;a href=&quot;http://en.wikipedia.org/wiki/Fold_(higher-order_function)&quot;&gt;wikipedia&lt;/a&gt;). Here are two observations I made:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reduce let apply operators in an Enumerable list:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[1,2,3].reduce(:+)
+=&amp;gt; 6
+&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The effect of Reduce is a bit like chaining method calls:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{a: 1},{b:2}].reduce(:merge)
+=&amp;gt; {:a=&amp;gt;1, :b=&amp;gt;2}
+&lt;/pre&gt;
+
+&lt;p&gt;This reminds me on {:a=&amp;gt;1}.merge({:b=&amp;gt;2}) that has the same outcome: {:a=&amp;gt;1, :b=&amp;gt;2}&lt;/p&gt;
+
+&lt;p&gt;Inject is very handy to walk a list, and at the same time keep some notes in memory on the progress. Sometimes an additional step might be necessary, to apply folding, e.g. prepare the collection with &lt;a href=&quot;http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-group_by&quot;&gt;#group_by&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;groupby&quot;&gt;Group_by&lt;/h3&gt;
+
+&lt;p&gt;My observation on the #group_by method is that it allows to group data according to ‘meta-data’. Consider grouping a number of objects according to their class. For example:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[&quot;12&quot;, 12, &quot;patrick&quot;, Object.new].group_by(&amp;amp;:class)
+=&amp;gt; {String=&amp;gt;[&quot;12&quot;, &quot;patrick&quot;], Fixnum=&amp;gt;[12], Object =&amp;gt; ...]}
+&lt;/pre&gt;
+
+&lt;p&gt;Now, we could also group this collection according to their String values like this:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[&quot;12&quot;, 12, &quot;patrick&quot;, Object.new].group_by(&amp;amp;:to_s)
+=&amp;gt; {&quot;12&quot;=&amp;gt;[&quot;12&quot;, 12], &quot;patrick&quot;=&amp;gt;[&quot;patrick&quot;], Object:0x007f =&amp;gt;[...&amp;gt;]}
+&lt;/pre&gt;
+
+&lt;p&gt;The same data, different groupings. However, so far we can go ahead again with our signup and login collections, and apply some #inject calls.&lt;/p&gt;
+
+&lt;h3 id=&quot;applying-inject&quot;&gt;Applying #inject&lt;/h3&gt;
+
+&lt;p&gt;My first goal is to transform a structure as this:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10 }}, { :a =&amp;gt; { :c =&amp;gt; 20 }}]
+&lt;/pre&gt;
+
+&lt;p&gt;into:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}]
+&lt;/pre&gt;
+
+&lt;p&gt;This can be done with:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{:a=&amp;gt;{:b=&amp;gt;10}}, {:a=&amp;gt;{:c=&amp;gt;20}}].map { |k| k.values }.flatten.reduce(:merge)
+=&amp;gt; {:b=&amp;gt;10, :c=&amp;gt;20}
+&lt;/pre&gt;
+
+&lt;p&gt;The explanation: We reduce an Array of a nested Hash with the values from the start.&lt;/p&gt;
+
+&lt;p&gt;Our next step is to remove the extra Hashes here:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}, { :d =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}]
+&lt;/pre&gt;
+
+&lt;p&gt;This can be done with:
+&amp;lt;pre style=&quot;font-size:11px&quot;&amp;gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}, { :d =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}].reduce(:merge)
+=&amp;gt; {:a=&amp;gt;{:b=&amp;gt;10, :c=&amp;gt;20}, :d=&amp;gt;{:b=&amp;gt;10, :c=&amp;gt;20}}
+&amp;lt;/pre&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;Be careful: With a minor change the values from the first Hash are lost:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}, { :a =&amp;gt; { :f =&amp;gt; 10, :d =&amp;gt; 20 }}].reduce(:merge)
+=&amp;gt; {:a=&amp;gt;{:f=&amp;gt;10, :d=&amp;gt;20}}
+&lt;/pre&gt;
+
+&lt;p&gt;Note: The reason that the merge does not work as expected is, that a merge does not walk recursively into a nested Hash. To get the proper merge operation, we need to apply #inject with an empty hash as accumulator like this: &lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[{ :a =&amp;gt; { :b =&amp;gt; 10, :c =&amp;gt; 20 }}, { :a =&amp;gt; { :f =&amp;gt; 10, :d =&amp;gt; 20 }}].inject({}) {|o,h| o.merge!(h[:a]); o }
+=&amp;gt; {:b=&amp;gt;10, :c=&amp;gt;20, :f=&amp;gt;10, :d=&amp;gt;20}
+&lt;/pre&gt;
+
+&lt;p&gt;Now, a similar transformation can be applied to my joined signup and login collection. First, let’s combine the collections:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+[logins, signups].flatten.group_by { |a| a.keys.first }
+=&amp;gt; {&quot;2011-08&quot;=&amp;gt;[{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832}}, {&quot;2011-08&quot;=&amp;gt;{:signups=&amp;gt;1433}}], &quot;2011-09&quot;=&amp;gt;[{&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172}}, {&quot;2011-09&quot;=&amp;gt;{:signups=&amp;gt;2972}}], &quot;2011-10&quot;=&amp;gt;[{&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480}}, {&quot;2011-10&quot;=&amp;gt;{:signups=&amp;gt;2480}}], &quot;2011-11&quot;=&amp;gt;[{&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456}}, {&quot;2011-11&quot;=&amp;gt;{:signups=&amp;gt;2456}}]}
+&lt;/pre&gt;
+
+&lt;p&gt;Now, let’s reduce the set to the basics:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+login_signups = [logins, signups].flatten.inject({}) { |h,v| h[v.keys.first] ||= []; h[v.keys.first] &amp;lt;&amp;lt; v.values; puts v.inspect; h}
+{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832}}
+{&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172}}
+{&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480}}
+{&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456}}
+{&quot;2011-08&quot;=&amp;gt;{:signups=&amp;gt;1433}}
+{&quot;2011-09&quot;=&amp;gt;{:signups=&amp;gt;2972}}
+{&quot;2011-10&quot;=&amp;gt;{:signups=&amp;gt;2480}}
+{&quot;2011-11&quot;=&amp;gt;{:signups=&amp;gt;2456}}
+=&amp;gt; {&quot;2011-08&quot;=&amp;gt;[[{:logins=&amp;gt;2832}], [{:signups=&amp;gt;1433}]], &quot;2011-09&quot;=&amp;gt;[[{:logins=&amp;gt;4172}], [{:signups=&amp;gt;2972}]], &quot;2011-10&quot;=&amp;gt;[[{:logins=&amp;gt;3480}], [{:signups=&amp;gt;2480}]], &quot;2011-11&quot;=&amp;gt;[[{:logins=&amp;gt;5456}], [{:signups=&amp;gt;2456}]]}
+&lt;/pre&gt;
+
+&lt;p&gt;Now, we are almost there. Let’s clean up the combined hashes and arrays within the date keys:&lt;/p&gt;
+
+&lt;pre style=&quot;font-size:11px&quot;&gt;
+activities = login_signups.map { |m| {m.first =&amp;gt; m.last.flatten.inject(:merge)} }=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832, :signups=&amp;gt;1433}}, {&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172, :signups=&amp;gt;2972}}, {&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480, :signups=&amp;gt;2480}}, {&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456, :signups=&amp;gt;2456}}]
+=&amp;gt; [{&quot;2011-08&quot;=&amp;gt;{:logins=&amp;gt;2832, :signups=&amp;gt;1433}}, {&quot;2011-09&quot;=&amp;gt;{:logins=&amp;gt;4172, :signups=&amp;gt;2972}}, {&quot;2011-10&quot;=&amp;gt;{:logins=&amp;gt;3480, :signups=&amp;gt;2480}}, {&quot;2011-11&quot;=&amp;gt;{:logins=&amp;gt;5456, :signups=&amp;gt;2456}}]
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;My conclusion of this post are the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Transforming nested collections is funcitonal programming, and it certainly takes practice. I would be curious to see/hear how you approach this kind of problems with your steps, or maybe in another programming language. Let me know what you think.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A lot of transformation can be approached with standard Array methods like ‘each’ and ‘map’; however they are sometimes not optimal, and in a way are limited to ‘simple’ transformation only.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Redis as key-value store provides commands for Hash, List and Set operations; maybe getting a better understanding of the effects in Ruby helps you becoming a better data engineer too.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I didn’t use #group_by; although it is very helpful in a collections with more keys, e.g. see this discussion on &lt;a href=&quot;http://stackoverflow.com/questions/14776686/ruby-transformation-to-merge-an-array-of-hashes-into-another-array-of-hash&quot;&gt;StackOverflow&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Probably a nice topic for exploration would also be using value objects for this kind of filtering and collection transformation&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Logging in Rack middleware with Clogger</title>
@@ -49,7 +649,7 @@ end
   &quot;GET http://0.0.0.0:3000/profiles HTTP/1.1&quot; ?  200 1083 &quot;-&quot; &quot;Ruby&quot; 0.502 -- some meta data
 &lt;/pre&gt;
 
-&lt;h1 id=&quot;monitoring-cookies-in-sinatra&quot;&gt;Monitoring cookies in Sinatra&lt;/h1&gt;
+&lt;h2 id=&quot;monitoring-cookies-in-sinatra&quot;&gt;Monitoring cookies in Sinatra&lt;/h2&gt;
 &lt;p&gt;A similar logging setup can easily be done in Sinatra. Simply include Clogger in config.ru&lt;/p&gt;
 
 &lt;pre&gt;
@@ -67,76 +667,11 @@ use Clogger, :format =&amp;gt; '&quot;$request&quot; ?$query_string $status &quo
  </entry>
  
  <entry>
-   <title>API Authentication from scratch</title>
-   <link href="http://mulderp.github.com/API-authentication-from-scratch"/>
-   <updated>2013-02-02T00:00:00+01:00</updated>
-   <id>http:/mulderp.github.com/API-authentication-from-scratch</id>
-   <content type="html">&lt;p&gt;If HTTP is like sending messages in an enveloppe, authentication is about determining a sender’s identity. Now, in the context of &lt;a href=&quot;http://en.wikipedia.org/wiki/Representational_state_transfer#Key_goals&quot;&gt;REST&lt;/a&gt;, each sender must include authentication credentials as is very nicely discussed in e.g. Amazon’s &lt;a href=&quot;http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html&quot;&gt;RESTAuthentication docs&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;http-authorization-header&quot;&gt;HTTP authorization header&lt;/h2&gt;
-
-&lt;p&gt;There are many ways to pass authentication tokens between client and servers, and the discussion how to grant access to data in distributed systems remains ongoing (see e.g. OAuth2). A basic approach, however, can be found in the HTTP specs (&lt;a href=&quot;http://www.ietf.org/rfc/rfc2616.txt&quot;&gt;RFC2616&lt;/a&gt; and &lt;a href=&quot;http://www.ietf.org/rfc/rfc2617.txt&quot;&gt;RFC2617&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;The specs are a bit ‘difficult’ to read, so, it’s best to keep a request with Curl in the back of the head:&lt;/p&gt;
-
-&lt;pre&gt;
-curl http://example.com/some_action -H 'Authorization: Token token=&quot;79d4d9ee34e3f589ee94d080357afd8e&quot;
-&lt;/pre&gt;
-
-&lt;p&gt;So, what does it mean?&lt;/p&gt;
-
-&lt;p&gt;In RFC2616, there is the following definition for a HTTP header field (section 14: “Header Field Definitions”):&lt;/p&gt;
-&lt;pre&gt;
-Authorization  = &quot;Authorization&quot; &quot;:&quot; credentials
-&lt;/pre&gt;
-
-&lt;p&gt;We need to look in RFC2617, to see what ‘credentials’ might be:&lt;/p&gt;
-
-&lt;pre&gt;
-credentials = auth-scheme #auth-param
-&lt;/pre&gt;
-
-&lt;p&gt;This can be interpreted as:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;‘auth-scheme’ specifies an authentication method. From RFC2617, this might be ‘Token’, ‘Basic’ or ‘Digest’, but it can be ‘AWS’ too, as in the case of Amazon.&lt;/li&gt;
-  &lt;li&gt;‘auth-param’ is the actual authentication string. This part of the header field contains the sequence that grants access or should result into a 401 (Unauthorized) response.  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;request-authorization-with-rack&quot;&gt;Request authorization with Rack&lt;/h2&gt;
-
-&lt;p&gt;In order to have an API talk to a client (= API consumer), let’s assume the server and client can work with the same database backend, and as such can access the same data for an user.&lt;/p&gt;
-
-&lt;p&gt;Now, when the user issues a request, we can simply pass a HTTP header token as explained above. In a Rails based server, the API authentication could look like:&lt;/p&gt;
-
-&lt;pre&gt;
-def require_api_auth
-  authenticate_or_request_with_http_token do |token, options|
-    !(@current_user = User.where(access_token: token).first).nil?
-  end
-end
-&lt;/pre&gt;
-
-&lt;p&gt;Rails comes with these helpers built in (see &lt;a href=&quot;https://github.com/rails/rails/blob/27311fef5efa598f281649074255834546d2b4ec/actionpack/lib/action_controller/metal/http_authentication.rb#L389&quot;&gt;ActionController::Metal&lt;/a&gt;. But there might be cases where your API (or client) is a Rack application, and it’s actually some Rack methods too that are behind the helpers above, see &lt;a href=&quot;https://github.com/rails/rails/blob/27311fef5efa598f281649074255834546d2b4ec/actionpack/lib/action_controller/metal/http_authentication.rb#L429&quot;&gt;token_and_options&lt;/a&gt;. So, this check could easily be moved to Rack middleware.&lt;/p&gt;
-
-&lt;h2 id=&quot;cookies-and-web-interfaces&quot;&gt;Cookies and web interfaces&lt;/h2&gt;
-
-&lt;p&gt;Now if your client-side applications have state (such as in single-page apps), cookies enter the authentication game. However, cookies serve a different need  …&lt;/p&gt;
-
-&lt;p&gt;yes, this means you’ll have some duplicated stuff, but this is how it should work, because they serve different needs and they should be decoupled (ex: you might want to shut down API access but web access should keep up and running)&lt;/p&gt;
-
-&lt;p&gt;… question:  how would code look like to actually access the API with AJAX from the user’s browser?&lt;/p&gt;
-
-&lt;p&gt;So, how can the client talk to a server, depending on whether a user logged in, or not?&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
    <title>A Vagrant based Minimum Viable Webserver</title>
    <link href="http://mulderp.github.com/minimum-nginx-node-with-librarian-chef"/>
    <updated>2013-02-01T00:00:00+01:00</updated>
    <id>http:/mulderp.github.com/minimum-nginx-node-with-librarian-chef</id>
-   <content type="html">&lt;p&gt;When developing servers or clients that talk HTTP, it’s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and &lt;a href=&quot;https://github.com/applicationsonline/librarian&quot;&gt;Librarian-Chef&lt;/a&gt;. Librarian-Chef is conceptually very close to Ruby’s bundler.&lt;/p&gt;
+   <content type="html">&lt;p&gt;When developing servers or clients that talk HTTP, it’s great to have mock systems that are as close as possible to a live system. Here is a quick hack to make a minimum viable webserver by using Chef-Solo and &lt;a href=&quot;https://github.com/applicationsonline/librarian&quot;&gt;Librarian-Chef&lt;/a&gt;. Librarian-Chef is conceptually very close to the Ruby Bundler gem.&lt;/p&gt;
 
 &lt;h2 id=&quot;install-librarian-chef&quot;&gt;Install librarian-chef&lt;/h2&gt;
 
@@ -146,13 +681,13 @@ end
 
 &lt;h2 id=&quot;init-librarian-chef&quot;&gt;Init librarian-chef&lt;/h2&gt;
 
-&lt;p&gt;To get started, we need to get file where we can specifiy a node’s cookbooks:&lt;/p&gt;
+&lt;p&gt;To get started, we need a file where we can specifiy a node’s cookbooks:&lt;/p&gt;
 
 &lt;pre&gt;
    $ librarian-chef init
 &lt;/pre&gt;
 
-&lt;p&gt;This gives us the ‘Cheffile’, which is conceptually close to Ruby’s ‘Gemfile’.&lt;/p&gt;
+&lt;p&gt;This gives us the ‘Cheffile’, which is conceptually close to Bundler’s ‘Gemfile’.&lt;/p&gt;
 
 &lt;h2 id=&quot;edit-cheffile&quot;&gt;Edit Cheffile&lt;/h2&gt;
 
@@ -171,7 +706,7 @@ cookbook 'nginx-app', :path =&amp;gt; &quot;./application-cookbooks&quot;
 
 &lt;h2 id=&quot;create-the-application-cookbook&quot;&gt;Create the application cookbook&lt;/h2&gt;
 
-&lt;p&gt;In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:&lt;/p&gt;
+&lt;p&gt;In contrast to cookbooks for infrastructure, application cookbooks are adjustments and setups for node specific stuff. Some background on this can be found &lt;a href=&quot;http://devopsanywhere.blogspot.de/2012/11/how-to-write-reusable-chef-cookbooks.html&quot;&gt;here&lt;/a&gt; They are derived from e.g. community cookbooks, but contain custom stuff. So, let’s create an application cookbook for our webserver:&lt;/p&gt;
 
 &lt;pre&gt;
     knife cookbook create nginx-app -o application-cookbooks
@@ -377,47 +912,59 @@ So, that's all to get the webserver running. Now, it would be cool to get some b
 
 &lt;p&gt;Here are some steps:&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Upgrade your VirtualBox to the latest Version; as time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue &lt;a href=&quot;https://github.com/jedi4ever/veewee/issues/519&quot;&gt;here&lt;/a&gt; )&lt;/li&gt;
-  &lt;li&gt;Make sure you have the gems VeeWee and Vagrant installed:&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&quot;upgrade-your-virtualbox-to-the-latest-version&quot;&gt;1.  Upgrade your VirtualBox to the latest Version&lt;/h2&gt;
+
+&lt;p&gt;As time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue &lt;a href=&quot;https://github.com/jedi4ever/veewee/issues/519&quot;&gt;here&lt;/a&gt; )&lt;/p&gt;
+
+&lt;h2 id=&quot;veewee-and-vagrant&quot;&gt;2.  VeeWee and Vagrant;&lt;/h2&gt;
+
+&lt;p&gt;Make sure you have the gems VeeWee and Vagrant installed:&lt;/p&gt;
+
 &lt;pre&gt;
-     gem install vagrant
-     gem install veewee
+         gem install vagrant
+         gem install veewee
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Now, You’ll want to get a list with possible ISO images for baseboxes. This command list baseboxes:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;list-baseboxes&quot;&gt;3.  List baseboxes&lt;/h2&gt;
+
+&lt;p&gt;Now, You’ll want to get a list with possible ISO images for baseboxes. This command list baseboxes:&lt;/p&gt;
+
 &lt;pre&gt;
-    vagrant basebox templates
+        vagrant basebox templates
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;As you’ll see in the list you have quite a lot of options. Do a:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;define-a-basebox&quot;&gt;4.  Define a basebox&lt;/h2&gt;
+
+&lt;p&gt;As you’ll see in the list you have quite a lot of options. Do a:&lt;/p&gt;
+
 &lt;pre&gt;
      vagrant basebox define Ubuntu-11.04 ubuntu-11.04-server-amd64 -d
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;check-the-iso-image&quot;&gt;5. Check the ISO Image&lt;/h2&gt;
+
+&lt;p&gt;Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:&lt;/p&gt;
+
 &lt;pre&gt;
     ubuntu-base/definitions/Ubuntu-11.04/definition.rb
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Start the build of the basebox:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;build-the-basebox&quot;&gt;6.  Build the basebox&lt;/h2&gt;
+
+&lt;p&gt;Start the build of the basebox:&lt;/p&gt;
+
 &lt;pre&gt;
      vagrant basebox build Ubuntu-11.04
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Export the basebox:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;export-the-basebox&quot;&gt;7.  Export the basebox:&lt;/h2&gt;
+
 &lt;pre&gt;
    vagrant basebox export Ubuntu-11.04
 &lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;Add the basebox:&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;h2 id=&quot;add-the-basebox&quot;&gt;8.  Add the basebox:&lt;/h2&gt;
+
 &lt;pre&gt;
    vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
 &lt;/pre&gt;
@@ -454,13 +1001,13 @@ So, that's all to get the webserver running. Now, it would be cool to get some b
 
 &lt;p&gt;In the meanwhile, I was able to work with cookbooks for a basic setup of Postgres and ArangoDB. And today, I just launched a basic web server instance on Amazon-EC2 with just a simple knife command. &lt;/p&gt;
 
-&lt;p&gt;Last but not lwast, I got connected to some more DevOps, such as &lt;a href=&quot;https://github.com/jbianquetti&quot;&gt;Jorge Bianquetti&lt;/a&gt; who helped with librarian-chef and Cassiano Leal with whom I discussed &lt;a href=&quot;https://github.com/cassianoleal/vagrant-butcher/issues/3&quot;&gt;Vagrant-Butcher&lt;/a&gt;. Also, &lt;a href=&quot;http://mlafeldt.github.com/blog/2012/09/learning-chef/&quot;&gt;Mathias Lafeldt&lt;/a&gt; has some great discussions on his experiences on #learningchef. That’s all for now, looking forward to hear your feeedback, your insights, discoveries and problems with infrastructure automation.&lt;/p&gt;
+&lt;p&gt;Last but not lwast, I got connected to some more DevOps, such as &lt;a href=&quot;https://github.com/jbianquetti&quot;&gt;Jorge Bianquetti&lt;/a&gt; who helped with librarian-chef and Cassiano Leal with whom I discussed &lt;a href=&quot;https://github.com/cassianoleal/vagrant-butcher/issues/3&quot;&gt;Vagrant-Butcher&lt;/a&gt;. Also, &lt;a href=&quot;http://mlafeldt.github.com/blog/2012/09/learning-chef/&quot;&gt;Mathias Lafeldt&lt;/a&gt; has some great discussions on his experiences on #learningchef. That’s all for now, looking forward to hear your feeedback, your insights, discoveries and problems with infrastructure automation. If you want to get more details on &lt;a href=&quot;http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/&quot;&gt;learning-chef&lt;/a&gt; check out the blog of &lt;a href=&quot;http://nathenharvey.com&quot;&gt;Nathen Harvey&lt;/a&gt; too.&lt;/p&gt;
 
 </content>
  </entry>
  
  <entry>
-   <title>What is modular code?</title>
+   <title>What is a modular web application?</title>
    <link href="http://mulderp.github.com/what-is-modular-architecture"/>
    <updated>2013-01-26T00:00:00+01:00</updated>
    <id>http:/mulderp.github.com/what-is-modular-architecture</id>
@@ -478,23 +1025,18 @@ So, that's all to get the webserver running. Now, it would be cool to get some b
 
 &lt;p&gt;However, in the context of (mobile) web applications, where views are living in (mobile) browsers that require a lot JavaScript, new design decisions for an application arise. Here are 2 questions that would impact the application design: &lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;how-do-we-serve-views-to-a-client&quot;&gt;How do we serve “views” to a client?&lt;/h2&gt;
-    &lt;p&gt;As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&quot;how-do-we-serve-views-to-a-client&quot;&gt;1. How do we serve “views” to a client?&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;As long as a MVC stack lives on a server (e.g. a standard Rails application), this question is easy to answer. Views can easily access model instances, and the rendered views can be served from server to clients.&lt;/p&gt;
 
 &lt;p&gt;In a mobile context however, the view rendering might happen on the client-side for efficiency. Or, in the context of a single-page application, views are only partially updated as needed. These designs require servers to prepare assets for clients, and new tool-chains are becoming popular. I wrote about some experiences of working with new tools for asset management &lt;a href=&quot;http://thinkingonthinking.com/MVC-and-Rails-API/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Also, for serving frontends assets, no full application stack is needed. And since my programming background the last year was mainly in Ruby, I have been looking into serving assets with Sinatra and authenticating HTTP requests with Rack. Other basic assets servers, such as Express.JS and other Node.JS approaches might be interesting to look at too.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;how-to-organize-mvc-modules-on-the-client&quot;&gt;How to organize “MVC” modules on the client?&lt;/h2&gt;
-    &lt;p&gt;When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&quot;how-to-organize-mvc-modules-on-the-client&quot;&gt;2. How to organize “MVC” modules on the client?&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;When working with MVC on the client, new decisions might be needed on how to organize an MVC structure. E.g. with Backbone, views are logic for state, events and accessing models, together with templates that help in rendering data.&lt;/p&gt;
 
 &lt;p&gt;Additionally, there might be multiple MVC’s defined on a client, depending on the current scope of a HTTP conversation (e.g. /protected or /guest or /admin).&lt;/p&gt;
 
@@ -663,7 +1205,24 @@ it(&quot;has el property&quot;, function() {
  </entry>
  
  <entry>
-   <title>Rake-Pipeline, Rails-API, Backbone.JS</title>
+   <title>Backbone.js, Underscore.js and Require.js</title>
+   <link href="http://mulderp.github.com/RequireJS-and-Backbone"/>
+   <updated>2012-12-15T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/RequireJS-and-Backbone</id>
+   <content type="html">&lt;p&gt;As explained in the &lt;a href=&quot;http://thinkingonthinking.com/MVC-and-Rails-API/&quot;&gt;previous post&lt;/a&gt;, mobile clients change the use case of web applications, especially the model-view-controller pattern. I think a frontend model-view-controller setup, or a Single-Page-Application setup, will be very important when addressing mobile browsers. Backbone.JS is a JavaScript framework that can help you getting there.&lt;/p&gt;
+
+&lt;p&gt;Now, as a Ruby programmer, you think JavaScript has some problems: Incompatible browsers with different language implementations, as well as language constructs that leave you alone quite fast. At least part of the language problems are solved by JQuery and Underscore.js (which reminds on Ruby, see the collection stuff and enumerator constructs at &lt;a href=&quot;http://underscorejs.org&quot;&gt;underscorejs.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;About the problem of global scope in JavaScript, it is interesting to see, that the JavaScript community nowadays has a modular requirement setup to manage dependencies: &lt;a href=&quot;http://requirejs.org/&quot;&gt;require.js&lt;/a&gt;. In my view, this will make fancy browser (and maybe also server) programming fun again.&lt;/p&gt;
+
+&lt;p&gt;What you need to know as Rails programmer, Require.js injects dependencies where they are needed, and as such prevents problems in the global scope. Additionally, you can inject HTML templates into your JavaScript modules, which is very nice too. I’ll need to explore this, but you can actually take your Rails ERB templates and inject them 1-1 to Backbone templates, where you need them. Some ideas behind this technique are discussed by Thomas Davis, &lt;a href=&quot;http://backbonetutorials.com/&quot;&gt;here&lt;/a&gt;. A boilerplate for backbone and require-js is &lt;a href=&quot;https://github.com/thomasdavis/backbonetutorials/tree/gh-pages/examples/modular-backbone&quot;&gt;here&lt;/a&gt;. Another nice overview on Backbone development is &lt;a href=&quot;https://www.youtube.com/watch?v=PqtYcHyyWJA&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://kilon.org/blog/2012/08/build-backbone-apps-using-requirejs/&quot;&gt;here (Backbone and Require.js)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here some references to my &lt;a href=&quot;https://github.com/mulderp/rails-api-backbone&quot;&gt;Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment&lt;/a&gt;. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Rake-Pipeline and Rails-API</title>
    <link href="http://mulderp.github.com/MVC-and-Rails-API"/>
    <updated>2012-12-14T00:00:00+01:00</updated>
    <id>http:/mulderp.github.com/MVC-and-Rails-API</id>
@@ -703,19 +1262,7 @@ So far about building assets, next about serving data that assets want… we’l
 
 &lt;p&gt;The &lt;a href=&quot;https://github.com/rails-api/rails-api&quot;&gt;Rails-Api&lt;/a&gt; removes the Rails ERB templates and Sprockets from your application. This is nice, because your Rack stack becomes lighter, and you can focus on the thing that matters: Serving data to clients. From first experiments, Rails-API combines very nicely with rake-pipeline. As you can see from my &lt;a href=&quot;https://github.com/mulderp/rails-api-backbone&quot;&gt;demo-project&lt;/a&gt;, the Rails app just servers JSON to client-side code that is built with rake-pipeline from the /source directory.&lt;/p&gt;
 
-&lt;h2 id=&quot;backbonejs-underscorejs-and-requirejs&quot;&gt;Backbone.js, Underscore.js and Require.js&lt;/h2&gt;
-
-&lt;p&gt;Last but not least, for my application design, I want to use a JS framework that allows to structure the interaction with the DOM and with the end-user. This framework is Backbone.js - but maybe first, a step back.&lt;/p&gt;
-
-&lt;p&gt;As a Ruby programmer, you think JavaScript has some problems: Incompatible browsers with different language implementations, as well as language constructs that leave you alone quite fast. At least part of the language problems are solved by JQuery and Underscore.js (which reminds on Ruby, see the collection stuff and enumerator constructs at underscorejs.org&lt;/p&gt;
-
-&lt;p&gt;For the rest, a lot of folks from the Node.js community is an example of disruptive innovation at work; especially it is interesting to see, that the JS community nowadays has a modular requirement setup to manage dependencies: require.js. In my view, this will make fancy browser (and maybe one day server) programming fun again.&lt;/p&gt;
-
-&lt;p&gt;What you need to know as Rails programmer, Require.js injects dependencies where they are needed, and as such prevents problems in the global scope. Additionally, you can inject HTML templates into your JS modules, which is very nice too. I’ll need to explore this, but you can actually take your Rails ERB templates and inject them 1-1 to Backbone templates, where you need them. Some ideas behind this technique are discussed by Thomas Davis, here. A boilerplate for backbone and require-js is here. Another nice overview on Backbone development is here and here (Backbone and Require.js).&lt;/p&gt;
-
 &lt;p&gt;That’s all for now.&lt;/p&gt;
-
-&lt;p&gt;Here some references to my &lt;a href=&quot;https://github.com/mulderp/rails-api-backbone&quot;&gt;Rake-Pipeline-Rails-Api-BackboneJS-RequireJS experiment&lt;/a&gt;. I hope to share some small screencasts soon, to show you why this toolchain is cool. At least for me, these tools make me #happy.&lt;/p&gt;
 </content>
  </entry>
  
@@ -727,95 +1274,106 @@ So far about building assets, next about serving data that assets want… we’l
    <content type="html">&lt;p&gt;The RuPy conference 2012 in Brno was very inspiring! Especially, there were some interesting talks on databases and scalable approaches to web development:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;First,  the ArangoDB team from Cologne set the tone why #nosql matters (see http://www.arangodb.org/ ) . The triAGENS team has written a database which mixes elements from MongoDB and graph databases. The shell of Arangodb looks very clean, and additionally, the system is based on C++ (= integrates with V8 JS engine and MRuby). &lt;/li&gt;
-  &lt;li&gt;Another interesting talk was by Mitchell Hashimoto. He showed how Vagrant came into place, and why using isolated, virtual environments make sense for web integration. Some slides (not from Rupy) about this are here slideshare.net/mitchellh/sf-devops-introducing-vagrant&lt;/li&gt;
-  &lt;li&gt;Andreas Ronge gave a very nice talk on what graphs can do, and SQL can’t (well, it can, but not nicely … ) I can’t find his slides from RuPy right now, but he maintains a great blog on Neo4J here:  http://maxdemarzi.com/ Also, these slides are interesting: slideshare.net/andreasronge/neo4jrb&lt;/li&gt;
+  &lt;li&gt;First,  the &lt;a href=&quot;http://www.arangodb.org&quot;&gt;ArangoDB&lt;/a&gt; team from Cologne set the tone why #nosql matters. The triAGENS team has written a database which mixes elements from MongoDB and graph databases. The shell of Arangodb looks very clean, and additionally, the system is based on C++ (= integrates with V8 JS engine and MRuby). &lt;/li&gt;
+  &lt;li&gt;Another interesting talk was by Mitchell Hashimoto. He showed how Vagrant came into place, and why using isolated, virtual environments make sense for web integration. Some slides (not from Rupy) about this are &lt;a href=&quot;slideshare.net/mitchellh/sf-devops-introducing-vagrant&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Andreas Ronge gave a very nice talk on what graphs can do, and SQL can’t (well, it can, but not nicely … ) I can’t find his slides from RuPy right now, but he maintains a great blog on Neo4J here:  &lt;a href=&quot;http://maxdemarzi.com/&quot;&gt;http://maxdemarzi.com/&lt;/a&gt;  Also, these slides are interesting: &lt;a href=&quot;http://slideshare.net/andreasronge/neo4jrb&quot;&gt;slideshare.net/andreasronge/neo4jrb&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;So, ok, coming home to Munich with all these interesting thoughts in my mind, it was clear, that I had to start playing with graph databases in isolated environments for new kind of web applications. Fortunately, I had great input for my learnings from Jorge Bianquetti and Nathen Harvey.&lt;/p&gt;
 
 &lt;p&gt;First about Vagrant and VirtualBox. It takes a bit of time to download virtual machines, but it’s not too difficult to get going. The single, most important command might be:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vagrant init
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ vagrant init
+&lt;/pre&gt;
 
 &lt;p&gt;This creates an environment for setting up a virtual machine. It’s very cool, because now, you can imagine to setup an Ubuntu, Debian, CentOS, or whatever system, and vagrant will try to go ahead, download or copies the VM and prepares it just that you can use it.&lt;/p&gt;
 
 &lt;p&gt;Ok, not quite, since next, you must tell Vagrant where to download the box; you do it in the Vagrantfile,  e.g.:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;config.vm.box = &quot;opscode-ubuntu-12.04&quot;
+&lt;pre&gt;
+config.vm.box = &quot;opscode-ubuntu-12.04&quot;
 config.vm.box_url = &quot;https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box&quot; 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;It’s the standard Ubuntu box from Opscode right now.
 Just do a:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vagrant up
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ vagrant up
+&lt;/pre&gt;
 
 &lt;p&gt;and you would have an Ubuntu box running.&lt;/p&gt;
 
-&lt;p&gt;Well, we were charmed by graph databases, weren’t we?  Ok, so, let’s go ahead and add the setup for Neo4J. Some googling gives, that we have a Neo4J cookbook here: https://github.com/michaelklishin/neo4j-server-chef-cookbook&lt;/p&gt;
+&lt;p&gt;Well, we were charmed by graph databases, weren’t we?  Ok, so, let’s go ahead and add the setup for Neo4J. Some googling gives, that we have a Neo4J cookbook here: &lt;a href=&quot;https://github.com/michaelklishin/neo4j-server-chef-cookbook&quot;&gt;https://github.com/michaelklishin/neo4j-server-chef-cookbook&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Hmm.. in this stage, we actually decided already for chef-solo. There is chef-solo and chef-server, and if you want to understand the difference, I suggest you look here: http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/&lt;/p&gt;
+&lt;p&gt;Hmm.. in this stage, we actually decided already for chef-solo. There is chef-solo and chef-server, and if you want to understand the difference, I suggest you look &lt;a href=&quot;http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Chef-server is the approach you want to use in production. Chef-solo is the approach for quick-and-dirty experiments, like we do here. So, let’s assume, chef-solo is ok, and we just need to get the cookbooks dependencies right. Luckily, we have a tool for this: chef-librarian.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; $ chef-librarian init
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ chef-librarian init
+&lt;/pre&gt;
 
 &lt;p&gt;This gives you a Cheffile. It’s similar to a Gemfile if you are used to Ruby.
 Let’s throw in the Neo4J dependency here:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cookbook 'apt'
-cookbook 'neo4j-server', :git =&amp;amp;gt; 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+cookbook 'apt'
+cookbook 'neo4j-server', :git =&amp;gt; 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
+&lt;/pre&gt;
 
 &lt;p&gt;And now, similar to bundle install, we run librarian-chef install&lt;/p&gt;
 
 &lt;p&gt;Last, but not least, we need to tell our VM that interaction with chef-solo is needed. You’ll do this by adding something into the Vagrantfile :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;config.vm.provision :chef_solo do |chef|
+&lt;pre&gt;
+config.vm.provision :chef_solo do |chef|
   chef.cookbooks_path = &quot;cookbooks&quot;
   chef.add_recipe &quot;apt&quot;
   chef.add_recipe &quot;neo4j-server::tarball&quot;
 end
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;Cool, now we only need to build our server, since our ingredients are prepared, and chef is ready for cooking. The magic command is:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vagrant up
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ vagrant up
+&lt;/pre&gt;
 
 &lt;p&gt;You should see something like: &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;[2012-12-10T20:33:58+00:00] INFO: *** Chef 10.14.4 ***
+&lt;pre&gt;
+[2012-12-10T20:33:58+00:00] INFO: *** Chef 10.14.4 ***
 [2012-12-10T20:33:59+00:00] INFO: Setting the run_list to [&quot;recipe[apt]&quot;, &quot;recipe[neo4j-server::tarball]&quot;] from JSON
 [2012-12-10T20:33:59+00:00] INFO: Run List is [recipe[apt], recipe[neo4j-server::tarball]]
 [2012-12-10T20:33:59+00:00] INFO: Run List expands to [apt, neo4j-server::tarball]
 [2012-12-10T20:33:59+00:00] INFO: Starting Chef Run for vagrant.vm
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;This takes a while…. &lt;/p&gt;
 
 &lt;p&gt;Eventually, you end up successfully, and you can do:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ vagrant ssh
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;
+$ vagrant ssh
+&lt;/pre&gt;
 
 &lt;p&gt;Now, your VM has Neo4J running on it, and if you enable port forwarding in Vagrant, you might even go to: localhost:7474 and enjoy your fresh Neo4J server.&lt;/p&gt;
 
 &lt;h2 id=&quot;some-references&quot;&gt;Some References:&lt;/h2&gt;
 
 &lt;p&gt;Chef and Neo4J
-* Vimeo screencast: https://vimeo.com/55085049, see: 
+* Vimeo screencast: &lt;a href=&quot;https://vimeo.com/55085049&quot;&gt;https://vimeo.com/55085049&lt;/a&gt; , see: 
   Screencast Install Neo4j-server with Chef from Patrick Mulder on Vimeo.&lt;/p&gt;
 
-&lt;p&gt;Git repo: https://github.com/mulderp/chef-neo4j
-Chef basic steps with Nathen Harvey from Opscode
-Learning Chef Part 1
-Learning Chef Part 2
-Learning Chef Part 3&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Git repo: &lt;a href=&quot;https://github.com/mulderp/chef-neo4j&quot;&gt;https://github.com/mulderp/chef-neo4j&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Chef basic steps with Nathen Harvey from Opscode
+** &lt;a href=&quot;http://nathenharvey.com/blog/2012/12/06/learning-chef-part-1/&quot;&gt;Learning Chef Part 1&lt;/a&gt;
+** &lt;a href=&quot;http://nathenharvey.com/blog/2012/12/07/learning-chef-part-2/&quot;&gt;Learning Chef Part 2&lt;/a&gt;
+** &lt;a href=&quot;http://nathenharvey.com/blog/2012/12/14/learning-chef-part-3/&quot;&gt;Learning Chef Part 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  

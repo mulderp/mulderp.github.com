@@ -52,11 +52,13 @@
 
 <p>Before actually running a succesful Jasmine spec for a Backbone view, we need a library to actually match DOM nodes with expected values. The common library for doing this are the Jasmine-JQuery matchers These allow to express many things, among if the .el property of a Backbone view actually match a DOM node as follows:</p>
 
-<pre><code>View = Backbone.View.extend({tagName: &quot;li&quot; });</code></pre>
+<pre><code>View = Backbone.View.extend({tagName: &quot;li&quot; });
+view = new View();
 
-<p>view = new View();</p>
 
-<p>it(&#8220;has el property&#8221;, function() { expect(view.el).toBe(&#8220;li&#8221;); <br /> });</p>
+it(&quot;has el property&quot;, function() {
+  expect(view.el).toBe(&quot;li&quot;);                                                                                                              
+});</code></pre>
 
 <p>My current setup can be found here: <a href='https://github.com/mulderp/backbone-require-test/tree/view_specs'>https://github.com/mulderp/backbone-require-test/tree/view_specs</a></p>
 

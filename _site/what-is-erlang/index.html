@@ -1,0 +1,220 @@
+
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> 	
+<html lang="en"> 
+<!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
+    <title>What is Erlang?</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href="http://feeds.feedburner.com/ThinkingOnThinking" rel="alternate" title="mulderp" type="application/atom+xml" /> 
+    <link rel="shortcut icon" href="/static/images/favicon.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="javascript, backbonejs, ruby, chef, rails, erlang">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!--[if IE 7]>
+      <script src="/static/css/font-awesome-ie7.css"></script>
+    <![endif]-->
+    <script tyoe="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+  </head>
+  <body>
+    <div class="container">	
+      <div id='mobile' class='two columns hidden'>
+        <ul>
+          <li><span class="gray">Patrick Mulder</span></li>
+          <li><a id="mail-to-mobile" href="mailto:mulder.patrick@gmail.com" onClick="">mulder.patrick@gmail.com</a></li>
+          <li><a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', Sidebar Email']);">@mulpat</a></li>
+        </ul>
+      </div>
+
+      <div class="four columns sidebar">
+        <section>
+          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking</a>
+
+          <ul id="social">
+            <li>
+              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" id="mail-to"></a>
+            </li>
+
+            <li>
+              <a href="http://twitter.com/mulpat" class="icon-twitter" id="twitter" style="font-size: 28px;"></a>
+            </li>
+
+            <li>
+              <a href="http://github.com/mulderp" class="icon-github" id="github" title="I share and fork code here"></a>
+            </li>
+
+            <li>
+              <a href="skype:patrickmulder__?add" class="icon-comment" id="skype" title="Feel free to add me on Skype"></a>
+            </li>
+
+            <li>
+              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" id="rss" title="RSS"></a>
+            </li>
+          </ul>
+
+          <ul id="me">
+            <li>Patrick Mulder</span></li>
+            <li class="gray">I like Ruby. JavaScript. Vim. Chef. NoSQL</li>
+          </ul>
+  
+  <ul>
+          <li>Get notified.</li>
+          <li><form style="font-size: 8px;" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=ThinkingOnThinking', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Enter your email address:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="ThinkingOnThinking" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://feedburner.google.com" target="_blank">FeedBurner</a></p></form></li>
+</ul>
+        </section>
+      </div>
+
+      <article class='ten columns offset-by-four' id="article-content">
+  <header class="ten columns" id="article-header">
+    <h1>What is Erlang?</h1>
+    <i class="icon-tags"></i>  <a href="/tags/erlang" title="View posts tagged with &quot;erlang&quot;"><u>erlang</u></a>   
+  </header>
+
+  <div class='ten columns gray' id="date-header">
+    <p>
+      Feb 2013
+  
+    </p>
+
+  </div>
+
+  <div class="ten columns" id="article-content">
+    <p>You will touch Erlang at some point, if you follow the development of distributed systems. Erlang is a remedy to the pains of a monolithic application. And great programmers such as <a href="http://about.adamwiggins.com/">Adam Wiggins</a> or <a href="http://plataformatec.com.br/crafting-rails-applications">Jose Valim</a> name Erlang in the context of scalable systems e.g. in <a href="http://adam.heroku.com/past/2009/9/28/background_jobs_with_rabbitmq_and_minion/">this article</a> or <a href="http://blog.plataformatec.com.br/2011/03/why-rubyists-should-try-elixir/">here</a>. So, I was curious enough to attend a great, small conference on Erlang:  <a href="http://www.erlang-factory.com/conference/Munich2013">Munich Erlang Factory Lite 2013</a></p>
+
+<p>As someone who is new to Erlang, a first question must be asked: What is Erlang? Let’s look at different aspects.</p>
+
+<h2 id="how-does-erlang-code-look-like">How does Erlang code look like?</h2>
+
+<ul>
+  <li>
+    <p>At first, Erlang code does not look much different from Ruby, JavaScript or CoffeeScript: You’ll see traces of a dynamic type system and Erlang allows to dynamically run code with some kind of console, the Erlang Emulator (“ERL”). </p>
+  </li>
+  <li>
+    <p>Looking more at the code, you’ll see that lines of code sometimes end with a “dot”. This triggers code execution. As a beginner, it’s the moment when you see error messages and interpretation of error messages is rather difficult. To me, Erlang errors are cryptic, and apparently line numbers in errors were a late innovation. </p>
+  </li>
+  <li>
+    <p>Further, the code you’ll see may contain tuples and atoms, some of the main data types in Erlang. Nota bene, the concept of String is not a data type in Erlang, but rather an Array of characters as in e.g. C. Some people say this makes string operations more difficult than in other languages. Other people say, it’s less error prone too. To a beginner, it’s hard to judge.</p>
+  </li>
+</ul>
+
+<h2 id="erlang-modules-and-libraries">Erlang modules and libraries</h2>
+
+<p>Once programming, you will quickly discover an important Erlang concept: Modules. Modules wrap functions and behavior of code. Additionally, modules can be distributed within libraries, and as in any other programming language, libraries make a programmer’s life fun. </p>
+
+<p>The magic command to import libraries into your Erlang project is <a href="https://github.com/basho/rebar">“rebar”</a>. Rebar also allows to easily create a new Erlang project. And, rebar is from <a href="http://basho.com/">Basho</a>.</p>
+
+<h2 id="why-erlang">Why Erlang?</h2>
+
+<p>So far, so good. Erlang programming is about functions and values, and that sounds like no big deal to some. However, the main aspects of Erlang are reflecting on errors when needed, and reliably running concurrent processes. It’s here where the Erlang fun part starts, and other languages just suck (for the skeptics, maybe you can read <a href="http://stackoverflow.com/questions/6923480/java-thread-programming-book">the books suggested here</a>).</p>
+
+<ul>
+  <li>
+    <p>In Erlang, there seems to be the idea of “let it crash”. In a monolithic application, this usually means the death of an application. In a Unix system, this may mean to kill a process. In Erlang, you get a <a href="http://www.erlang.org/doc/design_principles/sup_princ.html">supervisor</a> that may take care of this, when a process is idling or conflicting with another process. The supervisor may decide to retry, continue, or check later. This is new to me, but I haven’t come across this mentality in any other pogramming language so far.</p>
+  </li>
+  <li>
+    <p>Having better ways to deal with exceptions, you’ll also get better ways to deal with concurrency. It’s rather new to me, but to understand why this helps, think of a monolithic application that triggers delayed jobs. If you run you run multiple applications in your server cluster, and have eventually multiple delayed jobs, from my experience, you can get <a href="http://en.wikipedia.org/wiki/Race_condition">race conditions</a> and other problems, that are really hard to debug. Erlang to the rescue. With Erlang, you’ll get some ways to have processes check what another process is doing. The mechanisms that you’ll hear people talk about are <a href="http://learnyousomeerlang.com/errors-and-processes#monitors">monitoring</a> or linking processes, resulting into process <a href="http://www.erlang.org/doc/getting_started/robustness.html">robustness</a>. The code of <a href="http://www.rabbitmq.com/">RabbitMQ</a> must show clever ways to deal with message concurrency.</p>
+  </li>
+</ul>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>So, my main conclusions:</p>
+
+<ul>
+  <li>
+    <p>Erlang provides a dynamic toolchain that helps rethinking concurrency and fault-tolerance. Some more meta-discussions and examples on Erlang are John-Paul Bader introduction on <a href="http://smyck.net/2012/04/22/why-erlang/">why erlang here</a>. <a href="http://jlouisramblings.blogspot.de/">JLouis</a> ramblings on fault tolerant systems in Erlang. <a href="https://github.com/basho">Basho</a> implemented <a href="http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html">Amazon’s Dynamo</a> with Erlang, and the company is a great contributor and promotor to the Erlang community. And if you are not so much into web, Peer Stritzinger together with <a href="http://www.embedded-brains.de/index.php?id=1&amp;L=1">Embedded-brains</a> use Erlang for <a href="http://www.stritzinger.com/Peer-Stritzinger.GmbH/Hydraprog-3.html">scalable hardware</a>.</p>
+  </li>
+  <li>
+    <p>Good places to get started with Erlang are John Paul’s <a href="http://smyck.net/2013/02/17/how-to-set-up-a-basic-http-api-with-erlang-in-10-minutes/">Setup an API in 10 minutes</a> and <a href="http://learnyousomeerlang.com/">http://learnyousomeerlang.com/</a>. Also, this blog post is a great overview: <a href="http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html">http://www.nodal.info/2012/10/top-10-resources-for-getting-started.html</a>. And <a href="http://de.slideshare.net/pavlobaron/let-it-crash-seacon11-pavlo-baron">Pavlo Baron</a> does a lot of convincing work on <a href="http://de.slideshare.net/pavlobaron/erlang-is-a-one-way">using Erlang</a>.</p>
+  </li>
+  <li>
+    <p>OTP are the Erlang libraries that help in designing distributed applications. See <a href="http://learnyousomeerlang.com/what-is-otp">http://learnyousomeerlang.com/what-is-otp</a>. The guy to ask on what’s OTP is <a href="https://www.erlang-factory.com/upload/presentations/719/francesco-otp.pdf">Francesco Cesarini</a>.</p>
+  </li>
+  <li>
+    <p>If you are into web development, see <a href="https://github.com/elixir-lang/elixir">Elixir</a> and <a href="https://github.com/elixir-lang/dynamo">Dynamo</a>. This looks the place to start writing your next hit-in-one API.</p>
+  </li>
+</ul>
+
+  </div>
+
+  <footer class="ten columns">
+    <p>
+    <a class="btn btn-mini btn-info" href="https://github.com/mulderp/mulderp.github.com/issues/new" title="Leave feedback using GitHub" target="_blank"><i class="icon-comment icon-white"></i> Leave me feedback</a>
+    </p>
+    <p id='follow'>
+      Follow me on Twitter <a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Post Twitter']);">here.</a>
+    </p>
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="mulpat">Tweet</a>
+       
+      <!-- Put this just before the closing body tag -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </p>
+    <p>
+       <!-- Google + -->
+       <p><g:plusone size="medium"></g:plusone></p>
+        
+       <!-- Add this just before the closing body tag of your web page -->	
+       <script type="text/javascript">
+         (function() {
+           var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+           po.src = 'https://apis.google.com/js/plusone.js';
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+         })();
+       </script>
+    </p>
+  </footer>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'thinkingonthinking'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+ 
+</article>
+<script src="../static/js/disqus.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+  analytics.load("t2dez1p4gw");
+  analytics.track('Post', {
+      title: "What is Erlang?"
+    });
+</script>
+
+    </div>
+
+<script type="text/javascript">
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+  analytics.load("t2dez1p4gw");
+  $(document).ready(function() {
+    analytics.trackLink( $("#mail-to"), 'mail_event', {source:"main"});
+    analytics.trackLink( $("#github"), 'contact-github', {source:"main"});
+    analytics.trackLink( $("#skype"), 'contact-skype', {source:"main"});
+    analytics.trackLink( $("#rss"), 'contact-rss', {source:"main"});
+  });
+</script>
+  </body>
+</html> 

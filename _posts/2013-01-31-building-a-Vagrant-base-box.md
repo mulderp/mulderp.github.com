@@ -11,33 +11,59 @@ So, how to create a new Vagrant basebox?
 
 Here are some steps:
 
-1. Upgrade your VirtualBox to the latest Version; as time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue [here](https://github.com/jedi4ever/veewee/issues/519 ) )
-2. Make sure you have the gems VeeWee and Vagrant installed:
+## 1.  Upgrade your VirtualBox to the latest Version
+
+As time of writing this was 4.2.6. This gives you less headache when Vagrant is downloading so called ISO image additions (see e.g. TimeOut issue [here](https://github.com/jedi4ever/veewee/issues/519 ) )
+
+## 2.  VeeWee and Vagrant;
+
+Make sure you have the gems VeeWee and Vagrant installed:
+
 <pre>
-     gem install vagrant
-     gem install veewee
+         gem install vagrant
+         gem install veewee
 </pre>
-3. Now, You'll want to get a list with possible ISO images for baseboxes. This command list baseboxes:
+
+## 3.  List baseboxes
+
+Now, You'll want to get a list with possible ISO images for baseboxes. This command list baseboxes:
+
 <pre>
-    vagrant basebox templates
+        vagrant basebox templates
 </pre>
-4. As you'll see in the list you have quite a lot of options. Do a:
+
+##  4.  Define a basebox
+
+As you'll see in the list you have quite a lot of options. Do a:
+
 <pre>
      vagrant basebox define Ubuntu-11.04 ubuntu-11.04-server-amd64 -d
 </pre>
-5. Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:
+
+##  5. Check the ISO Image
+
+Check/Edit the definition of the base box. In my case I had to change the pointer to the ISO image in:
+
 <pre>
     ubuntu-base/definitions/Ubuntu-11.04/definition.rb
 </pre>
-6. Start the build of the basebox:
+
+##  6.  Build the basebox
+
+Start the build of the basebox:
+
 <pre>
      vagrant basebox build Ubuntu-11.04
 </pre>
-7. Export the basebox:
+
+##  7.  Export the basebox:
+
 <pre>
    vagrant basebox export Ubuntu-11.04
 </pre>
-8. Add the basebox:
+
+##  8.  Add the basebox:
+
 <pre>
    vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
 </pre>
