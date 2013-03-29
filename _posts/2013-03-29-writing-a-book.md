@@ -3,7 +3,7 @@ layout: post
 title: Writing a book - a lesson in pitching
 tags: blogging
 ---
-I was recently approached by some smaller technical publisher with the idea of writing a book on some things I also write here. As I like writing, and I have been exploring web ideas for publishing some time ago, I was very intrigued to look more into this. An idea for the draft outline for the book came from the publisher, and it looked like the default outline of most computer books: Starting with 'hello world', discuss some testing, and round up with some pratical use cases.
+I was recently approached by some smaller technical publisher with the idea of writing a book on some things I also write here. As I like writing, and I have been exploring web ideas for publishing some time ago, I was very intrigued to look more into this. An idea for the draft outline for the book came from the publisher, and it looked like the default outline of most computer books: Starting with 'hello world', discuss some testing, and round up with some practical use cases.
 
 I asked myself: Why would I choose the publisher who approached me, and why would I not try with one of the well known publishers for dynamic programming languages and/or web programming? After all, if I invest time in research and a manuscript draft, I might even aim at getting access to great editors, distribution channels and well tested tools for publishing. And I also reflected, why it makes sense to choose a publisher, not go for self-publishing. Nowadays, there are some interesting approaches for self-publishing, that easily give access to some kind of toolchain for publishing, and with some very minimum requirements for a sales channel. 
 
