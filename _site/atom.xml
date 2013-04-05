@@ -4,13 +4,89 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-03-08T18:54:33+01:00</updated>
+ <updated>2013-04-06T00:17:43+02:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>On designing interfaces - Learning from patterns</title>
+   <link href="http://mulderp.github.com/ruby-and-patterns"/>
+   <updated>2013-04-05T00:00:00+02:00</updated>
+   <id>http:/mulderp.github.com/ruby-and-patterns</id>
+   <content type="html">&lt;p&gt;Interfaces are important in programming, as in business or relationships. By looking at Ruby-on-Rails, a web framework that is widely known for its implementation of the Model-View-Controller pattern, a lot can be discovered on interface design.&lt;/p&gt;
+
+&lt;p&gt;When we first touch &lt;a href=&quot;http://martinfowler.com/eaaCatalog/&quot;&gt;architecture design patterns&lt;/a&gt;, we can feel quickly overwhelmed by ‘theoretical’ or very ‘abstract’ discussions. But after many hours of software development, these patterns start jumping into your eyes suddenly. And then, patterns can act as &lt;a href=&quot;http://en.wikipedia.org/wiki/Loophole&quot;&gt;loophole&lt;/a&gt; between achieving perfect design in theory, and avoiding a chaos design in practice.&lt;/p&gt;
+
+&lt;p&gt;So, to understand how design patterns can influence good interface design, we can look at the Rails’ directory structure:&lt;/p&gt;
+
+&lt;pre&gt;
+      ├── actionpack
+      │   ├── lib
+      │   │   ├── action_controller
+      │   │   ├── action_view
+      │   └── test
+      ├── activerecord
+      │   ├── lib
+      │   └── test
+&lt;/pre&gt;
+
+&lt;p&gt;Looking at this (filtering the ‘tree -L 2’ from the Rails repository helps), the following similarities between &lt;a href=&quot;http://martinfowler.com/eaaCatalog/&quot;&gt;Martin Fowler’s Enterprise Patterns&lt;/a&gt; can be seen:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://martinfowler.com/eaaCatalog/pageController.html&quot;&gt;Page Controller&lt;/a&gt;/&lt;a href=&quot;http://martinfowler.com/eaaCatalog/frontController.html&quot;&gt;Front Controller&lt;/a&gt;: The Ruby-on-Rails MVC stack handles requests from a Router, that are then processed by an instance of ActionController. Comparing to Fowler’s pattern definitions, a Router can be interpreted as “handling all requests for a Web site” and an ActionController instance as “handling requests for a specific pages or actions”. This design works very well to create, update or render resources, and map actions to URLs in a RESTful manner. Furthermore, Rails developers will know very well how common logic for e.g. authentication can be extracted into a &lt;a href=&quot;http://martinfowler.com/eaaCatalog/applicationController.html&quot;&gt;Application Controller&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://martinfowler.com/eaaCatalog/templateView.html&quot;&gt;Template View&lt;/a&gt;: According to Fowler, this pattern is about “rendering information into HTML by embedding markers in an HTML page”. As such, it describes the purposes of views in Ruby-on-Rails. Interestingly, Fowler describes some alternative options, such as &lt;a href=&quot;http://martinfowler.com/eaaCatalog/transformView.html&quot;&gt;Transform View&lt;/a&gt;, or &lt;a href=&quot;http://martinfowler.com/eaaCatalog/twoStepView.html&quot;&gt;2-step View&lt;/a&gt;. This shows that view templates has its limits, and is not the best solution for all rendering problems. Maybe in a later post, we can look at how client-side MVC framework apply different rendering approaches. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://martinfowler.com/eaaCatalog/activeRecord.html&quot;&gt;ActiveRecord&lt;/a&gt;: ActiveRecord is a so-called data source architectural pattern, and is about “encapsulating database access, and adding domain logic on that data”. It is one of the patterns besides MVC that helped Rails into becoming what is today. For non-experts, ActiveRecord helps to encapsulate e.g. a Person data record. An instance of a Person that is derived from ActiveRecord, gives a nice interface to manage ‘persistence’ of the Person state, as well as ways to manage the context of a person (such as associations, validations, custom extensions). Thanks to &lt;a href=&quot;https://twitter.com/vicentereig&quot;&gt;@vicentereig&lt;/a&gt; for pointing me to a post by &lt;a href=&quot;http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/&quot;&gt;@bryanry&lt;/a&gt; on keeping the ActiveRecord pattern under control. &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are probably a dozen more interesting patterns to discover in the Rails repository. ActiveModel is somewhat related to deal with aggregation oriented databases, the adapter pattern (e.g. for ORMs) is related to this as well. Furthermore, you can see usages of Observers (e.g. in the ActiveSupport library) and Builders (e.g. for generators).&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h1&gt;
+
+&lt;p&gt;Patterns feel somewhat ‘theoretical’ when first touched. But as theory is to engineering, design patterns can guide you in making good, practical design decisions. Patterns can be used for communication, or to identify interfaces between components. Patterns appear at later stage of software projects, and are as such less helpful for spiking or prototyping some ideas in early software design projects. &lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The book ‘Enterprise Architecture’ by Martin Fowler and ‘Domain Driven Design’ have a lot of interesting examples how patterns can lead to interface and vice-versa.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A topic that is closely related to pattern and interface design is refactoring. Also here, Martin Fowler keeps track of a catalog: &lt;a href=&quot;http://www.refactoring.com/catalog/index.html&quot;&gt;Refactoring.com&lt;/a&gt;. I am grateful to &lt;a href=&quot;https://twitter.com/rstankov&quot;&gt;@rstankov&lt;/a&gt; for sharing a great refactoring session, that showed me how removing code can improve interfaces (and as such promote pattern discovery).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Apart from Rails, some nice interfaces in Ruby projects can be found in e.g. &lt;a href=&quot;https://github.com/plataformatec/devise/tree/master/lib/devise/orm&quot;&gt;Devise’s ORM adapters&lt;/a&gt; or &lt;a href=&quot;https://github.com/lostisland/faraday/blob/master/lib/faraday/connection.rb#L28&quot;&gt;Faraday’s connection builder&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Writing a book - a lesson in pitching</title>
+   <link href="http://mulderp.github.com/writing-a-book"/>
+   <updated>2013-03-29T00:00:00+01:00</updated>
+   <id>http:/mulderp.github.com/writing-a-book</id>
+   <content type="html">&lt;p&gt;I was recently approached by some smaller technical publisher with the idea of writing a book on some things I also write here. As I like writing, and I have been exploring web ideas for publishing some time ago, I was very intrigued to look more into this. An idea for the draft outline for the book came from the publisher, and it looked like the default outline of most computer books: Starting with ‘hello world’, discuss some testing, and round up with some practical use cases.&lt;/p&gt;
+
+&lt;p&gt;I asked myself: Why would I choose the publisher who approached me, and why would I not try with one of the well known publishers for dynamic programming languages and/or web programming? After all, if I invest time in research and a manuscript draft, I might even aim at getting access to great editors, distribution channels and well tested tools for publishing. Or, I reflected, why does it make sense to choose a publisher at all, and not go for self-publishing.&lt;/p&gt;
+
+&lt;p&gt;So, with some different ways for publishing in the back of my mind, I started to research material for a draft book proposal and a sample chapter. It felt a bit like programming, you explore ideas, develop slowly a structure and try to get the basic names and concepts right. And, as often happens with programming too, it is easy to quickly get lost in unnecessary details. So, although I quickly made progress with the draft, I stopped asking myself the important question: Whom am I pitching this book proposal to?&lt;/p&gt;
+
+&lt;p&gt;After all, there are a number of different publishers out there, that have a different focus. It is like there a publishers that are specialized in gardening, cooking or sports. So far so good, but if you now pitch as a golf player to a publisher for gardening, chances are high that your pitch will fail, although both probably know a lot about lawns.&lt;/p&gt;
+
+&lt;p&gt;As I think that feedback for learning is very important, I pitched my draft proposal to a publisher some days ago. This was my first contact with a publisher from the perspective of an author. And, the pitch failed. However, this is a good lesson to learn. It is a lesson on pitching yourself, instead of pitching ideas from others: Book projects happen in the context of larger book themes at publishers. It is the understanding of these themes, that make you as a reader choose to buy a book from a certain publisher. And, it is the intuition of publishers to choose authors that fit their ideas and themes. So, although I am probably going to post-pone my book project for a while (since it is a huge investment in time and effort), I am going to look closer now at the books that I read, and why a publisher might publish them. After all, books can help us to share what can be discovered, or like &lt;a href=&quot;http://en.wikipedia.org/wiki/Martin_Heidegger&quot;&gt;Martin Heidegger&lt;/a&gt; said: “Tell me what you read and I’ll tell you who you are.”&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Fashion and Business models</title>
@@ -21,13 +97,13 @@
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;The first answer is about prototyping and design. In general, it’s hard to explain what prototyping is. Prototyping is more about how something works, rather than what was initially defined. The saying goes, a picture is worth a thousands words, and a prototype is worth a thousand pictures. The important thing on a prototype is that it quickly tells you how an idea can look, feel and why you could like it. In the &lt;a href=&quot;http://www.fashionindie.com/runway-to-red-carpet-in-armani-prive-haute-couture/&quot;&gt;fashion pyramid&lt;/a&gt;, prototyping is about what happens at the top of the pyramid. There, fashion designers are specialized sketching, observing and in handcrafting and materializing ideas. &lt;/p&gt;
+    &lt;p&gt;The first answer is about prototyping and design. In general, it’s hard to explain what prototyping is. Prototyping is more about how something works, rather than what was initially defined. The saying goes, a picture is worth a thousands words, and a prototype is worth a thousand pictures. The important thing on a prototype is that it quickly tells you how an idea can look, feel and why you could like it. In the &lt;a href=&quot;http://www.fashionindie.com/runway-to-red-carpet-in-armani-prive-haute-couture/&quot;&gt;fashion pyramid&lt;/a&gt;, prototyping is about what happens at the top of the pyramid. There, fashion designers are specialized in sketching, observing and in handcrafting and materializing ideas. &lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Haute coutre in fashion is providing ideas to a whole industrial branch, since the memes that are shown on runways easily spread through magazines and television shows, and blogs nowadays.  In business models, prototyping is about something similar: Discovering unique and special recipes from sometimes common ingredients, sometimes rare and expensive ones (like patents or jewels). And in both, business models and fashion, it’s importat to learn what works for 1 or 2 customers, for 100 men or women, for a cultural region, or for a contintent. (Another example: Some companies seem to run prototypes of a business in Canada first, and scale them in a second phase in USA) &lt;/p&gt;
+    &lt;p&gt;Haute couture in fashion is providing ideas to a whole industrial branch, since the memes that are shown on runways easily spread through magazines, television shows and blogs nowadays.  In business models, prototyping is about something similar: Discovering unique and special recipes from sometimes common ingredients, sometimes rare and expensive ones (like patents or jewels). And in both, business models and fashion, it’s importat to learn what works for 1 or 2 customers, for 100 men or women, for a cultural region, or for a contintent. (Another example: Some companies seem to run prototypes of a business in Canada first, and roll them out in the USA afterwards) &lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Another answer on what entrepreneurs might learn from fashion designers, I got from this videa by Seth Godin: &lt;a href=&quot;http://www.ted.com/talks/seth_godin_on_sliced_bread.html&quot;&gt;How to get your ideas spread&lt;/a&gt;. In this video, he looks for explanations on how Jeff Koons or Frank Loyd became so successful. He also mentions, that sliced bread (that had nice patents and well-thought out bakery process by its inventor) got unnoticed for 15 years, and became only successful by having a company applying the right marketing techniques. His message is about looking at fashion, because fashion is all about making products ‘remarkable’. It’s actually this what makes up the customer relationship and sales channel part in the &lt;a href=&quot;http://bmfiddle.com/&quot;&gt;business model canvas&lt;/a&gt;. It’s about how I feel, when I touch a service, a shop or a product. It’s providing the right options to buy a product, or subscribe to a service. It’s about the setup of a flagship store or a landing page.&lt;/p&gt;
+    &lt;p&gt;I got another answer (and the origin of this post) on what entrepreneurs might learn from fashion designers from this video by Seth Godin: &lt;a href=&quot;http://www.ted.com/talks/seth_godin_on_sliced_bread.html&quot;&gt;How to get your ideas spread&lt;/a&gt;. In this video, he looks for explanations on how Jeff Koons or Frank Lloyd Wright became so successful. He also mentions, that sliced bread (that had nice patents and a well-thought out bakery process by its inventor) got unnoticed for 15 years, and became only successful by having a company applying the right marketing techniques. His message is about looking at fashion, because fashion is all about making products ‘remarkable’. It’s actually this what makes up the customer relationship and sales channel part in the &lt;a href=&quot;http://bmfiddle.com/&quot;&gt;business model canvas&lt;/a&gt;. It’s about how I feel, when I touch a service, a shop or a product. It’s providing the right options to buy a product, or subscribe to a service. It’s about the setup of a flagship store or the design of a landing page.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -39,7 +115,7 @@
     &lt;p&gt;Business models don’t need a lot of resources to experiment with. That’s the whole point of building prototypes. Fast, cheap and throw-away models to test ideas.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;A prototype might be seen as standing at the top of your fashion pyramid. It’s about making something unique and special, that can be simplified later on. Like in haute-couture fashion, there are companies specializing in bringing prototypes to the world; however, a whole lot profitable luxury fashion lines do both: Haute-couture and High-end retail. And besides, there is space for volume and mass market segments.&lt;/p&gt;
+    &lt;p&gt;A prototype might be compared to ‘haute couture’ in the fashion pyramid. It’s about making something unique and special, that can be simplified later on. Like in haute couture, there are companies specializing in bringing prototypes to the world; however, a whole lot profitable luxury fashion lines do both: Haute-couture and High-end retail. And besides, there is space for volume and mass market segments.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;A business model is not just a product and a customer. Like in fashion, it’s about how you feel in a shop, are received by a nice sales person, get extras and feel special. That is the sales channel and customer relationship part in a business model.&lt;/p&gt;
@@ -71,7 +147,7 @@
 
 &lt;p&gt;Particulary, how can you test opinions in the context of a database-driven web application such as Ruby-on-Rails? &lt;/p&gt;
 
-&lt;p&gt;I try to answer this with the help of 3 tools: &lt;a href=&quot;http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html&quot;&gt;Chef-solo&lt;/a&gt; and &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I try to answer this with the help of 2 tools: &lt;a href=&quot;http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html&quot;&gt;Chef-solo&lt;/a&gt; and &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;abstractions-in-chef&quot;&gt;1. Abstractions in Chef&lt;/h2&gt;
 
@@ -103,7 +179,9 @@
   &lt;li&gt;Nginx as proxy for logging&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;In Chef language, you would want to look at application cookbooks, such as &lt;a href=&quot;http://community.opscode.com/cookbooks/application_ruby&quot;&gt;application_ruby&lt;/a&gt; or &lt;a href=&quot;http://community.opscode.com/cookbooks/passenger_apache2&quot;&gt;passenger_apache2&lt;/a&gt;, however, for fun and for learning let’s look into the setup of a custom stack.&lt;/p&gt;
+&lt;p&gt;In Chef language, you would want to look at application cookbooks, such as &lt;a href=&quot;http://community.opscode.com/cookbooks/application_ruby&quot;&gt;application_ruby&lt;/a&gt; or &lt;a href=&quot;http://community.opscode.com/cookbooks/passenger_apache2&quot;&gt;passenger_apache2&lt;/a&gt;. Nathen Harvey shows how to get going with the passenger_apache2 cookbook in his &lt;a href=&quot;http://www.nathenharvey.com/blog/2012/12/07/learning-chef-part-2/&quot;&gt;blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;But for fun and for learning let’s look into the setup of a custom stack.&lt;/p&gt;
 
 &lt;p&gt;The dependencies for above’s stack could be defined with &lt;a href=&quot;http://berkshelf.com/&quot;&gt;Berkshelf&lt;/a&gt; in the Berksfile as follows:&lt;/p&gt;
 
@@ -153,7 +231,7 @@ end
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see &lt;a href=&quot;https://github.com/fnichol/chef-rvm&quot;&gt;chef-rvm&lt;/a&gt; and &lt;a href=&quot;https://github.com/fnichol/chef-rbenv&quot;&gt;chef-rbenv&lt;/a&gt;. Also, I found &lt;a href=&quot;https://github.com/mlafeldt/ruby-cookbook&quot;&gt;this Ruby wrapper cookbook&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/mlafeldt&quot;&gt;Matthias Lafeldt&lt;/a&gt; interesting, and this is certainly on my list for further investigation.&lt;/p&gt;
+    &lt;p&gt;Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see &lt;a href=&quot;https://github.com/fnichol/chef-rvm&quot;&gt;chef-rvm&lt;/a&gt; and &lt;a href=&quot;https://github.com/fnichol/chef-rbenv&quot;&gt;chef-rbenv&lt;/a&gt;. Also, I found &lt;a href=&quot;https://github.com/mlafeldt/ruby-cookbook&quot;&gt;this Ruby wrapper cookbook&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/mlafeldt&quot;&gt;Mathias Lafeldt&lt;/a&gt; interesting, and this is certainly on my list for further investigation.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Passenger is a Ruby gem that is partly compiled into Nginx or loaded as module in Apache. Let’s look at the nginx setup. The tricky parts are the system paths, thanks a lot to &lt;a href=&quot;https://twitter.com/jtimberman&quot;&gt;@jtimberman&lt;/a&gt; for helping me understand this better. There are interesting details behind this in yesterday’s &lt;a href=&quot;http://www.youtube.com/watch?v=ddMLvMvOUfg&amp;amp;feature=youtu.be&quot;&gt;office hours with Joshua&lt;/a&gt;.&lt;/p&gt;
