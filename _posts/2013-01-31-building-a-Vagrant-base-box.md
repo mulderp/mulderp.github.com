@@ -68,7 +68,12 @@ Start the build of the basebox:
    vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
 </pre>
 
-That's basically it. Thanks to [Zac Sprackett](http://zac.sprackett.com/resume/) for writing on setting up a CentOS basebox  [here](http://devops.me/2011/10/06/building-baseboxes/)
+That's basically it. 
 
+# References
+
+* Thanks to [Zac Sprackett](http://zac.sprackett.com/resume/) for writing on setting up a CentOS basebox  [here](http://devops.me/2011/10/06/building-baseboxes/)
+* [blog.eriksen.com.br/](http://blog.eriksen.com.br/en/creating-custom-vagrant-boxes-veewee): Mentioning Postinstall scripts
+* https://github.com/opscode/bento
 
 
