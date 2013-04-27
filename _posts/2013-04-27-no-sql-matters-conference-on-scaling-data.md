@@ -3,7 +3,7 @@ layout: post
 title: NoSQL Matters 2013 - A conference on scaling data
 tags: conferences
 ---
-Not sure whether you should be interested in NoSQL? Well, I was not sure either, and that was an important reason to visit the [NoSQL Matters 2013](http://2013.nosql-matters.org/cgn/) in Cologone. If you reflect, it is data that occupies a lot of our working life as software developers, and, technically, there are a lot of hidden assumptions made, when touching data questions.
+Not sure whether you should be interested in NoSQL? Well, I was not sure either, and that was an important reason to visit the [NoSQL Matters 2013](http://2013.nosql-matters.org/cgn/) in Cologne. If you reflect, it is data that occupies a lot of our working life as software developers, and, technically, there are a lot of hidden assumptions made, when touching data questions.
 
 First, there are assumptions around structuring data. Machines seem to assume that we should structure our data as much as possible, providing at least some tables (or schemas) upon which algorithms can easily operate. For engineers, that would not be too big of a problem. However, we as humans in general (and business people in particular), often encounter confusions. What level of ambiguity can we allow when we are doodling data models? What if your business problem tomorrow looks different from our design today? How to migrate data between different systems, while not impacting a running business? 
 
