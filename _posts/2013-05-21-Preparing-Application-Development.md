@@ -3,9 +3,7 @@ layout: post
 title: Preparing Application Development
 tags: bower bundler
 ---
-I recently discovered a tool that looked very interesting: [Catapult](https://github.com/maccman/catapult). For fast prototyping some client-side code, Catapult gives you some basic structure for a frontend application stack.
-
-What I like on Catapult is that it gives you quickly all you need for a client-side web application. With:
+I recently discovered a github repo by [@maccaw](https://twitter.com/maccaw) that looked very interesting: [Catapult](https://github.com/maccman/catapult). For building prototypes of some client-side code, or also as frontend asset server, Catapult gives you all you need. With:
 
     catapult new <squash>
 
