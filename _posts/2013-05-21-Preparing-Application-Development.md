@@ -1,13 +1,14 @@
+# encoding: utf-8
 ---
 layout: post
 title: Preparing Application Development
 tags: bower bundler
 ---
-I recently discovered a tool that looked very interesting for fast prototyping of applications and doing experiments for new kind of application stacks: https://github.com/maccman/catapult.
+I recently discovered a tool that looked very interesting: (Catapult)[https://github.com/maccman/catapult]. For fast prototyping some client-side code, Catapult gives you some basic structure for a frontend application stack.
 
-What I like on the application is that it gives you quickly all you need for a client-side web application. With:
+What I like on Catapult is that it gives you quickly all you need for a client-side web application. With:
 
-    catapult new squash
+    catapult new <squash>
 
 You get some fresh project structure, an index.html, a small server and some basic rake tasks to connect with a production environment. This is a bit similar to what Yeoman does, but the advantage of Catapult (for me) is that it is Ruby.
 

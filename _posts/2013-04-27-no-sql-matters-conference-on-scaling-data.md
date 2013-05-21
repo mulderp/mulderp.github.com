@@ -1,3 +1,4 @@
+# encoding: utf-8
 ---
 layout: post
 title: NoSQL Matters 2013 - A conference on scaling data
