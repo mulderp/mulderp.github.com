@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>On designing interfaces - Learning from patterns</title>
+    <title>NoSQL Matters 2013 - A conference on scaling data</title>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -80,8 +80,8 @@
 
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
-    <h1>On designing interfaces - Learning from patterns</h1>
-    <i class="icon-tags"></i>  <a href="/tags/blogging" title="View posts tagged with &quot;blogging&quot;"><u>blogging</u></a>   
+    <h1>NoSQL Matters 2013 - A conference on scaling data</h1>
+    <i class="icon-tags"></i>  <a href="/tags/conferences" title="View posts tagged with &quot;conferences&quot;"><u>conferences</u></a>   
   </header>
 
   <div class='ten columns gray' id="date-header">
@@ -93,56 +93,28 @@
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>Interfaces are important in programming, as in business or relationships. By looking at Ruby-on-Rails, a web framework that is widely known for its implementation of the Model-View-Controller pattern, a lot can be discovered on interface design.</p>
+    <p>Not sure whether you should be interested in NoSQL? Well, I was not sure either, and that was an important reason to visit the <a href="http://2013.nosql-matters.org/cgn/">NoSQL Matters 2013</a> in Cologne. If you reflect, it is data that occupies a lot of our working life as software developers, and, technically, there are a lot of hidden assumptions made, when touching data questions.</p>
 
-<p>When we first touch <a href="http://martinfowler.com/eaaCatalog/">architecture design patterns</a>, we can feel quickly overwhelmed by ‘theoretical’ or very ‘abstract’ discussions. But after many hours of software development, these patterns start jumping into your eyes suddenly. And then, patterns can act as <a href="http://en.wikipedia.org/wiki/Loophole">loophole</a> between achieving perfect design in theory, and avoiding a chaos design in practice.</p>
+<p>First, there are assumptions around structuring data. Machines seem to assume that we should structure our data as much as possible, providing at least some tables (or schemas) upon which algorithms can easily operate. For engineers, that would not be too big of a problem. However, we as humans in general (and business people in particular), often encounter confusions. What level of ambiguity can we allow when we are doodling data models? What if your business problem tomorrow looks different from our design today? How to migrate data between different systems, while not impacting a running business? </p>
 
-<p>So, to understand how design patterns can influence good interface design, we can look at the Rails’ directory structure:</p>
+<p>It is here, where a visit to the NoSQL country can help you see new options. Key-value stores and document-oriented database simplify storing data for prototyping or distribution, while graph databases provide almost unlimited ways to look for new patterns in data. Basically, with a NoSQL mindset we are better able to cross boundaries between persistence, distribution and querying of data and - like applying different filters - NoSQL solutions can help to separate signals from noise.</p>
 
-<pre>
-      ├── actionpack
-      │   ├── lib
-      │   │   ├── action_controller
-      │   │   ├── action_view
-      │   └── test
-      ├── activerecord
-      │   ├── lib
-      │   └── test
-</pre>
+<p>Second, the cost of data and data processing is still decreasing, maybe slower, but the trend is still downwards. And as often happened in computing, this will give rise to some wave of disruptive innovation. For tackling data persistence and distribution problems, I think this is where using open-source software will become much more viable than buying into ‘luxury’ database products from software vendors. This makes a visit to a NoSQL conference also very interesting, since many open-source developers are looking for feedback and solutions to their problems. And, projects on e.g. Github provide a much better platform to discuss concepts and shortcomings of dealing with data, than buying into todays (and tomorrows) promisses of existing database vendors.</p>
 
-<p>Looking at this (filtering the ‘tree -L 2’ from the Rails repository helps), the following similarities between <a href="http://martinfowler.com/eaaCatalog/">Martin Fowler’s Enterprise Patterns</a> can be seen:</p>
+<p>Third, at a NoSQL conference, you feel that wrapping data with services helps to hide a lot of nitty-gritty details from using the data in applications. Similarly, as renting a car that brings you from A to B, an API is just enough abstraction to hide technical concern today from business requirements tomorrow. As such, APIs provide some common ground for designing the architecture of distributed systems and communicating transactions across a network.</p>
+
+<p>All in all, NoSQL Matters 2013 in Cologne was a very rewarding conference. As many NoSQL developers will stress, SQL will not lose its relevance for sure, it’s a good standard for dealing with some classes of problems, but at least for me, key-value stores, documents, vector clocks and graphs start slowly to make a lot more sense.</p>
+
+<h1 id="some-references">Some references</h1>
 
 <ul>
-  <li>
-    <p><a href="http://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>/<a href="http://martinfowler.com/eaaCatalog/frontController.html">Front Controller</a>: The Ruby-on-Rails MVC stack handles requests from a Router, that are then processed by an instance of ActionController. Comparing to Fowler’s pattern definitions, a Router can be interpreted as “handling all requests for a Web site” and an ActionController instance as “handling requests for a specific pages or actions”. This design works very well to create, update or render resources, and map actions to URLs in a RESTful manner. Furthermore, Rails developers will know very well how common logic for e.g. authentication can be extracted into a <a href="http://martinfowler.com/eaaCatalog/applicationController.html">Application Controller</a></p>
-  </li>
-  <li>
-    <p><a href="http://martinfowler.com/eaaCatalog/templateView.html">Template View</a>: According to Fowler, this pattern is about “rendering information into HTML by embedding markers in an HTML page”. As such, it describes the purposes of views in Ruby-on-Rails. Interestingly, Fowler describes some alternative options, such as <a href="http://martinfowler.com/eaaCatalog/transformView.html">Transform View</a>, or <a href="http://martinfowler.com/eaaCatalog/twoStepView.html">2-step View</a>. This shows that view templates has its limits, and is not the best solution for all rendering problems. Maybe in a later post, we can look at how client-side MVC framework apply different rendering approaches. </p>
-  </li>
-  <li>
-    <p><a href="http://martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>: ActiveRecord is a so-called data source architectural pattern, and is about “encapsulating database access, and adding domain logic on that data”. It is one of the patterns besides MVC that helped Rails into becoming what is today. For non-experts, ActiveRecord helps to encapsulate e.g. a Person data record. An instance of a Person that is derived from ActiveRecord, gives a nice interface to manage ‘persistence’ of the Person state, as well as ways to manage the context of a person (such as associations, validations, custom extensions). Thanks to <a href="https://twitter.com/vicentereig">@vicentereig</a> for pointing me to a post by <a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/">@bryanry</a> on keeping the ActiveRecord pattern under control. </p>
-  </li>
+  <li>Learning to think with distributed data structures @coderoshi - <a href="https://github.com/coderoshi/dds">https://github.com/coderoshi/dds</a></li>
+  <li>Martin Fowlers’ Aggregation pattern - <a href="http://martinfowler.com/bliki/AggregateOrientedDatabase.html">http://martinfowler.com/bliki/AggregateOrientedDatabase.html</a></li>
+  <li>Query data with Graphs - <a href="http://de.slideshare.net/jexp/intro-to-neo4j-presentation">http://de.slideshare.net/jexp/intro-to-neo4j-presentation</a></li>
+  <li>Redis = (Remote) Data Structure Server - <a href="https://speakerdeck.com/czarneckid">https://speakerdeck.com/czarneckid</a></li>
+  <li>Foxx - prototyping APIs with ArangoDB - <a href="https://speakerdeck.com/moonglum/arangodb-foxx">https://speakerdeck.com/moonglum/arangodb-foxx</a></li>
 </ul>
 
-<p>There are probably a dozen more interesting patterns to discover in the Rails repository. ActiveModel is somewhat related to deal with aggregation oriented databases, the adapter pattern (e.g. for ORMs) is related to this as well. Furthermore, you can see usages of Observers (e.g. in the ActiveSupport library) and Builders (e.g. for generators).</p>
-
-<h1 id="conclusions">Conclusions</h1>
-
-<p>Patterns feel somewhat ‘theoretical’ when first touched. But as theory is to engineering, design patterns can guide you in making good, practical design decisions. Patterns can be used for communication, or to identify interfaces between components. Patterns appear at later stage of software projects, and are as such less helpful for spiking or prototyping some ideas in early software design projects. </p>
-
-<h1 id="references">References</h1>
-
-<ul>
-  <li>
-    <p>The book ‘Enterprise Architecture’ by Martin Fowler and ‘Domain Driven Design’ have a lot of interesting examples how patterns can lead to interface and vice-versa.</p>
-  </li>
-  <li>
-    <p>A topic that is closely related to pattern and interface design is refactoring. Also here, Martin Fowler keeps track of a catalog: <a href="http://www.refactoring.com/catalog/index.html">Refactoring.com</a>. I am grateful to <a href="https://twitter.com/rstankov">@rstankov</a> for sharing a great refactoring session, that showed me how removing code can improve interfaces (and as such promote pattern discovery).</p>
-  </li>
-  <li>
-    <p>Apart from Rails, some nice interfaces in Ruby projects can be found in e.g. <a href="https://github.com/plataformatec/devise/tree/master/lib/devise/orm">Devise’s ORM adapters</a> or <a href="https://github.com/lostisland/faraday/blob/master/lib/faraday/connection.rb#L28">Faraday’s connection builder</a>.</p>
-  </li>
-</ul>
 
   </div>
 
@@ -195,7 +167,7 @@
   var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
   analytics.track('Post', {
-      title: "On designing interfaces - Learning from patterns"
+      title: "NoSQL Matters 2013 - A conference on scaling data"
     });
 </script>
 

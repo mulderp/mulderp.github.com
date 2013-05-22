@@ -4,13 +4,126 @@
  <title>thinking_on thinking</title>
  <link href="http://mulderp.github.com/atom.xml" rel="self"/>
  <link href="http://mulderp.github.com/"/>
- <updated>2013-04-06T00:17:43+02:00</updated>
+ <updated>2013-05-22T14:59:10+02:00</updated>
  <id>http://mulderp.github.com</id>
  <author>
    <name>Patrick Mulder</name>
    <email>mulder.patrick@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Preparing Application Development</title>
+   <link href="http://mulderp.github.com/Preparing-Application-Development"/>
+   <updated>2013-05-21T00:00:00+02:00</updated>
+   <id>http:/mulderp.github.com/Preparing-Application-Development</id>
+   <content type="html">&lt;p&gt;I recently discovered a github repo by &lt;a href=&quot;https://twitter.com/maccaw&quot;&gt;@maccaw&lt;/a&gt; that looked very interesting: &lt;a href=&quot;https://github.com/maccman/catapult&quot;&gt;Catapult&lt;/a&gt;. For building prototypes of some client-side code, or as frontend asset server based on Ruby, Catapult gives you all you need. With:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;catapult new &amp;lt;squash&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You get some fresh project structure, an index.html, a small server and some basic rake tasks to connect with a production environment. This is a bit similar to what Yeoman does, but the advantage of Catapult (for me) is that it is Ruby.&lt;/p&gt;
+
+&lt;p&gt;Now, some savings in typing a few ‘mkdir -p /public/js/libs’, copying an index.html, and providing a shortcut for running a Rack server might sound not as a big deal. However, it sets a nice background for something great: Managing application dependencies, and especially, client-side application dependencies.&lt;/p&gt;
+
+&lt;p&gt;When you start with a client-side application from scratch, you need to get jQuery, Underscore.js, maybe Backbone.js, Marionette.js, Handelbars.js, and some other library here and there, and it is easy to lose the overview where to get your libs, and what version to import. In Ruby land, you only need to say ‘bundle install’ and you are ready to go.&lt;/p&gt;
+
+&lt;p&gt;It is here where I realized (within a discussion at Github issues) what another very interesting tool is about: &lt;a href=&quot;https://github.com/bower/bower&quot;&gt;‘bower’&lt;/a&gt;. Bower is a Node.js based dependency management solution. It reads a definition of dependencies from a bower.json file, and when you run ‘bower install’ your dependencies are fetched. It’s basically inserting the DNA into an empty application: Cloning the project’s into your local machine, and copy it from there into the application.&lt;/p&gt;
+
+&lt;p&gt;It’s here where I am currently having fun. And it is here where &lt;a href=&quot;https://github.com/yeoman&quot;&gt;Yeoman&lt;/a&gt; seems to provide even better ways to kickstart a new application. However, as a Ruby developer, Bower and Yeoman easily introduce a high dose of JavaScript, which might distract from your domain-driven design approaches and RESTful API’s. Also, having the whole history of your dependencies in your prototyping sandbox is not always handy. I prefer to actually get the actual JavaScript sources that I need, and therefore, I need to use bower-installer. Maybe bower-ruby or bower-rails are good to go with too. It will need some exploration still.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>NoSQL Matters 2013 - A conference on scaling data</title>
+   <link href="http://mulderp.github.com/no-sql-matters-conference-on-scaling-data"/>
+   <updated>2013-04-27T00:00:00+02:00</updated>
+   <id>http:/mulderp.github.com/no-sql-matters-conference-on-scaling-data</id>
+   <content type="html">&lt;p&gt;Not sure whether you should be interested in NoSQL? Well, I was not sure either, and that was an important reason to visit the &lt;a href=&quot;http://2013.nosql-matters.org/cgn/&quot;&gt;NoSQL Matters 2013&lt;/a&gt; in Cologne. If you reflect, it is data that occupies a lot of our working life as software developers, and, technically, there are a lot of hidden assumptions made, when touching data questions.&lt;/p&gt;
+
+&lt;p&gt;First, there are assumptions around structuring data. Machines seem to assume that we should structure our data as much as possible, providing at least some tables (or schemas) upon which algorithms can easily operate. For engineers, that would not be too big of a problem. However, we as humans in general (and business people in particular), often encounter confusions. What level of ambiguity can we allow when we are doodling data models? What if your business problem tomorrow looks different from our design today? How to migrate data between different systems, while not impacting a running business? &lt;/p&gt;
+
+&lt;p&gt;It is here, where a visit to the NoSQL country can help you see new options. Key-value stores and document-oriented database simplify storing data for prototyping or distribution, while graph databases provide almost unlimited ways to look for new patterns in data. Basically, with a NoSQL mindset we are better able to cross boundaries between persistence, distribution and querying of data and - like applying different filters - NoSQL solutions can help to separate signals from noise.&lt;/p&gt;
+
+&lt;p&gt;Second, the cost of data and data processing is still decreasing, maybe slower, but the trend is still downwards. And as often happened in computing, this will give rise to some wave of disruptive innovation. For tackling data persistence and distribution problems, I think this is where using open-source software will become much more viable than buying into ‘luxury’ database products from software vendors. This makes a visit to a NoSQL conference also very interesting, since many open-source developers are looking for feedback and solutions to their problems. And, projects on e.g. Github provide a much better platform to discuss concepts and shortcomings of dealing with data, than buying into todays (and tomorrows) promisses of existing database vendors.&lt;/p&gt;
+
+&lt;p&gt;Third, at a NoSQL conference, you feel that wrapping data with services helps to hide a lot of nitty-gritty details from using the data in applications. Similarly, as renting a car that brings you from A to B, an API is just enough abstraction to hide technical concern today from business requirements tomorrow. As such, APIs provide some common ground for designing the architecture of distributed systems and communicating transactions across a network.&lt;/p&gt;
+
+&lt;p&gt;All in all, NoSQL Matters 2013 in Cologne was a very rewarding conference. As many NoSQL developers will stress, SQL will not lose its relevance for sure, it’s a good standard for dealing with some classes of problems, but at least for me, key-value stores, documents, vector clocks and graphs start slowly to make a lot more sense.&lt;/p&gt;
+
+&lt;h1 id=&quot;some-references&quot;&gt;Some references&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Learning to think with distributed data structures @coderoshi - &lt;a href=&quot;https://github.com/coderoshi/dds&quot;&gt;https://github.com/coderoshi/dds&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Martin Fowlers’ Aggregation pattern - &lt;a href=&quot;http://martinfowler.com/bliki/AggregateOrientedDatabase.html&quot;&gt;http://martinfowler.com/bliki/AggregateOrientedDatabase.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Query data with Graphs - &lt;a href=&quot;http://de.slideshare.net/jexp/intro-to-neo4j-presentation&quot;&gt;http://de.slideshare.net/jexp/intro-to-neo4j-presentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Redis = (Remote) Data Structure Server - &lt;a href=&quot;https://speakerdeck.com/czarneckid&quot;&gt;https://speakerdeck.com/czarneckid&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Foxx - prototyping APIs with ArangoDB - &lt;a href=&quot;https://speakerdeck.com/moonglum/arangodb-foxx&quot;&gt;https://speakerdeck.com/moonglum/arangodb-foxx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Looking at a MarionetteJS application</title>
+   <link href="http://mulderp.github.com/marionettejs"/>
+   <updated>2013-04-24T00:00:00+02:00</updated>
+   <id>http:/mulderp.github.com/marionettejs</id>
+   <content type="html">&lt;p&gt;Looking at code from programmers who are better than you, can help you learn, and improve your programming and design skills. And one of the leading thinkers in the Backbone area is &lt;a href=&quot;https://twitter.com/derickbailey&quot;&gt;Derick Bailey&lt;/a&gt;, who has written extensively about BackboneJS in his &lt;a href=&quot;http://lostechies.com/derickbailey&quot;&gt;blog&lt;/a&gt; and recently in a &lt;a href=&quot;https://leanpub.com/building-backbone-plugins&quot;&gt;book&lt;/a&gt;. Let’s look closer at some of his demo projects to illustrate MarionetteJS principles, &lt;a href=&quot;git://github.com/marionettejs/bbclonemail.git&quot;&gt;BBclonemail&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The JavaScript structure of the application looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;└── javascripts
+    ├── bbclonemail
+    │   ├── bbclonemail.js
+    │   ├── components
+    │   │   ├── appController.js
+    │   │   └── appSelector.js
+    │   ├── contacts
+    │   │   ├── contacts.js
+    │   │   ├── contactsapp.js
+    │   │   └── router.js
+    │   └── mail
+    │       ├── categories
+    │       │   ├── categories.js
+    │       │   └── categoryView.js
+    │       ├── mailapp.js
+    │       ├── mailbox
+    │       │   ├── mail.js
+    │       │   ├── mailItemView.js
+    │       │   └── mailListView.js
+    │       └── router.js
+    ├── build
+    │   ├── bbclonemail.js
+    │   └── bbclonemail.min.js
+    └── vendor
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can make the following observations:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;First, it is not directly visible that we are dealing with a single MVC application structure. Rather, we see from the namespacing that we get 2 components that can be selected with the appController and appSelector. These components (mail and contacts) are then somewhat looking like 2 MVCs, since we see views and models/collections, and a ‘ComponentController’ on top-level of the component.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Looking closer at the ComponentController of the Mail component, we see a list of main actions. The actions are: ‘showInbox’, ‘showMailById’, ‘showMailByCategory’.  There are also helper functions, that look related to event binding, and controlling the rendering flow when events occur. Also, the client-side route is updated depending on which events have occured.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Since loading of the application can occur asynchronously, ‘initializers’ make sure, that the component has the right state when it is first loaded. Interestingly, after having setup the component, an ‘app:started’ event is fired, saying that the ‘mail’ component is ready for user interaction.  Similary, a finalizer makes sure that the component properly shuts down when needed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The core entities of the Mailbox component are Email and EmailCollection. The loading process of the emails is again wrapped in some shells (Mailbox Controller), that help fetching and filtering the JSON from server side.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Last, there are two views for a Mailbox: The list view takes care to render single emails, and to check whether an element in the list has been selected. Also, a controller helps to transform part of the list view into a single item view, when an Email is selected. In the background a region is injected into the rendering process, leaving out the details of DOM locations from the view. The ItemView has not much responsibility apart from filling in values into a template.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h1&gt;
+&lt;p&gt;MarionetteJS comes with very interesting abstractions that can take away a lot of BackboneJS boilerplate code. Still, it takes a while to get used to feel better how components can be designed, and how to deal with different level of application events (local events in the DOM vs. global events that should remove/display components)&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>On designing interfaces - Learning from patterns</title>
@@ -64,7 +177,7 @@
     &lt;p&gt;A topic that is closely related to pattern and interface design is refactoring. Also here, Martin Fowler keeps track of a catalog: &lt;a href=&quot;http://www.refactoring.com/catalog/index.html&quot;&gt;Refactoring.com&lt;/a&gt;. I am grateful to &lt;a href=&quot;https://twitter.com/rstankov&quot;&gt;@rstankov&lt;/a&gt; for sharing a great refactoring session, that showed me how removing code can improve interfaces (and as such promote pattern discovery).&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Apart from Rails, some nice interfaces in Ruby projects can be found in e.g. &lt;a href=&quot;https://github.com/plataformatec/devise/tree/master/lib/devise/orm&quot;&gt;Devise’s ORM adapters&lt;/a&gt; or &lt;a href=&quot;https://github.com/lostisland/faraday/blob/master/lib/faraday/connection.rb#L28&quot;&gt;Faraday’s connection builder&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Apart from Rails, some nice interfaces in Ruby projects can be found in e.g. &lt;a href=&quot;https://github.com/plataformatec/devise/tree/master/lib/devise/orm&quot;&gt;Devise’s ORM adapters&lt;/a&gt; or &lt;a href=&quot;https://github.com/lostisland/faraday/blob/master/lib/faraday/connection.rb#L28&quot;&gt;Faraday’s connection builder&lt;/a&gt;.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 </content>
@@ -188,12 +301,12 @@
 &lt;pre&gt;
 site :opscode
 
-cookbook 'apt'
-cookbook 'build-essential'
-cookbook 'users'
-cookbook 'rvm', :git =&amp;gt; &quot;https://github.com/fnichol/chef-rvm&quot;
-cookbook 'nginx'
-cookbook 'postgresql'
+cookbook &#39;apt&#39;
+cookbook &#39;build-essential&#39;
+cookbook &#39;users&#39;
+cookbook &#39;rvm&#39;, :git =&amp;gt; &quot;https://github.com/fnichol/chef-rvm&quot;
+cookbook &#39;nginx&#39;
+cookbook &#39;postgresql&#39;
 &lt;/pre&gt;
 
 &lt;p&gt;Running a:&lt;/p&gt;
@@ -205,20 +318,20 @@ cookbook 'postgresql'
 &lt;p&gt;imports the cookbooks to your local Chef environment. Next, we need to setup the Vagrantfile to use Chef-solo provisioning:&lt;/p&gt;
 
 &lt;pre&gt;
-require 'multi_json'
-require 'berkshelf/vagrant'
+require &#39;multi_json&#39;
+require &#39;berkshelf/vagrant&#39;
 
 Vagrant::Config.run do |config|
-  VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('.', 'node.json').read)
+  VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join(&#39;.&#39;, &#39;node.json&#39;).read)
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = [&quot;cookbooks&quot;]
     chef.json = VAGRANT_JSON
     chef.log_level = :debug
   
-    VAGRANT_JSON['run_list'].each do |recipe|
+    VAGRANT_JSON[&#39;run_list&#39;].each do |recipe|
       chef.add_recipe(recipe)
-    end if VAGRANT_JSON['run_list']
+    end if VAGRANT_JSON[&#39;run_list&#39;]
   end
 end
 &lt;/pre&gt;
@@ -412,8 +525,8 @@ collection.fetch(...)
 &lt;pre&gt;
     var AppRouter = Backbone.Router.extend({
         routes: {
-	      '': 'showPostListView',
-	      '/posts/:id': 'showPostDetailView',
+	      &#39;&#39;: &#39;showPostListView&#39;,
+	      &#39;/posts/:id&#39;: &#39;showPostDetailView&#39;,
         },
 
         showPostListView: function() {
@@ -706,10 +819,10 @@ activities = login_signups.map { |m| {m.first =&amp;gt; m.last.flatten.inject(:m
 &lt;p&gt;The client:&lt;/p&gt;
 
 &lt;pre&gt;
-require 'faraday'
+require &#39;faraday&#39;
 client = Faraday::Connection.new(:url =&amp;gt; &quot;http://0.0.0.0:3000/&quot;)
-client.get '/example' do |req|
-  req.headers['x_token'] = 'some meta data'
+client.get &#39;/example&#39; do |req|
+  req.headers[&#39;x_token&#39;] = &#39;some meta data&#39;
 end
 &lt;/pre&gt;
 
@@ -717,7 +830,7 @@ end
 
 &lt;pre style=&quot;font-size:10px&quot;&gt;
 class Application &amp;lt; Rails::Application
-  config.middleware.use Clogger, :format =&amp;gt; '&quot;$request&quot; ? $query_string $status $body_bytes_sent &quot;$http_referer&quot; &quot;$http_user_agent&quot; $request_time -- $http_x_token', :logger =&amp;gt; $stdout 
+  config.middleware.use Clogger, :format =&amp;gt; &#39;&quot;$request&quot; ? $query_string $status $body_bytes_sent &quot;$http_referer&quot; &quot;$http_user_agent&quot; $request_time -- $http_x_token&#39;, :logger =&amp;gt; $stdout 
 end
 &lt;/pre&gt;
 
@@ -731,9 +844,9 @@ end
 &lt;p&gt;A similar logging setup can easily be done in Sinatra. Simply include Clogger in config.ru&lt;/p&gt;
 
 &lt;pre&gt;
-require 'clogger'
+require &#39;clogger&#39;
 
-use Clogger, :format =&amp;gt; '&quot;$request&quot; ?$query_string $status &quot;$http_cookie&quot; $request_time $http_host', :logger =&amp;gt; $stdout
+use Clogger, :format =&amp;gt; &#39;&quot;$request&quot; ?$query_string $status &quot;$http_cookie&quot; $request_time $http_host&#39;, :logger =&amp;gt; $stdout
 &lt;/pre&gt;
 
 &lt;p&gt;Now the cookies are dumped for every request. This can be helpful for debugging once in a while.&lt;/p&gt;
@@ -775,9 +888,9 @@ use Clogger, :format =&amp;gt; '&quot;$request&quot; ?$query_string $status &quo
 #!/usr/bin/env ruby
 #^syntax detection
 
-site 'http://community.opscode.com/api/v1'
+site &#39;http://community.opscode.com/api/v1&#39;
 
-cookbook 'nginx-app', :path =&amp;gt; &quot;./application-cookbooks&quot;
+cookbook &#39;nginx-app&#39;, :path =&amp;gt; &quot;./application-cookbooks&quot;
 &lt;/pre&gt;
 
 &lt;p&gt;This means we are going to write a small application cookbook ‘nginx-app’ that lives in the path ‘/application-cookbooks’&lt;/p&gt;
@@ -972,7 +1085,7 @@ And provision:
   $ vagrant up
 &lt;/pre&gt;
 
-So, that's all to get the webserver running. Now, it would be cool to get some basic Ruby/Rack interface running too. Maybe in the next post with the help of a unicorn cookbook.
+So, that&#39;s all to get the webserver running. Now, it would be cool to get some basic Ruby/Rack interface running too. Maybe in the next post with the help of a unicorn cookbook.
 &lt;/pre&gt;
 </content>
  </entry>
@@ -1044,10 +1157,18 @@ So, that's all to get the webserver running. Now, it would be cool to get some b
 &lt;h2 id=&quot;add-the-basebox&quot;&gt;8.  Add the basebox:&lt;/h2&gt;
 
 &lt;pre&gt;
-   vagrant box add 'Ubuntu-11.04' 'Ubuntu-11.04.box'
+   vagrant box add &#39;Ubuntu-11.04&#39; &#39;Ubuntu-11.04.box&#39;
 &lt;/pre&gt;
 
-&lt;p&gt;That’s basically it. Thanks to &lt;a href=&quot;http://zac.sprackett.com/resume/&quot;&gt;Zac Sprackett&lt;/a&gt; for writing on setting up a CentOS basebox  &lt;a href=&quot;http://devops.me/2011/10/06/building-baseboxes/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;That’s basically it. &lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Thanks to &lt;a href=&quot;http://zac.sprackett.com/resume/&quot;&gt;Zac Sprackett&lt;/a&gt; for writing on setting up a CentOS basebox  &lt;a href=&quot;http://devops.me/2011/10/06/building-baseboxes/&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.eriksen.com.br/en/creating-custom-vagrant-boxes-veewee&quot;&gt;blog.eriksen.com.br/&lt;/a&gt;: Mentioning Postinstall scripts&lt;/li&gt;
+  &lt;li&gt;https://github.com/opscode/bento&lt;/li&gt;
+&lt;/ul&gt;
 
 </content>
  </entry>
@@ -1397,8 +1518,8 @@ $ chef-librarian init
 Let’s throw in the Neo4J dependency here:&lt;/p&gt;
 
 &lt;pre&gt;
-cookbook 'apt'
-cookbook 'neo4j-server', :git =&amp;gt; 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
+cookbook &#39;apt&#39;
+cookbook &#39;neo4j-server&#39;, :git =&amp;gt; &#39;http://github.com/michaelklishin/neo4j-server-chef-cookbook&#39;
 &lt;/pre&gt;
 
 &lt;p&gt;And now, similar to bundle install, we run librarian-chef install&lt;/p&gt;

@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>On designing interfaces - Learning from patterns</title>
+    <title>Looking at a MarionetteJS application</title>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -80,8 +80,8 @@
 
       <article class='ten columns offset-by-four' id="article-content">
   <header class="ten columns" id="article-header">
-    <h1>On designing interfaces - Learning from patterns</h1>
-    <i class="icon-tags"></i>  <a href="/tags/blogging" title="View posts tagged with &quot;blogging&quot;"><u>blogging</u></a>   
+    <h1>Looking at a MarionetteJS application</h1>
+    <i class="icon-tags"></i>  <a href="/tags/backbonejs" title="View posts tagged with &quot;backbonejs&quot;"><u>backbonejs</u></a>   
   </header>
 
   <div class='ten columns gray' id="date-header">
@@ -93,56 +93,58 @@
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>Interfaces are important in programming, as in business or relationships. By looking at Ruby-on-Rails, a web framework that is widely known for its implementation of the Model-View-Controller pattern, a lot can be discovered on interface design.</p>
+    <p>Looking at code from programmers who are better than you, can help you learn, and improve your programming and design skills. And one of the leading thinkers in the Backbone area is <a href="https://twitter.com/derickbailey">Derick Bailey</a>, who has written extensively about BackboneJS in his <a href="http://lostechies.com/derickbailey">blog</a> and recently in a <a href="https://leanpub.com/building-backbone-plugins">book</a>. Let’s look closer at some of his demo projects to illustrate MarionetteJS principles, <a href="git://github.com/marionettejs/bbclonemail.git">BBclonemail</a>.</p>
 
-<p>When we first touch <a href="http://martinfowler.com/eaaCatalog/">architecture design patterns</a>, we can feel quickly overwhelmed by ‘theoretical’ or very ‘abstract’ discussions. But after many hours of software development, these patterns start jumping into your eyes suddenly. And then, patterns can act as <a href="http://en.wikipedia.org/wiki/Loophole">loophole</a> between achieving perfect design in theory, and avoiding a chaos design in practice.</p>
+<p>The JavaScript structure of the application looks like this:</p>
 
-<p>So, to understand how design patterns can influence good interface design, we can look at the Rails’ directory structure:</p>
+<pre><code>└── javascripts
+    ├── bbclonemail
+    │   ├── bbclonemail.js
+    │   ├── components
+    │   │   ├── appController.js
+    │   │   └── appSelector.js
+    │   ├── contacts
+    │   │   ├── contacts.js
+    │   │   ├── contactsapp.js
+    │   │   └── router.js
+    │   └── mail
+    │       ├── categories
+    │       │   ├── categories.js
+    │       │   └── categoryView.js
+    │       ├── mailapp.js
+    │       ├── mailbox
+    │       │   ├── mail.js
+    │       │   ├── mailItemView.js
+    │       │   └── mailListView.js
+    │       └── router.js
+    ├── build
+    │   ├── bbclonemail.js
+    │   └── bbclonemail.min.js
+    └── vendor
+</code></pre>
 
-<pre>
-      ├── actionpack
-      │   ├── lib
-      │   │   ├── action_controller
-      │   │   ├── action_view
-      │   └── test
-      ├── activerecord
-      │   ├── lib
-      │   └── test
-</pre>
-
-<p>Looking at this (filtering the ‘tree -L 2’ from the Rails repository helps), the following similarities between <a href="http://martinfowler.com/eaaCatalog/">Martin Fowler’s Enterprise Patterns</a> can be seen:</p>
+<p>We can make the following observations:</p>
 
 <ul>
   <li>
-    <p><a href="http://martinfowler.com/eaaCatalog/pageController.html">Page Controller</a>/<a href="http://martinfowler.com/eaaCatalog/frontController.html">Front Controller</a>: The Ruby-on-Rails MVC stack handles requests from a Router, that are then processed by an instance of ActionController. Comparing to Fowler’s pattern definitions, a Router can be interpreted as “handling all requests for a Web site” and an ActionController instance as “handling requests for a specific pages or actions”. This design works very well to create, update or render resources, and map actions to URLs in a RESTful manner. Furthermore, Rails developers will know very well how common logic for e.g. authentication can be extracted into a <a href="http://martinfowler.com/eaaCatalog/applicationController.html">Application Controller</a></p>
+    <p>First, it is not directly visible that we are dealing with a single MVC application structure. Rather, we see from the namespacing that we get 2 components that can be selected with the appController and appSelector. These components (mail and contacts) are then somewhat looking like 2 MVCs, since we see views and models/collections, and a ‘ComponentController’ on top-level of the component.</p>
   </li>
   <li>
-    <p><a href="http://martinfowler.com/eaaCatalog/templateView.html">Template View</a>: According to Fowler, this pattern is about “rendering information into HTML by embedding markers in an HTML page”. As such, it describes the purposes of views in Ruby-on-Rails. Interestingly, Fowler describes some alternative options, such as <a href="http://martinfowler.com/eaaCatalog/transformView.html">Transform View</a>, or <a href="http://martinfowler.com/eaaCatalog/twoStepView.html">2-step View</a>. This shows that view templates has its limits, and is not the best solution for all rendering problems. Maybe in a later post, we can look at how client-side MVC framework apply different rendering approaches. </p>
+    <p>Looking closer at the ComponentController of the Mail component, we see a list of main actions. The actions are: ‘showInbox’, ‘showMailById’, ‘showMailByCategory’.  There are also helper functions, that look related to event binding, and controlling the rendering flow when events occur. Also, the client-side route is updated depending on which events have occured.</p>
   </li>
   <li>
-    <p><a href="http://martinfowler.com/eaaCatalog/activeRecord.html">ActiveRecord</a>: ActiveRecord is a so-called data source architectural pattern, and is about “encapsulating database access, and adding domain logic on that data”. It is one of the patterns besides MVC that helped Rails into becoming what is today. For non-experts, ActiveRecord helps to encapsulate e.g. a Person data record. An instance of a Person that is derived from ActiveRecord, gives a nice interface to manage ‘persistence’ of the Person state, as well as ways to manage the context of a person (such as associations, validations, custom extensions). Thanks to <a href="https://twitter.com/vicentereig">@vicentereig</a> for pointing me to a post by <a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/">@bryanry</a> on keeping the ActiveRecord pattern under control. </p>
+    <p>Since loading of the application can occur asynchronously, ‘initializers’ make sure, that the component has the right state when it is first loaded. Interestingly, after having setup the component, an ‘app:started’ event is fired, saying that the ‘mail’ component is ready for user interaction.  Similary, a finalizer makes sure that the component properly shuts down when needed.</p>
+  </li>
+  <li>
+    <p>The core entities of the Mailbox component are Email and EmailCollection. The loading process of the emails is again wrapped in some shells (Mailbox Controller), that help fetching and filtering the JSON from server side.</p>
+  </li>
+  <li>
+    <p>Last, there are two views for a Mailbox: The list view takes care to render single emails, and to check whether an element in the list has been selected. Also, a controller helps to transform part of the list view into a single item view, when an Email is selected. In the background a region is injected into the rendering process, leaving out the details of DOM locations from the view. The ItemView has not much responsibility apart from filling in values into a template.</p>
   </li>
 </ul>
-
-<p>There are probably a dozen more interesting patterns to discover in the Rails repository. ActiveModel is somewhat related to deal with aggregation oriented databases, the adapter pattern (e.g. for ORMs) is related to this as well. Furthermore, you can see usages of Observers (e.g. in the ActiveSupport library) and Builders (e.g. for generators).</p>
 
 <h1 id="conclusions">Conclusions</h1>
-
-<p>Patterns feel somewhat ‘theoretical’ when first touched. But as theory is to engineering, design patterns can guide you in making good, practical design decisions. Patterns can be used for communication, or to identify interfaces between components. Patterns appear at later stage of software projects, and are as such less helpful for spiking or prototyping some ideas in early software design projects. </p>
-
-<h1 id="references">References</h1>
-
-<ul>
-  <li>
-    <p>The book ‘Enterprise Architecture’ by Martin Fowler and ‘Domain Driven Design’ have a lot of interesting examples how patterns can lead to interface and vice-versa.</p>
-  </li>
-  <li>
-    <p>A topic that is closely related to pattern and interface design is refactoring. Also here, Martin Fowler keeps track of a catalog: <a href="http://www.refactoring.com/catalog/index.html">Refactoring.com</a>. I am grateful to <a href="https://twitter.com/rstankov">@rstankov</a> for sharing a great refactoring session, that showed me how removing code can improve interfaces (and as such promote pattern discovery).</p>
-  </li>
-  <li>
-    <p>Apart from Rails, some nice interfaces in Ruby projects can be found in e.g. <a href="https://github.com/plataformatec/devise/tree/master/lib/devise/orm">Devise’s ORM adapters</a> or <a href="https://github.com/lostisland/faraday/blob/master/lib/faraday/connection.rb#L28">Faraday’s connection builder</a>.</p>
-  </li>
-</ul>
+<p>MarionetteJS comes with very interesting abstractions that can take away a lot of BackboneJS boilerplate code. Still, it takes a while to get used to feel better how components can be designed, and how to deal with different level of application events (local events in the DOM vs. global events that should remove/display components)</p>
 
   </div>
 
@@ -195,7 +197,7 @@
   var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
   analytics.load("t2dez1p4gw");
   analytics.track('Post', {
-      title: "On designing interfaces - Learning from patterns"
+      title: "Looking at a MarionetteJS application"
     });
 </script>
 
