@@ -12,8 +12,8 @@ Ruby has been a great tool in my programming expeditions. Ruby is about a progra
 
     new Journey.visit(barcelona).take_photographs([segrada_familia, beach]) 
 
-Recently, I feel that Backbone.js provides an interesting extension to this line of thinking. In contrast to Ruby, however, Backbone.js communicates differently with a programmer. Backbone.js provides hooks for 'listening' to events, and 'rendering'  and 'transport' of data. So, the set of verbs is similar and different (think on the verbs: save, find, render, each, map, rescue). However, the similar and different semantics are very relevant to the server or browser environments where the verbs are used.
+Recently, I feel that Backbone.js provides an interesting extension to this line of thinking. In contrast to Ruby, however, Backbone.js communicates differently with a programmer. Backbone.js provides hooks for 'listening' to events, and 'rendering'  and 'transport' of data. So, the set of verbs for in Ruby and Backbone is similar and different (think on the verbs: save, find, render, each, map, rescue). However, the similar and different semantics are very relevant to the server or browser environments where the verbs are used.
 
 Additionally, Ruby and Backbone (with Underscore.js) provide nice ways to compose objects, and encapsulate processes and data. Whereas in Ruby-on-Rails, we intuitively can work with storage and HTTP, Backbone.js provides Views, Events, and (also) Collections and Models. The similarities and differences among server and client will be the topic of my book**, that I hope to publish after the summer. My blog updates will be less frequent therefore.
 
-** It is the topic of the talk I will be giving at Rubyday.it 2013 in Milano too: http://www.rubyday.it/schedule
+** It is the topic of the talk I will be giving at [Rubyday.it 2013 in Milano](http://www.rubyday.it/schedule)
