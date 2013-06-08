@@ -10,7 +10,7 @@ This is what I am practicing the last months on a book idea. I want to show how 
 
 Ruby has been a great tool in my programming expeditions. Ruby is about a programmer's happiness. Ruby provides some of the cleanest and most elegant syntax for a programming language I know of. Syntax is crucial. Ruby allows to form expressions that are very close to the line of thought we do in everyday thinking:
 
-    new Journey.visit(barcelona).take_photographs([segrada_familia, beach]) 
+     Journey.new.visit(barcelona).take_photographs([segrada_familia, beach]) 
 
 Recently, I feel that Backbone.js provides an interesting extension to this line of thinking. In contrast to Ruby, however, Backbone.js communicates differently with a programmer. Backbone.js provides hooks for 'listening' to events, and 'rendering'  and 'transport' of data. So, the set of verbs for in Ruby and Backbone is similar and different (think on the verbs: save, find, render, each, map, rescue). However, the similar and different semantics are very relevant to the server or browser environments where the verbs are used.
 
