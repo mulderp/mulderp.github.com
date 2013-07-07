@@ -2,7 +2,7 @@
 layout: post
 title: Event Driven Architecture
 tags: ajax api events
-----
+---
 I recently looked at the source code of [Lamernews](https://github.com/antirez/lamernews). It was very refreshing to see an application architecture that does not circulate around the MVC separation of concerns. Rather, the application design looks to circulate around 'events'.
 
 Looking at the application, it is clear that the news domain is about communicating events. You can see this some examples of the application: [Echo.js](http://echojs.org) or [Lamernews](http://lamernews.org). The main function is submitting news. Once news is in the newsfeed, news can be voted up or down and commented. The votes and comments influence the importance of news in the feed.
