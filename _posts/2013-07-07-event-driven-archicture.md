@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Event Driven Architecture
 tags: ajax api events
 ----
