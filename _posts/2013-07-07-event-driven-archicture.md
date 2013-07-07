@@ -5,7 +5,7 @@ tags: ajax api events
 ---
 I recently looked at the source code of [Lamernews](https://github.com/antirez/lamernews). It was very refreshing to see an application architecture that does not circulate around the MVC separation of concerns. Rather, the application design looks to circulate around 'events'.
 
-Looking at the application, it is clear that the news domain is about communicating events. You can see this from some examples of the application: [Echo.js](http://echojs.org) or [Lamernews](http://lamernews.org). The main function is submitting news. Once news is in the newsfeed, news can be voted up or down and commented. The votes and comments influence the importance of news in the feed.
+Looking at the application, it is clear that the news domain is about communicating events. You can see this from some examples: [Echo.js](http://echojs.org) or [Lamernews](http://lamernews.org). The main function is submitting news. Once news is in the newsfeed, news can be voted up or down and commented. The votes and comments influence the importance of news in the feed.
 
 When we would work with an MVC framework such as Ruby-on-Rails, we would probably start with mapping domain objects to routes. It would work nicely for CRUD actions on news. But for users that just browse through news, and vote news occasionally up or down, it is harder to see the usefulness of combining server-side actions with rendering logic and/or domain models.
 
