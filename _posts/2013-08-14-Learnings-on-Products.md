@@ -3,7 +3,7 @@ layout: post
 title: Learning on Products
 tags: products design startups
 ---
-Lately, I was reflecting why I had studied engineering, ano not art or design. (I had studied mathematics for some time, but switched backed to engineering. However, mathematics is already closer to design and art too.)
+Lately, I was reflecting why I had studied engineering, and not art or design. (I had studied mathematics for some time, but switched backed to engineering. However, mathematics is already closer to design and art too.)
 
 My conclusion is that I enjoy the products of engineering: Mainly their functions, but in a sense the emotional rewards that certain products bring. In the case of electronic engineering, I mostly enjoyed music and sound processing devices. In general, I enjoyed communication devices, like radio or modems for communication via computers. The web revolutionized all communication devices, and fascination with products from Philips or Sony turned into fascination of products from Apple and Unix.
 
