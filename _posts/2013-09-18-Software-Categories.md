@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Frameworks vs Libraries
+title: Start building libraries 
 tags: software abstractions
 ---
 Ruby-on-Rails, Twitter Bootstrap, Django are examples of web frameworks. Sinatra (or Rack), Compass, Backbone.js are examples of libraries. Frameworks can bring high productivity, using libraries on the contrary, feels slow and require more practice to get started.
