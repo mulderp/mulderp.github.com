@@ -3,7 +3,7 @@ layout: post
 title: Here goes your web stack
 tags: web applications
 ---
-I remember the days when Apache and PHP were the main building for web applications. In fact, there are still a large number on requests for help with PHP on sites as Elance.com or on StackOverflow. PHP is still widely used.
+I remember the days when Apache and PHP were the main building blocks for web applications. In fact, there are still a large number on requests for help with PHP on sites as Elance.com or on StackOverflow. PHP is still widely used.
 
 Yet, as easy it was (and is) to get started with PHP, applications in PHP are mainly about "dynamic" HTML. For developers, and many customers, there are more requirements on applications today. This can be seen from the success of Ruby-on-Rails. The Rails conventions show that designing (and maintaining) applications is far better, when we allow concerns to be separated.
 
