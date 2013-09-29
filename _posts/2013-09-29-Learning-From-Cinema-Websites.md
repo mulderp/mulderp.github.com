@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Learning from Cinema Websites
+title: Learning from a Cinema Website
 tags: Interfaces
 ---
 I just received a marketing flyer of the [Nielsen Norman Group](http://www.nngroup.com/). It talks about design for small screens and usability of mobile applications (some background information is also shown [here](http://www.nngroup.com/articles/)).
