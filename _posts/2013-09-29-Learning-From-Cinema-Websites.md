@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Learning-From-Cinema-Websites
+title: Learning from Cinema Websites
 tags: Interfaces
 ---
 I just received a marketing flyer of the [Nielsen Norman Group](http://www.nngroup.com/). It talks about design for small screens and usability of mobile applications (some background information is also shown [here](http://www.nngroup.com/articles/)).
@@ -13,10 +13,11 @@ Usability and short attention spans of users are important reasons to build inte
 
 3. Third test: Browsing. Nice, I am counting 20 movies, but how do I remove those movies about/with "Music", "Animation" or "Fantasy"? At least, selecting a movie requires some trade-offs, like show-times, plots, actors and length. It is really difficult to do that comparison by scrolling the list of movies only. What I would prefer is some filter or sorting actions.
 
-Well, looking at the source of the website, we sources for jQuery, jQuery-UI, and some library with a function:
+Well, looking at the source of the website, we see the sources for jQuery, jQuery-UI, and some libraries. In one library, we see a function that is tens of lines long:
 
     function filterProgram(tmpFilter, tmpField) { ... }
 
+Now compare the browsing experience, with the showcase [gallery demo from Adobe](http://dpsgallery.adobe.com/#/main): Responsive, a nice feature project area, some search, and a filter for projects, all on one page.
 
-Nice try, but now compare the browsing experience, with the showcase [gallery demo from Adobe](http://dpsgallery.adobe.com/#/main): Responsive, a nice feature project area, some search, and a filter for projects, all on one page. When applications become interfaces to support in simple jobs, it is time to start learning client-side application development. This is why I write a book on Backbone.js.
+When applications become interfaces to support us with simple jobs (search/filtering/sorting), it is time to start learning client-side application development. And in my upcoming book on Backbone.js, I want to show an example of a better interface to browse movies (or products/news/...).
 
