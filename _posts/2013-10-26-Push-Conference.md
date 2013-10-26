@@ -3,7 +3,7 @@ layout: post
 title: Push Conference - A conference on creativiy and flow
 tags: design creativity flow
 ---
-How amazing to experience a conference at the borders of design, art and technology. It was especially fascinating to merge with the flow of the speakers and the audience , who are driven by new innovation and design. Here, 8 hours of talks feel like 10 seconds, and coming home, you feel full of energy to work on new ideas.
+How amazing to experience a conference at the borders of design, art and technology. It was especially fascinating to merge with the flow of the speakers and the audience , who are driven by ideas on design and innovation. Here, 8 hours of talks feel like 10 seconds, and coming home, you feel full of energy to work on new ideas.
 
 For me, one of the most inspiring message was about play, discovery and learning. The speakers showed a lot of impressing works and photographs, but also shared some of their failings. 
 
