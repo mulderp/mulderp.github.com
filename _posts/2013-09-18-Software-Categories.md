@@ -3,11 +3,11 @@ layout: post
 title: Start building libraries 
 tags: software abstractions
 ---
-Creating software feels similar to cooking. You need to select recipes, ingredients, and sometimes tools. And, mastering your gut feeling of becoming a software hero or Michelin-star cook takes time. A lot.
+Creating software feels similar to cooking. You need to select recipes, ingredients, and sometimes tools. And, mastering your gut feeling for becoming a software hero or Michelin-star cook takes time. A lot.
 
 On your path of learning what to do and don't, you will need to make choices. Actually, a lot of choices. Cookbooks or frameworks help you choose to create menu's or prepare a menu for a dinner party. In web development, Ruby-on-Rails, Twitter Bootstrap or Django help you to quickly satisfy a number of requirements, like dealing with dynamic content or mobile browsers.
 
-But before you jump from cookbook to cookbook, or from framework to framework, you sometimes will be better off by studying single recipe for a salad or a Lasagne. To my experience, single recipes are far more useful in the long term. A dinner party is only 3-5 times a year, while I need to search for simple cooking solutions almost every day. These simple setups are what we talk about when looking at Sinatra, Rack, Compass or Backbone.js. Whereas  Frameworks can bring high productivity, libraries give you tremendous levers in many different situations.
+But before you jump from cookbook to cookbook, or from framework to framework, you sometimes will be better off by studying single recipe for a salad or a Lasagne. Similarly, single recipes are far more useful in the long term. A dinner party is only 3-5 times a year, while I need to search for simple cooking solutions almost every day. These simple setups are what we talk about when looking at Sinatra, Rack, Compass or Backbone.js. Whereas  Frameworks can bring high productivity, libraries give you tremendous levers in many different situations.
 
 Like in cooking, frameworks or menu's can grow out of libraries or single recipes. As Ruby-on-Rails creator David Heinemeier Hansson explains in [this video](http://bigthink.com/videos/big-think-interview-with-david-heinemeier-hansson): "Rails started as an application, it never started as [the framework] Rails. It started as me wanting to build Basecamp. ... and I found a need to build a bunch of tools."
 
