@@ -45,6 +45,18 @@ blog: false
                 background-size: cover;
             }
 
+            .thorax_comp body {
+                background-image: url(/static/images/thorax_comp-fs8.png);
+            }
+
+            .easy_to body {
+                background-image: url(/static/images/easy_to-fs8.png);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+
         </style>
 
 		<!-- For syntax highlighting -->
@@ -86,28 +98,24 @@ blog: false
            </section>
 
 
-				   <section data-background="#007777">
+				   <section data-state="thorax_comp">
                       <h2>backbone + handlebars</h2>
-				  	<p>rather "pure" JavaScript</p>
-				  	<p>
-				  	</p>
-
-				  	<aside class="notes">
-				  	</aside>
+				  	<p style="color:white">rather "pure" JavaScript</p>
 				</section>
 
                 <section data-transition="slide">
                   <h2>It's easy to get started!</h2>
                 </section>
 
-                <section data-transition="linear" data-background="#007777">
-                  <section>
+                  <section data-state="easy_to">
                   <h2>generator-thorax@0.0.5</h2>
 
-					<pre><code data-trim contenteditable>
+					<pre style="font-size: 40px; margin-top: 50px"><code data-trim contenteditable>
 $ yo thorax cinema
 					</code></pre>
-                    </section>
+                  </section>
+
+                <section data-transition="linear" data-background="#007777">
 
                     <section>
                        <h2>Grunt</h2>
