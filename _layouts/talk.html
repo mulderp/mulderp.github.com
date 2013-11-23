@@ -20,6 +20,32 @@ blog: false
 
 		<link rel="stylesheet" href="/static/css/reveal.min.css">
 		<link rel="stylesheet" href="/static/css/reveal/moon.css" id="theme">
+        <style>
+            .cover-slide body {
+                background-image: url(/static/images/thorax_bg-faded.png);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+
+            .supermarket body {
+                background-image: url(/static/images/background_1-faded.png);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+
+            .blueprint body {
+                background-image: url(/static/images/blueprint-faded.png);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+
+        </style>
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="/static/css/zenburn.css">
@@ -39,14 +65,14 @@ blog: false
 		<div class="reveal">
 
         <div class="slides">
-           <section>
+           <section data-state="cover-slide">
              <h1>Thorax.js</h1>
              <h3>A framework to build large scale web applications</h3>
            </section>
    
            <section>
-               <section>
-               <h2>A supermarket</h2>
+               <section data-state="supermarket">
+               <h2>A shop</h2>
                <p>in your pocket</p>
                </section>
        
@@ -54,7 +80,7 @@ blog: false
                <img src="/static/images/walmart.png">
                </section>
        
-               <section>
+               <section data-state="blueprint">
                <h2>lots of templates, data and logic</h2>
                </section>
            </section>
@@ -70,7 +96,11 @@ blog: false
 				  	</aside>
 				</section>
 
-				<section data-transition="linear" data-background="#007777" data-background-transition="slide">
+                <section data-transition="slide">
+                  <h2>It's easy to get started!</h2>
+                </section>
+
+                <section data-transition="linear" data-background="#007777">
                   <section>
                   <h2>generator-thorax@0.0.5</h2>
 
@@ -87,13 +117,12 @@ $ yo thorax cinema
                        <h2>RequireJS</h2>
                     </section>
                        
-                       
-                    <section>
-                       <h2>Mocha / Chai</h2>
-                    </section>
-
                     <section>
                     <h2>jQuery and Zepto</h2>
+                    </section>
+                       
+                    <section>
+                       <h2>Automated Tests</h2>
                     </section>
 
                     <section>
@@ -151,7 +180,7 @@ $ yo thorax cinema
 </div>
 
 <footer>
-  &#123;&#123;layout-element&#125;&#125;
+  &#123;&#123;view footer&#125;&#125;
 </footer></code></pre>
 				</section>
 
@@ -160,53 +189,53 @@ $ yo thorax cinema
 			<pre><code data-trim contenteditable>
 <img src="&#123;&#123;thumb&#125;&#125;">
 
-<hr>
 <h3>&#123;&#123;#link "movies/&#123;&#123;id&#125;&#125;" expand-tokens=true&#125;&#125;&#123;&#123;title&#125;&#125;&#123;&#123;/link&#125;&#125;</h3>
-
-<div class="rating">
-</div>
 
 <div class="genres">
   &#123;&#123;genres&#125;&#125;
 </div>
 
 <div class="caption">
-  &#123;&#123;length&#125;&#125; mins
   <div class="rating">
     &#123;&#123;stars rating&#125;&#125;
   </div>
   <div class="details">
     <span>&#123;&#123;director&#125;&#125;</span>
-    <span>&#123;&#123;year&#124;&#125;</span>
     <p>&#123;&#123;description&#124;&#125;</p>
   </div>
 </div></code></pre>
 				</section>
+
 				</section>
 
 				<section>
 					<h2>References</h2>
 					<ul>
-						<li><a href="http://slid.es">Try thorax</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Book Testing</a></li>
-						<li><a href="http://twitter.com/hakimel">Book</a></li>
+						<li><a href="https://github.com/walmartlabs/generator-thorax">Try thorax</a></li>
+						<li><a href="http://backbone-testing.com/">Backbone.js Testing</a></li>
+						<li><a href="http://thinkingonthinking.com">Book on Backbone (to be announced)</a></li>
 					</ul>
 				</section>
 
 				<section>
-					<h1>THE END</h1>
-					<h3>BY patrick mulder / @mulpat</h3>
+                    <h3>patrick mulder</h3>
+                    <h3>@mulpat</h3>
+                    <h3>http://thinkingonthinking.com</h3>
+
 				</section>
 
 				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
+					<h2>credits</h2>
+                    <ul>
+                    <li>Thorax has been developed by Ryan Eastridge, Kevin Decker, et.al. </li>
+					<li>
+                        <a href="http://www.flickr.com/photos/catnurse15/4001758644/" title="Lateral Thorax by myrtle15, on Flickr"><img src="http://farm3.staticflickr.com/2436/4001758644_4f49f97e9c_z.jpg" width="340" height="180" alt="Lateral Thorax"></a>
+					</li>
+                    <li>
+                    <a href="http://www.flickr.com/photos/73431494@N04/6627129825/sizes/o/in/photolist-b6BLP4-e77xao-bCAzUc-bCAAgX-bpFFEd-bCAB3B-bpFE5f-bCACfp-bCAEg2-bpFGWW-bCAEt6-bpFD1b-bCAAbg-bCAAv8-bpFDPf-bCAAo8-bpFEUG-bpFFUY-bCAE3K-bCABWH-e8UVEt-e8UVvk-e91xX9-e8UVHg-e91xCs-e91zjL-e8UUzR-e8UUtP-e91xN1-e91yQu-e8UTXn-e91zMm-e91yBf-e91z3G-e8UVL2-e91yZh-e91yoo-e91yTA-e8UVyt-e91yWE-e91z9G-e91ye1-e91ysj-e91xRh-e8UTRc-e91xUs-e91yMd-e8UU1g-e91y2A-e8UUnF-e91yF9/">blueprint</a>
+                    </li>
+                  </ul>
 				</section>
-
-
 
 			</div>
 
