@@ -5,7 +5,7 @@ tags: command line design
 ---
 I am enjoying the browser more and more as a medium for presentations. In this post, I want to provide some tricks to transform images for presentations.
 
-First, I highly recommend browsing photographs at [flickr.com](http://flickr.com) when preparing a talk. Images capture emotions, as Garr Reynolds teaches us at [presentationzen.com](http://www.presentationzen.com/). Once you found images, you can do this to combine them with [reveal.js](http://revealjs.com).
+First, I highly recommend browsing photographs at [flickr.com](http://flickr.com) when preparing a talk. Images capture emotions, as Garr Reynolds teaches us at [presentationzen.com](http://www.presentationzen.com/). Once you found images, you can do this to combine them with [reveal.js](http://lab.hakim.se/reveal-js).
 
 
 First, when you need to convert a JPG to PNG, you can do simply a:
