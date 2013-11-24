@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Push Conference - A Conference on Creativty and Flow
+title: Push Conference - A Conference on Creativity and Flow
 tags: design creativity flow
 ---
 How amazing to experience a conference at the borders of design, art and technology. It was especially fascinating to merge with the flow of the speakers and the audience , who are driven by ideas on design and innovation. Here, 8 hours of talks feel like 10 seconds, and coming home, you feel full of energy to shape the world.
