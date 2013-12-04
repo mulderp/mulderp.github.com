@@ -217,7 +217,7 @@ arangosh [_system]> fm.mount("cinema", "/home/vagrant/cinema")
 }
 </pre>
 
-Now, our Node acts as webserver and data source. Let's try:
+Now, our node acts as webserver and data source. Let's try:
 
 <pre>
 $ curl 0.0.0.0:5000/cinema/all
