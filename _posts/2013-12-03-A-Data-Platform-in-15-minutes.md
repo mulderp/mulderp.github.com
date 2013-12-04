@@ -122,7 +122,7 @@ In the Arango shell we now can test that movies are available with:
 
 <pre>
   $ arangosh
-  arangosh [_system]> db.movies.toArray()
+  arangosh [_system]> db.cinema_movies.toArray()
   [
   {
     "_id" : "movies/811811239",
