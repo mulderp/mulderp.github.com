@@ -110,7 +110,7 @@ So, let's serve some movies.
 
 ## 3. Importing movies
 
-Since movies and cinema give good case for data experiments, let's fetch some data from [movielens free dataset](http://www.grouplens.org/datasets/movielens/). I leave this to an exercise to the reader, but maybe this [gist](https://gist.github.com/mulderp/7796615) will help you.
+Since movies and cinema give good case for data experiments, let's fetch some data from the [movielens free dataset](http://www.grouplens.org/datasets/movielens/). I leave this to an exercise to the reader, but maybe this [gist](https://gist.github.com/mulderp/7796615) will help you.
 
 So, once you have a JSON file of movies, we can easily import those into ArangoDB with:
 
@@ -186,16 +186,8 @@ var Movie = Foxx.Model.extend({
 This is a bit similar to introducing a schema, e.g. as ElasticSearch does to help querying and storing data.
 
 <pre>
-var Movies = Foxx.Repository.extend({
-  all: function() {
-    return this.collection.toArray();
-  }
-});
-
-var movies = new Movies(app.collection("movies"));
-
 app.get("/all", function(req, res) {
-  res.json(_.map(db.dev_movies_movies2.toArray(), function (movie) {
+  res.json(_.map(db.cinema_movies.toArray(), function (movie) {
       return _.extend(new Movie(movie).attributes);
    }));
 });
