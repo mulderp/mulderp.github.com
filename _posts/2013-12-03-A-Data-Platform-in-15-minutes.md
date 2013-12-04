@@ -66,7 +66,7 @@ So, if our sandbox "node"/VM is running, we add the data repository capabilities
 
 ## 2. Foxx and ArangoDB 
 
-[ArangoDB](https://www.arangodb.org/) is a document-store build around the JavaScript V8 engine. ArangoDB supports schemaless, compressable data storage, as well as "actions", a programmable data layer on top of the data store. These actions can again be programmed with [Foxx](https://www.arangodb.org/foxx), a middleware on top of ArangoDB.
+[ArangoDB](https://www.arangodb.org/) is a document-store built around the JavaScript V8 engine. ArangoDB supports schemaless, compressable data storage, as well as "actions", a programmable data layer on top of the data store. These actions can again be programmed with [Foxx](https://www.arangodb.org/foxx), a middleware on top of ArangoDB.
 
 To turn our fresh VM into a data repository, let's login to the Vagrant box:
 
