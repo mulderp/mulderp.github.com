@@ -9,23 +9,23 @@ So, in this post, I want to show a way, how to setup a node that acts as data re
 
 ## 1. A Vagrant basebox
 
-Vagrant is a great wrapper for fetching, starting and stopping a virtual machines (VMs), and I have blogged on advanced VM use cases with Chef automation [here](http://thinkingonthinking.com/building-a-Vagrant-base-box/) and [here](http://thinkingonthinking.com/building-infrastructure/). With Vagrant, we can do a number of learning before going to a hosted service such as Amazon EC2 or another cloud provider.
+As first step, let's set a node. Vagrant is a great wrapper for fetching, starting and stopping virtual machines (VMs), and I have blogged on advanced VM use cases with Chef automation [here](http://thinkingonthinking.com/building-a-Vagrant-base-box/) and [here](http://thinkingonthinking.com/building-infrastructure/). With Vagrant, we can do a number of learning before going to a hosted service such as Amazon EC2 or another provider of cloud resources.
 
 Opscode's Bento project is a great place to find baseboxes, so, let's fetch a standard Ubuntu "precise" box:
 
 <pre>
-    vagrant box add ubuntu-12 http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.box
+  vagrant box add ubuntu-12 http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.box
 </pre>
 
 Downloading the Ubuntu image will take a while. So, depending on your network speed, you should come back in 10 minutes now.
 
-Once the base box is downloaded, we create a new project:
+Once the base box is downloaded, we create a new project on our development machine (or "host"):
 
 
 <pre>
-  mkdir movies_repo
-  cd movies_repo
-  vagrant init ubuntu-12
+  $ mkdir movies_repo
+  $ cd movies_repo
+  $ vagrant init ubuntu-12
 </pre>
 
 This gives us a Vagrantfile, i.e. a configuration for the virtual machine.
@@ -62,34 +62,34 @@ Bringing machine 'default' up with 'virtualbox' provider...
 [default] -- /vagrant
 </pre>
 
-So, if our sandbox "node"/VM is running, we add the repository capabilities.
+So, if our sandbox "node"/VM is running, we add the data repository capabilities.
 
 ## 2. Foxx and ArangoDB 
 
 [ArangoDB](https://www.arangodb.org/) is a document-store build around the JavaScript V8 engine. ArangoDB supports schemaless, compressable data storage, as well as "actions", a programmable data layer on top of the data store. These actions can again be programmed with [Foxx](https://www.arangodb.org/foxx), a middleware on top of ArangoDB.
 
-First, let's login to the Vagrant box:
+To turn our fresh VM into a data repository, let's login to the Vagrant box:
 
 <pre>
-   $ vagrant ssh
+ $ vagrant ssh
 </pre>
 
 Then we install ArangoDB. ArangoDB's Ubuntu installation instructions can be found [here](http://www.arangodb.org/download) - in our case:
 
 <pre>
-  sudo vi /etc/apt/sources.list.d/arangodb.list
+sudo vi /etc/apt/sources.list.d/arangodb.list
 </pre>
 
 Add:
 
 <pre>
-  deb http://www.arangodb.org/repositories/arangodb/xUbuntu_12.04/ /
+ deb http://www.arangodb.org/repositories/arangodb/xUbuntu_12.04/ /
 </pre>
 
 Then, download the aptitude keys:
 
 <pre>
-  wget http://www.arangodb.org/repositories/arangodb/xUbuntu_12.04/Release.key
+wget http://www.arangodb.org/repositories/arangodb/xUbuntu_12.04/Release.key
 </pre>
 
 And:
