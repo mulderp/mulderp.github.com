@@ -43,7 +43,7 @@ However, if we try to [provision](http://docs-v1.vagrantup.com/v1/docs/provision
 and
 
 <pre>
-pmu:node_passenger pmu$ vagrant provision
+$ vagrant provision
 </pre>
 
 We will hit an error, that chef-solo is missing. Let's look in the next section at some option.
@@ -85,7 +85,7 @@ And, then again the "sudo gem install chef". After seeing the installation succe
 So, we can do a:
 
 <pre>
-pmu:node_passenger pmu$ vagrant up
+$ vagrant up
 Bringing machine 'default' up with 'virtualbox' provider...
 [default] Clearing any previously set forwarded ports...
 [Berkshelf] This version of the Berkshelf plugin has not been fully tested on this version of Vagrant.
@@ -114,7 +114,8 @@ Bringing machine 'default' up with 'virtualbox' provider...
 [default] Mounting shared folders...
 [default] -- /vagrant
 [default] -- /tmp/vagrant-chef-1/chef-solo-1/cookbooks
-pmu:node_passenger pmu$ vagrant provision
+
+$ vagrant provision
 [Berkshelf] This version of the Berkshelf plugin has not been fully tested on this version of Vagrant.
 [Berkshelf] You should check for a newer version of vagrant-berkshelf.
 [Berkshelf] If you encounter any errors with this version, please report them at https://github.com/RiotGames/vagrant-berkshelf/issues
