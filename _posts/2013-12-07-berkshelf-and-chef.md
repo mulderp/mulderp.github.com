@@ -29,7 +29,7 @@ cookbook 'node'
 </pre>
 
 
-However, if we try to (provision)[http://docs-v1.vagrantup.com/v1/docs/provisioners.html]
+However, if we try to [provision](http://docs-v1.vagrantup.com/v1/docs/provisioners.html)
 
 <pre>
   config.berkshelf.enabled = true
