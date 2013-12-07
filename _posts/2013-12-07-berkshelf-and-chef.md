@@ -1,6 +1,7 @@
+#encoding: utf-8
 ---
-title: Berkshelf and Chef
 layout: post
+title: Berkshelf and Chef
 tags: chef node
 ---
 The last blog post on [A Data Platform in 15 minutes](http://thinkingonthinking.com/A-Data-Platform-in-15-minutes/) got quite some attention. While writing that post, I found that blog post on a "single" topic are actually more useful in the long term, than an overview blog post, such as (this old post)[http://thinkingonthinking.com/A-custom-rails-stack-with-chef/|, where I mix Chef, Berkshelf, RVM and Ruby.
