@@ -9,7 +9,7 @@ While writing that post, I found that a blog post on a "single" topic are actual
 
 So, it is also good to review some basics of Chef. Imagine we have a fresh VM (maybe from the [Bento](https://github.com/opscode/bento) image repository from Opscode). And, we want to quickly install a recent version of Node.js.
 
-== Berkshelf
+## Berkshelf
 
 A fast way to achieve that would be using [vagrant-berkshelf](https://github.com/berkshelf/vagrant-berkshelf) . In contrast to my older posts on Chef, Berkshelf now must be installed as plugin like this:
 
@@ -48,7 +48,7 @@ pmu:node_passenger pmu$ vagrant provision
 
 We will hit an error, that chef-solo is missing. Let's look in the next section at some option.
 
-== Provision the VM
+## Provision the VM
 
 Debugging Chef and cookbooks often requires an ssh login, and looking at the actual logfiles of the problem. We can do this:
 
