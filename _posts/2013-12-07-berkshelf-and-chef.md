@@ -7,7 +7,7 @@ The last blog post on [A Data Platform in 15 minutes](http://thinkingonthinking.
 
 While writing that post, I found that a blog post on a "single" topic is very useful in the long term. And it is better to avoid an "overview" when writing, such as [this old post](http://thinkingonthinking.com/A-custom-rails-stack-with-chef/), where I mix Chef, Berkshelf, RVM and Ruby.
 
-So, it is also good to review some basics of Chef. Imagine we have a fresh VM (maybe from the [Bento](https://github.com/opscode/bento) image repository from Opscode). And, we want to quickly install a recent version of Node.js.
+So, to practice writing, I want to review some basics of Chef. Imagine we have a fresh VM (maybe from the [Bento](https://github.com/opscode/bento) image repository from Opscode). And, we want to quickly install a recent version of Node.js.
 
 ## Berkshelf
 
