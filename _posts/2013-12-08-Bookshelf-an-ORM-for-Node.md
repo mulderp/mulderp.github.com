@@ -11,7 +11,7 @@ And if you want to do this with Node.js, you often were left alone with your RDB
 
 ## Knex
 
-Knex is a promissing wrapper for SQL in JavaScript. With Knex, we quickly can connect to a MySQL, Postgres or SQLite database.
+[Knex](http://knexjs.org/) is a promissing wrapper for SQL in JavaScript. With Knex, we quickly can connect to a MySQL, Postgres or SQLite database.
 
 As example, let's use SQLite3:
 
@@ -78,7 +78,7 @@ Ok, so we have Create and Read, I leave the Update and Delete as an exercise to 
 
 ## Bookshelf
 
-Although SQL is nice for asking questions to data (and once in a while to write new data), the applications are based on data abstractions. This is where the realm of ORM (or object-relational-mappers) starts. Or, Bookshelf.
+Although SQL is nice for asking questions to data (and once in a while to write new data), the applications are based on data abstractions. This is where the realm of ORM (or object-relational-mappers) starts. Or, [Bookshelf](http://bookshelfjs.org/).
 
 Inspired by Backbone and Underscore.js, Bookshelf provides a Model and Collection abstraction. Similarly as in Backbone, a model is wrapping data attributes, or a row in an RDBMS. The important idea in Bookshelf however, is a standarized way to write, read and delete data: "save", "fetch" and "delete". Additionally, Bookshelf let's you make connections between data or "joins".
 
