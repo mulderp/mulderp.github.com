@@ -84,7 +84,7 @@ Inspired by Backbone and Underscore.js, Bookshelf provides a Model and Collectio
 
 We could write, e.g. a Movie hasMany Genres, as well as Genres belongsToMany Movies.
 
-Another idea, that I like is the "forge" method. With this, you can set default values in a model. That can make a lot of sense, if you store predefined values, such as Mrs. or Mr., or a default date for example.
+Another idea, that I like is the "[forge](http://bookshelfjs.org/#Collection-forge)" method. With this, you can set default values in a model. That can make a lot of sense, if you store predefined values, such as Mrs. or Mr., or a default date for example.
 
 The Collections in Bookshelf look great too, since they give you a lot of helpers from Underscore. I need to explore these a bit with e.g. 1000 rows of movie data, and see how good they work in practice, but the idea looks great. Another blog post follows hopefully soon.
 
