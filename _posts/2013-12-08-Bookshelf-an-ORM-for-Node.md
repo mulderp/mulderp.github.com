@@ -91,6 +91,6 @@ The Collections in Bookshelf look great too, since they give you a lot of helper
 
 ## Conclusions
 
-Knex and Bookshelf provide a very nice set of server-side abstractions to work with a database in Node.js. This makes your data-layer more flexible, and might also be interesting in a schema-less world, as this [discussion](https://github.com/tgriesser/bookshelf/issues/102) and the mentioning of mongoose in [this discussion](https://github.com/tgriesser/bookshelf/issues/69).
+Knex and Bookshelf provide a very nice set of server-side abstractions to work with a RDBMS in Node.js. This makes your data-layer more flexible, and might also be interesting in a schema-less world, as this [discussion](https://github.com/tgriesser/bookshelf/issues/102) and the mentioning of mongoose in [this discussion](https://github.com/tgriesser/bookshelf/issues/69) shows.
 
-Also, I wonder, if Knex and Bookshelf could also be used to develop an API application with Foxx and ArangoDB. ArangoDB comes with [AQL](https://www.arangodb.org/manuals/current/Aql.html) - a query language for NoSQL that supports join operations. One promise of a combination of both ArangoDB and Bookshelf might be to ask questions to data, without predefining a schema.
+Also, I wonder, if Knex and Bookshelf could be used to develop an API application with [Foxx](https://www.arangodb.org/foxx) and [ArangoDB](https://www.arangodb.org/). ArangoDB comes with [AQL](https://www.arangodb.org/manuals/current/Aql.html) - a query language for NoSQL that supports join operations. One promise of a combination of both ArangoDB and Bookshelf might be to ask questions to data, without predefining a schema.
