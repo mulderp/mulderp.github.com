@@ -1,11 +1,13 @@
 ---
 layout: post
-title: Bookshelf - an ORM for JavaScript
+title: Bookshelf - An ORM for JavaScript
 tags: Node JavaScript Databases
 ---
-"We want to able to ask questions to our data, without predefining the way we structure our data" - basically an argument for NoSQL and against SQL, put forward in this very nice [talk](http://www.youtube.com/watch?v=fEsmydn747c) on ElasticSearch by Shay Banon.
+"We want to be able to ask questions to our data, without predefining the way we structure our data" - an argument for "No"-SQL, put forward in this very nice [talk](http://www.youtube.com/watch?v=fEsmydn747c) on ElasticSearch by Shay Banon.
 
-Still, if you want to use SQL, it is required that you to predefine your schema or structure your data beforehand. This means to query data, you must add and remove attributes from a schema, define how data is connected (or how data can be joined) or run actual queries. All in all, developing a Node.js application with an RDBMS backend are in strong needs for libraries such as [Bookshelf](http://bookshelfjs.org/) and [Knex](http://knexjs.org/).
+Still, today we often use SQL, and it is required that you predefine your schema or structure your data beforehand. This means to query data, you must add and remove attributes from a schema, define how data is connected (or how data can be joined) to run actual queries. 
+
+And if you want to do this with Node.js, you often were left alone with your RDBMS backend. Not anymore, since thanks to [Tim Griesser](https://twitter.com/tgriesser), there are a number of fresh ideas for working with data in Node.js. Let's have a look at [Knex](http://knexjs.org/) and [Bookshelf](http://bookshelfjs.org/). 
 
 ## Knex
 
