@@ -162,9 +162,9 @@ vagrant@vagrant:~$ npm -v
 1.3.15
 </pre>
 
-== Iterate and improve
+## Iterate and improve
 
-Now, we could spin-off a Node powered VM unlimited times, with only some commands. However, there is one place, in the protocol above that might be improved. The manual login and installation of the chef provisioner.  A quick googling gave a link that looks promising by Joshua Timberman, a well known contributor in the field of server automation. So, in (this post)[http://jtimberman.housepub.org/blog/2012/08/10/vagrant-multiple-provisioners/], he discusses how to use multiple provisioners. 
+Now, we could spin-off a Node powered VM unlimited times, with only some commands. However, there is one place, in the protocol above that might be improved. The manual login and installation of the chef provisioner.  A quick googling gave a link that looks promising by Joshua Timberman, a well known contributor in the field of server automation. So, in [this post](http://jtimberman.housepub.org/blog/2012/08/10/vagrant-multiple-provisioners/), he discusses how to use multiple provisioners. 
 
 An idea would now be to replace the manual steps above by a shell script, and execute those for the actual Chef provisioning run. I leave that as an exercise up to the reader. If anyone wants to report back how it goes, that would be great! Thanks.
 

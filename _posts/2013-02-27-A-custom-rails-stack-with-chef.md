@@ -3,6 +3,10 @@ layout: post
 title: Building a flexible Rails Stack with Chef
 tags: chef server chef-solo
 ---
+
+Edit: This is an overview article. More details on wrapping Ruby with Chef can be found in [this post](2013-12-11-Chef-and-Rubies.md).
+
+
 Most of us who develop Ruby based web applications will know that the setup and configuration of a stack of web infrastructure can be tricky:
 
 * building Rubies including Gemsets often require libraries that look like strings of [captcha's](http://en.wikipedia.org/wiki/CAPTCHA)
@@ -32,7 +36,7 @@ What Rails is to a database-driven web application, Chef might be to infrastruct
 
 * Vagrant is your infrastructure lab. I wrote about some first steps with Vagrant, [here](http://thinkingonthinking.com/An-experiment-with-Vagrant-and-Neo4J/), [here](http://thinkingonthinking.com/building-a-Vagrant-base-box/) and [here](http://thinkingonthinking.com/minimum-nginx-node-with-librarian-chef/).
 
-## 2. Your shiny new Ruby 2.0 and Rails 4.0 beta stack
+## An overview of a Rails stack
 
 I hope the abstractions above can give you some taste of what is coming up in this section. First, let's think on a Rails application stack:
 
@@ -87,13 +91,14 @@ end
 
 Ha, there is node.json loaded, and that is Chef's way to define a node setup. Looking more carefully above, there are 2 details: The "run_list" and the "chef.json" part. The run_list defines, how a node conversion flows, while the json overrides attributes from cookbooks. 
 
-The setup of these can be tricky.
+The setup of these can be tricky:
 
-Here are some learnings:
+* Refer to [this post](http://thinkingonthinking.com/2013-12-11-Chef-and-Rubies) on how get Chef rwapping Ruby. Right now, on default VMs in Linux distrubtions, there is a an old Ruby 1.8.7. Those need an upgrade. 
 
-* Getting a modern Ruby running is the first step for a new node. Right now, default VMs in Linux distrubtions seem Ruby 1.8.7 based. Those need an upgrade. For this, I found the cookbooks by Fletcher Nichol helpful, see [chef-rvm](https://github.com/fnichol/chef-rvm) and [chef-rbenv](https://github.com/fnichol/chef-rbenv). Also, I found [this Ruby wrapper cookbook](https://github.com/mlafeldt/ruby-cookbook) by [Mathias Lafeldt](https://twitter.com/mlafeldt) interesting, and this is certainly on my list for further investigation.
 
-* Passenger is a Ruby gem that is partly compiled into Nginx or loaded as module in Apache. Let's look at the nginx setup. The tricky parts are the system paths, thanks a lot to [@jtimberman](https://twitter.com/jtimberman) for helping me understand this better. There are interesting details behind this in yesterday's [office hours with Joshua](http://www.youtube.com/watch?v=ddMLvMvOUfg&feature=youtu.be).
+## Passenger
+
+Passenger is a Ruby gem that is partly compiled into Nginx or loaded as module in Apache. Let's look at the nginx setup. The tricky parts are the system paths, thanks a lot to [@jtimberman](https://twitter.com/jtimberman) for helping me understand this better. There are interesting details behind this in yesterday's [office hours with Joshua](http://www.youtube.com/watch?v=ddMLvMvOUfg&feature=youtu.be).
 
 <pre>
   ...
@@ -124,9 +129,9 @@ Here are some learnings:
   "rvm": {
     "rubies": ["2.0.0-p0"],
     "default_ruby": "2.0.0-p0",
-    "vagrant": { "system_chef_solo" : "/opt/ruby/bin/chef-solo" },
+    "vagrant": { "system_chef_solo" : "/opt/chef/bin/chef-solo" },
     "gems": {
-      "1.9.3-p0": [
+      "2.0.0-p0": [
         {"name": "bundler"},
         {"name": "rake"},
         {"name": "rails", "version": "4.0.0.beta1" }
