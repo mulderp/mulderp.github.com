@@ -9,7 +9,7 @@ tags: chef ruby
 
 Chef is built around cookbooks, and you can fetch cookbook dependencies for a project with Berkshelf, as explained in [a previous post](http://thinkingonthinking.com/berkshelf-and-chef/).
 
-To fetch the RVM cookbook, we use this Berksfil:
+To fetch the RVM cookbook, we use this Berksfile:
 
 <pre>
   site :opscode
@@ -75,8 +75,8 @@ The configuration in Vagrant could look like:
 
 There are 3 "tricks" here:
 
-* We must run the "rvm::system" recipe to get the recipe actually installing a Ruby
+* We must run the "rvm::system" recipe to get the rvm cookbook actually installing a Ruby
 * We include the recipe "rvm::vagrant" to get the setup of groups right
-* We setup a wrapper for the original Chef ruby, since we would loose the "chef-solo" Ruby gem otherwise
+* We setup a wrapper for the original Chef Ruby, since we would loose the "chef-solo" Ruby gem otherwise
 
 Well, that should be it. Happy cooking.
