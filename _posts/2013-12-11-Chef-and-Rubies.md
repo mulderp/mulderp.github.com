@@ -3,7 +3,7 @@ layout: post
 title: Chef and Rubies
 tags: chef ruby
 ---
-[Chef](http://docs.opscode.com/) is a tool for server automation - built with Ruby. When you provision a virtual machine, and you need to have your own Ruby version, the Ruby of Chef and the Ruby of your application(s), can bite each other. So, let's look again how to use the cookbook wrappers for [rvm](https://github.com/fnichol/chef-rvm) and [rbenv](https://github.com/fnichol/chef-rbenv].
+[Chef](http://docs.opscode.com/) is a tool for server automation - built with Ruby. When you provision a virtual machine, and you need to have your own Ruby version, Chef's Ruby and your application's Ruby, can bite each other. So, let's look again how to use the cookbook wrappers for [rvm](https://github.com/fnichol/chef-rvm) and [rbenv](https://github.com/fnichol/chef-rbenv).
 
 ## Fetching Dependencies
 
