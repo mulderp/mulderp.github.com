@@ -3,7 +3,7 @@ layout: post
 title: Chef and Rubies
 tags: chef ruby
 ---
-Chef is a tool for server automation - built with Ruby. When you provision a virtual machine, and you need to have your own Ruby version, the Ruby of Chef and the Ruby of your application(s), can bite each other. So, let's look again how to use the cookbook wrappers for [rvm](https://github.com/fnichol/chef-rvm) and [rbenv](https://github.com/fnichol/chef-rbenv].
+[Chef](http://docs.opscode.com/) is a tool for server automation - built with Ruby. When you provision a virtual machine, and you need to have your own Ruby version, the Ruby of Chef and the Ruby of your application(s), can bite each other. So, let's look again how to use the cookbook wrappers for [rvm](https://github.com/fnichol/chef-rvm) and [rbenv](https://github.com/fnichol/chef-rbenv].
 
 ## Fetching Dependencies
 
@@ -50,7 +50,7 @@ We will run a Chef installation, and obtain a Ruby in /opt/chef/embedded
 
 ## Installing the Ruby wrapper
 
-As next step, we must configure the Ruby wrapper. Normally, we define parameters for cookbooks in a JSON file, but as we want to have the "fastest" way to get some Ruby on a VM, we do it "inline" in Vagrant.
+As next step, we must configure the Ruby wrapper. Normally, we define parameters for cookbooks in a [JSON file](https://github.com/mulderp/chef-rails-stack/blob/rails4_stack/node.json), but as we want to have the "fastest" way to get some Ruby on a VM, we do it "inline" in Vagrant.
 
 The configuration in Vagrant could look like:
 
