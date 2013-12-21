@@ -4,9 +4,7 @@ title: What is a modular web application?
 tags: MVC JavaScript Ruby Mobile
 ---
 
-Designing the architecture of a web application is difficult. First, there are many different programming languages among which to chose, then there are many frameworks , some leave design decisions to the programmer, some come "opinionated' (= with default settings/strategies). Additionally, within each framework, a number of plugins exists that often solve similar problems, yet have different solution approaches.
-
-In order to help application designers to make decisions, programmers talk about applying "patterns" or using a "pattern language". Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. In my view, a number of patterns are driven by making code and systems modular, a concept that I read in [this book](http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction) some years ago. Modular code (and data) should be easier to re-use, and allows to extend and adapt ideas where needed. 
+In order to help application designers to make decisions, programmers talk about applying "patterns" or using a "pattern language". Patterns give some heuristics, whether a system composition makes sense, or will be risky in the future. A number of patterns are driven by making systems modular, a concept that I read in [Object-Oriented-Sofatware Construction](http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction) some years ago. Modular code (and data) should be easier to re-use, and allows to extend and adapt ideas where needed. 
 
 One of the most important pattern in a web application is called Model-View-Controller (MVC). A nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found [here](https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8), I will use the following definitions for MVC:
 
