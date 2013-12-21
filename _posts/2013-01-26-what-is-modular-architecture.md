@@ -4,7 +4,7 @@ title: What is a modular web application?
 tags: MVC JavaScript Ruby Mobile
 ---
 
-A number of patterns are driven by making systems modular, a concept that I read in [Object-Oriented-Sofatware Construction](http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction) some years ago. Modular code (and data) should be easier to re-use, and allows to extend and adapt ideas where needed. 
+A number of patterns are driven by making systems modular, a concept that I read in [Object-Oriented-Sofatware Construction](http://en.wikipedia.org/wiki/Object-Oriented_Software_Construction) some years ago.
 
 Modules are abstractions to make software easier to write and to maintain, and ane of the most important pattern in application that faces users is called Model-View-Controller (MVC). A nice background discussion by Trygve Reenskaug (who discovered the MVC pattern in the 1970ies) can be found [here](https://groups.google.com/group/object-composition/msg/b9366f3bc78a33f8), I will use the following definitions for MVC:
 
