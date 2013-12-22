@@ -13,7 +13,7 @@ Clearly, if we work on bringing empathy into software products, we need some oth
 
 Here are some tools, that I find helpful:
 
-* Business Model Canvas: Users and the needs of users are the fundamental question behind any (software) products. The Business Model Canvas by [Alex Osterwalder](http://businessmodelalchemist.com/) is a great approach to explore ideas around needs, product ideas and the context to make products work. If you are less technical, you might want to look at [http://businemodelhub.com](http://businessmodelhub.com/) too.
+* Business Model Canvas: Users and their needs are the fundamental driver behind any (software) product. The Business Model Canvas by [Alex Osterwalder](http://businessmodelalchemist.com/) is a great approach to explore ideas around needs, product ideas and the context. In exploring a business model canvas, you also might want to look at [http://businemodelhub.com](http://businessmodelhub.com/) too.
 
 * Lean Philosophy: In the Japanese school of innovation, an important principle is ["go and see"](http://en.wikipedia.org/wiki/Genchi_Genbutsu). Start with the users and their contexts. A related approach is the "Customer Value Map", or "Empathy Map", described by Alex Osterwalder, [here](http://businessmodelalchemist.com/blog/2012/01/the-customer-value-canvas-v-0-8.html) or the ["Empathy Map"](http://www.gogamestorm.com/?p=42). For this, we need to talk with our customers and experience the same as they do. This is topic of many discussions, also on the recent ["Lean Startup" conference](http://www.skmurphy.com/blog/2013/12/14/lean-startup-conference-2013-roundup/)
 
