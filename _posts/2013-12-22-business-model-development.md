@@ -19,7 +19,7 @@ Here are some tools, that I find helpful:
 
 * Once you work with a canvas, and have ideas on a map, I found a quote by [Coffeemug](https://github.com/coffeemug/), interesting: ["Pick a market you care about, and the best product in that market. Then think for a week how you could improve that product by an order of magnitude. List ideas. Throw them out. List more. When we're talking about disruptive improvement, thinking about it in terms of "orders of magnitude" is hard, so try to think about it in terms of what huge, meaningful thing the users could do that they can't do now."](https://news.ycombinator.com/item?id=2080727)
 
-* When it comes to planning a software product, I like the [Product Canvas](http://www.romanpichler.com/blog/agile-product-innovation/the-product-canvas/) by Roman Pichler. Here, we are putting less focus on the constraints of a business, but more on the actual short-terms goals, and the expected outcomes for a user. This might helps us to in having fixed points that helps in navigating technology storms.
+* When it comes to planning a software product, I like the [Product Canvas](http://www.romanpichler.com/blog/agile-product-innovation/the-product-canvas/) by Roman Pichler. Here, we are putting less focus on the constraints of a business, but more on the actual short-terms goals, and the expected outcomes for a user. This might help us in planning specific outcomes for users.
 
 Playing with the above ideas is helped a lot by [Bmfiddle](http://bmfiddle.com/) - an online tool for exploring the Business Model Canvasses, Empathy Maps, and Product Canvasses. If you need help to plan your product strategy, shoot me an [email](mailto:mulder.patrick@gmail.com) or leave feedback below.
 
