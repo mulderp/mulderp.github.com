@@ -4,12 +4,12 @@ title: Building a flexible Rails Stack with Chef
 tags: chef server chef-solo
 ---
 
-Edit: This is an overview article. More details on wrapping Ruby with Chef can be found in [this post](2013-12-11-Chef-and-Rubies.md).
+Edit: This is an overview article. More details on wrapping Ruby with Chef can be found in [this post](http://thinkingonthinking.com/Chef-and-Rubies/).
 
 
 Most of us who develop Ruby based web applications will know that the setup and configuration of a stack of web infrastructure can be tricky:
 
-* building Rubies including Gemsets often require libraries that look like strings of [captcha's](http://en.wikipedia.org/wiki/CAPTCHA)
+* building Rubies including Gemsets often require system libraries that are different on Debian 64-Bit, Fedora, ...
 * setup of webservers (nginx or apache) have special compile flags and configuration settings too
 * adaptors for Rack (Passenger or Unicorn nowadays) need to be built or wrapped in scripts
 * databases are evolving (RDBMS, document-stores, key-value stores, graph db's ... ) and often come in pairs
