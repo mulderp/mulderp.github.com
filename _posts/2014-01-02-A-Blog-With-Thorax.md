@@ -298,7 +298,33 @@ In order to render the Posts, we have to connect the PostsView with the Posts co
 
 When we now go to the browser main page, we should see already a working index view. When we click on a blog post, nothing yet happens unless we add the rendering of showPost.
 
+So, we wire up the show view:
+
+    showPost: function(id) {
+      var post = collection.get(id);
+      var view = new ShowPost({model: post});
+      RootView.getInstance().setView(view);
+    }
+
 To render a single post, we use this template:
+
+  <h2>{{title}}</h2>
+  <hr>
+  
+  <p>
+    {{body}}
+  </p>
+
+And we should have a running demo similar to: [Thorax Blog](http://thorax-blog.herokuapp.com/#). You can find the source of this demo at [Github](https://github.com/mulderp/thorax-blog).
+
+
+# Conclusions
+
+In this post, you touched the basics of a Single-Page Application with Thorax.js. You hopefully got an idea of mocking data, scaffolding application components (e.g. a Router, Collection and Views).
+
+There are still a number of interesting questions how to build applications with Thorax, and if you are interested to learn more, you might want to join the [Thorax Google group](https://groups.google.com/forum/?hl=en#!forum/thoraxjs) or leave feedback on this blog post (this is always highly appreciated). You also might want to follow [Erik Trom](https://twitter.com/trombom) or [Colin Megill](https://twitter.com/colinmegill) on Twitter who greatly helped me get going with Thorax. Also, thanks to Ryan Eastridge and [Kevin Decker](https://twitter.com/kpdecker) for their efforts on Thorax in the first place!
+
+
 
 
 
