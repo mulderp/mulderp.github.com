@@ -7,7 +7,7 @@ Web applications with emphasis on interaction design are often labelled [Single-
 
 Designing and developing applications that focus on interaction poses new challenges however. Some of these were summarized by [Guillermo Rauch](http://www.devthought.com/) in [a great talk](https://cloudup.com/iuO7joTPdLr) on optimistic UI and reactive interfaces at [dotJS](http://redotheweb.com/2013/12/03/dotjs-2013-what-you-missed-what-I-missed.html).
 
-As we all know jQuery and maybe tried [Backbone.js](http://backbonejs.org/) already, let's experiment with a framework for developing single-page applications on top of these libraries. Let's look at [Thorax.js](http://thoraxjs.org/). Why Thorax.js is awesome, is described by Peter de Croos [in this post](http://blog.peterdecroos.com/blog/2013/07/05/thorax-is-awesome/). For the inpatient folks, the demo of this blog post is: [Thorax Blog](http://thorax-blog.herokuapp.com/#).
+As we all know jQuery and maybe tried [Backbone.js](http://backbonejs.org/) already, let's experiment with a framework for developing single-page applications on top of these libraries. Let's look at [Thorax.js](http://thoraxjs.org/). Why Thorax.js is awesome, is described by Peter de Croos [in this post](http://blog.peterdecroos.com/blog/2013/07/05/thorax-is-awesome/). For the impatient folks, the demo of this blog post is: [Thorax Blog](http://thorax-blog.herokuapp.com/#).
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ Next, we can scaffold a Thorax application with:
 
     $ yo thorax blog
 
-You will be asked, whether to use the "Chef's Choice" application stack. This is a great name for "convention-over-configuration", and we happily answer "yes". You then can watch the dependencies getting installed, with the main results of obtaining a directory structure, some dependencies and a Gruntfile. With this, we are ready to go. 
+You will be asked, whether to use the "Chef's Choice" application stack. This is a great name for ["convention-over-configuration"](http://en.wikipedia.org/wiki/Convention_over_configuration), and we happily answer "yes". You then can watch the dependencies getting installed, with the main results of obtaining a directory structure, some dependencies and a Gruntfile. With this, we are ready to go. 
 
 ## Mocking Data
 
@@ -77,7 +77,7 @@ With the mock in place, let's tackle the application.
 
 ## Setup a router
 
-The Thorax generator support scaffolding of all important application components. As such, let's scaffold a Router which is very similar to a [Backbone.Router](http://backbonejs.org/#Router):
+The Thorax generator support scaffolding of all important application components. As such, let's scaffold a Router. A Router in Thorax is very similar to a [Backbone.Router](http://backbonejs.org/#Router):
 
     $ yo thorax:router posts
 
@@ -106,7 +106,7 @@ And, we can add the routes for browsing blog posts:
       });
     });
 
-We will basically setup two routes: One for the overview on blog posta and another for displaying single blog posts. We also introduce a reference to our Mock setup.
+We will basically setup two routes: One for the overview on blog posts and another for displaying single blog posts. We also introduce a reference to our Mock setup.
 To have the router monitoring URL changes, we need to replace the HelloWorldRouter with the PostsRouter in main.js:
 
     require([
@@ -254,7 +254,7 @@ This is done with:
 Then, in the js/views/posts/index.hbs we render the collection of Posts with:
 
     <h2>The latest Posts</h2>
-    {{#collection}}
+    &#123;&#123;#collection}}
       {{#link "posts/{{id}}" expand-tokens=true}}
         {{ title }}
       {{/link}}
@@ -308,11 +308,11 @@ So, we wire up the show view:
 
 To render a single post, we use this template:
 
-    <h2>{{title}}</h2>
+    <h2>&#123;&#123;title&#125;&#125;</h2>
     <hr>
     
     <p>
-      {{body}}
+      &#123;&#123;body&#125;&#125;
     </p>
 
 And we should have a running demo similar to: [Thorax Blog](http://thorax-blog.herokuapp.com/#). You can find the source of this demo at [Github](https://github.com/mulderp/thorax-blog).
