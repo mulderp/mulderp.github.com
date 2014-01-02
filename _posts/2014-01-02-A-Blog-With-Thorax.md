@@ -7,7 +7,7 @@ Web applications with emphasis on interaction design are often labelled [Single-
 
 Designing and developing applications that focus on interaction poses new challenges however. Some of these were summarized by [Guillermo Rauch](http://www.devthought.com/) in [a great talk](https://cloudup.com/iuO7joTPdLr) on optimistic UI and reactive interfaces at [dotJS](http://redotheweb.com/2013/12/03/dotjs-2013-what-you-missed-what-I-missed.html).
 
-As we all know jQuery and maybe tried [Backbone.js](http://backbonejs.org/) already, let's experiment with a framework for developing single-page applications on top of these libraries. Let's look at [Thorax.js](http://thoraxjs.org/). Why Thorax.js is awesome, is described by Peter de Croos [in this post](http://blog.peterdecroos.com/blog/2013/07/05/thorax-is-awesome/).
+As we all know jQuery and maybe tried [Backbone.js](http://backbonejs.org/) already, let's experiment with a framework for developing single-page applications on top of these libraries. Let's look at [Thorax.js](http://thoraxjs.org/). Why Thorax.js is awesome, is described by Peter de Croos [in this post](http://blog.peterdecroos.com/blog/2013/07/05/thorax-is-awesome/). For the inpatient folks, the demo of this blog post is: [Thorax Blog](http://thorax-blog.herokuapp.com/#).
 
 ## Getting Started
 
@@ -192,14 +192,14 @@ First, we startup the application with Grunt:
 
 Then, we can try that the collection works when we go to: http://0.0.0.0:8000/ and open the developer's console:
 
-   > T = require('thorax')
-   > Posts = T.Collections.posts
-   > posts = new Posts()
-   > child {length: 0, models: Array[0], _byId: Object, cid: "collection5", constructor: function…}
+     > T = require('thorax')
+     > Posts = T.Collections.posts
+     > posts = new Posts()
+     > child {length: 0, models: Array[0], _byId: Object, cid: "collection5", constructor: function…}
 
 When we now fetch data of the collection, we do:
 
-   > posts.fetch()
+     > posts.fetch()
 
 This should result in the browser into:
 
@@ -308,12 +308,12 @@ So, we wire up the show view:
 
 To render a single post, we use this template:
 
-  <h2>{{title}}</h2>
-  <hr>
-  
-  <p>
-    {{body}}
-  </p>
+    <h2>{{title}}</h2>
+    <hr>
+    
+    <p>
+      {{body}}
+    </p>
 
 And we should have a running demo similar to: [Thorax Blog](http://thorax-blog.herokuapp.com/#). You can find the source of this demo at [Github](https://github.com/mulderp/thorax-blog).
 
