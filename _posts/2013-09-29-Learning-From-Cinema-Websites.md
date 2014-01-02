@@ -5,7 +5,7 @@ tags: Interfaces
 ---
 I just received a marketing flyer of the [Nielsen Norman Group](http://www.nngroup.com/). It talks about design for small screens and usability of mobile applications (some background information is also shown [here](http://www.nngroup.com/articles/)).
 
-Usability and short attention spans of users are important reasons to build interfaces with client-side frameworks such as Backbone.js. To show the potential for client-side applications and mobile interfaces, let's do a small test with an existing cinema website. Where are problems today?
+Usability and low-bandwith mobile connections are important reasons to build interfaces with client-side frameworks such as Backbone.js. To show the potential for client-side applications and mobile interfaces, let's do a small test with an existing cinema website. Where are problems today?
 
 1. First test: You want to chose a movie. The first thing you see are advertisements for movies you are not interested in. Resizing the window not even updates the contents to the essential content. Probably, the mobile version is not responsive either.
 
