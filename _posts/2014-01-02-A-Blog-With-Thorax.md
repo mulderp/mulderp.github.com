@@ -254,11 +254,11 @@ This is done with:
 Then, in the js/views/posts/index.hbs we render the collection of Posts with:
 
     <h2>The latest Posts</h2>
-    &#123;&#123;#collection}}
-      {{#link "posts/{{id}}" expand-tokens=true}}
-        {{ title }}
-      {{/link}}
-    {{/collection}}
+    {#collection}
+      {#link "posts/{{id}}" expand-tokens=true}
+        {{ title }
+      {/link}
+    {/collection}
 
 In order to render the Posts, we have to connect the PostsView with the Posts collection in the Router with:
 
@@ -308,11 +308,11 @@ So, we wire up the show view:
 
 To render a single post, we use this template:
 
-    <h2>&#123;&#123;title&#125;&#125;</h2>
+    <h2>{title}</h2>
     <hr>
     
     <p>
-      &#123;&#123;body&#125;&#125;
+      {body}
     </p>
 
 And we should have a running demo similar to: [Thorax Blog](http://thorax-blog.herokuapp.com/#). You can find the source of this demo at [Github](https://github.com/mulderp/thorax-blog).
