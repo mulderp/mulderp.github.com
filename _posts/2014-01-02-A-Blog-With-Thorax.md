@@ -255,8 +255,8 @@ Then, in the js/views/posts/index.hbs we render the collection of Posts with:
 
     <h2>The latest Posts</h2>
     {#collection}
-      {#link "posts/{{id}}" expand-tokens=true}
-        {{ title }
+      {#link "posts/{id}" expand-tokens=true}
+        { title }
       {/link}
     {/collection}
 
