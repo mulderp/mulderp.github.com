@@ -1,0 +1,1 @@
+Web developer and blogger currently living in Munich, Germany, with a passion for Backbone.js and web collaboration. I blog at http://thinkingonthinking.com and am working currently on a book "Developing Web Applications with Backbone.js". 
