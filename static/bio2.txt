@@ -1,0 +1,1 @@
+I am very much interested in all things Unix, and good OOP (often in Ruby). I am also impressed by the performance of Node.js, and new approaches for client-server architectures.
