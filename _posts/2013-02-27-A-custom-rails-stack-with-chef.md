@@ -4,7 +4,7 @@ title: Building a flexible Rails Stack with Chef
 tags: chef server chef-solo
 ---
 
-Edit: This is overview article is a bit outdated except from the concepts. If you are looking for the best experience to setup infrastructure for Ruby-on-Rails, I would suggest to look at [@mlafeldt](http://twitter.com/mlafeldt)'s cookbook for [practicing-ruby](https://github.com/mlafeldt/practicing-ruby-cookbook). The accompanying article is great too: [Infrastructure automation by example](tinyurl.com/pr-chef). If you are looking to understand more on cookbooks for wrapping Ruby with Chef, some more details can be found in [this post](http://thinkingonthinking.com/Chef-and-Rubies/).
+<b>Edit</b>: If you are looking for the best experience to setup infrastructure for Ruby-on-Rails, I would suggest to look at [@mlafeldt](http://twitter.com/mlafeldt)'s cookbook for [practicing-ruby](https://github.com/mlafeldt/practicing-ruby-cookbook). The accompanying article is great too: [Infrastructure automation by example](tinyurl.com/pr-chef). If you are looking to understand more on cookbooks for wrapping Ruby with Chef, some more details can be found in [this post](http://thinkingonthinking.com/Chef-and-Rubies/).
 
 
 Most of us who develop Ruby based web applications will know that the setup and configuration of a stack of web infrastructure can be tricky:
