@@ -1,0 +1,265 @@
+---
+blog: false
+---
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+        <title>{{ page.title }}</title>
+
+		<meta name="description" content="On Chef and Rubies">
+		<meta name="author" content="Patrick Mulder">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="/static/css/reveal.min.css">
+		<link rel="stylesheet" href="/static/css/reveal/moon.css" id="theme">
+        <style>
+            .cover-slide body {
+                background-image: url(/static/images/chef_bg-faded-fs8.png);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+
+            .bento_stack body {
+                background-image: url(/static/images/bento_stack.png);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+
+
+        </style>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/static/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="/static/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+        <div class="slides">
+           <section data-state="cover-slide">
+             <h1>Share your Infrastructure!</h1>
+             <h3>With Chef and Vagrant</h3>
+           </section>
+   
+               <section data-state="bento_bg">
+               <h2>Application Stacks evolve ...</h2>
+               </section>
+       
+               <section data-transition="linear" data-background="#007777">
+                 <section data-state="bento">
+                   <h2>... into something "modular"</h2>
+                   <p>Storage, Servers, Backend, Frontends, ...</p>
+                 </section>
+
+                 <section>
+                  <img src="/static/images/bento_stack.png" style="width: 1800px">
+                 <a href="https://speakerdeck.com/railsgirlsfrankfurt/speak-geek">credits to Speak Geek</a>
+                 </section>
+
+                  <section data-state="">
+                    <h2>Rubies</h2>
+                    <p>1.8, 1.9, 2.0, 2.1, ...</p>
+                  </section>
+
+                  <section data-state="">
+                    <h2>Redis / Postgres / ArangoDB</h2>
+                  </section>
+
+               </section>
+
+
+               <section data-transition="linear" data-background="#007777">
+
+               <section>
+                  <h2>So, What is Chef?</h2>
+                  <p>Convention-over-configuration for infrastructure</p>
+                </section>
+
+                <section data-transition="slide" data-state="easy_to">
+                  <h2>What ??</h2>
+                </section>
+
+
+                <section data-state="yeoman_bg">
+                  <h2>It helps with...</h2>
+
+                    <pre style="font-size: 20px; margin-top: 50px"><code data-trim contenteditable>
+$ sudo apt-get install checkinstall
+ 
+$ wget -c http://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p0.tar.gz
+$ tar -xzf ruby-2.0.0-p0.tar.gz
+$ cd ruby-2.0.0-p0
+ 
+$ ./configure   
+$ make
+ 
+$ sudo checkinstall -y \
+  --pkgversion 2.0.0-p0 \
+  --provides "ruby-interpreter"
+                    </code></pre>
+                    </section>
+
+                    <section>
+                      
+                      <h2>Provisioning</h2>
+
+                    </section>
+
+                    <section data-transition="slide" data-state="easy_to">
+                    <h2>e.g. Heroku --> VPS</h2>
+                    </section>
+
+                    <section data-transition="slide" data-state="easy_to">
+                      <h2>Work in Teams</h2>
+                    </section>
+
+
+               </section>
+
+               <section data-state="">
+                  <h2>Abstractions in Chef</h2>
+				</section>
+
+                <section data-transition="linear" data-background="#007777">
+
+                    <section>
+                       <h2>Directory structure</h2>
+                    <pre style="font-size: 30px; margin-top: 50px"><code>
+
+   |-recipes
+   |-templates
+   |-attributes
+   |-vendor
+   |---cookbooks
+   | ...
+                    </code></pre>
+                    </section>
+
+                    <section>
+                       <h2>Cookbooks</h2>
+                       <h3 style="color: white">similar to Ruby gems</h3>
+                       <p style="color: white">manage "stages" for provisioning</p>
+                    </section>
+
+                    <section>
+                       <h2>Recipes</h2>
+                       <p style="color:white">are steps for provisioning</p>
+                    </section>
+
+                       
+                    <section>
+                       <h2>"Resources"</h2>
+                       <h3 style="color:white">are "instruments"</h3>
+                       <p>e.g. git, gcc, ... </p>
+                    </section>
+
+                    <section>
+                       <h2>Chef-solo vs. Chef server</h2>
+                       <p>A question of scale and convenience</p>
+                    </section>
+
+                    </section>
+                       
+                </section>
+
+                    <section>
+                      <h2>An Example</h2>
+                      <h3 style="color: white">Practicing Ruby Cookbook</h3>
+				    </section>
+
+                <section>
+                <h2>The Goals</h2>
+                  <ul>
+                    <li>Ruby 2.0</li>
+                    <li>Rails / Unicorn</li>
+                    <li>PostgreSQL</li>
+                  </ul>
+				</section>
+
+                <section>
+                  <h2>Demo</h2>
+                </section>
+
+				<section>
+					<h2>References</h2>
+					<ul>
+						<li><a href="https://github.com/elm-city-craftworks/practicing-ruby-cookbook">Practicing Ruby cookbook by @mlafeldt</a></li>
+						<li><a href="http://thinkingonthinking.com/building-infrastructure/">Building Infrastructure With Chef</a></li>
+						<li><a href="http://thinkingonthinking.com/Chef-and-Rubies/">Chef and Rubies</a></li>
+                        <li><a href="http://thinkingonthinking.com/A-custom-rails-stack-with-chef/">A custom Rails Stack with Chef</a></li>
+					</ul>
+				</section>
+
+				<section>
+                    <h3>Thanks !</h3>
+                    <p>patrick mulder</p>
+                    <p>@mulpat</p>
+                  <p><a href="http://thinkingonthinking.com">Thinking on thinking</a></h3>
+                  <p>Available for projects!</p>
+
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="/static/js/head.min.js"></script>
+		<script src="/static/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/static/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/static/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/static/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/static/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/static/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+<script type="text/javascript">
+
+  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+  analytics.load("t2dez1p4gw");
+  analytics.track('Talks:Chef', {
+      title: "{{ page.title }}"
+    });
+</script>
+
+	</body>
+</html>
