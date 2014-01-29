@@ -9,7 +9,7 @@ This is interesting, since there are many different CMS solutions that address e
 
 Why would someone give away job offers for Wordpress sites? Maybe because the bill looks very easy: Hosting costs you $5 a month, the initial website design maybe $500 - $1000. And from there on, content changes are free.
 
-Yet, what people really might want is building relationships in the web. And this requires more than giving away content. As example, take this blog. I have been giving away content for free for some months now, in the hope that some of you like it, maybe comment, and provide some reference to the topics of this blog. But feedback often (mostly?) cames from other channels (offline, emails, book writing, Twitter) than via this blog.
+Yet, what people really might want is building relationships in the web. And this requires more than giving away content. As example, take this blog. I have been giving away content for free for some months now, in the hope that some of you like it, maybe comment, and provide some reference to the topics of this blog. But feedback often (mostly?) came from other channels (offline, emails, book writing, Twitter) than via this blog.
 
 Building and nurturing communities around a topic takes more than a blog. And it is a pitty to see how limiting Elance (and many other marketplaces) are in that respect. You just focus on a transaction, "money against Wordpress", instead of exploring topics together or mentoring. From my experience, ideas, interactions and inspirations are much more important than tools (actually this is part of the [Agile Manifesto](http://agilemanifesto.org/)).
 
