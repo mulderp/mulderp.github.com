@@ -9,7 +9,7 @@ What do we need?
 
 First, I thought that I needed to run [JRuby](http://jruby.org/) - since Neo4J is Java, but since Neography is just a basic REST client, this is not stricly required.
 
-We can install Neography by adding this line to Gemfile:
+We can install Neography by adding this line into Gemfile:
 
     gem 'neography'
 
@@ -36,17 +36,23 @@ end
 
 If we do this in e.g. 'config/initializers/neography.rb', we can simply use the Rails console to explore a graph. Let's start this with:
 
-  bundle exec rails c
+<pre>
+bundle exec rails c
+</pre>
 
 Next, we instantiate a Neography client with:
 
-  irb(main):003:0> @neo = Neography::Rest.new
+<pre>
+irb(main):003:0> @neo = Neography::Rest.new
+</pre>
 
 This client can be used for creating nodes and relationships, as well as querying the graph. Basically, the discussion from Max de Marzi on [Getting Started](http://maxdemarzi.com/2012/01/04/getting-started-with-ruby-and-neo4j/) can be followed without problems.
 
 What is a bit of a problem is parsing the results from a Cypher query. For example, if we do:
 
-   irb(main):002:0>  @neo.execute_query("START n=node(*) MATCH (n)-[r]->(m) RETURN n,r,m;")
+<pre>
+irb(main):002:0>  @neo.execute_query("START n=node(*) MATCH (n)-[r]->(m) RETURN n,r,m;")
+</pre>
 
 We will see a huge hash containing meta information, many nodes and urls. It takes a bit of practice to convert this result set into something more "usable". Here are some clues:
 
@@ -58,7 +64,9 @@ We will see a huge hash containing meta information, many nodes and urls. It tak
 
 So, as an example, we can explore the name of all nodes with an relationship with the following query:
 
-   @neo.execute_query("START n=node(*) MATCH (n)-[r]->(m) RETURN n,r,m;")["data"].map{|d| d.first["data"]}
+<pre>
+@neo.execute_query("START n=node(*) MATCH (n)-[r]->(m) RETURN n,r,m;")["data"].map{|d| d.first["data"]}
+</pre>
 
 
 And, we will see something like:
