@@ -3,19 +3,17 @@ layout: post
 title: Exploring Graphs with Neography
 tags: graph database
 ---
-Working with graphs requires at least two things: Importing graph data and 'traversing' the graph. Yet, when working with Neo4J and Ruby, we also need some Ruby gem to connect to a graph engine. As Alberto Perdomo from [GrapheneDB](http://www.graphenedb.com/) pointed out, it is practical to start development in Ruby for graphs with [Neography](https://github.com/maxdemarzi/neography) by [Max de Marzi](https://twitter.com/maxdemarzi).
+Working with graphs requires at least two things: Importing graph data and 'traversing' the graph. When connecting to Neo4J from Ruby, we also need some Ruby gem to talk to the graph engine. As Alberto Perdomo from [GrapheneDB](http://www.graphenedb.com/) pointed out, it is practical to start development in Ruby for graphs with [Neography](https://github.com/maxdemarzi/neography) by [Max de Marzi](https://twitter.com/maxdemarzi).
 
 What do we need?
 
-First, I thought that I needed to run [JRuby](http://jruby.org/) - since Neo4J is Java, but since Neography is just a basic REST client, this is not stricly required. Yet, if you want to try JRuby, now might be a good moment with:
-
-    rbenv-install jruby-1.7.4
+First, I thought that I needed to run [JRuby](http://jruby.org/) - since Neo4J is Java, but since Neography is just a basic REST client, this is not stricly required.
 
 We can install Neography by adding this line to Gemfile:
 
     gem 'neography'
 
-Once, Neography is installed, we must setup our configs. When you work with a graph instance at GrapheneDB, this will look like:
+Once, Neography is installed, we must setup our configs. When you work with a graph instance at [GrapheneDB](http://www.graphenedb.com/), this will look like:
 
 <pre>
 Neography.configure do |config|
@@ -36,11 +34,11 @@ Neography.configure do |config|
 end
 </pre>
 
-If we do this in e.g. 'config/initializers/neography.rb', we can simply start the Rails console with:
+If we do this in e.g. 'config/initializers/neography.rb', we can simply use the Rails console to explore a graph. Let's start this with:
 
   bundle exec rails c
 
-Now, we instantiate a Neography client with:
+Next, we instantiate a Neography client with:
 
   irb(main):003:0> @neo = Neography::Rest.new
 
