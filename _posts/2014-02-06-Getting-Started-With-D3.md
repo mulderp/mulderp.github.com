@@ -40,7 +40,7 @@ We can also add text with:
 
 ## Rendering data
 
-To load data, we need to have a "data()" command on the visualization. This is a bit magical command, since it joins data with nodes, as can be read in the documentation [here](https://github.com/mbostock/d3/wiki/Selections#wiki-data), Actually, there is a pattern that is needed to render something with "data()". You can read about it [here](http://knowledgestockpile.blogspot.de/2012/01/understanding-selectall-data-enter.html)
+To load data, we need to have a "data()" command on the visualization. This is a bit magical command, since it [joins](http://bost.ocks.org/mike/join/) data with nodes, as can be read in the documentation [here](https://github.com/mbostock/d3/wiki/Selections#wiki-data), Actually, there is a pattern that is needed to render something with "data()". You can read about it [here](http://knowledgestockpile.blogspot.de/2012/01/understanding-selectall-data-enter.html)
 
 
   var node = vis.selectAll("circle.node")
