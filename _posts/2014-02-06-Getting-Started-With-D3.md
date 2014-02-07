@@ -54,4 +54,6 @@ To load data, we need to have a "data()" command on the visualization. This is a
         .attr("r", circleWidth)
         .attr("fill", function(d, i) { if (i>0) { return  palette.pink; } else { return palette.paleryellow } } )
 
+## Resources
 
+* http://alignedleft.com/tutorials/d3/
