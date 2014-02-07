@@ -40,7 +40,8 @@ We can also add text with:
 
 ## Loading data
 
-To load data, we need to have a "data()" command on the visualization.
+To load data, we need to have a "data()" command on the visualization. This is a bit magical command, since it joins data with nodes, as can be read in the documentation [here](https://github.com/mbostock/d3/wiki/Selections#wiki-data)
+
 
   var node = vis.selectAll("circle.node")
         .data(nodes)
