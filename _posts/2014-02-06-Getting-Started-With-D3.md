@@ -24,7 +24,7 @@ By adding a script reference to the library, we obtain a "d3" object to work wit
 The d3 object is somewhat similar to the "$" object in jQuery. This means, that we can "select" DOM nodes, and we can build nodes with "append". For drawing, we need an "svg" based canvas. Adding this "svg" is the first step to build a graph. Therefore, we define the following construct:
 
     var vis = d3.select("#graph")
-                .append("svg:g");
+                .append("svg");
 
 We can add attributes such as width and height of the graph with:
 
@@ -55,9 +55,22 @@ Since we start with a fresh canvas, all nodes will be new, and we can capture th
      node.append("svg:circle")
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; })
-        .attr("r", circleWidth)
-        .attr("fill", function(d, i) { if (i>0) { return  palette.pink; } else { return palette.paleryellow } } )
+        .attr("r", "10px")
+        .attr("fill", "black");
+
+     var nodes = [{x: 30, y: 50}]
+     
+     vis.selectAll("circle.nodes")
+        .data(nodes)
+        .enter()
+        .append("svg:circle")
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; })
+
+   
 
 ## Resources
 
 * http://alignedleft.com/tutorials/d3/
+* http://stackoverflow.com/questions/15859457/d3-js-circles-are-not-appearing
+* http://codepen.io/mulderp/pen/aDrxq
