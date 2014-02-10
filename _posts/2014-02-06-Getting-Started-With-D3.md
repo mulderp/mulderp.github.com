@@ -108,7 +108,7 @@ To see some of the mechanics, you can add and remove data, and see how the graph
 
 Setting up graphs manually with nodes and edges might be interesting for small examples. However, if you often need to setup graphs, or the number of nodes and edges increases, a graph can be be setup with an algorithm too. This is where [force layouts](http://en.wikipedia.org/wiki/Force-directed_graph_drawing) help.
 
-With this, you can setup a graph like in:
+With this, you can setup a graph like in [this example](http://codepen.io/mulderp/full/KGFvx):
 
 <img src="{{page.images[1]}}">
 
