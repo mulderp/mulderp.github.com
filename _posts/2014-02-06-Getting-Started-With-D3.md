@@ -103,7 +103,7 @@ Setting up graphs manually with nodes and edges might be interesting for small e
 
 D3 also supports force layout algorithms, and a nice place to start is [here](http://www.d3noob.org/2013/03/what-is-force-layout-diagram-in-d3js.html). Another option might be using D3 plugins, such as the [graph plugin](https://github.com/d3/d3-plugins/tree/master/graph).
 
-What are your experiences with D3 for graphs and the different approaches?
+What are your experiences with D3 for graphs and the different approaches? Leave feedback here, or at (hackernews)[https://news.ycombinator.com/item?id=7210162].
 
 ## Resources
 
