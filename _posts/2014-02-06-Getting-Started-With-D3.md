@@ -100,6 +100,12 @@ We have functions to translate the coordinates to line attributes. The result ca
 
 We can continue building a graph by manually 
 
+* http://www.d3noob.org/2013/03/what-is-force-layout-diagram-in-d3js.html
+
+force layouts: http://en.wikipedia.org/wiki/Force-directed_graph_drawing
+
+plugins: https://github.com/d3/d3-plugins/tree/master/graph
+
 ## Resources
 
 * http://alignedleft.com/tutorials/d3/
@@ -110,3 +116,6 @@ We can continue building a graph by manually
 * http://blog.stephenboak.com/2012/06/15/d3-flow-vis-tutorial.html
 * http://bl.ocks.org/lgersman/5311202
 * http://bl.ocks.org/rkirsling/5001347
+* http://stackoverflow.com/questions/17656502/d3js-create-a-force-layout-with-fixed-nodes
+* http://www.is.kau.se/julioangulo/angulo/blog/?p=157568737
+* http://toolongdidntread.com/graph-visualization/drawing-graphs-with-d3js-part-1/
