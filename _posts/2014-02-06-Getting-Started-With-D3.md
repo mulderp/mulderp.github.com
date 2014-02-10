@@ -110,14 +110,15 @@ What are your experiences with D3 for graphs and the different approaches?
 If you want to explore further, here are some interesting links:
 
 * [D3 Tutorials by Scott Murray](http://alignedleft.com/tutorials/d3/)
-* Fine tuning the display of circles: [A question on SO|(http://stackoverflow.com/questions/15859457/d3-js-circles-are-not-appearing)
+* Fine tuning the display of circles: [A question on SO](http://stackoverflow.com/questions/15859457/d3-js-circles-are-not-appearing)
 * An overview on [basic shapes](https://www.dashingd3js.com/svg-basic-shapes-and-d3js)
 * Another tutorial [flow visualization](http://blog.stephenboak.com/2012/06/15/d3-flow-vis-tutorial.html)
 * SO question on [using a force layout](http://stackoverflow.com/questions/17656502/d3js-create-a-force-layout-with-fixed-nodes)
 
-And some graph examples:
-* http://bl.ocks.org/mbostock/1153292
-* http://bl.ocks.org/lgersman/5311202
-* http://bl.ocks.org/rkirsling/5001347
-* http://www.is.kau.se/julioangulo/angulo/blog/?p=157568737
-* http://toolongdidntread.com/graph-visualization/drawing-graphs-with-d3js-part-1/
+And some graph examples with D3:
+
+* Graph of [Mobile Patent Suits](http://bl.ocks.org/mbostock/1153292)
+* [State Diagram Editor](http://bl.ocks.org/lgersman/5311202)
+* Simple [directed graph](http://bl.ocks.org/rkirsling/5001347)
+* Discussion of [force layout](http://www.is.kau.se/julioangulo/angulo/blog/?p=157568737)
+* [Drawing Graphs with D3](http://toolongdidntread.com/graph-visualization/drawing-graphs-with-d3js-part-1/)
