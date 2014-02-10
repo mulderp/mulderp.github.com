@@ -95,27 +95,29 @@ We can use the [line SVG shape](https://github.com/mbostock/d3/wiki/SVG-Shapes#w
        .style("stroke", "rgb(6,120,155)");
 
 We have functions to translate the coordinates to line attributes. The result can be seen [in this codepen](http://codepen.io/mulderp/pen/wxmBd)
+To see some of the mechanics, you can add and remove data, and see how the graph changes.
 
 ## Exploring further
 
-We can continue building a graph by manually 
+Setting up graphs manually with nodes and edges might be interesting for small examples. However, if you often need to setup graphs, or the number of nodes and edges increases, a graph can be be setup with an algorithm too. This is where [force layouts](http://en.wikipedia.org/wiki/Force-directed_graph_drawing) help.
 
-* http://www.d3noob.org/2013/03/what-is-force-layout-diagram-in-d3js.html
+D3 also supports force layout algorithms, and a nice place to start is [here](http://www.d3noob.org/2013/03/what-is-force-layout-diagram-in-d3js.html). Another option might be using D3 plugins, such as the [graph plugin](https://github.com/d3/d3-plugins/tree/master/graph).
 
-force layouts: http://en.wikipedia.org/wiki/Force-directed_graph_drawing
-
-plugins: https://github.com/d3/d3-plugins/tree/master/graph
+What are your experiences with D3 for graphs and the different approaches?
 
 ## Resources
 
-* http://alignedleft.com/tutorials/d3/
-* http://stackoverflow.com/questions/15859457/d3-js-circles-are-not-appearing
-* http://codepen.io/mulderp/pen/aDrxq
-* https://www.dashingd3js.com/svg-basic-shapes-and-d3js
+If you want to explore further, here are some interesting links:
+
+* [D3 Tutorials by Scott Murray](http://alignedleft.com/tutorials/d3/)
+* Fine tuning the display of circles: [A question on SO|(http://stackoverflow.com/questions/15859457/d3-js-circles-are-not-appearing)
+* An overview on [basic shapes](https://www.dashingd3js.com/svg-basic-shapes-and-d3js)
+* Another tutorial [flow visualization](http://blog.stephenboak.com/2012/06/15/d3-flow-vis-tutorial.html)
+* SO question on [using a force layout](http://stackoverflow.com/questions/17656502/d3js-create-a-force-layout-with-fixed-nodes)
+
+And some graph examples:
 * http://bl.ocks.org/mbostock/1153292
-* http://blog.stephenboak.com/2012/06/15/d3-flow-vis-tutorial.html
 * http://bl.ocks.org/lgersman/5311202
 * http://bl.ocks.org/rkirsling/5001347
-* http://stackoverflow.com/questions/17656502/d3js-create-a-force-layout-with-fixed-nodes
 * http://www.is.kau.se/julioangulo/angulo/blog/?p=157568737
 * http://toolongdidntread.com/graph-visualization/drawing-graphs-with-d3js-part-1/
