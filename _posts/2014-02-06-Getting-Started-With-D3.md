@@ -57,8 +57,6 @@ Since we start with a fresh canvas, all nodes will be new, and we can map these 
         .enter().append("g")
         .attr("class", "node")
 
-
-  
      node.append("svg:circle")
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; })
@@ -73,7 +71,34 @@ Since we start with a fresh canvas, all nodes will be new, and we can map these 
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; })
 
-   
+Since the circles are setup, we now can add and remove data, and the graph will update automatically: [Try this codepen](http://codepen.io/mulderp/pen/aDrxq) 
+
+## Connecting the Dots
+
+To render a graph, we need lines between the circles. Since we have the coordinates of the circles, let's define the line data structure with:
+
+    var links = [
+      {source: nodes[0], target: nodes[1]},
+      {source: nodes[2], target: nodes[1]}
+    ]
+
+We can use the [line SVG shape](https://github.com/mbostock/d3/wiki/SVG-Shapes#wiki-svg_line) for connecting the dots:
+
+    vis.selectAll(".line")
+       .data(links)
+       .enter()
+       .append("line")
+       .attr("x1", function(d) { return d.source.x })
+       .attr("y1", function(d) { return d.source.y })
+       .attr("x2", function(d) { return d.target.x })
+       .attr("y2", function(d) { return d.target.y })
+       .style("stroke", "rgb(6,120,155)");
+
+We have functions to translate the coordinates to line attributes. The result can be seen [in this codepen](http://codepen.io/mulderp/pen/wxmBd)
+
+## Exploring further
+
+We can continue building a graph by manually 
 
 ## Resources
 
@@ -81,3 +106,7 @@ Since we start with a fresh canvas, all nodes will be new, and we can map these 
 * http://stackoverflow.com/questions/15859457/d3-js-circles-are-not-appearing
 * http://codepen.io/mulderp/pen/aDrxq
 * https://www.dashingd3js.com/svg-basic-shapes-and-d3js
+* http://bl.ocks.org/mbostock/1153292
+* http://blog.stephenboak.com/2012/06/15/d3-flow-vis-tutorial.html
+* http://bl.ocks.org/lgersman/5311202
+* http://bl.ocks.org/rkirsling/5001347
