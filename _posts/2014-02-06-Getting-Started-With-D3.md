@@ -2,6 +2,9 @@
 title: Getting Started with D3
 layout: post
 tags: d3 interaction
+images:
+  - /static/images/3_circles.png
+  - /static/images/graph_levelgraph.png
 ---
 Visualizations are great tools to understand ideas and play with data. As Tim Brown from Ideo writes in [this post](http://designthinking.ideo.com/?p=1294)
 
@@ -71,6 +74,10 @@ Since we start with a fresh canvas, all nodes will be new, and we can map these 
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; })
 
+This should result into something like:
+
+<img src="{{page.images[0]}}">
+
 Since the circles are setup, we now can add and remove data, and the graph will update automatically: [Try this codepen](http://codepen.io/mulderp/pen/aDrxq) 
 
 ## Connecting the Dots
@@ -100,6 +107,10 @@ To see some of the mechanics, you can add and remove data, and see how the graph
 ## Exploring further
 
 Setting up graphs manually with nodes and edges might be interesting for small examples. However, if you often need to setup graphs, or the number of nodes and edges increases, a graph can be be setup with an algorithm too. This is where [force layouts](http://en.wikipedia.org/wiki/Force-directed_graph_drawing) help.
+
+With this, you can setup a graph like in:
+
+<img src="{{page.images[1]}}">
 
 D3 also supports force layout algorithms, and a nice place to start is [here](http://www.d3noob.org/2013/03/what-is-force-layout-diagram-in-d3js.html). Another option might be using D3 plugins, such as the [graph plugin](https://github.com/d3/d3-plugins/tree/master/graph).
 
