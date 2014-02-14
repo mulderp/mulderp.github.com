@@ -34,7 +34,7 @@ According to the flow concept, we might try to bring in the challenge part, or, 
 
 What do you think about this essay? Is it a viable way to communicate as a freelancer on the market? What might be improved?
 
-Special thanks to [Designil](http://codepen.io/designil/) for pointing at a codepen for skill bars, as well as [Chris Randall](http://www.chris-randall.com/sleepworkers-the-fuel-for-the-factory-corporates/) for a post on the flow concept.
+Special thanks to [Designil](http://codepen.io/designil/) for pointing at a codepen for skill bars, [Chris Randall](http://www.chris-randall.com/sleepworkers-the-fuel-for-the-factory-corporates/) for a post on the flow concept, and [Michiel Trimpe](https://twitter.com/mtrimpe) as well as [Martin Gausby](https://twitter.com/gausby) for feedback on freelancing.
 
 
 
