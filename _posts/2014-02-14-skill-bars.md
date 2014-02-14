@@ -8,7 +8,7 @@ images:
   - /static/images/skill_bars_challenge.png
 ---
 
-One of the most heart question as freelancer is: What are your skills? 
+One of the most heard question as freelancer is: What are your skills? 
 
 Let's briefly explore some ideas.
 
