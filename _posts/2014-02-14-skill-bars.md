@@ -20,7 +20,7 @@ We can start with simple skill bars. As [a start](http://patrick.mtpartners.de),
 
 <img src="{{page.images[0]}}">
 
-However, these skill bars are a bit confusing. For example, although I have (almost) finished a book on [Backbone.js](http://thinkingonthinking.com/writing-on-ruby-and-backbone/), my skills in years should be much higher with Ruby-on-Rails (I started around 2009). And it is getting even more difficult to judge on skills, that were applied further in the past.
+However, these skill bars are a bit confusing. For example, although I have (almost) finished a book on [Backbone.js](http://thinkingonthinking.com/writing-on-ruby-and-backbone/), my skills in years should be much higher with Ruby-on-Rails (I started around 2009). And it is getting even more difficult to judge on skills, that were applied further in the past (like Java).
 
 So, to bring some objectivity into this, we might first add a scale just representing years, and no personal judgement. Then, the situation would look like this:
 
