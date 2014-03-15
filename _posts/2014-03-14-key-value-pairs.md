@@ -33,12 +33,12 @@ With the DOM, we have a representation for rendering pixels in a web browser, as
 
 Interestingly, when we translate the state of Peligrino water to DOM nodes, the number of data structures increases. In this case, we add h2, ul, li and span tags, besides the raw data. So, we go from 3 pairs, to 9 DOM nodes. In general, it is more costly to maintain state in the DOM, than it would be in key-value pairs. And, often we have many more items in a collection, than we actually can render to the screen.
 
-So, tracking state in key-value pairs, outside the DOM, is often a good idea. To translate those pairs to DOM nodes, we can use JavaScript templates, where we replace placeholders with actual data. An example of templating with Handlebars might look like this:
+So, tracking state in key-value pairs, outside the DOM, is often a good idea. To translate those pairs to DOM nodes, we can use JavaScript templates, where we replace placeholders with actual data. An example of templating with Underscore might look like this:
 
-     <h2>{{ name }}</h2>
+     <h2><%= name %></h2>
      <ul>
-       <li><span>Price:</span> {{ price }} Eur</li>
-       <li>{{ description }}</li>
+       <li><span>Price:</span> <%= price %> Eur</li>
+       <li><%= description %></li>
      </ul>
 
 When you render the properties into a template and put the result into the DOM, the memory usage increases. This might be a problem if your site becomes larger. Synching state to the DOM must be careful examined for those cases.
@@ -47,11 +47,11 @@ By binding changes in the properties to DOM updates, we also can understand the 
 
 Observing data changes and updating the DOM can quickly become more complicated. For example, if we had a list:
 
-  [
-    { name: "item 1", votes: 0.5 },
-    { name: "item 2", votes: 0.4 },
-    { name: "item 3", votes: 0.3 }
-  ]
+    [
+      { name: "item 1", votes: 0.5 },
+      { name: "item 2", votes: 0.4 },
+      { name: "item 3", votes: 0.3 }
+    ]
 
 Which we would render into:
 
