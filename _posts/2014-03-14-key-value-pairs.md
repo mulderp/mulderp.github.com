@@ -14,16 +14,16 @@ Key-value pairs, or property list, have shown very flexible and clean representa
        description: "Bottle of water from Italy"
     }
 
-In most cases, we want to track more than one list of pairs. Often, we want to represent collections of key-value pairs as follows:
+In most cases, we track more than one item, or list of pairs. We want to track collections, or arrays, of key-value pairs that might look like:
 
     [
        { name: "Peligrino", price: 1.5 },
        { name: "Vittel", price: 1. 5}
     ]
 
-Now, whereas abstract data structures help you tracking state and computations, you display something else to users. When you are working with web browsers, the resulting problem is about translating state changes to the document-object-model, or DOM.
+Now, whereas abstract data structures help you tracking state and computations, you display something else to users. When you are working with web browsers, the resulting problem is the translation of state changes to the document-object-model, or DOM.
 
-With the DOM, we have a representation about rendering pixels in a web browser, as well as capturing events. Whereas the key-value pairs can apply to a number of different situation, the DOM is rather specific. For example, we might want to render the Peligrino data as follows:
+With the DOM, we have a representation for rendering pixels in a web browser, as well as medium to capture events from input devices. Whereas the key-value pairs can apply to a number of different situation, the DOM is rather specific. For example, we might want to render the Peligrino data as follows:
 
      <h2>Peligrino</h2>
      <ul>
