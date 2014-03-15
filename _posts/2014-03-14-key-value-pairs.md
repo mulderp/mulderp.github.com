@@ -35,11 +35,11 @@ Interestingly, when we translate the state of Peligrino water to DOM nodes, the 
 
 So, tracking state in key-value pairs, outside the DOM, is often a good idea. To translate those pairs to DOM nodes, we can use JavaScript templates, where we replace placeholders with actual data. An example of templating with Handlebars might look like this:
 
-  <h2>{{ name }}</h2>
-  <ul>
-    <li><span>Price:</span> {{ price }} Eur</li>
-    <li>{{ description }}</li>
-  </ul>
+     <h2>{{ name }}</h2>
+     <ul>
+       <li><span>Price:</span> {{ price }} Eur</li>
+       <li>{{ description }}</li>
+     </ul>
 
 When you render the properties into a template and put the result into the DOM, the memory usage increases. This might be a problem if your site becomes larger. Synching state to the DOM must be careful examined for those cases.
 
