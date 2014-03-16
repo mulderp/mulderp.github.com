@@ -3,7 +3,7 @@ title: Browserify - Unix in the browser
 layout: post
 tags: javascript, node, browserify
 ---
-The command-line is an important tool for both, Unix and Node. The command-line supports running and exploring programs. Its philosophy reminds us to think about keeping ideas simple. And, it allows us to to compose big ideas from many smaller ones. (The command-line can even be a medium for interactive presentations, as [@substack shows here](http://vimeo.com/62988591) )
+The command-line is an important tool for both, Unix and Node. The command-line supports running and exploring programs. Its philosophy reminds us to think about keeping ideas simple. And, it allows us to compose big ideas from many smaller ones. (The command-line can even be a medium for interactive presentations, as [@substack shows here](http://vimeo.com/62988591) )
 
 One of the most important command-line tools in Node is: [npm](http://en.wikipedia.org/wiki/Npm_(software)). Currently, [npmjs](https://www.npmjs.org/), serves more than 60k JavaScript modules. And, you can access most of these codebases easily from the browser with [browserify](http://browserify.org/).
 
