@@ -27,6 +27,10 @@ Therefore, it is important to teach elements of a good story and how to identify
 
 To actually make progress in digital education, I believe we need close contact to universities and businesses that are offline. Our digital culture is a continuation of memes that were already at work for centuries (or even thousands of years).
 
-We learn from each other in situations of direct interactions. It is one thing, to criticise people in an online forum under a pseudonym, but another to actually show someone in the eyes, and praise or criticize someone in the public. Therefore, so called "knowledge clusters" are and will be very valuable. These clusters often emerge at the boundaries of universities and companies,  and offer a chance to discuss ideas with experts in 1-1 interactions. The Silicon Valley is a great example of having research funds spinning of knowledge and businesses from having generations of smart people teaching each other. Smaller examples can be found in [local meetups e.g. for programming](http://meetup.com), or other kinds of gatherings for learning and sharing.
+We learn from each other in situations of direct interactions. It is one thing, to criticise people in an online forum under a pseudonym, but another to actually look someone in the eyes, and praise or criticize someone in the public.
+
+Therefore, so called "knowledge clusters" are and will be very valuable. These clusters often emerge at the boundaries of universities and companies,  and offer a chance to discuss ideas with experts in 1-1 interactions.
+
+The Silicon Valley is a great example of having research funds spinning off knowledge and businesses from having generations of smart people teaching each other. Smaller examples can be found in [local meetups e.g. for programming](http://meetup.com), or other kinds of gatherings for learning and sharing.
 
 Education will change for sure in the next centuries, and the challenge is now to teach right values and respect towards discoveries coming from online and offline worlds.
