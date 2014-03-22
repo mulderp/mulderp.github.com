@@ -40,7 +40,7 @@ Say, we are working on an application, where we need to clean up and process use
 
 To install and explore the module on the server, we would write:
 
-    $ npm install underscore-string
+    $ npm install underscore.string
 
 We then write a simple module that takes a string and makes it a slug. In `lib/slugger.js`, we enter:
 
@@ -60,7 +60,7 @@ This should be not much of a surprise either. On a sidenote, the "./" marks a lo
 Now, let's come to the interesting part. We can package this code for the browser, with:
 
     $ mkdir static
-    $ browserify -r lib/slugger:slugger > static/bundle.js
+    $ browserify -r ./lib/slugger:slugger > static/bundle.js
 
 The "-r" flag tells browserify to provide a "require" function for the browser. With the ":" we map the module's path, to an actual module name. To understand why, let's look at the code in the browser.
 
@@ -85,5 +85,5 @@ And, we can work again with this module, as we were on the server. Besides havin
 ## Resources
 
 * [@substack talk](http://vimeo.com/62988591)
-* [http://learnjs.io/blog/2013/11/24/browserify-resources/](http://learnjs.io/blog/2013/11/24/browserify-resources/))
+* [http://learnjs.io/blog/2013/11/24/browserify-resources/](http://learnjs.io/blog/2013/11/24/browserify-resources/)
 
