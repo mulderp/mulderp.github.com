@@ -3,15 +3,23 @@ layout: post
 title: About Two Way Data Binding with Backbone.Stickit
 tags: backbone
 ---
-At the SF JavaScript meetup where I gave [a talk](https://speakerdeck.com/mulderp/backbone-and-handlebars) on Backbone, I got this question: "What do you think of the data-binding in Backbone? And how does that compare to Angular" Honestly, I was not quite sure what to answer at that point, because most of my use cases for client-side MV* were about improving navigation around a page, and most of my page updates worked with simple one-way data-binding without problems. Yet, how to [synchronize state and the DOM](http://thinkingonthinking.com/key-value-pairs/) depends on the use case of an application. But to understand why to chose a certain framework, because data-binding is important, requires us to look closer at data binding in general.
+At the SF JavaScript meetup where I gave [a talk on Backbone](https://speakerdeck.com/mulderp/backbone-and-handlebars), I got this question: "What do you think of the data-binding in Backbone? And how does that compare to Angular?"
+
+Honestly, I was not quite sure what to answer at that point, because most of my use cases for client-side MV* were about improving browsing and rating items on a page, and most of my page updates worked with simple one-way data-binding without problems.
+
+In essence, I think there is no all size fits all solution. [Synchronizing state to the DOM](http://thinkingonthinking.com/key-value-pairs/) depends on the use case of an application, and can quickly require custom setups. To help you see how important data-binding might be for your application, let's look at an example of 2-way databinding with Backbone.
 
 ## Why do we need 2-way data binding?
 
-Not every application needs 2-way databinding, as not every application needs modules for authentication or rendering complicated, nested collections. From what I see, 2-way data binding is interesting, when we want to provide short feedback loops on inputs from users. These may occur when building browser editors, or providing advanced control elements, like sliders that are coupled with numeric input. Now, the idea behind 2-way databinding is managing model-view updates in two directions. First, views are updated when a model changes, which is the default case for 1-way databinding. Additionally, views can directly update models, which is a second update "direction", hence the name "2-way databinding".
+Not every application needs 2-way databinding, as not every application needs modules for authentication or rendering complicated, nested collections.
+
+From what I see, 2-way data binding is interesting, when we want to provide short feedback loops on inputs from users. These may occur when building browser editors, or providing advanced control elements, like sliders that are coupled with numeric input.
+
+Now, the idea behind 2-way databinding is managing model-view updates in two directions. First, views are updated when a model changes, which is the default case for 1-way databinding. Additionally, views can directly update models, which is a second update "direction", hence the name "2-way databinding".
 
 ## A business card editor
 
-To show what this means, let's look at an example. As a freelancer, the first thing you need is business cards. Strangely, I found no online business cards providers, that offer a simple business card editor. So, let's build a basic one. You can see a working demo of the discussion [here](http://thinkingonthinking.com/businesscards/). 
+To show what this means, let's look at an example. As a freelancer, the first thing you need is business cards. Strangely, I found no online business cards provider that offer a simple online business card editor. So, let's build a basic one. You can see a working demo of the discussion [here](http://thinkingonthinking.com/businesscards/). 
 
 The idea of building this editor, is to explore data-binding from the viewpoint of the Backbone.js, where you combine smaller libraries to build out some larger ideas. There are a number of data-binding plugins in the Backbone ecosystem, but I chose [Backbone.Stickit](http://nytimes.github.io/backbone.stickit/) since it comes with CommonJS support out of the box. And together with [Browserify](http://thinkingonthinking.com/unix-in-the-browser/), this allows me to stay on the command line.
 
