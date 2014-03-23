@@ -181,3 +181,11 @@ To round up the example, we can initialize the app in the file app/main.js as fo
 The last module exports is handy to observe the actual address model from the developer console.
 
 That's all. For this use case, Backbone has definitively a nice answer to 2-way data binding. What do you think? Any experiences you want to share on binding a UI to state?
+
+## References
+
+* [Repository Demo application](https://github.com/mulderp/businesscards) and [Demo](http://thinkingonthinking.com/businesscards)
+* [VanillaJS data-binding](http://www.lucaongaro.eu/blog/2012/12/02/easy-two-way-data-binding-in-javascript/)
+* [Backbone.Stickit](http://nytimes.github.io/backbone.stickit/)
+* [Backbone.ModelBinder](https://github.com/theironcook/Backbone.ModelBinder)
+* [Data binding in Angular](http://docs.angularjs.org/guide/databinding)
