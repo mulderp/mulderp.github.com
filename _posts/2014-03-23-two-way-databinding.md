@@ -3,7 +3,7 @@ layout: post
 title: Two Way Data Binding
 tags: backbone
 ---
-At the SF JavaScript meetup where I gave a talk on Backbone, I got this question: "What do you think of the data-binding in Backbone? And how does that compare to Angular" Honestly, I was not quite sure what to answer at that point, because most of my use cases for client-side MV* were about improving navigation around a page, and most of my page updates worked with simple one-way data-binding without problems. Yet, how to [synchronize state and the DOM](http://thinkingonthinking.com/key-value-pairs/) depends on the use case of an application. But to understand why to chose a certain framework, because data-binding is important, requires us to look closer at data binding in general.
+At the SF JavaScript meetup where I gave [a talk](https://speakerdeck.com/mulderp/backbone-and-handlebars) on Backbone, I got this question: "What do you think of the data-binding in Backbone? And how does that compare to Angular" Honestly, I was not quite sure what to answer at that point, because most of my use cases for client-side MV* were about improving navigation around a page, and most of my page updates worked with simple one-way data-binding without problems. Yet, how to [synchronize state and the DOM](http://thinkingonthinking.com/key-value-pairs/) depends on the use case of an application. But to understand why to chose a certain framework, because data-binding is important, requires us to look closer at data binding in general.
 
 ## Why do we need 2-way data binding?
 
