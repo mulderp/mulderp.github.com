@@ -7,7 +7,7 @@ At the SF JavaScript meetup where I gave [a talk on Backbone](https://speakerdec
 
 Honestly, I was not quite sure what to answer at that point, because most of my use cases for client-side MV* were about improving browsing and rating items on a page, and most of my page updates worked with simple one-way data-binding without problems.
 
-In essence, I think there is no all size fits all solution. [Synchronizing state to the DOM](http://thinkingonthinking.com/key-value-pairs/) depends on the use case of an application, and can quickly require custom setups. To help you see how important data-binding might be for your application, let's look at an example of 2-way databinding with Backbone.
+In essence, I think there is no all size fits all solution. [Synchronizing state to the DOM](http://thinkingonthinking.com/key-value-pairs/) depends on the use case of an application, and can quickly require custom setups. To help you understand whether [using Backbone.js](https://www.youtube.com/watch?v=QKcLaAunAwM) can be an option for you, let's look at an example of 2-way databinding with Backbone.
 
 ## Why do we need 2-way data binding?
 
