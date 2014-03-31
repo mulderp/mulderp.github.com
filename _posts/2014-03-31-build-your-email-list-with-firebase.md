@@ -7,7 +7,7 @@ images:
   - /static/images/firebase_set.png
 ---
 
-Forms in landing pages are great to capture interest in a product or service, for example to gauge interests of users in a new service. Quite easily, you can start collecting email addresses with a static page, by using a bit of JavaScript and a "Backend-as-a-Service".
+Forms in landing pages are great to capture interest in a product or service, for example to gauge users' needs for a new service. Quite easily, you can start collecting email addresses with a static page, by using a bit of JavaScript and a "Backend-as-a-Service".
 
 The idea of [a static web page](http://en.wikipedia.org/wiki/Static_web_page) is serving HTML with JavaScript without using server-side page updates. This can be interesting when you build a dashboard or a landing page, as we will discuss here. The advantage of doing apps based on static pages, is that you can avoid the costs for maintaining infrastructure that come with dynamic web pages.
 
