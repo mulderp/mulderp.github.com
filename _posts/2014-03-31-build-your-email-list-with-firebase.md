@@ -111,7 +111,7 @@ We also need some static HTML in index.html:
      </body>
      </html>
 
-This is just a basic form, with an input element for emails, and a "send" button.
+This is just a basic form, with an input element for emails, and a "send" button. We can also add [some style](http://codepen.io/rexkirby/pen/Fdnlz).
 
 Next, we create a simple Backbone setup. First, we create a simple collection that references the contacts collection at Firebase. The module client-backfire wraps the Backfire adapter in a CommonJS setup. With Backfire, we can synch adapter that talks to Firebase.
 
