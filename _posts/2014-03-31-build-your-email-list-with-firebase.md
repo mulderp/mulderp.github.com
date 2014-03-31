@@ -7,9 +7,9 @@ images:
   - /static/images/firebase_set.png
 ---
 
-Forms in landing pages are great to capture interest in a product or service, for example to announce a new service an gauge interests. By combining a static page, JavaScript and a "Backend-as-a-Service", you can start collecting email addresses quite easily.
+Forms in landing pages are great to capture interest in a product or service, for example to gauge interests of users in a new service. Quite easily, you can start collecting email addresses with a static page, by using a bit of JavaScript and a "Backend-as-a-Service".
 
-The idea of [a static web page](http://en.wikipedia.org/wiki/Static_web_page) is serving a HTML with JavaScript without using server-side page updates. This can be interesting when you build a dashboard or a landing page, as we will discuss here. The advantage of doing apps based on static pages, is that you can avoid the costs for maintaining infrastructure that come with dynamic web pages.
+The idea of [a static web page](http://en.wikipedia.org/wiki/Static_web_page) is serving HTML with JavaScript without using server-side page updates. This can be interesting when you build a dashboard or a landing page, as we will discuss here. The advantage of doing apps based on static pages, is that you can avoid the costs for maintaining infrastructure that come with dynamic web pages.
 
 But where do you store data from forms in static pages? Or, how could you display new data to a user when a page is "static"? To answer these questions, we can look at the idea of combining JavaScript with a [noBackend](http://nobackend.org/), or so-called "Backend-as-a-Service". The name "no-Backend" is certainly inspired by "no-SQL", pointing towards application design with flexible schema's and separate mindsets for writing and reading data. Besides agile development, approaches for "Backend-as-a-Service" support you with keeping maintenance and infrastructure operations at a minimum.
 
