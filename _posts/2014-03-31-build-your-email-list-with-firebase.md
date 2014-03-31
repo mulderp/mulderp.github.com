@@ -7,21 +7,21 @@ images:
   - /static/images/firebase_set.png
 ---
 
-Forms in landing pages can nicely capture interest in a product or service, for example for my book on Backbone.js, or for announcing services as a freelancer. Especially, a landing page is a nice use case for [a static web page](http://en.wikipedia.org/wiki/Static_web_page). With static pages, we can avoid the efforts and costs, that come with dynamic web pages. In contrast to dynamic web pages that require advanced server infrastructure, the hosting and development of static pages is much simpler 
+Forms in landing pages can nicely capture interest in a product or service, for announcing services as a freelancer. Especially, a landing page is a nice use case for [a static web page](http://en.wikipedia.org/wiki/Static_web_page). With static pages, we can avoid the costs for maintaining infrastructure, that come with dynamic web pages.
 
-But where do you store data from forms in static pages? Or, how could you display new data to a user? To answer these questions, we can look at the idea of [noBackend](http://nobackend.org/), or so-called "Backend-as-a-Service". The name "no-Backend" is certainly inspired by "no-SQL", pointing towards application design with flexible schema's and separate mindsets for writing and reading data. Besides agile development, approaches for "Backend-as-a-Service" support you with keeping maintenance and infrastructure operations at a minimum.
+But where do you store data from forms in static pages? Or, how could you display new data to a user when a page is "static"? To answer these questions, we can look at the idea of combining JavaScript with a [noBackend](http://nobackend.org/), or so-called "Backend-as-a-Service". The name "no-Backend" is certainly inspired by "no-SQL", pointing towards application design with flexible schema's and separate mindsets for writing and reading data. Besides agile development, approaches for "Backend-as-a-Service" support you with keeping maintenance and infrastructure operations at a minimum.
 
-For the impatient, [the demo of this post](http://thinkingonthinking.com/landingpage) is a static page landing page backed with Firebase.
+For the inpatient reader, you can take a quick look at [the landingpage demo](http://thinkingonthinking.com/landingpage) to see whether a static page with a noBackend can make sense for you.
 
 ## Firebase
 
-A number of "noBackend" providers are available. One of the most advanced is [Firebase](https://www.firebase.com/). With Firebase's [Hacker Plan](https://www.firebase.com/pricing.html), you can store up to 100 MB of data for free, which should be enough for collecting emails with a landing page.
+There are a number of "noBackend" providers offering simple API hosting. One of the most advanced is [Firebase](https://www.firebase.com/). With Firebase's [Hacker Plan](https://www.firebase.com/pricing.html), you can store up to 100 MB of data for free, which should be enough for collecting emails with a landing page.
 
 To get started with Firebase, you can signup with your Github account or simply with your email. On Firebase's dashboard, you then can create as many APIs as you like.
 
 <img src="{{page.images[0]}}">
 
-So, with the dashboard, let's create a store for emails. I'll call this "mulpat", since it is my Twitter handle. The idea would be to store emails in a collection "contacts". Collections in Firebase can be populated either with a data import, or, with some JavaScript that is run from the browser console. The latter can be nice to quickly reset or setup some predefined data. Let's look at how it is done.
+So, with the dashboard, let's create a store for emails. I'll call this "mulpat", since it is my Twitter handle. The idea is to store emails in a collection "contacts". Collections in Firebase can be populated either with a data import, or, with some JavaScript that is run from the browser console. The latter can be nice to quickly reset or setup some predefined data. Let's look at how it is done.
 
 First, we point a Firebase reference to a collection, e.g.
 
@@ -39,6 +39,15 @@ Be careful with "set" though. It will wipe out existing data from the collection
 
 Once collections are created, you can also apply rules for security. [This video](https://www.youtube.com/watch?v=IGlzbmnAlRQ) is well worth watching.
 
+To prevent others from reading our contacts list, we can setup a security rule in Firebase. 
+
+    {
+        "rules": {
+            ".read": false,
+            ".write": true
+        }
+    }
+
 So, with these basics, we can setup a static page and connecting a form to the Firebase bucket.
 
 ## Backbone Setup
@@ -54,6 +63,16 @@ First, we setup some directories and link the node_modules directory. By symlink
     |-lib
 
 In node_modules, there are symlinks to collections, views and libs.
+
+We also can get some node_modules with npm, such as jQuery, Underscore and Backbone. For this, we do:
+
+    $ npm init
+    $ npm install jquery-untouched --save-dev
+    $ npm install backbone --save-dev
+    $ npm install underscore --save-dev
+    $ npm install client-backfire --save-dev
+
+This last line is the adapter to synch a collection with Firebase. We come back to this in a second.
 
 We also need some static HTML in index.html:
 
@@ -92,33 +111,72 @@ We also need some static HTML in index.html:
 
 This is just a basic form, with an input element for emails, and a "send" button.
 
-Now, 
+Next, we create a simple Backbone setup. First, we create a simple collection that references the contacts collection at Firebase. The module client-backfire wraps the Backfire adapter in a CommonJS setup. With Backfire, we can synch adapter that talks to Firebase.
+
+    var backfire = require("client-backfire");
+    var Backbone = backfire.Backbone;
+    
+    var Contacts = Backbone.Firebase.Collection.extend({
+      firebase: "https://mulpat.firebaseio.com/contacts"
+    });
+    
+    var contacts = new Contacts();
+    module.exports = contacts
+
+After this basic data layer, we write a view that listens to the form submit event. As we bind the contact collection upon view instantiation, we can simple reference the collection, and render a small "thank you" page. Putting these ideas together, the view can look like:
+
+    var Backbone = require("backbone");
+    var $ = Backbone.$;
+    
+    var ContactView = Backbone.View.extend({
+      events: {
+        "submit": "addContact"
+      },
+      addContact: function(ev) {
+        ev.preventDefault();
+        var name = $("input[name='email']");
+        this.collection.add({email: name.val()});
+        this.renderThanks();
+      },
+      renderThanks: function() {
+        this.$el.html("thanks");
+      },
+      initialize: function() {
+        this.listenTo(this.collection, "all", function(ev) {
+          console.log(ev);
+        });
+      }
+    });
+
+    module.exports = ContactView;
+
+To help our understanding of Firebase, we can add temporarily a monitor for events, with the "listenTo ... all" syntax in the view constructor.
+
+Last, we bind the model to the view, map the dependencies and finish the application setup with: 
+
+    var $ = require("jquery-untouched");
+    var Backbone = require("backbone");
+    Backbone.$ = $;
+    
+    var contacts = require("collections/contacts");
+    var ContactForm = require("views/contact");
+    
+    var view;
+    $(document).ready(function() {
+      view = new ContactForm({el: $("#contact"), collection: contacts });
+    });
+
+Now we can bundle the setup with Browserify:
+
+    $ browserify -r ./app/main.js:app > static/bundle.js
+
+You can see the complete [Github repository here](https://github.com/mulderp/landingpage). By using a branch "gh-pages", we also obtain easily a static website and here is the [live demo](http://thinkingonthinking.com/landingpage/)
+
+## Conclusions
+
+The application could still be improved in a number of ways. We could wire up events from Firebase with Zapier and Mailgun for example, to automatically send emails when data is submitted. We could also improve the capturing of emails with advanced email validations, etc. but for a start this post showed yo
+
+The view still misses a number of things such as validation of an email address.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-if you start working with forms, or you want to provide new data to a user, server backends get important in static pages too.  
-
-But applications based on static pages may require a 
-
-
-
-
-
-Email campaigns are an important part of any online business. Also, 
