@@ -184,7 +184,7 @@ You can see the complete [Github repository here](https://github.com/mulderp/lan
 
 ## Conclusions
 
-The application could still be improved in a number of ways. We could wire up events from Firebase with Zapier and Mailgun for example, to automatically send emails when data is submitted. The view still misses a number of things such as validation of an email address, and maybe some more helpers to build a social community around your landing page.
+The application could still be improved in a number of ways. We could wire up events from Firebase with Zapier and Mailgun for example, to automatically send emails when data is submitted. The view still misses a number of things such as validation of an email address, and maybe some more helpers to build a social community around your landing page. Keep tuned, updates will be coming.
 
 
 ## References
