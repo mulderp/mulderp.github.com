@@ -26,3 +26,7 @@ Then there is the question of how to work with software recruiters. These people
 Last, the first questions on accounting and taxes popped up. There are a number of tools such as [Quaderno](http://getquaderno.com/), [Moneybird](http://moneybird.com) and other that help you with invoices. So far, I seem to have a good accountant who can help me understanding the language of the tax office.
 
 So, what are your experiences on selling consulting hours? What marketing do you do? 
+
+## Inspirations
+
+* Part of this post was inspired by discussions with [Graham Clark](http://www.grahamclarkphoto.com/3-essential-marketing-tactics-photographers/). As creatives, photographers have to solve similar problems, as software developers need to do.
