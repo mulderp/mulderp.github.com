@@ -11,7 +11,7 @@ When you start as a freelancer, you need contacts, or a so-called "network" to b
 
 After my first week of freelance, I made a small business model fiddle about what my situation looks like right now.
 
-<img src="{{ipage.images[0]}}">
+<img src="{{page.images[0]}}">
 
 There is a lot more going on that programming only. In fact, most things feel like marketing and selling. This is not bad though, since in the spirit of [Patrick McKenzie](http://www.kalzumeus.com/start-here-if-youre-new/), selling is an important part of a software business, and for me at least, for making software products.  McKenzie seem to talk about the [software business](http://vimeo.com/81693597) here too.
 
