@@ -15,7 +15,7 @@ After my first week of freelance, I made a small business model fiddle about wha
 
 There is a lot more going on that programming only. In fact, most things feel like marketing and selling. This is not bad though, since in the spirit of [Patrick McKenzie](http://www.kalzumeus.com/start-here-if-youre-new/), selling is an important part of a software business, and for me at least, for making software products.  McKenzie seem to talk about the [software business](http://vimeo.com/81693597) here too.
 
-So for week 1, a key acitivity was building and filling up my project pipeline. To do this, there is only one way: Talk with people. A good idea might also be of giving talks at meetups and conferences, and have people talk with you. After living some years in Munich, this strategy looks best to fill up the initial project pipeline. And I am lucky to work with soem great freelancers in Munich from the start.
+So for week 1, a key acitivity was building and filling up my project pipeline. To do this, there is only one way: Talk with people. A good idea might also be of giving talks at meetups and conferences, and have people talk with you. After living some years in Munich, this strategy looks best to fill up the initial project pipeline. And I am lucky to work with some great freelancers in Munich from the start.
 
 A second important activity of acquiring projects is writing emails. Writing emails is more difficult though, since you need to have email addresses of leads, you need to send those emails (in the form of email campaigns) and you need some time to figure out what to write.
 
