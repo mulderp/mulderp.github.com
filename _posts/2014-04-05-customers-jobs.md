@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Customer jobs
+title: Software and customer's jobs
 tags: freelance strategy
 images:
   - /static/images/value_proposition_canvas.png
