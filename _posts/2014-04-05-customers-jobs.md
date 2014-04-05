@@ -5,7 +5,7 @@ tags: freelance strategy
 images:
   - /static/images/value_proposition_canvas.png
 ---
-To examine needs for consultant services, a discussion with [Graham Clark from San Francisco](http://www.grahamclarkphoto.com/) reminded me to look at the [Value Proposition Canvas](http://www.businessmodelgeneration.com/downloads/value_proposition_canvas.pdf) from Alexander Osterwalder. When designing services and products, Osterwalder suggests to take a look 3 segments in a circle: Customer jobs, pains and gains.
+To examine needs for consulting services, a discussion with [Graham Clark from San Francisco](http://www.grahamclarkphoto.com/) reminded me to look at the [Value Proposition Canvas](http://www.businessmodelgeneration.com/downloads/value_proposition_canvas.pdf) from Alexander Osterwalder. When designing services and products, Osterwalder suggests to take a look 3 segments in a circle: Customer jobs, pains and gains.
 
 In this post, I want to explore a bit the first question about "customer jobs", see the right part in the figure below.
 
