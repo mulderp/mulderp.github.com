@@ -23,3 +23,4 @@ On a first thought companies hire a freelancer for these reasons:
 
 Apart from the jobs of companies for freelancers, it might be interesting to look at the pains companies have with their current software solutions or freelancers. This might be the topic of another post.
 
+Let me know what you think of your customer's jobs.
