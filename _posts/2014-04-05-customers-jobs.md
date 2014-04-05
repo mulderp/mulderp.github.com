@@ -11,13 +11,13 @@ In this post, I want to explore a bit the first question about "customer jobs", 
 
 <img src="{{page.images[0]}}">
 
-When a companies buys consulting hours for software development services, what are the goals and/or jobs of a customer?
+When a company buys consulting hours for services on software development, what are the goals and/or jobs of a customer?
 
-On a first thought companies hire a freelancer for these reasons:
+On a first thought companies hire consultants for these reasons:
 
 * Avoid research costs: Know-how mostly originates from research, but research is cost intensive. So, a customer might try to find people and technologies to reduce research costs. This might be why many software and engineering consultancies are ending with "lab", e.g. like [Pivotal-labs](http://pivotallabs.com/), [Envy-Labs](http://envylabs.com/), [Formidable-Labs](http://formidablelabs.com/), [Metalab](http://www.metalabdesign.com/) or inhouse research like [Bell-labs](http://www.bell-labs.com/history/unix/) or [Nat-lab](http://en.wikipedia.org/wiki/Philips_Natuurkundig_Laboratorium)
 
-* Solve "one-time" problems: There are situations where software is needed only "one-time", e.g. data from an unique CRM campaign, from a portfolio acquisition, from a certain kind of measurement, ... Companies just want to solve that custom problem, without investing into much research or building a team around that one-time problem. One-time problems also give nice online services, e.g. [Slicecraft](http://slicecraft.com/) or other PSD-2-Sass conversion services.
+* Solve "one-time" problems: There are situations where software is needed only "one-time", e.g. to process data from an unique CRM campaign, to process a portfolio acquisition or a certain kind of measurement, ... Companies just want to solve that custom problem, without investing into much research or building a team around that one-time problem. One-time problems also give nice online services, e.g. [Slicecraft](http://slicecraft.com/) or other PSD-2-Sass conversion services.
 
 * Improve "social status": For certain kinds of jobs, it might "sound" better if it is done by an external consultancy. Management consultancies might work a bit in that area. If you look at McKinsey, BCG or other top management consultancies, they offer some kind of social status around their services. In software, this might be the reason that companies hire freelancers working with products from Microsoft or Google. Placing yourself close to these companies, attracts a somewhat social status too.
 
