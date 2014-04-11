@@ -11,7 +11,7 @@ Finally, heading home and working on side-projects that are fun.
 
 As a freelancer, time feels totally different. When a day starts, you must write emails to get new projects. Then, you empathize with potential clients to understand their problems. You try to squeeze in some time for programming and writing. During lunch, you feel like being in a networking event. Back from lunch, the flow experience starts immediatly since there all these great options and new combinations of interests that match both, yours and those of your clients.
 
-The music as freelancer feels much more inspiring. May be, because you are more creative. Switching off all distractions (like Twitter, Hacer news, newspapers, skype) feels much more natural. In the evenings, the trade-off of networking events and private time and important time-outs is much more important.
+The music as freelancer feels much more inspiring. May be, because you are more creative. Switching off all distractions (like Twitter, Hacker news, newspapers, skype) feels much more natural. In the evenings, the trade-off of networking events and private time and important time-outs is much more important.
 
 Then, after some days, the days arrive that you count the hours that you worked.
 
