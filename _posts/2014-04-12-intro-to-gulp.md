@@ -15,35 +15,35 @@ To run this with gulp with uglify support, you need to setup a gulpfile.js.
 
 But first, you need to install gulp:
 
-  $ npm install -g gulp
+    $ npm install -g gulp
 
 And, in your project folder you should add a local gulp runner too:
 
-  $ npm install gulp --save-dev
+    $ npm install gulp --save-dev
 
 Next, you need to install some gulp tasks:
 
-  $ npm install vinyl-source-stream --save-dev
-  $ npm install gulp-streamify --save-dev
-  $ npm install gulp-uglify --save-dev
+    $ npm install vinyl-source-stream --save-dev
+    $ npm install gulp-streamify --save-dev
+    $ npm install gulp-uglify --save-dev
 
 The gulp tasks are the main steps of a build, and you define those in a gulpfile.js:
 
-  var browserify = require('browserify');
-  var gulp = require('gulp');
-  var source = require('vinyl-source-stream');
-  var jstify = require('jstify');
-  var streamify = require('gulp-streamify');
-  var uglify = require('gulp-uglify');
-  
-  gulp.task('browserify', function() {
-    return browserify('./app/main.js')
-      .transform('jstify')
-      .bundle()
-      .pipe(source('bundle.js'))
-      .pipe(streamify(uglify()))
-      .pipe(gulp.dest('build/'));
-  });
+    var browserify = require('browserify');
+    var gulp = require('gulp');
+    var source = require('vinyl-source-stream');
+    var jstify = require('jstify');
+    var streamify = require('gulp-streamify');
+    var uglify = require('gulp-uglify');
+    
+    gulp.task('browserify', function() {
+      return browserify('./app/main.js')
+        .transform('jstify')
+        .bundle()
+        .pipe(source('bundle.js'))
+        .pipe(streamify(uglify()))
+        .pipe(gulp.dest('build/'));
+    });
 
 What happens here is: You first setup browserify to use a 'jstify' transform and bundle the input file 'app/main.js'. The resulting stream is piped into 'bundle.js', which again is piped into the uglify transform, and saved under 'build'.
 
