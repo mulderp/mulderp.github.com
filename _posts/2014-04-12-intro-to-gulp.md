@@ -3,17 +3,17 @@ title: An Intro to Gulp
 layout: post
 tags: gulp browserify
 ---
-The JavaScript is increasingly moving towards [Streams](  ) to read, transform and write large chunks of data. One area, where multiple transformations are needed is in frontend build processes.
+The JavaScript community is increasingly moving towards [Streams](  ) to read, transform and write large chunks of data. One area, where multiple data transformations are needed is in frontend build processes.
 
-For small projects, a simple browserify command like the following might be enough:
+Especially for larger projects, when you add linting, transforms and an uglify step, it can make sense to automate builds.
+
+But let's start with a small project: Automate the build of a simple browserify command. 
 
     $ browserify ./app/main.js > static/bundle.js
 
-But for larger projects, when you add linting, transforms and an uglify step, it can make sense to automate builds.
+To run this with gulp with uglify support, you need to setup a gulpfile.js.
 
-Let's take a short spike to automate builds with gulp.
-
-First, you need to install gulp:
+But first, you need to install gulp:
 
   $ npm install -g gulp
 
