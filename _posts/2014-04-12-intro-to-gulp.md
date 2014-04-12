@@ -3,7 +3,7 @@ title: An Intro to Gulp
 layout: post
 tags: gulp browserify
 ---
-The JavaScript community is increasingly moving towards [Streams](  ) to read, transform and write large chunks of data. One area, where multiple data transformations are needed is in frontend build processes.
+The JavaScript community is increasingly moving towards [Streams](http://en.wikipedia.org/wiki/Stream_(computing)) to read, transform and write large chunks of data. One area, where multiple data transformations are needed is in frontend build processes.
 
 Especially for larger projects, when you add linting, transforms and an uglify step, it can make sense to automate builds.
 
