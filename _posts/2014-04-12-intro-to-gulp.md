@@ -61,4 +61,5 @@ This task is called 'browserify' and you can call it from the command as follows
 
 * https://www.npmjs.org/package/vinyl-source-stream
 * http://markgoodyear.com/2014/01/getting-started-with-gulp/
+* http://www.codefellows.org/blogs/quick-intro-to-gulp-js
 * Thanks to geson in #browserify for pointing me in the right directions

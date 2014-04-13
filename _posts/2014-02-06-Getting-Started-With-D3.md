@@ -50,7 +50,7 @@ To render data, we need to "join" data with DOM nodes. This is done with the [da
 To make a first mapping, we first define nodes:
 
      var nodes = [{x: 30, y: 50},
-                  {y: 50, y: 80},
+                  {x: 50, y: 80},
                   {x: 90, y: 120}]
 
 Since we start with a fresh canvas, all nodes will be new, and we can map these with "selectAll" - "data" - "enter":
