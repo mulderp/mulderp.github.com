@@ -340,7 +340,11 @@ And you should get:
 
 # Conclusions
 
-You saw how to apply the KISS and DRY coding principles with RDD, REPL Driven Development. The main idea of RDD is to get feedback by running code in a REPL. Also with RDD, it is important to stay calm while coding. That means you shouldn't fall into the trap of Rage Driven Development or other options. RDD might not work for every one or every company, but it does for me.
+You saw how to apply the KISS and DRY coding principles with RDD. RDD stands for REPL Driven Development, and REPL recursively for Read-Print-Eval-Loop.
+
+RDD can be practioned in every dynamic environment that supports a REPL, such as JavaScript, CoffeeScript, Python, Ruby, Elixir or Bash.
+
+The main idea of RDD is to get feedback by running code in a REPL. Also with RDD, it is important to stay calm while coding. That means you shouldn't fall into the trap of Rage Driven Development or other options. RDD might not work for every one or every company, but it does for me.
 
 You can have a look at the [github repo](https://github.com/mulderp/jsony) or at [jsony@npmjs.org](https://www.npmjs.org/package/jsony) - Note, that JavaScript was not taken by coincidence here to illustrate RDD. Most of the ideas of this post sum up ideas from a talk I gave at the [NoSQLmatters conference] about running JavaScript in a database with ArangoDB. You can find the slides [here](https://speakerdeck.com/mulderp/script-your-way-to-nosql)
 
