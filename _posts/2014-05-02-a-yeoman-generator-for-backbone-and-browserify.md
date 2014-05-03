@@ -19,4 +19,15 @@ Actually, most generators that I saw support an automated setup with Grunt or [G
 
 Since I found no Yeoman generator supporting this etup, it became time to write a Yeoman generator. As a start you can use the Yeoman generator-generator, and scaffold some basic application template. Then, you can easily setup a package.json where you include the required Node modules. Right now, I skip Gulp or Grunt, and just include a basic Makefile with a command to call browserify.
 
-The result is the Yeoman [generator-backbone-browserify](https://www.npmjs.org/package/generator-backbone-browserify) and its source is at [Github](https://github.com/mulderp/generator-backbone-browserify)
+To optimally use Browserify, it can be handy to create symlinks into a directory node_modules, e.g.:
+
+    $ mkdir -p app/views
+    $ mkdir app/node_modules
+    $ cd app/node_modules
+    $ ln -sf ../views
+
+With this symlink, you can require any module easily as require('views/foo').
+
+Yet, this is open, as I haven't found out how to create symlinks with Yeoman.
+
+The current result is the Yeoman [generator-backbone-browserify](https://www.npmjs.org/package/generator-backbone-browserify) and its source is at [Github](https://github.com/mulderp/generator-backbone-browserify)
