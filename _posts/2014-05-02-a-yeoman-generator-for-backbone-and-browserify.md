@@ -13,7 +13,7 @@ I met Yeoman first via the fantastic [Yeoman generator for Thorax](https://githu
 
 To understand what a generator does, it makes sense to inspect the "/app/templates" directory. For example, in the [templates directory](https://github.com/yeoman/generator-ember/tree/master/app/templates) of the Ember generator you can see templates for a Gruntfile, Bower and Karma.
 
-Actually, most generators that I saw support an automated setup with Grunt or Gulp, and often use RequireJS. For sandboxing a Node application, I currently prefer CommonJS and Browserify however. This gives nice combination with a [REPL](http://thinkingonthinking.com/scripting-a-csv-converter/) on the server and browser.
+Actually, most generators that I saw support an automated setup with Grunt or [Gulp](http://thinkingonthinking.com/intro-to-gulp/), and often use RequireJS. For sandboxing a Node application, I currently prefer CommonJS and Browserify however. This gives nice combination with a [REPL](http://thinkingonthinking.com/scripting-a-csv-converter/) on the server and browser.
 
 ## A generator for Browserify and Handlebars
 
