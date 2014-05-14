@@ -5,7 +5,7 @@ tags: design thinking
 ---
 Telling a story for an audience is not easy. Especially, if your story includes elements of live coding or some abstractions that might not resonate with the background of an audience.
 
-This is why preparation of a talk matters. Preparing a story gives you the opportunity to apply learnings from previous talks or experiments. While preparing a talk, you have the opportunity of recover from failures and to provide missing pieces that make sense as a whole. While preparing, you can put together a better story "design".
+This is why preparation of a talk matters. Preparing a story gives you the opportunity to apply learnings from previous talks or experiments. While preparing a talk, you have the opportunity to recover from failures and to provide missing pieces that make sense as a whole. While preparing, you can put together a better story "design".
 
 As often with design, it is hard to say, what design exactly means. What I can say is that good design is something that "sticks". With design, something feels better and fits a context such, that boundaries disappear.
 
