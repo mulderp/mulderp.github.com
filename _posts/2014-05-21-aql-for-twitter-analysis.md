@@ -114,15 +114,20 @@ Let's do some data manipulation with AQL and ArangoDB next. First, you must impo
     errors:           0
     total:            99
     
-Let's explore the data with AQL. First, we want to get a quick overview on the friends' locations.
+Let's explore the data with AQL. To run AQL, I prefer going to your local ArangoDB instance at http://0.0.0.0.8529 and select AQL. [This](http://0.0.0.0:8529/_db/_system/_admin/aardvark/standalone.html#query) should be a shortcut. Your AQL console should look similar to:
 
-First, let's return information on friends in a location:
+<img src="{{page.images[1]}}">
+
+For the first query, we want to get a quick overview on the friends at a Twitter location:
 
     for u in mulpat_friends
+      limit 2
       filter u.location == 'San Francisco'
       return u.screen_name
 
-This returns:
+The syntax should be self-explaining, but for reference, you might want to checkout the [AQL docs](https://www.arangodb.org/manuals/current/Aql.html).
+
+The query above returns:
 
     [
       "Fullstack node.js developer",
@@ -240,4 +245,3 @@ Or, you could ask, in what locations live most of Twitter influencers, based on 
 
 Of course this would need to be averaged out.
 
-<img src="{{page.images[1]}}">
