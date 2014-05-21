@@ -163,7 +163,7 @@ You can see already that grouping friends to a location might be difficult since
       sort length(g) desc
       return {city: city, count: length(g)}
 
-This returns into:
+This results into:
 
     [
       {
