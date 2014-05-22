@@ -90,5 +90,5 @@ For example, if you have a LayoutView, you could listen for the "ready" event as
 
 Of course, there are many more approaches how to work with parent and childviews, and how to arrange multiple views with Backbone.
 
-You might want to search for "subview" at [http://backplug.io](http://backplug.ui) or directly at [http://npmjs.org](http://npmjs.org).
+You might want to search for "subview" at [http://backplug.io](http://backplug.io) or directly at [http://npmjs.org](http://npmjs.org).
 
