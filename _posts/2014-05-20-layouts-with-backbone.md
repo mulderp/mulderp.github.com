@@ -59,7 +59,7 @@ More on the view helpers in Thorax can be found [here](http://thoraxjs.org/api.h
 
 Recently, Ryan Eastridge of [FormidableLabs](http://formidablelabs.com/) published a minimalistic version for combining Backbone and Handlebars. The result is [Handlebones](https://github.com/FormidableLabs/handlebones#helpers).
 
-With this, you can re-attach event listeners on subviews, after the "ready" event from the parent view. This is basically a combination of the "setDelegate" idea from the beginning together with the view helpers.
+With this, you can re-attach event listeners on subviews, after the parent view triggers the "ready" event. Arranging multiple views with Handlebones and attaching sub-view rendering to the "ready" event, is basically a variation of the "setDelegate" idea from the beginning. 
 
 For example, if you have a LayoutView, you could listen for the "ready" event as follows:
 
@@ -74,7 +74,7 @@ For example, if you have a LayoutView, you could listen for the "ready" event as
         this.productsList.setElement(productsDiv);
         this.productsList.trigger('render');
 
-        // add all subviews here
+        // add more subviews here as needed
       },
     
       initialize: function(options) {
