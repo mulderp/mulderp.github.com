@@ -5,7 +5,7 @@ layout: post
 ---
 When HTML was first conceived in [1989](http://en.wikipedia.org/wiki/HTML#Development), computers were dealing mainly with textual documents. In the meantime, we are dealing more and more with visual information. With web browsers, we are trying to solve the same problems that were solved with special spreadsheet, charting or slideshow software packages.
 
-Luckily, browsers are perfectly able to do stunning visualizations based on HTML, CSS and [SVG](http://en.wikipedia.org/wiki/Svg). With the HTML5 standard, browsers support the [canvas](http://en.wikipedia.org/wiki/Canvas_element) tag.
+Luckily, browsers are perfectly able to do stunning visualizations based on HTML, CSS and [SVG](http://en.wikipedia.org/wiki/Svg). With the HTML5 standard, browsers also support a new [canvas](http://en.wikipedia.org/wiki/Canvas_element) tag.
 
 Unfortunately, looking at many scientific or engineering websites, most visual data comes as JPG or PNG, instead of code that can be interpreted or adapted as needed.
 
