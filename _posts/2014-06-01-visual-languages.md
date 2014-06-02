@@ -2,6 +2,8 @@
 title: Visual Languages for the Web
 tags: Processing, D3
 layout: post
+images:
+  - /static/images/design_rules.png
 ---
 When HTML was first conceived in [1989](http://en.wikipedia.org/wiki/HTML#Development), computers were dealing mainly with textual documents. In the meantime, we are dealing more and more with visual information. With web browsers, we are trying to solve the same problems that were solved with special spreadsheet, charting or slideshow software packages.
 
@@ -11,7 +13,9 @@ Unfortunately, looking at many scientific or engineering websites, most visual d
 
 Good places to explore visual ideas in browsers are [D3.js](http://d3js.org/) and [ProcessingJS](http://processingjs.org/). Besides support from these general infoviz libraries, there are often specialized JavaScript libraries to solve visual problems. For example, to draw digital waveforms [wavedrom](https://github.com/drom/wavedrom) looks interesting. Or, to draw and interact with small logical circuits, [JointJS](http://www.jointjs.com/demos/logic) looks great. For rendering graphs, Andrei Kashcha's [ngraph](https://github.com/anvaka/ngraph) project looks great and was recently featured in a [TEDx Stanford](https://www.youtube.com/watch?v=8CX-Q0gtSp8) talk.
 
-But besides learning the tricks of libraries, crafting visual languages is important. This requires you to explore encodings and play with stories around graphics. For example at Fluen Conference 2014, Scott Murray shows how [visual interface design](https://speakerdeck.com/alignedleft/interface-design-considerations-for-data-visualization) can be explored with D3 and the [value of process](https://www.youtube.com/watch?v=e1HMmLcnpXg).
+But besides learning the tricks of libraries, crafting visual languages is important. This requires you to explore encodings and play with stories around graphics. For example at Fluen Conference 2014, Scott Murray shows how [visual interface design](https://speakerdeck.com/alignedleft/interface-design-considerations-for-data-visualization) can be explored with D3 and the [value of process](https://www.youtube.com/watch?v=e1HMmLcnpXg):
+
+<img src="{{ page.images[0] }}">
 
 That a design process is important is also emphasized in Ben Fry's [book "Visualizing Data"](http://shop.oreilly.com/product/9780596514556.do), where different stages for visualization design are discussed.
 
