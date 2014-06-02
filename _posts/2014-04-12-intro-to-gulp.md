@@ -49,13 +49,13 @@ What happens here is: You first setup browserify to use a 'jstify' transform and
 
 This task is called 'browserify' and you can call it from the command as follows:
 
-  $ gulp browserify
-  [gulp] Using gulpfile /.../gulptest/gulpfile.js
-  [gulp] Starting 'browserify'...
-  [gulp] Finished 'browserify' after 6.58 s
-  pmu:gulp(master|76m) pmu$ ls -ltr build/
-  total 384
-  -rw-r--r--  1 pmu  staff  194062 12 Apr 17:51 bundle.js
+    $ gulp browserify
+    [gulp] Using gulpfile /.../gulptest/gulpfile.js
+    [gulp] Starting 'browserify'...
+    [gulp] Finished 'browserify' after 6.58 s
+    pmu:gulp(master|76m) pmu$ ls -ltr build/
+    total 384
+    -rw-r--r--  1 pmu  staff  194062 12 Apr 17:51 bundle.js
 
 ## References
 
