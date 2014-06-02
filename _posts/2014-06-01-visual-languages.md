@@ -17,7 +17,7 @@ But besides learning the tricks of libraries, crafting visual languages is impor
 
 <img src="{{ page.images[0] }}">
 
-That a design process is important is also emphasized in Ben Fry's [book "Visualizing Data"](http://shop.oreilly.com/product/9780596514556.do), where different stages for visualization design are discussed.
+That a design process is important to explore data is also emphasized in Ben Fry's [book "Visualizing Data"](http://shop.oreilly.com/product/9780596514556.do), where different stages for visualization design are discussed.
 
 For my goals, the basic visualization goals would be:
 
