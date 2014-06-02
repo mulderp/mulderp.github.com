@@ -62,7 +62,7 @@ Note the usage of [CoffeeScript in the browser](http://coffeescript.org/#scripts
 
 ## Processing.JS
 
-The idea of visualizing things with D3 is a bit different. With Processing, you control drawing more in an imperative way. Processing has been around for a quite a while, and plays an increasingly important role in the [DIY or maker](http://en.wikipedia.org/wiki/Maker_culture) culture.
+The idea of visualizing things with Processing is a bit different. With Processing, you control drawing more in an imperative way. Processing has been around for a quite a while, and plays an increasingly important role in the [DIY or maker](http://en.wikipedia.org/wiki/Maker_culture) culture.
 
 To understand the background of Processing, let's look at this code:
 
