@@ -14,7 +14,7 @@ I’ve been to about a dozen of these presentations in the last year. Public spe
 
 Usability is everywhere. It’s not a thing you do when designing information architecture or storyboards or interaction cues. Usability isn’t a discrete concept or object or discipline. Usability is an ethic, and you can’t avoid it.
 
-Ethics
+## Ethics
 
 Human beings are always in relationship. We’re always bumping into each other, affecting each other, influencing and supporting and worrying about each other. Almost everything you do has an effect on other people. This one truth — simple, but whoa-big — is the foundation of ethics.
 
@@ -24,7 +24,7 @@ Ethics was something I had been thinking about a lot early in my career, as part
 
 Jason Fried of 37signals said it very succinctly: “Most copywriting on the web sucks because it’s written for the writer, not for the reader. Write for the reader. That is all.” Your job is to extend that attitude to everything.
 
-Down to earth
+## Down to earth
 
 This might come as a shock, but people think differently than you do. We all have different mental models, different ways of digesting information. We have different histories, different experiences, different aspirations. This is the beauty of life’s complexity. And because we’re always in relationship, it’s one of life’s greatest challenges.
 
