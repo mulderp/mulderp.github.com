@@ -20,9 +20,9 @@ Human beings are always in relationship. We’re always bumping into each other,
 
 I remember the ton-of-bricks experience of letting this sink in. I started doing everything differently. My code commenting took a huge leap forward, now that I cared about the programmer who would later have to figure out my magic tricks. I wanted them to feel guided, not lost or impressed. Even before I met him, I was in relationship with the next guy. My error messages became gentler, my screen layouts more spacious, my documentation more task-driven.
 
-Ethics was something I had been thinking about a lot early in my career, as part of a philosophical orientation towards life. It was Alan Cooper’s About Face that made the all-important connection between this broad inquiry and my vocation. If you haven’t read his books on usability yet, you owe it to yourself (and to your users!) to get them. He has deep insight into this issue.
+Ethics was something I had been thinking about a lot early in my career, as part of a philosophical orientation towards life. It was [Alan Cooper’s About Face](http://www.amazon.com/gp/product/1568843224/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1568843224&linkCode=as2&tag=goitogro-20&linkId=7YMD5VKVRJ3PCPYV) that made the all-important connection between this broad inquiry and my vocation. If you haven’t read his books on usability yet, you owe it to yourself (and to your users!) to get them. He has deep insight into this issue.
 
-Jason Fried of 37signals said it very succinctly: “Most copywriting on the web sucks because it’s written for the writer, not for the reader. Write for the reader. That is all.” Your job is to extend that attitude to everything.
+Jason Fried of 37signals [said](http://signalvnoise.com/posts/454-why-most-copywriting-on-the-web-sucks) it very succinctly: “Most copywriting on the web sucks because it’s written for the writer, not for the reader. Write for the reader. That is all.” Your job is to extend that attitude to everything.
 
 ## Down to earth
 
