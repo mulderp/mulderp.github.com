@@ -5,7 +5,7 @@ tags: usability ux design
 ---
     
 <blockquote class="twitter-tweet" lang="en">
-In this guest post, [Jeff Bellsey](https://twitter.com/jbellsey) explains what makes an excellent user experience.  Discovering respect and empathy may be hard for most techies, but the "divine spark" is an old concept and often overlooked in our busy digital lifes. Read on to see how the conversation on a (non-)typical meetup talk resulted into a productive learning experience...
+In this guest post, <a href="https://twitter.com/jbellsey">Jeff Bellsey</a> explains what makes an excellent user experience.  Discovering respect and empathy may be hard for most techies, but the "divine spark" is an old concept and often overlooked in our busy digital lifes. Read on to see how the conversation on a (non-)typical meetup talk resulted into a productive learning experience...
 </blockquote>
 
 The presentation was painful. You’ve been there too: the presenter is clearly knowledgeable, articulate, and well-respected. Yet somehow you’re writhing in your seat, bored and a bit annoyed, wondering when it will be over. Why? He failed to connect. 
