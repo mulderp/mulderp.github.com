@@ -13,7 +13,7 @@ Unfortunately, looking at many scientific or engineering websites, most visual d
 
 Good places to explore visual ideas in browsers are [D3.js](http://d3js.org/) and [ProcessingJS](http://processingjs.org/). Besides support from these general infoviz libraries, there are often specialized JavaScript libraries to solve visual problems. For example, to draw digital waveforms [wavedrom](https://github.com/drom/wavedrom) looks interesting. Or, to draw and interact with small logical circuits, [JointJS](http://www.jointjs.com/demos/logic) looks great. For rendering graphs, Andrei Kashcha's [ngraph](https://github.com/anvaka/ngraph) project looks great and was recently featured in a [TEDx Stanford](https://www.youtube.com/watch?v=8CX-Q0gtSp8) talk.
 
-But besides learning the tricks of libraries, crafting visual languages is important. This requires you to explore encodings and play with stories around graphics. For example at Fluen Conference 2014, Scott Murray shows how [visual interface design](https://speakerdeck.com/alignedleft/interface-design-considerations-for-data-visualization) can be explored with D3 and the [value of process](https://www.youtube.com/watch?v=e1HMmLcnpXg):
+But besides learning the tricks of libraries, crafting visual languages is important. This requires you to explore encodings and play with stories around graphics. For example at Fluent Conference 2014, Scott Murray shows how [visual interface design](https://speakerdeck.com/alignedleft/interface-design-considerations-for-data-visualization) can be explored with D3 and the [value of process](https://www.youtube.com/watch?v=e1HMmLcnpXg):
 
 <img src="{{ page.images[0] }}">
 
@@ -59,6 +59,8 @@ Drawing a line with D3 might then look like:
     </script>
 
 Note the usage of [CoffeeScript in the browser](http://coffeescript.org/#scripts). This is not something you would do in a production app, but for exploring ideas, CoffeeScript feels nice here. Also notice, how using D3 can abstract away the coordinate system easily. This might be good or bad, depending on your goals.
+
+D3 is also an important building projects in projects dealing with data management, such as charting libraries as [Epoch](https://github.com/fastly/epoch).
 
 ## Processing.JS
 
