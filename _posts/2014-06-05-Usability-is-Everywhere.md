@@ -10,13 +10,13 @@ In this guest post, <a href="http://www.futureground.net/?utm_source=totmulder&u
 
 The presentation was painful. You’ve been there too: the presenter is clearly knowledgeable, articulate, and well-respected. Yet somehow you’re writhing in your seat, bored and a bit annoyed, wondering when it will be over. Why? He failed to connect. 
 
-I’ve been to about a dozen of these presentations in the last year. Public speaking is a different skill set than programming, we all know that. But that’s not what I’m talking about. See, we’ve also been to talks by presenters who were not terribly good speakers, although they were still excellent communicators. They might have been uncomfortable on stage, but they had good pacing, clear goals, and a respect for your time and attention. Those qualities are available to anyone who strives for them, regardless of stage fright.
+I’ve been to about a dozen of these presentations in the last year. Public speaking is a different skill set than programming, we all know that. But that’s not what I’m talking about. See, we’ve also been to talks by presenters who were not terribly good speakers, although they were still excellent *communicators*. They might have been uncomfortable on stage, but they had good pacing, clear goals, and a respect for your time and attention. Those qualities are available to anyone who strives for them, regardless of stage fright.
 
-Usability is everywhere. It’s not a thing you do when designing information architecture or storyboards or interaction cues. Usability isn’t a discrete concept or object or discipline. Usability is an ethic, and you can’t avoid it.
+Usability is everywhere. It’s not a thing you do when designing information architecture or storyboards or interaction cues. Usability isn’t a discrete concept or object or discipline. Usability is an *ethic*, and you can’t avoid it.
 
 ## Ethics
 
-Human beings are always in relationship. We’re always bumping into each other, affecting each other, influencing and supporting and worrying about each other. Almost everything you do has an effect on other people. This one truth — simple, but whoa-big — is the foundation of ethics.
+Human beings are always in relationship. We’re always bumping into each other, affecting each other, influencing and supporting and worrying about each other. Almost *everything* you do has an effect on other people. This one truth — simple, but whoa-big — is the foundation of ethics.
 
 I remember the ton-of-bricks experience of letting this sink in. I started doing everything differently. My code commenting took a huge leap forward, now that I cared about the programmer who would later have to figure out my magic tricks. I wanted them to feel guided, not lost or impressed. Even before I met him, I was in relationship with the next guy. My error messages became gentler, my screen layouts more spacious, my documentation more task-driven.
 
@@ -30,9 +30,9 @@ This might come as a shock, but people think differently than you do. We all hav
 
 When you teach or write code or design interfaces, are you conscious of this challenge? Are you aware of how people are receiving you? Or are you just dumping, forcing people to think the way you do (or assuming they already do)? What kind of contact are you making? Is your communication ethical, in the way I just described? Are you guiding and creating joy and insight, or adding to confusion, frustration, even cynicism? Are you showing respect and care, or just being lazy?
 
-There is no simple prescription in this post. You won’t find me saying something like “keep your presentations modest” or “always over-comment your code.” There’s nothing modest about [Hyperloops](http://www.spacex.com/hyperloop) or [Cosmos](http://www.cosmosontv.com/) or [Capital in the Twenty-First Century](http://www.amazon.com/gp/product/067443000X/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=067443000X&linkCode=as2&tag=goitogro-20&linkId=PDWF53HV5SU6HEUO), and that’s a good thing. With apologies to my forebears, there are no “Ten Commandments of Ethics” that have general applicability, no rules of thumb that guarantee you’ll make contact with your users and your audience. 
+There is no simple prescription in this post. You won’t find me saying something like “keep your presentations modest” or “always over-comment your code.” There’s nothing modest about [Hyperloops](http://www.spacex.com/hyperloop) or [*Cosmos*](http://www.cosmosontv.com/) or [*Capital in the Twenty-First Century*](http://www.amazon.com/gp/product/067443000X/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=067443000X&linkCode=as2&tag=goitogro-20&linkId=PDWF53HV5SU6HEUO), and that’s a good thing. With apologies to my forebears, there are no “Ten Commandments of Ethics” that have general applicability, no rules of thumb that guarantee you’ll make contact with your users and your audience. 
 
-The real prescription is simpler and more challenging: you have to care. If you aspire to greater care and empathy as a person and as a technologist, your presentations will connect, your code will self-document, your designs will delight. If you bring a passion for character development along with your love of learning and creating, your users will feel it.
+The real prescription is simpler and more challenging: you have to *care*. If you aspire to greater care and empathy as a person and as a technologist, your presentations will connect, your code will self-document, your designs will delight. If you bring a passion for character development along with your love of learning and creating, your users will feel it.
 
 Usability is everywhere. Ethics are everywhere. The more care you show for your users, the more successful you will be.
 
