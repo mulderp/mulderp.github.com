@@ -3,9 +3,11 @@ title: CommonJS for the database
 layout: post
 tags: arangodb data
 ---
-The [ActiveRecord]( ... ) pattern is an important building block to explore and query data. With NoSQL and JavaScript, you can easily organize your queries and data in a similar way. Although a [number of document stores](https://www.arangodb.org/2012/11/13/comparing-arangodb-with-mongodb-and-couchdb) provide JSON support, ArangoDB and its support of CommonJS modules stand out. Let's see why with an example of data coming from the Kimono Labs WorldCup football API.
+The [ActiveRecord]( ... ) pattern is an important building block to explore and query data. With NoSQL and JavaScript, you can easily organize your queries and data in a similar way.
 
-After reading this post, you should have an idea about:
+Although a [number of document stores](https://www.arangodb.org/2012/11/13/comparing-arangodb-with-mongodb-and-couchdb) provide JSON support, ArangoDB and its support of CommonJS modules stand out.
+
+Let's see why with an example of data coming from the Kimono Labs WorldCup football API. After reading this post, you should have an idea about:
 
 * Exploring a data set with JavaScript and ArangoDB
 * Using CommonJS modules to encapsulate data and queries
