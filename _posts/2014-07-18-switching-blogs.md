@@ -15,7 +15,7 @@ So, unfortunately, my first idea of supporting "research & development" projects
 
 Yet living in Germany, and Bavaria especially, there is one kind of product that makes a number of companies successfull: Cars.
 
-First, the business models of cars is clear: Buy parts, assemble these, and sell the result at a higher price than the total costs of the parts. With the dawn of the electrical car and new mobility models, there are plenty of companies that invest in R&D currently. And while cars are all around us, the requirements on ther parts are heavily changing.
+First, the business models of cars is clear: Buy parts, assemble these, and sell the result at a higher price than the total costs of the parts. With the dawn of the electrical car and new mobility models, there are plenty of companies that invest in R&D currently. And while cars are all around us, the requirements on their parts are heavily changing.
 
 As an important side-effect, it is the automotive industry, where I found my first good, interesting freelance project.
 
