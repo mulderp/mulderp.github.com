@@ -21,7 +21,7 @@ As an important side-effect, it is the automotive industry, where I found my fir
 
 I am currently supporting a company with R&D of new car products. While it is not directly a software project, I can apply my ideas on software perfectly. Me and my team members are the users of my software products, the problems the software must solve are very clear too.
 
-Due to nature of my contract, the work is not open-source, at least not from the implementation point of view. When working with these large comapanies, specifications and protocols are partly open. But how the specs are achieved or the protocols are implemented, is part of the company secrets, and part of their business model.
+Due to nature of my contract, the work is not open-source, at least not from the implementation point of view. When working with these large companies, specifications and protocols are partly open. But how the specs are achieved or the protocols are implemented, is part of the company secrets, and part of their business model.
 
 Luckily, with my learnings on writing [a book for O'Reilly](http://shop.oreilly.com/product/0636920030799.do) and a comment of [Nathen Seidle](https://www.sparkfun.com/pages/Nathan) on [open-source hardware](https://news.ycombinator.com/item?id=8043157),  I got some fresh perspectives on how digital products can be built with an open-source approach, albeit hardware products.
 
