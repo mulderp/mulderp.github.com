@@ -63,17 +63,13 @@ Which we would render into:
 
 If we would want to sort the data on the votes, while tracking updates on the votes, quite some manual control would be needed. Maybe not for a dozen of data rows, but certainly if the amount of data increases into the hundreds or thousands. It's here where the Virtual DOM of [React](http://facebook.github.io/react/) might help you.
 
-Anyway, the important point is that observing changes in key-value properties has its limits, while continuous DOM updates are not advisable either. The constraints and needs for synching DOM and state was also the background of [a talk that I gave at the JavaScript meetup in San Francisco](https://speakerdeck.com/mulderp/backbone-and-handlebars) Tuesday. Unfortunately, I struggled a bit explaining the mapping of key-value properties to the DOM and why we should care.
+When dealing with user inputs, observing changes in key-value properties can be tricky. But continuous DOM updates are not advisable either.
 
-Therefore, apart from the fundamental concepts on synching state and the DOM, there are always custom business requirements to consider, when we setup a rendering strategy in a web application. An editor type of application might need better data-binding, than a product browser. A social network with realtime feedback, might need even more advanced rendering strategies. A shop for Ecommerce might support for server-side rendering too.
+The constraints and needs for synching DOM and state was also the background of [a talk that I gave at the JavaScript meetup in San Francisco](https://speakerdeck.com/mulderp/backbone-and-handlebars).
+
+There are always custom business requirements to consider, when we setup a rendering strategy in a web application. An editor type of application might need better data-binding, than a product browser. A social network with realtime feedback, might need even more advanced rendering strategies. A shop for Ecommerce might support for server-side rendering too.
 
 Let me know if this post is clear, or if I make some flaws in the argumentation.
-
-
-
-
-
-
 
 
 
