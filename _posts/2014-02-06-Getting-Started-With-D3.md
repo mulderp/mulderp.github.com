@@ -55,24 +55,23 @@ To make a first mapping, we first define nodes:
 
 Since we start with a fresh canvas, all nodes will be new, and we can map these with "selectAll" - "data" - "enter":
 
-     var node = vis.selectAll("circle.node")
-        .data(nodes)
-        .enter().append("g")
-        .attr("class", "node")
+      vis.selectAll("circle.nodes")
+         .data(nodes)
+         .enter()
+         .append("svg:circle")
+         .attr("cx", function(d) { return d.x; })
+         .attr("cy", function(d) { return d.y; })
 
-     node.append("svg:circle")
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
-        .attr("r", "10px")
-        .attr("fill", "black");
+And to actually see the circles, we must set the fill attribute:
 
-     
-     vis.selectAll("circle.nodes")
-        .data(nodes)
-        .enter()
-        .append("svg:circle")
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
+      vis.selectAll("circle.nodes")
+          .data(nodes)
+          .enter()
+          .append("svg:circle")
+          .attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; })
+          .attr("r", "10px")
+          .attr("fill", "black") 
 
 This should result into something like:
 
