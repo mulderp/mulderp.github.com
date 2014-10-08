@@ -3,7 +3,7 @@ title: JavaScript matters for prototypes
 layout: post
 tags: firebase, backbone
 ---
-Building [visual languages](http://thinkingonthinking.com/visual-languages/) are key for reaching the goals of your products. Visual languages can be woven into [page navigation](http://www.nngroup.com/articles/flat-vs-deep-hierarchy/), [the content](https://signalvnoise.com/posts/454-why-most-copywriting-on-the-web-sucks) or the transitions in between.
+Building [visual languages](http://thinkingonthinking.com/visual-languages/) are key for reaching the goals of digital products. For web apps, visual language is woven into [page navigation](http://www.nngroup.com/articles/flat-vs-deep-hierarchy/), [the content](https://signalvnoise.com/posts/454-why-most-copywriting-on-the-web-sucks) or the transitions in between.
 
 Why would you, as PHP or Ruby developer, want to start with JavaScript and Node, *before* doing "cleaner" OOP design?
 
@@ -13,7 +13,7 @@ Sorry if you were in the audience of my talk. You were probably wondering what t
 
 The message was: HTML and JavaScript is a great medium [to inspire action](http://blog.ted.com/2010/05/04/how_great_leade/).  And, with [nobackends](http://nobackend.org/) it has never been easier. 
 
-This can be seen from the following 10 steps, from zero to working prototype of [a goal sharing app](http://burners.divshot.io/).
+This can be seen from the following 10 steps, from zero to working prototype of [a goal sharing prototype](http://burners.divshot.io/).
 
 # 0)  Goals of the app
 
@@ -84,11 +84,9 @@ So far, we mainly stayed with JS and some build processes. It is time to more st
 
 # 10) Enjoy!
 
-Finished. By setting the access rights of Firebase, you can easily change your goals from the admin interface. Take a look [at the goals I hade before my summer holidays](http://burners.divshot.io/). Did I reach my goals? Well, it depends. I found out what will matter most to me, in the upcoming months. And, more important, I did not lose (too much) time, with writing code, I probably won't need anyway.
+Finished. By setting the access rights for your data at Firebase, you can easily change who can read and write goals. The goals I had before summer are public now. [Take a look!](http://burners.divshot.io/). Did I reach my goals in the meanwhile? Well, it depends. I found out what will matter most to me. And, more important, I did not lose (too much) time, with writing code, I probably won't need anyway.
 
 So, the code repository is [here](https://github.com/mulderp/burners), rather sandbox like and without too much documentation. If you want to learn more on Node.js or Backbone.js, I suggest you take a look [at my book](http://pipefishbook.com/).
-
-
 
 
 
