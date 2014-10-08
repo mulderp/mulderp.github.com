@@ -1,86 +1,92 @@
 ---
-title: impress a technical audience
+title: JavaScript matters for prototypes
 layout: post
 tags: firebase, backbone
 ---
-the browser connects you - your business most likely - with a user. someone who might pay you for a problem that you or your software can solve. writing software is about helping someone achieve her goals. 
+Building [visual languages](http://thinkingonthinking.com/visual-languages/) are key for reaching the goals of your products. Visual languages can be woven into [page navigation](http://www.nngroup.com/articles/flat-vs-deep-hierarchy/), [the content](https://signalvnoise.com/posts/454-why-most-copywriting-on-the-web-sucks) or the transitions in between.
 
-In software for the web, it is what is visible in the browser that we should focus on.
+Why would you, as PHP or Ruby developer, want to start with JavaScript and Node, *before* doing "cleaner" OOP design?
 
-the other side, the backend is often waste of time. at least, if you serve a dozen of users initially.
+Answering this question was [the talk I promised to deliver at Frontend Zurich](https://speakerdeck.com/mulderp/minimum-viable-interactions). Unfortunately, I did not quite get there back then.
 
-so, how can you show something - in the browser - that is functional, but does not require ages to setup? Why would you build a truck that can deliver tons of stuff, when you only need a bycycle to deliver a small manuscript book? 
+Sorry if you were in the audience of my talk. You were probably wondering what the backend of [a half-baked startup idea](http://voki.me/) has to do with frontend technology? 
 
-Answering this question was the talk I promised to deliver at Frontend Zurich, but I screwed up. I wanted to show how easy it is to iteratively build a prototype without touching the backend. 
+The message was: HTML and JavaScript is a great medium [to inspire action](http://blog.ted.com/2010/05/04/how_great_leade/).  And, with [nobackends](http://nobackend.org/) it has never been easier. 
 
-Sorry if you were in the audience of my talk, I am learning. and the last part of my talk - about a small project I did with Firebase - resonated with quite some folks in the audience, luckily. 
+This can be seen from the following 10 steps, from zero to working prototype of [a goal sharing app](http://burners.divshot.io/).
 
-So, here are 10 steps to get quicker "out of the building" with a web "app":
+# 0)  Goals of the app
 
-0) Write a small todo.txt
+Without structure, a basic idea outline, it will be hard to arrive somewhere. So, the goals of the [burners](http://burners.divshot.io/) app are:
 
-without structure, a basic idea outline, it will be hard to arrive somewhere. so, the goals of this app is:
+* define your goals for the next X weeks
+* share the goals with someone else via a web browser
+* provide basic functions for setting priorities
 
-* track my goals for the next X weeks
-* have someone else review the goals
-* allow a sorting function 
+Note: If you were using Ruby or Java, your reflex would tell you, write testcases first. But for this blog post, I want to *skip* writing tests. The main test of the app will be whether a user *grasps its purpose*.
 
-Note, that I don't move on to writing tests, which would probably be required in a bigger project. Our goal to show something working, quickly. TDD is nice to explore some specification in a large projct, but who knows, maybe we throw away the prototype next week, so let's skip tests from here.
+# 1)  Init divshot 
 
-# 1)  use divshot init
+To get some raw HTML, I like:
 
-with divshot init, you get an empty page. basic html. and you can deploy the project quickly from now on and get valuable user feedback
+    $ divshot init
 
-# 2)  do npm init
+[divshot](https://www.npmjs.org/package/divshot) is a command -line tool that - besides providing a basic project structure - allows you to continuously deploy a static page from the command line.
 
-you want to make use of the world's largest code repository don't you? for this, you need to track and add some packages from npm.
+# 2)  Init npm
+
+For re-using code, you want to make use [of the world's largest code repository](http://www.modulecounts.com/), don't you? So, before going further, make sure you have a valid package.json. One way to do this, is:
+
+    $ npm init
 
 
 # 3)  Get your favorite JS libs
 
-You need to provide some easy ways to scaffold layouts. For example, with a Backbone project, you would do:
+Next, you could use [yeoman](http://yeoman.io/) to fetch some basic libraries and a project structure. Actually, I am quicker by hand for simple prototypes:
 
-  $ npm install -d underscore jquery-untouched backbone
+    $ npm install -d underscore jquery-untouched backbone
 
-Now, you can easily handle events from users as well as issue Ajax requests.
-
+With these libs, you can easily handle browser events, DOM manipulations, as well as run [XMLHttpRequest (or Ajax)](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started) requests.
 
 # 4)  Setup a build process
 
-Browser apps are special in that sense, that they require us developers to think, how to package an app (and to make some trade-offs with MVC).
+Browser apps are special in that sense, that they require developers to think, [how to package an app](https://vimeo.com/62988591).
 
-In this example, I chose a Makefile. Not much is simpler. To build the frontend part, I chose browserify.
+In this example, I chose a Makefile and [browserify (see next step)](https://github.com/substack/node-browserify). Not much, is simpler.
 
 # 5) Setup Browserify
 
-I like the idea of sharing code between browser and server environments. With browserify, you can simply do:
+I like the idea of sharing structures between browser and server [REPL environments](http://thinkingonthinking.com/scripting-a-csv-converter/).  To sort and poke with your goals, you want to write something along:
 
-   app = require('app')
+    > goals = require('collections/goals')
 
-and experiment directly with your app in the browser console.
-
+The same as on the server! And, you can experiment directly with your goals in a console, (e.g. extend sort logic), no matter where.
 
 # 6) Templates
 
-Much of what we think is good relates to putting data into templates.
-
+Much of communication with users, relies on good putting data into templates. I like [handlebars](https://github.com/wycats/handlebars.js/), and with [handlebones](https://github.com/FormidableLabs/handlebones), it combines great with Backbone.js.
 
 # 7) Backend and admin interface
 
-Compared to the other points, it is here where we can leverage most to get something working. I like the idea of backend-as-a-service. As first step, you need accounts and setup some data there. So, you do this in this step. On a sidenote, you can use Firebase later for a basic admin service too.
+Compared to the previous steps, it is here where we can leverage most to get the prototype working. A number of [backend as a services](https://blog.engineyard.com/2014/backend-as-a-service) are interesting. Especially, I think the [open-source ArangoDB and Foxx](https://www.arangodb.org/foxx) have a nice future. But stying with today, as first step, let's take [Firebase](https://www.firebase.com/).
 
+On a sidenote, you can use Firebase later for a basic admin service too. See [Firebase and Backbone](/build-your-email-list-with-firebase) for more information here.
 
 # 8) Wire up the backend 
 
-If you use backbone, you basically wire up Backbone collections to Firebase. 
+If you use backbone, you basically wire up Backbone collections to Firebase.  You can find some directions on this in [my book](http://pipefishbook.com) or at its [code repository](https://github.com/pipefishbook/ch_7/tree/master/firebase).
 
 
-# 9) Fill up HTML and CSS
+# 9) Fill up the HTML and CSS
 
-So far, we just coded JS. It is time to add static assets (Well, when JS is packaged, JS are static files too).
+So far, we mainly stayed with JS and some build processes. It is time to more static assets, such as HTML and some basic CSS. (Note: I am not a CSS wizard, so, feel free to comment how to make my CSS better.) 
 
 
 # 10) Enjoy!
+
+Finished. By setting the access rights of Firebase, you can easily change your goals from the admin interface. Take a look [at the goals I hade before my summer holidays](http://burners.divshot.io/). Did I reach my goals? Well, it depends. I found out what will matter most to me, in the upcoming months. And, more important, I did not lose (too much) time, with writing code, I probably won't need anyway.
+
+So, the code repository is [here](https://github.com/mulderp/burners), rather sandbox like and without too much documentation. If you want to learn more on Node.js or Backbone.js, I suggest you take a look [at my book](http://pipefishbook.com/).
 
 
 
