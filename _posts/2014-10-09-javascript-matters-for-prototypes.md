@@ -66,9 +66,9 @@ The same as on the server! And, you can experiment directly with your goals in a
 
 Much of communication with users, relies on good putting data into templates. I like [handlebars](https://github.com/wycats/handlebars.js/), and with [handlebones](https://github.com/FormidableLabs/handlebones), it combines great with Backbone.js.
 
-# 7) Backend and admin interface
+# 7) Backend and admin interface with Firebase
 
-Compared to the previous steps, it is here where we can leverage most to get the prototype working. A number of [backend as a services](https://blog.engineyard.com/2014/backend-as-a-service) are interesting. Especially, I think the [open-source ArangoDB and Foxx](https://www.arangodb.org/foxx) have a nice future. But stying with today, as first step, let's take [Firebase](https://www.firebase.com/).
+Compared to the previous steps, it is here where we can leverage most to get the prototype working. A number of [backend as a services](https://blog.engineyard.com/2014/backend-as-a-service) are interesting. Especially, I think the [open-source ArangoDB and Foxx](https://www.arangodb.org/foxx) have a nice future. But staying with today, as first step, let's take [Firebase](https://www.firebase.com/).
 
 On a sidenote, you can use Firebase later for a basic admin service too. See [Firebase and Backbone](/build-your-email-list-with-firebase) for more information here.
 
