@@ -79,7 +79,7 @@ If you use backbone, you basically wire up Backbone collections to Firebase.  Yo
 
 # 9) Fill up the HTML and CSS
 
-So far, we mainly stayed with JS and some build processes. It is time to more static assets, such as HTML and some basic CSS. (Note: I am not a CSS wizard, so, feel free to comment how to make my CSS better.) 
+So far, we mainly stayed with JS and some build processes. It is time to add more static assets, such as HTML and some basic CSS. (Note: I am not a CSS wizard, so, feel free to comment how to make my CSS better.) 
 
 
 # 10) Enjoy!
