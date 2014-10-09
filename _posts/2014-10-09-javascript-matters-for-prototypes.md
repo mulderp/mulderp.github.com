@@ -44,7 +44,7 @@ For re-using code, you want to make use [of the world's largest code repository]
 
 Next, you could use [yeoman](http://yeoman.io/) to fetch some basic libraries and a project structure. Actually, I am quicker by hand for simple prototypes:
 
-    $ npm install -d underscore jquery-untouched backbone
+    $ npm install --save -d underscore jquery-untouched backbone
 
 With these libs, you can easily handle browser events, DOM manipulations, as well as run [XMLHttpRequest (or Ajax)](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started) requests.
 
