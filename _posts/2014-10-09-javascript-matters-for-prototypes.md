@@ -88,5 +88,6 @@ Finished. By setting the access rights for your data at Firebase, you can easily
 
 So, the code repository is [here](https://github.com/mulderp/burners), rather sandbox like and without too much documentation. If you want to learn more on Node.js or Backbone.js, I suggest you take a look [at my book](http://pipefishbook.com/).
 
+<bold>Edit:</bold>This post got some [nice feedback](http://www.reddit.com/r/javascript/comments/2iqrb3/javascript_matters_for_prototyping/cl4ogg2) at Reddit. Espeically, [insert-css](https://www.npmjs.org/package/insert-css) looks nice!
 
 
