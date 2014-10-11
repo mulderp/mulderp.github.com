@@ -21,13 +21,13 @@ Also, you will need a renderer module, to see something in the browser, or even 
 
 # Graphs applied
 
-To round this post up, some inspiration what you can do with graphs.
+So, to provide some context for future blog posts, some inspiration what you can do with graphs.
 
 First, in her [TED talk](https://www.youtube.com/watch?v=8CX-Q0gtSp8&t=10m10s), [Margo Gerritsen](https://earth.stanford.edu/margot-gerritsen) discusses some foundations for beauty behind matrices and graphs. A matrix can easily represent links in a graph with 0's and 1's. So, when talking about graphs, we are equally talking about matrices (at least, what I got from the talk.)
 
-Besides great usage in sciences, studying links in graphs can give you practical insights and is just fun. For example, Andrei created an app to visualize [your connections in facebook](http://www.yasiv.com/facebook). For my facebook profile (which I don't actively maintain), it looks like:
+Besides great usage in sciences, studying links in graphs can give you practical insights and is just fun. For example, Andrei created an app to visualize [your connections in Facebook](http://www.yasiv.com/facebook). For my Facebook profile (which I don't actively maintain), it looks like:
 
 <img src="/static/images/facebook_graph.png" />
 
-It is rather interesting to see, how the graphs consists of different "planets", where there are not many people inter-linked (or connected), on a geographical scale. I only have one friend, who is a link between 2 planets. The other way round, it tells the story that my friends with certain interests live at certain locations. Probably, the graph of my web and Twitter friends would look rather distributed too.
+It is rather interesting to see, how the graphs consists of different "planets" (= the gray clouds). Not many people are inter-linked (or connected), on a geographical scale. In fact, only one friend in Facebook links 2 locations. Also, the graph tells the story about my friends with certain interests live at certain locations. Probably, the graph of my web and Twitter friends would look much more distributed.
 
