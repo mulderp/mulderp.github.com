@@ -5,7 +5,7 @@ tags: graphs javascript
 ---
 [Graphs](http://en.wikipedia.org/wiki/Graph_(mathematics)) are about connected data.
 
-And, connections are useful: Look at Google graph for ranking keywords, Facebook or LinkedIn to see your social connections, or [yasiv](http://www.yasiv.com/) to explore connection between products at Amazon.
+And, connections are useful: Look at Google graph for ranking keywords, Facebook or LinkedIn to see your social connections, or [yasiv](http://www.yasiv.com/) to explore connections between products at Amazon.
 
 In the space of open-source graph modeling and rendering, the work by [Andrei Kaschcha](https://github.com/anvaka) is great.
 
@@ -17,7 +17,7 @@ Just after [@substack](https://github.com/substack) gave his talk on [browserify
 
 To understand what ngraph is about, it is most helpful to open a [package.json](https://github.com/anvaka/ngraph/blob/master/examples/pixi.js/01%20-%20Basic/package.json) in one of the examples. The dependencies of package.json show references to the [ngraph.generators](https://github.com/anvaka/ngraph.generators) and a [graph layouter](https://github.com/anvaka/ngraph.forcelayout).
 
-Also, you will need a renderer module, to see something in the browser, or even in 3D. Especially interesting, Andrei is working on a [SVG renderer](https://github.com/anvaka/ngraph.vivasvg). As I work with SVG in my own projects, I hope to explore this direction in some future blog posts, too.
+Also, you will need a renderer module, to see something in the browser, or even in 3D. Especially interesting, Andrei is working on a [SVG renderer](https://github.com/anvaka/ngraph.vivasvg) and a [DOM renderer](git@github.com:anvaka/vivasvg.git). As I work with SVG in my own projects, I hope to explore this direction in some future blog posts, too.
 
 # Graphs applied
 
