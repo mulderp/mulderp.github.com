@@ -9,7 +9,7 @@ And, connections are useful: Look at Google graph for ranking keywords, Facebook
 
 In the space of open-source graph modeling and rendering, the work by [Andrei Kaschcha](https://github.com/anvaka) is great.
 
-I had heard from Adnrei before, but I was lucky to meet him in person at [JSFest](http://lanyrd.com/2014/jsfest/) in San Francisco in March this year.
+I had heard from Andrei before, but I was lucky to meet him in person at [JSFest](http://lanyrd.com/2014/jsfest/) in San Francisco in March this year.
 
 Just after [@substack](https://github.com/substack) gave his talk on [browserify](https://vimeo.com/62988591), Andrei talked about how he was working on re-writing his [VivaGraph](https://github.com/anvaka/VivaGraphJS) project into a [modular form with Browserify](https://www.youtube.com/watch?v=Kp377p-NSFc).  This refactoring resulted into [ngraph](https://github.com/anvaka/ngraph).
 
