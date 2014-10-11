@@ -5,7 +5,7 @@ tags: graphs javascript
 ---
 [Graphs](http://en.wikipedia.org/wiki/Graph_(mathematics)) are about connected data.
 
-And connections are useful: Look at Google graph for ranking keywords, Facebook or LinkedIn to see your social connections, or [yasiv](http://www.yasiv.com/) to explore connection between products at Amazon.
+And, connections are useful: Look at Google graph for ranking keywords, Facebook or LinkedIn to see your social connections, or [yasiv](http://www.yasiv.com/) to explore connection between products at Amazon.
 
 In the space of open-source graph modeling and rendering, the work by [Andrei Kaschcha](https://github.com/anvaka) is great.
 
