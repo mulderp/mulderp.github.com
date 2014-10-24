@@ -11,7 +11,7 @@ For example, when I started programming with a C64 and later with MS-DOS, render
 
 With web applications today, as you can read in [my book](http://pipefishbook.com/), rendering and interactions often happen by observing changes in key-value pairs in JavaScript, and updating the browser's DOM accordingly.
 
-Yet with increasing levels of interactions, things stay difficult. Why should we observe large state objects and update manually the DOM? Why not, having a computer re-render everything, all time time?
+Yet with increasing levels of interactions, things stay difficult. Why should we observe large state objects and update manually the DOM? Why not, having a computer re-render everything, all time?
 
 As [Jordan Walke explains in this talk](https://www.youtube.com/watch?v=GW0rj4sNH2w) at JSconf 2013, this is what React does. React knows the state of pixels in the browser *at any time*. As such, you can stop worrying about events from users, and conflicting DOM updates, and have React [synchronize the DOM with data over time](http://thinkingonthinking.com/key-value-pairs/).
 
