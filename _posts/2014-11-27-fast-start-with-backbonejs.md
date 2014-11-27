@@ -1,72 +1,84 @@
 ---
-title: Backbone.js explained on one page
+title: A faster start with Backbone.js
 layout: post
 tags: Backbone JavaScript
 ---
 
-Some of the critical voices on the Pipefishbook say, that it talks too much about tools and modules.
+There is a saying by [Sam Goldwyn](http://en.wikipedia.org/wiki/Samuel_Goldwyn): 
 
-It is true, Backbone is a frontend library, and as such let's look at a one pager that may 
-be a nicer introduction, if your background is more frontend development.
+    "Don't pay any attention to the critics. Don't even ignore them."
 
-First, we need some basic HTML. HTML provides some rendering structure for the browser, as well as a "gerüst" to load JavaScript.
+And some of the critical voices on the [Pipefishbook](http://pipefishbook.com) say, that the book focusses too much on JavaScript tools instead of discussing Backbone.
 
-The HTML would look like:
+It is true: [Backbone.js](http://backbonejs.org) is a frontend library. Frontend means HTML. Frontend often means [JQuery](http://jquery.org) too. And indeed, intoducing Backbone is very well possible without mentioning modules or dependency managers in the first place.
 
-<html>
-  <head>
-  </head>
-  <body>
-  </body>
-</html>
+So, let's start with seeds for a browser drawing app with Backbone.js, hmm... better: [An SVG rectangle coloring app](http://backbonesvg.divshot.io/) since it will be enough to show what Backbone is about.
 
-In the meanwhile, I like the divshot command line tool, divshot init, that provides some HTML for starting. Another popular optinon includes Yeoman, which is dicussed in the pipefishbook too.
+<img src="/static/images/drawing_app.png" />
 
-Once a basic HTML is setup, we must include some libraries to load Backbone. If you have a newtwork connection, the simplest way is including some references to CDNs entries.
+# The index.html
 
-So, let's include those as follows:
+To start with browser interactions, you need some basic HTML. A simple HTML "gestalt" may look like:
 
-<html>
-  <head>
-    <script ... >
-  </head>
-  <body>
-  </body>
-</html>
+    <html>
+      <head>
+      </head>
+      <body>
+      </body>
+    </html>
 
-Now we are set to actually build a Backbone app. Let's paint a mini map with SVG.
+Once a basic HTML is setup, you must include JavaScript libs, i.e. Backbone and its dependencies [Underscore](http://underscorejs.org) and jQuery... If you have a network connection, the simplest way is including some references to CDNs entries:
 
-First, let's add some data:
 
-var drawing = [
-  {id: 1, x1: 20, y1: 20, x2: 100, y2: 100, color: '#ff0000'}, 
-  {id: 2, x1: 420, y1: 220, x2: 500, y2: 400, color: '#00ff00'}
-];
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js">
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js">
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js">
 
-Starting with data has the advantage that you get a feeling for the abstractions you are working with. You don't build a car from the outside in. Similarly, you better build a user interface from the inside-out.
+Those libs are rather small and may be included in the HTML header above. Note: JavaScript modules and dependeny managers can help you bundling external dependencies and improve app performance. But this blog post is not yet the place to discuss this.
 
-But, if thinking in DOM nodes is more your thing, no worries.  We come there in a second.
+First breath out. We are now set to actually build a Backbone app!
 
-First, let's wrap the raw data in a Backbone collection and models. With the Backbone API for data, it is easy to observe data changes, or to sort and filter data.
+# Building the Data layer
 
-The basic setup for Backbone models and collection is the following:
+The next design step is about adding dummy data for a drawing. This may conflict with your instinct of adding SVG shapes directly. But separting a UI from "business logic" will save you some headaches in the long run.
 
-  var Rectangle = Backbone.Model.extend({});
+So, here is the data:
 
-  var Rectangles = Backbone.Collection.extend({
-    model: Rectangle
-  });
+    var drawing = [
+      {id: 1, x1: 20, y1: 20, x2: 100, y2: 100, color: '#ff0000'}, 
+      {id: 2, x1: 420, y1: 220, x2: 500, y2: 400, color: '#00ff00'}
+    ];
 
-You can now work with instances of rectangles as follows:
+By starting with data first has the advantage that you get a feeling for the abstractions you are working with. You don't build a car from the outside in, but from the inside out based on an engine. Similarly, the data is the engine of your UI.
 
-  var rectangles = new Rectangles(drawing);
+If you are still thinking DOM nodes are your thing, no worries.  We come to that in a second.
 
-In principle, you could change properties of the rectangles via the Backbone API. You could try to sort and filter the rectangles with native Backbone commands, but you can consult a book for this (ideally, the pipefishbook). 
+First, let's wrap the raw drawing data in a Backbone [collection](http://backbonejs.org/#Collection) and [models](http://backbonejs.org/#Model). With the Backbone API's for data, it is easy to change and observe data changes.
 
-The fun of a UI is in rendering, and capturing events from a user. This is where Backbone views come in. For example, rendering the rectangles could be done with the following Backbone view.
+For the coloring app, the basic setup for Backbone models and collection is the following:
 
+    var Rectangle = Backbone.Model.extend({});
+  
+    var Rectangles = Backbone.Collection.extend({
+      model: Rectangle
+    });
+
+In your JavaScript, you can now work with instances of rectangles as follows:
+
+    var rectangles = new Rectangles(drawing);
+
+In principle, you could now change properties of the rectangles. You also could sort and filter the rectangles with native Backbone commands. For this, you can consult a book (ideally, the Pipefishbook). 
+
+# Rendering the UI
+
+The fun of UI's is in rendering. And, in capturing events from users. This is where the other half of Backbone.js comes in. For example, rendering rectangles could be done with Backbone.View as follows:
+
+       // the scene class extends a Backbone view
        var Scene  = Backbone.View.extend({
 
+         // renders an SVG rectangle from a shapes collection
          render: function() {
            var el = this.$el;
            this.collection.each(function(model) {
@@ -83,16 +95,20 @@ The fun of a UI is in rendering, and capturing events from a user. This is where
 
        })
 
+Within the render function, you normally would call a template function. For learning, constructing a DOM node "manually" just works fine.
+
+Note, rendering happens in a context, often directly after the page load event:
+
       var scene;
       $(document).ready(function() {
         scene = new Scene({el: $('svg'), collection: rectangles });
       });
 
-Within the render function, you normally would call a template function, but for learning, the above approach will work fine.
+# Capturing user events
 
-Next, and last, you want to offer some way to have user influence the rendered objects. For this, let's hook into the mouse events of a user. Backbone provides a property "events" for this.
+Next, and last, you want to offer some way to have user influence the rendered objects. For this, let's hook into the mouse events of a user. A Backbone.View provides a property "events" for this.
 
-Working with events is one of the more complicated parts in a user interface. So, here only a basic approach. Once an event occurs, we call the event handler. This looks as follows:
+Working with events can quickly become complicated. To kepp it simple, let's show an approach to handle click events. This gives:
 
        var Scene  = Backbone.View.extend({
 
@@ -105,19 +121,26 @@ Working with events is one of the more complicated parts in a user interface. So
            var rect = this.collection.get(id);
            rect.set('color', getRandomColor());
          },
-   
+
          // ...
+   
+         // binding events to data changes is important too:
+        initialize: function() {
+          this.listenTo(this.collection, 'change:color', this.render);
+        }
 
       });
 
-You see, the app size slowly increases. And there is new function getRandomColor(). But the main point right now is that, a view provides changes events to the data layer. And, the view re-renders as needed.
+You see, the app size slowly increases. There is even new function getRandomColor(). But the main point right now: We capture events from users, and bind a view provides to change events in the data layer. The view re-renders as needed.
 
+# Going further
 
-Because we have the conceptual model of the UI in Backbone collections and models, we can also set the color from the browsers development console. Open it, and try it:
+Because we have the conceptual model of the UI in Backbone collections and models, you can set the color from the browsers from other sources, than from user events, remote or from development console for example. Try the development console, open it, and try:
 
-  > rectangles
-  > r = rectangles.get(1)
-  > r.set('color', 'black')
+    > rectangles
+    > r = rectangles.get(1)
+    > r.set('color', 'black')
 
+Now, the color of the rectangles changes. Well, a "real" drawing app takes much more work. And you will be faced to re-use ideas and code for drawing circles or lines. Even, the simple function getRandomColor() is just copy and pasted from [here](http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript). Ideally, you could make code re-use easier. It is here where JavaScript module formats come in, such as CommonJS or RequireJS. Consult the [Pipefishbook](http://pipefishbook.com) for more info's or leave me feedback. Thanks for reading!
 
-function getRandomColor(). This is a copy and past code from [here](http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript). 
+Checkout the [demo](http://backbonesvg.divshot.io/).  Or the small [repo](https://github.com/pipefishbook/rectangle_coloring).
