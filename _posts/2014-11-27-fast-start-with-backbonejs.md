@@ -81,13 +81,15 @@ The fun of UI's is in rendering. And, in capturing events from users. This is wh
          // renders an SVG rectangle from a shapes collection
          render: function() {
            var el = this.$el;
+           el.empty();
            this.collection.each(function(model) {
              var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
              rect.setAttribute('x', model.get('x1'));
              rect.setAttribute('y', model.get('y1'));
-             rect.setAttribute('width',  '200');
-             rect.setAttribute('height',  '400');
+             rect.setAttribute('width',  model.get('x2') - model.get('x1'));
+             rect.setAttribute('height', model.get('y2') - model.get('y1'));
              rect.setAttribute('style', 'fill:' + model.get('color') + ';stroke:pink');
+             rect.id = model.get('id');
              el.append(rect);
            });
            return el;
