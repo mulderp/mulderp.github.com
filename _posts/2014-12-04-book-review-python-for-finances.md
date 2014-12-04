@@ -4,7 +4,7 @@ title: Dealing with finance - A book review
 tags: books, python, finance
 ---
 
-People who work with finances, work with spreadsheets. But spreadsheets have multiple problems:
+People who work in finance, work with spreadsheets. But spreadsheets have multiple problems:
 
 * Accessing spreadsheets from outside is hard. In data networks for example, it can be important to send a link or details of transactions to clients. In contrast to [HTTP](https://www.ietf.org/rfc/rfc2616.txt), "sending spreadsheets" is much harder for data sharing and collaboration.
 
