@@ -30,8 +30,8 @@ After the Black-Scholes examples, the books introduces [Anaconda](https://store.
 
 What follows in the book are impressive plots based on financial models and simulations. I have never seen these kinds of plots outside of Matlab worlds. Exploring the books' examples for visualizations would certainly be interesting, if you feel passionate about the stock market. For my taste, it would be interesting to understand time-series financial data in other contexts too, for example for corporate finance purposes, or just for estimating my income taxes.
 
-Well, all in all, while working with Matlab currently, I can see the value of scripting simulations or plots with Python. The book gives a nice introduction to it, but it certainly won't help you understanding the finances of a business or your personal income and expenses.
+Well, all in all, while working with Matlab currently in electronic engineering, I can see the value of scripting simulations or plots with Python. The book gives a nice introduction to it, but it certainly won't help you understanding the finances of a business or your personal income and expenses.
 
-*Disclaimer*: This post was written in the context of the [O'Reilly Reader Review program](http://oreilly.com/reviews 
+*Disclaimer*: This post was written in the context of the [O'Reilly Reader Review program](http://oreilly.com/reviews )
 
 <a href="http://www.oreilly.com/reviews/?cmp=ex-orm-blgr-patrick-mulder"><img alt="I review for the O'Reilly Reader Review Program" src="http://cdn.oreillystatic.com/bloggers/blogger-review-badge-200.png" border="0" width="200" height="150"></a>
