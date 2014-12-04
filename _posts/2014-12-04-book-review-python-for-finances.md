@@ -10,7 +10,7 @@ People who work with finances, work with spreadsheets. But spreadsheets have mul
 
 * For advanced visualizations, data in "raw" format, e.g. [CSV](http://en.wikipedia.org/wiki/Comma-separated_values) is much easier to visualize with libraries such as [D3.js](http://d3js.org/).
 
-* While you can easily manipulate data in cells of a spreadsheet, it is hard to build a language around your data. For example, if you want to apply different tax or interest rates according to some rules, how would you communicate these rules in a spreadsheet?
+* While you can easily manipulate data in cells of a spreadsheet, it is hard to build [a language around your data](http://thinkingonthinking.com/Bookshelf-an-ORM-for-Node/). For example, if you want to apply different tax or interest rates according to some rules, how would you communicate these rules in a spreadsheet?
 
 From working in [a bank](http://fidor.de) (until last year), I can tell you that processing numbers from spreadsheets and [CSV](http://en.wikipedia.org/wiki/Comma-separated_values) files is the daily business in finance.
 
