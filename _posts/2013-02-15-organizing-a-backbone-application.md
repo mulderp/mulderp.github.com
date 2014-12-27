@@ -3,11 +3,19 @@ layout: post
 title: Organizing a Backbone Application
 tags: backbone javascript
 ---
-Backbone should help to organize your frontend JavaScript stack, but as an application grows, this is not so easy. I am grateful to [Bela Varga](https://twitter.com/netzzwerg) with whom I lately discussed patterns of Backbone code organization. By the way, the idea of this post came from these slides: [these patterns](http://backbone-patterns.heroku.com/) by [julio_ody](http://twitter.com/julio_ody).
+Organizing a frontend JavaScript stack is hard. Even more so, if you want to package and transport complete apps to the browser of a user.
+
+For example with Backbonejs, you can have multiple views referencing the same models and collections. By using JavaScript modules, you can avoid a spaghetti of "script" tags in HTML. Similar to "imports" or "requires" in other programming languages, JavaScript has module systems too.
+
+One module loader is RequireJS that I lately reviewed with [Bela Varga](https://twitter.com/netzzwerg).
+
+By the way, if you want to get a quick overview on why Backbone makes sense, and why modules play a role, have a look [at these Backbone patterns](http://backbone-patterns.heroku.com/) by [julio_ody](http://twitter.com/julio_ody).
 
 ## Top-level organization of a Backbone project
 
-This pattern is helpful to quickly find and re-use structures and logic of Backbone modules. As Backbone comes with no directory structure as default, it leaves the decisions up to the developer how to setup files and directories. One directory layout that is often found in a Backbone project is this:
+Most new programming projects start with the setup of files and directories. As Backbone projects come with no default directory structure, you can decide how to setup files and directories.
+
+In many Backbone projects, you will find a directory layout similar to: 
 
 <pre>
    |-collections
@@ -24,7 +32,9 @@ This pattern is helpful to quickly find and re-use structures and logic of Backb
    |-views
 </pre>
 
-This works very well for me now: There are directories for the Models, Collections, Views and Templates, as well as a directory for the dependencies. If you want to learn more on how a RequireJS based setup works, [here](http://backbonetutorials.com/) is a nice tutorial.
+Separate directories for Models, Collections, Views and Templates, as well as a directory for the dependencies, work very well.
+
+If you want to learn more on how a RequireJS based setup works, [here](http://backbonetutorials.com/) is a nice tutorial.
 
 ## App.js contains views - not collections
 
