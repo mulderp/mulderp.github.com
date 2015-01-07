@@ -9,7 +9,7 @@ As I currently work solo on JavaScript projects, which often are prototypes, I p
 
 So, read on what might happen [after your fast start with Backbone](http://thinkingonthinking.com/fast-start-with-backbonejs/).
 
-PS This post is also a reflection on the critique on "too much automation" in [The Pipefishbook](http://pipefishbook.com), where I discussed tools such as Yeoman or Grunt together with Backbone. These build tools can make sense - but this is another blog post. Short answer: If you work towards frameworks to address many users and platforms, an IDE strategy can help.
+PS This post is also a reflection on the critique on "too much automation" in [The Pipefishbook](http://pipefishbook.com), where I discussed tools such as Yeoman or Grunt together with Backbone. These build tools can make sense - but this is another blog post. Short answer: If you work towards frameworks to address many users and platforms, an IDE strategy can help. But prototypes are different.
 
 # VIM
 
