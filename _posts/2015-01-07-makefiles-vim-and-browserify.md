@@ -70,6 +70,6 @@ James Coglan has a written a [great overview on the roles of Makefiles in JavaSc
 
 # Conclusions
 
-You can experiment and prototype JavaScript apps very well without much automation and distractions. In fact, for my currents work, the tools above still provide great value. There are times when a [Yeoaman generator]((https://www.npmjs.com/package/generator-backbone-browserify) makes sense. And I will write about it soon hopefully. There are also times when Gruntfiles make sense, since Makefiles were not very well supported on Windows.
+You can experiment and prototype JavaScript apps very well without much automation and distractions. In fact, for my currents work, the tools above still provide great value. There are times when a [Yeoaman generator](https://www.npmjs.com/package/generator-backbone-browserify) makes sense. And I will write about it soon hopefully. There are also times when Gruntfiles make sense, since Makefiles were not very well supported on Windows.
 
 Thanks for reading and sharing feedback. Happy hacking.
