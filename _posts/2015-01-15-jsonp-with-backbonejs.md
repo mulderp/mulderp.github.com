@@ -3,7 +3,7 @@ layout: post
 title: JSONP example with BackboneJS
 tags: backbonejs
 ---
-It has been quiet around [JSONP API's](http://en.wikipedia.org/wiki/JSONP). The idea of JSONP is nice. Many Ajax applications can't fetch JavaScript objects from a remote domain due to cross-domain policy concerns. But, JavaScript web apps can easily fetch remote JavaScript libraries. So, by using JSONP, we pretend fetching a library, while we actually are interested in the data.
+The idea of [JSONP API's](http://en.wikipedia.org/wiki/JSONP) is nice: Many Ajax applications can't fetch JavaScript objects from a remote domain due to [cross-domain policy concerns](http://www.staticapps.org/articles/cross-domain-requests-with-cors). But, JavaScript web apps can easily fetch remote JavaScript libraries. So, by using JSONP, we pretend fetching a library, while we actually are interested in the data.
 
 Unfortunately, JSONP has some [security flaw in the context of CSRF (cross-site request forgery)](http://security.stackexchange.com/questions/23438/security-risks-with-jsonp).  A 3rd user could make HTTP requests on your behalf, because a server would trust your cookie. I am not a security expert, but many JSONP API providers disable writing.
 
