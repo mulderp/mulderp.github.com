@@ -7,7 +7,7 @@ The idea of [JSONP API's](http://en.wikipedia.org/wiki/JSONP) is nice: Many Ajax
 
 Unfortunately, JSONP has some [security flaw in the context of CSRF (cross-site request forgery)](http://security.stackexchange.com/questions/23438/security-risks-with-jsonp).  A 3rd user could make HTTP requests on your behalf, because a server would trust your cookie. I am not a security expert, but many JSONP API providers disable writing.
 
-For simple projects, JSONP can make sense however - for example, if you would like to provide a nicer UI to someone else's [Wordpress data in Wordpress](https://wordpress.org/support/topic/getting-jsonp-to-work). This was a question of some reader of [The Pipefishbook](http://pipefishbook.com). So, let's look at a Backbone.Collection that reads data with JSONP.
+For simple projects, JSONP can make sense however - for example, if you would like to provide a nicer UI to someone else's [data in Wordpress](https://wordpress.org/support/topic/getting-jsonp-to-work). This was a question of some reader of [The Pipefishbook](http://pipefishbook.com). So, let's look at a Backbone.Collection that reads data with JSONP.
 
 # Ajax requests
 
