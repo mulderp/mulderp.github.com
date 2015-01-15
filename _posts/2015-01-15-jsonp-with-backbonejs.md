@@ -21,7 +21,7 @@ A Backbone.Collection can deal with those requests too. Let's look an example ba
 
 # Browsing images with JSONP
 
-Let's look at a small example to [browse photos from Flickr](http://http://flickr-example.divshot.io/).
+Let's look at a small example to [browse photos from Flickr](http://http://flickr-example.divshot.io/). You can see the full [source code at Github](https://github.com/pipefishbook/jsonp-example).
 
 This demo is based on a parameterized Backbone.Collection.  Wrapping Ajax requests is an important responsibility of the Backbone data layer. So, let's look at [a collection to fetch photos with JSONP](https://github.com/pipefishbook/jsonp-example/blob/master/app/collections/photos.js).
 
