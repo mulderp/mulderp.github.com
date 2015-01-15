@@ -33,7 +33,7 @@ It is important to add a "dataType" parameter to the Ajax request. This paramete
        return Backbone.sync(method, collection, options);
      }
 
-And this is basically all. The rest of the the example, uses much of the same view construction and controls as in [Ch. 4 example](http://pipefishbook.com/ch_4/subviews/) of the Pipefishbook. A subviews for control and a list view share the same collection. Collection are fetched just upon request (= button click).
+And this is already all. The rest of the the example uses much of the same view construction and controls as in [Ch. 4 example](http://pipefishbook.com/ch_4/subviews/) of the Pipefishbook. A subviews for control and a list view share the same collection. Collection are fetched just upon request (= button click).
 
 A nice extra for this post: Sometimes, you have a JSON API that you can't directly access due to cross-policy browser concerns. Fortunately, there is a [proxy from Nodejitsu](https://jsonp.nodejitsu.com/) to emulat e JSONP request. This allows you to easily fetch data from JSON API without setting up a proxy yourself.
 
