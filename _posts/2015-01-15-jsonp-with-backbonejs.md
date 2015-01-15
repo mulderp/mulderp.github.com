@@ -15,7 +15,7 @@ Fetching data with an Ajax request is easy:
 
     $.get('/some/path');
 
-[jQuery Ajax requests](http://api.jquery.com/jquery.ajax/) help you very much to wrap a JSONP request for data too. For the details, you can search [npmjs.org](http://npmjs.org) for JSONP. You'll find a [JSONP module](https://github.com/webmodules/jsonp/blob/master/index.js#L87) and the according tricks. Append a  &gt;script&st; tag, and point the source towards your remote data.
+[jQuery Ajax requests](http://api.jquery.com/jquery.ajax/) help you very much to wrap a JSONP request for data too. For the details, you can search [npmjs.org](http://npmjs.org) for JSONP. You'll find a [JSONP module](https://github.com/webmodules/jsonp/blob/master/index.js#L87) and the according tricks. Append a  &lt;script&gt; tag, and point the source towards your remote data.
 
 A Backbone.Collection can deal with those requests too. Let's look an example based on the Flickr API.
 
