@@ -86,7 +86,7 @@ The last part is important: We listen to the *open* event from the driver. Then,
   
 Let's run this script:
 
-    $ node dump_server.js
+    $ node dump_usb.js
 
 If everything works out, you'll see some numbers from the Arduino scrolling down on the screen. With a bit more advanced Arduino breadboard setup (see the screenshot), you can easily measure the room temperature or the position of a potentiometer.
 
