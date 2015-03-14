@@ -1,3 +1,3 @@
-highlighter: true
+pygments: true
 permalink: '/:title'
 markdown: kramdown
