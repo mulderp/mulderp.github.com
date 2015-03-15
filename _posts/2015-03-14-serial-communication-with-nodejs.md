@@ -5,7 +5,7 @@ layout: post
 ---
 How can you talk to hardware peripherals, lights or robots from your laptop?
 
-The answer often is: [Serial communication](http://en.wikipedia.org/wiki/Serial_communication). Besides direct usage in many hardware projects, its concepts are helpful too when playing with wireless components such as Bluetooth or Wifi.
+The answer often is: [Serial communication](http://en.wikipedia.org/wiki/Serial_communication). Serial communication is often done with one oru multiple wires, but its concepts often apply to *wireless* communication too. 
 
 There are different forms of serial communication such as [RS-232](http://en.wikipedia.org/wiki/RS-232) or [USB](http://en.wikipedia.org/wiki/USB). In both cases, the core building block in a micro chip is an [UART](http://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter) (or "universal asynchronous receiver and transmitter").  This digital logic can be configured to different data formats and transmission speeds. 
 
@@ -15,7 +15,10 @@ Sounds complicated? Maybe some code examples clear things up.
 
 # The serialport library
 
-The physical world is accessible for JavaScript projects thanks to the [serialport module](https://www.npmjs.com/package/serialport) by [Chris Williams](https://github.com/voodootikigod).
+JavaScript and hardware - why would you combine both? There are some good arguments about [using JavaScript with hardware](http://www.voodootikigod.com/nodebots-the-rise-of-js-robotics/).
+
+The physical world is accessible for JavaScript projects thanks to the [serialport module](https://www.npmjs.com/package/serialport) by [Chris Williams](https://github.com/voodootikigod). 
+
 
 Let's create a fresh JavaScript project and add this module to it:
 
