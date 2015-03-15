@@ -86,11 +86,11 @@ One of the core concepts behind Backbone.js is to separate UI controls (events, 
      });
      module.exports = Address;
 
-This model is just seeting attributes to default values. In the case of 1-way data binding, a Backbone.View would bind to changes of this model. In the case of 2 way data-binding, a view can update a model directly. We come to this in a second.
+This model is just seeting attributes to default values. In the case of 1-way data binding, a Backbone.View would bind to changes of this model. In the case of 2-way data-binding, a view can update a model directly. We come to this in a second.
     
 ## The views
 
-We basically will have two views: One editor view and one preview pane, where the business card will be rendered. Let's look first at binding the input to model changes.
+We basically will have two views: One editor view and one preview pane, where the business card will be rendered. The way the view is constructed is a bit different from a normal Backbone.View as will be clear in a second.
 
     var Backbone = require("backbone");
     var Stickit = require("backbone.stickit");
@@ -126,7 +126,7 @@ We basically will have two views: One editor view and one preview pane, where th
     });
     module.exports = NewAddress;
 
-We can use Backbone.Stickit's "bindings" to _bind_ inputs to model attributes. After rendering a view, we call "stickit()" to start observing directions in two ways.
+Notice the new view property "bindings". This mapping is needed for Backbone.Stickit to _bind_ inputs to model attributes. After the view has rendered, we call "stickit()" to start observing changes in the view and model in two ways.
 
 Next, we want to render the address changes in the preview pane. Since we have Backbone.Stickit in our stack anyway, we can simply use stickit for one-way data binding too. The idea for the preview pane then becomes:
 
