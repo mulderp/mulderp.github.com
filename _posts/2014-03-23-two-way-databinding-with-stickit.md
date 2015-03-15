@@ -86,7 +86,7 @@ One of the core concepts behind Backbone.js is to separate UI controls (events, 
      });
      module.exports = Address;
 
-This is nothing special, just basic attributes with basic default values, and exporting the whole as a CommonJS module. 2 way data-binding is related to updates of views, and we come to this in a second.
+This model is just seeting attributes to default values. In the case of 1-way data binding, a Backbone.View would bind to changes of this model. In the case of 2 way data-binding, a view can update a model directly. We come to this in a second.
     
 ## The views
 
