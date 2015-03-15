@@ -3,7 +3,7 @@ layout: post
 title: About Two Way Data Binding with Backbone.Stickit
 tags: backbone
 ---
-Forms with live preview are a common use case for 2-way databinding. To help you understand whether [using Backbone.js](https://www.youtube.com/watch?v=QKcLaAunAwM) can be an option for your app, let's look at an example of 2-way databinding with Backbone.
+Forms with live preview are a common use case for 2-way databinding. To help you understand whether [using Backbone.js](http://pipefishbook.com) can be an option for your app, let's look at an example of 2-way databinding with Backbone.
 
 ## Why do we need 2-way data binding?
 
