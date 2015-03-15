@@ -3,19 +3,13 @@ layout: post
 title: About Two Way Data Binding with Backbone.Stickit
 tags: backbone
 ---
-At the SF JavaScript meetup where I gave [a talk on Backbone](https://speakerdeck.com/mulderp/backbone-and-handlebars), I got this question: "What do you think of the data-binding in Backbone? And how does that compare to Angular?"
-
-Honestly, I was not quite sure what to answer at that point, because most of my use cases for client-side MV* were about improving browsing and rating items on a page, and most of my page updates worked with simple one-way data-binding without problems.
-
-In essence, I think there is no all size fits all solution. [Synchronizing state to the DOM](http://thinkingonthinking.com/key-value-pairs/) depends on the use case of an application, and can quickly require custom setups. To help you understand whether [using Backbone.js](https://www.youtube.com/watch?v=QKcLaAunAwM) can be an option for you, let's look at an example of 2-way databinding with Backbone.
+Forms with live preview are a common use case for 2-way databinding. To help you understand whether [using Backbone.js](https://www.youtube.com/watch?v=QKcLaAunAwM) can be an option for your app, let's look at an example of 2-way databinding with Backbone.
 
 ## Why do we need 2-way data binding?
 
-Not every application needs 2-way databinding, as not every application needs modules for authentication or rendering complicated, nested collections.
+With 2-way data binding, your UI can provide short feedback loops on inputs from users. Observing input on forms are common when building browser editors, or advanced control elements, like sliders that are coupled with numeric input.
 
-From what I see, 2-way data binding is interesting, when we want to provide short feedback loops on inputs from users. These may occur when building browser editors, or providing advanced control elements, like sliders that are coupled with numeric input.
-
-Now, the idea behind 2-way databinding is managing model-view updates in two directions. First, views are updated when a model changes, which is the default case for 1-way databinding. Additionally, views can directly update models, which is a second update "direction", hence the name "2-way databinding".
+In a technical sense, the idea behind 2-way databinding is managing model-view updates in two directions. First, views are updated when a model changes, which is the default case for 1-way databinding. Additionally, views can directly update models, which is a second update "direction", hence the name "2-way databinding".
 
 ## A business card editor
 
@@ -63,11 +57,11 @@ In order to have a common jQuery and Backbone dependency in the project, we must
 In "app/main.js", we can do the following:
 
 
-   // setup deps
-   var $ = require("jquery-untouched");
-   var _ = require("underscore");
-   var Backbone = require("backbone");
-   Backbone.$ = $;
+     // setup deps
+     var $ = require("jquery-untouched");
+     var _ = require("underscore");
+     var Backbone = require("backbone");
+     Backbone.$ = $;
 
 
 Now that the dependencies and directories are setup, we can start working on our editor.
