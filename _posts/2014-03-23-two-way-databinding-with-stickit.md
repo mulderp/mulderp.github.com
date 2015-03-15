@@ -70,21 +70,21 @@ Now that the dependencies and directories are setup, we can start working on our
 
 One of the core concepts behind Backbone.js is to separate UI controls (events, rendering) from application state (models, collections). So, let's setup first a small address model, that can be used later in the editor view:
 
-   var Backbone = require("backbone");
-
-   var Address = Backbone.Model.extend({
-     defaults: {
-       "name": "Baloo The Bear",
-       "email": "balu@junglebook.com",
-       "street": "Middle of Nowhere 1",
-       "zip": "12345",
-       "city": "Amazon Delta",
-       "country": "Brasil",
-       "phone": "555-123123",
-       "web": "https://www.youtube.com/watch?v=lz0J88gnINc"
-     }
-   });
-   module.exports = Address;
+     var Backbone = require("backbone");
+  
+     var Address = Backbone.Model.extend({
+       defaults: {
+         "name": "Baloo The Bear",
+         "email": "balu@junglebook.com",
+         "street": "Middle of Nowhere 1",
+         "zip": "12345",
+         "city": "Amazon Delta",
+         "country": "Brasil",
+         "phone": "555-123123",
+         "web": "https://www.youtube.com/watch?v=lz0J88gnINc"
+       }
+     });
+     module.exports = Address;
 
 This is nothing special, just basic attributes with basic default values, and exporting the whole as a CommonJS module. 2 way data-binding is related to updates of views, and we come to this in a second.
     
