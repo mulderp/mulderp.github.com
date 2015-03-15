@@ -15,7 +15,7 @@ In a technical sense, the idea behind 2-way databinding is managing model-view u
 
 To show what this means, let's look at an example. As a freelancer, the first thing you need is business cards. I found no online business cards provider that offer a simple online business card editor. So, let's build a basic one. You can see a working demo of the discussion [here](http://thinkingonthinking.com/businesscards/). 
 
-Backbone.js is a library, not a framework. This means you add other libraries to build out some larger apps. There are a number of data-binding plugins in the Backbone ecosystem, but I chose [Backbone.Stickit](http://nytimes.github.io/backbone.stickit/). This plugin can be fetched with npm and packaged with [Browserify](http://thinkingonthinking.com/unix-in-the-browser/).
+Backbone.js is a library, not a framework. This means you add other libraries to build out some larger apps. There are a number of data-binding plugins in the Backbone ecosystem, but I chose [Backbone.Stickit](http://nytimes.github.io/backbone.stickit/). This plugin can be nicely fetched with npm and packaged with [Browserify](http://thinkingonthinking.com/unix-in-the-browser/).
 
 So, first, let's create a project directory, and init the project:
 
