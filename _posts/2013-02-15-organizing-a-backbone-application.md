@@ -5,13 +5,14 @@ tags: backbone javascript
 ---
 Organizing a frontend JavaScript stack is hard. Even more so, if you want to package and transport complete apps to the browser of a user.
 
-For example with Backbonejs, you can have multiple views referencing the same models and collections. By using JavaScript modules, you can avoid a spaghetti of "script" tags in HTML. Similar to "imports" or "requires" in other programming languages, JavaScript has module systems too.
+For example with BackboneJS, you can have multiple views referencing the same models and collections. Have a look [at these Backbone patterns](http://backbone-patterns.heroku.com/) by [julio_ody](http://twitter.com/julio_ody) to get some basics of Backbone code. Or, at [a faster start with Backbone.js](http://thinkingonthinking.com/fast-start-with-backbonejs/).
 
-One module loader is RequireJS that I lately reviewed with [Bela Varga](https://twitter.com/netzzwerg).
+[Making a web app modular](http://thinkingonthinking.com/what-is-modular-architecture/) is often good advice. In summary,you can avoid a spaghetti of "script" tags in HTML with JavaScript modules. JavaScript modules provide code re-use that is similar to "imports" or "requires" in other programming languages.
 
-By the way, if you want to get a quick overview on why Backbone makes sense, and why modules play a role, have a look [at these Backbone patterns](http://backbone-patterns.heroku.com/) by [julio_ody](http://twitter.com/julio_ody).
+Unfortunately, the current JavaScript implementation (ECMAScript5) does *not* have a module loader by default. But you can add this concept with external libraries, such as [RequireJS](http://requirejs.org/). Or, you can use the CommonJS module format and [browserify modules](http://thinkingonthinking.com/unix-in-the-browser/). This blog post is about RequireJS and originated from a discussion with [Bela Varga](https://twitter.com/netzzwerg). 
 
-## Top-level organization of a Backbone project
+
+# Top-level organization of a Backbone project
 
 Most new programming projects start with the setup of files and directories. As Backbone projects come with no default directory structure, you can decide how to setup files and directories.
 
