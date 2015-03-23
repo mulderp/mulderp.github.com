@@ -4,15 +4,9 @@ layout: post
 tags: Backbone JavaScript
 ---
 
-There is a saying by [Sam Goldwyn](http://en.wikipedia.org/wiki/Samuel_Goldwyn): 
+[Backbone.js](http://backbonejs.org) is a frontend library. Frontend means HTML. Frontend often means [JQuery](http://jquery.org) too. And besides application dependencies and view templates, you will load the application code, ideally in a [modular fashion](http://thinkingonthinking.com/what-is-modular-architecture/). 
 
-    "Don't pay any attention to the critics. Don't even ignore them."
-
-And some of the critical voices on the [Pipefishbook](http://pipefishbook.com) say, that the book focusses too much on JavaScript tools instead of discussing Backbone.
-
-It is true: [Backbone.js](http://backbonejs.org) is a frontend library. Frontend means HTML. Frontend often means [JQuery](http://jquery.org) too. And indeed, intoducing Backbone is very well possible without mentioning modules or dependency managers in the first place.
-
-So, let's start with seeds for a browser drawing app with Backbone.js, hmm... better: [An SVG rectangle coloring app](http://backbonesvg.divshot.io/) since it will be enough to show what Backbone is about.
+This might be very confusing if you are new to JavaScript or browser applications. To give you some faster start,  let's write a simple seed project for a browser drawing app with Backbone.js, hmm... better: [An SVG rectangle coloring app](http://backbonesvg.divshot.io/) since it will be enough to show what Backbone is about.
 
 <img src="/static/images/drawing_app.png" />
 
@@ -27,8 +21,9 @@ To start with browser interactions, you need some basic HTML. A simple HTML "ges
       </body>
     </html>
 
-Once a basic HTML is setup, you must include JavaScript libs, i.e. Backbone and its dependencies [Underscore](http://underscorejs.org) and jQuery... If you have a network connection, the simplest way is including some references to CDNs entries:
+This HTML is the entry point for an application. You can instruct the browser to load and execute code by adding "script" tags.
 
+First, you must include JavaScript libs, i.e. Backbone and its dependencies [Underscore](http://underscorejs.org) and jQuery... If you have a network connection, the simplest way is including some references to CDNs entries:
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js">
       </script>
@@ -36,9 +31,9 @@ Once a basic HTML is setup, you must include JavaScript libs, i.e. Backbone and 
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js">
 
-Those libs are rather small and may be included in the HTML header above. Note: JavaScript modules and dependeny managers can help you bundling external dependencies and improve app performance. But this blog post is not yet the place to discuss this.
+Those libs are rather small and may be included in the HTML header above. Note: JavaScript modules and dependeny managers to bundle external dependencies are quickly important to [help you organize code](http://thinkingonthinking.com/organizing-a-backbone-application/). But for a fast start, you can skip this.
 
-First breath out. We are now set to actually build a Backbone app!
+With these libraries in place, we are now set to actually build a Backbone app!
 
 # Building the Data layer
 
@@ -146,3 +141,6 @@ Because we have the conceptual model of the UI in Backbone collections and model
 Now, the color of the rectangles changes. Well, a "real" drawing app takes much more work. And you will be faced to re-use ideas and code for drawing circles or lines. Even, the simple function getRandomColor() is just copy and pasted from [here](http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript). Ideally, you could make code re-use easier. It is here where JavaScript module formats come in, such as CommonJS or RequireJS. Consult the [Pipefishbook](http://pipefishbook.com) for more info's or leave me feedback. Thanks for reading!
 
 Checkout the [demo](http://backbonesvg.divshot.io/).  Or the small [repo](https://github.com/pipefishbook/rectangle_coloring).
+
+conflicts with the concept of a 
+
