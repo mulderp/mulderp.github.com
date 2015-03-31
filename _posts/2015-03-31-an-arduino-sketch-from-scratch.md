@@ -34,7 +34,7 @@ To follow the rest of this post, you can also use the AVR GCC tools that come wi
 
 # Compile a Blink sketch
 
-Learning the secrets of compilers and build tools takes some practice. Let's walk through a simplified build cycle to get you more familiar the the GCC tools.
+Learning the secrets of compilers and build tools takes some practice. Let's walk through a simplified build cycle to get you more familiar with the GCC tools.
 
 Imagine this `blink.ino` Arduino sketch:
 
@@ -52,7 +52,7 @@ Imagine this `blink.ino` Arduino sketch:
     }
 
 
-To compile this sketch with `g++`, you must include the `arduino.h` header and include a `main()` function. This can be done without opening a editor:
+To compile this sketch with `g++`, you must include the `Arduino.h` header and include a `main()` function. This can be done simply by adding:
 
 
     $ echo '#include "Arduino.h"'  > blink.cpp
