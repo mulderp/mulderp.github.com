@@ -69,8 +69,7 @@ Now, `blink.cpp` is valid for compilation.
 You can compile this blink.cpp to a binary file with:
 
     $ avr-g++ \
-       -I/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/ \
-       -I/Applications/Arduino.app/Contents/Java//hardware/arduino/avr/variants/standard \
+       -I /Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/ -I /Applications/Arduino.app/Contents/Java//hardware/arduino/avr/variants/standard \
        -x c++  -MMD -c -mmcu=atmega328p -Wall -DF_CPU=16000000L  -Wall  -Os  blink.cpp
 
 By using the -I compiler flag, we *include* the function prototypes of Arduino core libraries as we used `pinMode` and `digitalWrite`. What follows are some harder to understand compiler flags that address the microprocessor type and its speed. We'll see how we can get these automatically with a `Makefile? at the end of this post. Important right now: You get a binary file `blink.o` after compilation.
