@@ -17,9 +17,9 @@ Let's shortly review some concepts behind the compilation tools. There are a num
 * *objcopy*: Binary files can still be in different formats. A popular format is [ELF](http://en.wikipedia.org/wiki/Executable_and_Linkable_Format) or "Executable and Linkable Format". But some microprocessors require a different format. For example to upload to an Arduino, you need the "intel hex format".  Converting between formats can be done with [objcopy](http://ccrma.stanford.edu/planetccrma/man/man1/avr-objcopy.1.html).
 * *avrdude*: Once your binary file is ready and in the correct format you need to upload it to the embedded device. This is what [avrdude](http://www.nongnu.org/avrdude/) does for Arduino.
 
-A picture how this tools form a chain is shown [here](http://www.jusquici.org/blog/?page_id=202).
+A picture how these tools form a chain is shown [here](http://www.jusquici.org/blog/?page_id=202).
 
-The Arduino IDE will install all these tools for you. You can also [manually install the AVR GCC toolchain](http://nothingtodisplay.org/avr-toolchain-with-homebrew-mac-os-x/) on a Mac:
+The Arduino IDE will install all the the AVR GCC tools for you. You can also [manually install the AVR GCC toolchain](http://nothingtodisplay.org/avr-toolchain-with-homebrew-mac-os-x/) on a Mac:
 
     $ brew install avr-libc
 
@@ -40,16 +40,15 @@ Imagine this `blink.ino` Arduino sketch:
 
     
     void setup() {
-    	// initialize the digital pin as an output.
-    	// Pin 13 has an LED connected on most Arduino boards:
+    	// initialize Pin13 as an output
     	pinMode(13, OUTPUT);
     }
     
     void loop() {
-    	digitalWrite(13, LOW);   // set the LED on
-    	delay(1000);              // wait for a second
-    	digitalWrite(13, HIGH);    // set the LED off
-    	delay(400);              // wait for a second
+    	digitalWrite(13, LOW);   
+    	delay(1000);            
+    	digitalWrite(13, HIGH); 
+    	delay(400);            
     }
 
 
@@ -69,7 +68,10 @@ Now, `blink.cpp` is valid for compilation.
 
 You can compile this blink.cpp to a binary file with:
 
-    $ avr-g++ -I/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/ -I/Applications/Arduino.app/Contents/Java//hardware/arduino/avr/variants/standard -x c++  -MMD -c -mmcu=atmega328p -Wall -DF_CPU=16000000L  -Wall  -Os  blink.cpp
+    $ avr-g++ \
+         -I/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/ \
+         -I/Applications/Arduino.app/Contents/Java//hardware/arduino/avr/variants/standard \
+	 -x c++  -MMD -c -mmcu=atmega328p -Wall -DF_CPU=16000000L  -Wall  -Os  blink.cpp
 
 By using the -I compiler flag, we *include* the function prototypes of Arduino core libraries as we used `pinMode` and `digitalWrite`. What follows are some harder to understand compiler flags that address the microprocessor type and its speed. We'll see how we can get these automatically with a `Makefile? at the end of this post. Important right now: You get a binary file `blink.o` after compilation.
 
@@ -113,6 +115,7 @@ A great start to build an Arduino Sketch with a Makefile is in the [Arduino-Make
 
 # References
 
+* Book: [An introduction to GCC](http://www.network-theory.co.uk/gcc/intro/)
 * A blog post that explains the different steps for compiling an Arduino sketch with [GCC and Makefiles](https://www.ashleymills.com/node/327)
 * A leaner [Makefile](https://gist.github.com/wolever/273821) for Arduino
 * Building an [Arduino bootloader](http://angryelectron.com/stk500-arduino-bootloader/)
