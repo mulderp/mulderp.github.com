@@ -72,7 +72,7 @@ You can compile this blink.cpp to a binary file with:
        -I /Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/ -I /Applications/Arduino.app/Contents/Java//hardware/arduino/avr/variants/standard \
        -x c++  -MMD -c -mmcu=atmega328p -Wall -DF_CPU=16000000L  -Wall  -Os  blink.cpp
 
-By using the -I compiler flag, we *include* the function prototypes of Arduino core libraries as we used `pinMode` and `digitalWrite`. What follows are some harder to understand compiler flags that address the microprocessor type and its speed. We'll see how we can get these automatically with a `Makefile? at the end of this post. Important right now: You get a binary file `blink.o` after compilation.
+By using the -I compiler flag, we include the function prototypes of Arduino core libraries as we used `pinMode` and `digitalWrite`. What follows are some harder to understand compiler flags that address the microprocessor type and its speed. We'll see how we can get these automatically with a `Makefile? at the end of this post. Important right now: You get a binary file `blink.o` after compilation.
 
 
 # Linking Libraries
@@ -121,4 +121,5 @@ A great start to build an Arduino Sketch with a Makefile is in the [Arduino-Make
 * Getting started with [AVR LIB-C](http://www.atmel.com/images/doc1497.pdf)
 * Some basics about [programming an Atmel ATmega](http://hackaday.com/2010/10/25/avr-programming-02-the-hardware/)
 * A basic [Makefile](https://github.com/muccc/arm-workshop/blob/master/mvp/Makefile) for ARM based MCU's
+* Another discussions on [Makefiles](http://alejandroerickson.com/joomla/personal-projects/73-a-makefile-for-arduino-v-0021)
 
