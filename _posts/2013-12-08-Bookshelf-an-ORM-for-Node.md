@@ -16,10 +16,10 @@ And if you want to do this with Node.js, you often were left alone with your RDB
 As example, let's use SQLite3:
 
 <pre>
-var Knex = require('knex');
-var DB = Knex.initialize({client: 'sqlite3', 
-              connection: { filename: 'mydb.sqlite' } 
-     });
+var DB = require('knex')({
+  client: 'sqlite3', 
+  connection: { filename: 'mydb.sqlite' } 
+});
 </pre>
 
 From now on, we can use the DB object to define tables and attributes, basically, we can do [schema operations](http://knexjs.org/#Schema):
@@ -42,7 +42,7 @@ Adding a new column to the movies table is as easy with the [table](http://knexj
 <pre>
 
 var addYear = function (table) { 
-   table.integer('year');
+  table.integer('year');
 };
 
 DB.schema.table('movies', addYear)
@@ -50,12 +50,23 @@ DB.schema.table('movies', addYear)
   .catch(function(err) { console.log(err) });
 </pre>
 
-And, we can check with SQLite:
+Last, you need [to close the connection](http://stackoverflow.com/questions/28869148/knex-js-db-call-does-not-complete). This is done by adding on the last statement:
+
+<pre>
+  .finally(function() {
+    DB.destroy();
+  });
+</pre>
+
+Now, after you run the script, you can check the simple schema with SQLite:
 
 <pre>
 sqlite> .schema movies
 CREATE TABLE "movies" ("title" varchar(255), "created_at" datetime, "updated_at" datetime, "year" integer);
 </pre>
+
+
+## Insert data
 
 Next, let's insert some data:
 
@@ -73,7 +84,9 @@ sqlite> select * from movies;
 The Artist|||2010
 </pre>
 
-Ok, so we have Create and Read, I leave the Update and Delete as an exercise to the reader, but would be great to hear your CRUD experience.
+Ok, so we have Create and Read, I leave the Update and Delete as an exercise to the reader. It would be great to hear your CRUD experience.
+
+The example so far is at [this github repo](https://github.com/mulderp/bookshelf-demo).
 
 
 ## Bookshelf
