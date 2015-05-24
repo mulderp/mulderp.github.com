@@ -1,44 +1,64 @@
 ---
 layout: post
-title: Relations with BookshelfJS
+title: Relations with Bookshelf.js
 tags: orm database
 ---
-SQL is still a very popular solution to organize and query data. While it is rather popular to use Node.js with NoSQL data stores, such as MongoDB, you can easily integrate [an RDMS with Node.js](http://thinkingonthinking.com/Bookshelf-an-ORM-for-Node/) too. This makes it possible to apply some concepts from [Active Record and Ruby-on-Rails](http://guides.rubyonrails.org/active_record_basics.html) to your next web application in Node.js.
+SQL solves many problems to organize and query data. Especially, the vocabulary of [Active Record and Ruby-on-Rails](http://guides.rubyonrails.org/active_record_basics.html) made working with relational data very simple.
 
-In my earlier blog post about Bookshelf, I mainly showed how to manually setup a schema with Knex.js. I left out a discussion how to work with related data. Therefore it is getting high time to iterate on the previous experiments. Even more so, as the libraries Knex and Bookshelf have made quite some progress since.
+Yet, if you work with Node.js, as I do for most of my projects, libraries for object-relational mapping, or ORM's, feel like work in progress compared to Ruby-on-Rails. For Node.js, the [Bookshelf.js](http://bookshelfjs.org/) library looks very interesting as I wrote in [this blog post](http://bookshelfjs.org/).
+
+In that post, I mainly showed how to manually setup a database schema with [Knex.js](http://knexjs.org/). I left out a discussion how to work with relations in Bookshelf. It is getting high time to iterate on those previous experiments. Even more so, as the libraries Knex and Bookshelf have made quite some progress since then.
 
 # Basic Relations
 
-To explore the new features of Bookshelf and Knex, let's work on a small application to manage movies data. In this example, movies have two interesting associations:
+To explore the new features of Bookshelf and Knex, let's work on a small API to provide movies data. Usually, you would model your data with [entity-relationship diagrams](http://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) first. But having a background in Ruby-on-Rails, the interesting part is the use of a language that captures the relations between data. The docs about [associations in Ruby-on-Rails](http://guides.rubyonrails.org/association_basics.html) will tell you the details.
 
-* A Movie belongs to a Director (belongsTo). And, a Director has many Movies (hasMany). For example, Steven Spielberg directed Jurassic Park (1993) and E.T. (1982) among others.
-* A Movie belong to many Genres. And, Genres belong to many Movies. For example, E.T. is a "Family" movie and a "Sci-Fi" movie.
+In this example about a movies database, movies have two interesting associations:
 
-Managing these associations translate to 4 tables: Movies, directors, genres, join table movies_genres. And, to make the associations work, they require some foreign keys:
+* A Movie *belongs to* a Director (association: "belongsTo"). And, a Director has many Movies (association: "hasMany"). For example, Steven Spielberg directed multiple movies, such as Jurassic Park (1993) and E.T. (1982).
+* A Movie *belongs to many* Genres (association: "belongsToMany"). And, a Genre belongs to many Movies. For example, E.T. is a "Family" movie and a "Sci-Fi" movie.
+
+Managing these associations translate into 4 tables: Movies, directors, genres, and a join table movies_genres. To make the associations work, we require some foreign keys (FK's) in the database:
 
 * A FK director_id in movies
 * A FK movie_id and a FK genre_id in movies_genres
 
+Now, let's bring this theory into something practical.
+
+
 # CLI migrations
 
-First, we need to setup a database schema. Instead of manual scripts, you now can get help from Knex at the command line to generate scripts. Running commands with Knex for migrations and seeds feel a lot like running "rake" in a Ruby-on-Rails project. 
+First, we need to setup a database schema. Instead of manual scripts, you can get help from Knex at the command line to generate migrations. Running these commands with feel a lot like running "rake" in a Ruby-on-Rails project. 
 
-First, you can run "knex migrate:make" for some tables:
+First, you can run:
+
+    $ knex init
+
+This gives you a basic configuration file, similar to the database.yml in Ruby-on-Rails. For the movies project, I insert into the knexfile.js:
+
+    module.exports = {
+      development: {
+        client: 'sqlite3',
+        connection: {
+          filename: './dev.movies'
+        }
+      }
+    };
+
+Now, we can prepare some migrations with the "knex migrate:make" command:
 
     $ knex migrate:make create_movies
     $ knex migrate:make create_genres
     $ knex migrate:make create_movies_genres
     $ knex migrate:make create_directors
 
-Next, let's fill in these migrations:
-
-    $ cat > migrations/20150523115815_create_movies.js
+Let's fill in the schema for movies in migrations/20150523115815_create_movies.js:
 
        var table = function (table) {
          table.increments().primary();
          table.string('title');
          table.integer('year');
-         table.integer('director_id');
+         table.integer('director_id').references('directors.id');
          table.timestamps();
        };
        
@@ -55,12 +75,33 @@ Next, let's fill in these migrations:
                    .then(function () {
                      console.log('Movies table was dropped!');
                     });
-       
        };
 
-Then, the genres table:
+All is basic Knex syntax. You must take care to add a reference to the directors table to make the associations later work. Let's build the table to store directors next with the file migrations/20150524153911_create_directors.js:
 
-    $ cat > migrations/20150523120342_create_genres.js
+    var schema = function(t) {
+      t.increments().primary();
+      t.string('first_name');
+      t.string('last_name');
+      t.timestamps();
+    };
+    
+    exports.up = function(knex, Promise) {
+      return knex.schema.createTable('directors', schema)
+        .then(function() {
+          console.log('Directors table created.');
+        });
+    };
+    
+    exports.down = function(knex, Promise) {
+      return knex.schema.dropTable('directors', schema)
+        .then(function() {
+          console.log('Directors table dropped.');
+        });
+    };
+
+To store genres, we need a genres table and a join table.  Let's first write the schema for the genres table, in migrations/20150523120342_create_genres.js:
+
     var table = function(t) {
       t.increments().primary();
       t.string('name');
@@ -82,35 +123,134 @@ Then, the genres table:
                  });
     };
 
-
-# Defining relations
-
-It took me some time to make this actually work. Maybe because I had the wrong schema at first. But here is a basic working schema
+And last, the join table migrations/20150523120851_create_join_movies_genres.js:
 
 
+    var table = function(t) {
+      t.increments();
+      t.integer('movie_id');
+      t.integer('genre_id');
+      t.timestamps();
+    }
+    
+    exports.up = function(knex, Promise) {
+      return knex.schema
+                .createTable('movies_genres', table)
+                .then(function () {
+                   console.log('Join Table Movies_Genres table is created!');
+                 });
+    
+    };
+    
+    exports.down = function(knex, Promise) {
+      return knex.schema
+                .dropTable('movies_genres', table)
+                .then(function () {
+                   console.log('Join Table Movies_Genres table is dropped!');
+                 });
+    };
+
+Now, let's run the migrations with Knex:
+
+    $ knex migrate:latest
+
+These migrations should be a good start to explore some syntax of Bookshelf.js.
+
+
+# Defining basic relations
+
+It took me some time to understand the syntax behind Bookshelf associations. Maybe because I had subtle errors in my schema at first. 
+
+Before we can explore relations between Bookshelf models, we must setup a config file that reads the knexfile.js and configures Bookshelf. This code in config.js might be a first idea:
+
+
+    var knexfile = require('./knexfile.js');
+    var knex = require('knex')(knexfile.development);
+    
+    var bookshelf = require('bookshelf')(knex);
+    bookshelf.plugin('registry');
+    
+    module.exports = bookshelf;
+    
+    /* Add Bookshelf models here:
+
+      require('./models/movie');
+      require('./models/director');
+      require('./models/genre');
+
+    */
+
+You can then require this config as follows:
+
+    var bookshelf = require('config');
+
+Now, let's explore the relation between Movies and Directors.
+ 
+The Bookshelf model for a Movie could be the following in a file ./models/movie.js:
+
+    // load the database config 
+    require('../config');
+    require('./director');
+
+    var Movie = bookshelf.Model.extend({
+       tableName: 'movies',
+   
+       director: function() {
+         return this.belongsTo('Director');
+       }
+   
+    });
+    module.exports = bookshelf.model('Movie', Movie);
+
+Note that in this syntax, we reference the name of the associated model as String (i.e. 'Director'). This syntax is necessary to avoid  a problem with circular dependencies that would occur by referencing the class Director directly.
+
+The Director class can look as:
+
+    require('../config');
+    require('./movie');
+    
+    var Director = bookshelf.Model.extend({
+      tableName: 'directors',
+      movies: function() {
+        return this.hasMany('Movie');
+      }
+    });
+    
+    module.exports = bookshelf.model('Director', Director);
+
+Let's explore this in the Node REPL next.
+
+# Play
+
+You can start the Node console with:
+
+    $ node
+    > bookshelf = require('./config')
+
+Next, you can require Movie and Director with:
+
+
+    > Movie = require('./models/movie')
+    > Director = require('./models/director')
+
+And explore Bookshelf from here. One thing I found was, that it was not possible to "attach" a director to a movie directly. But maybe I just did not found the right syntax yet. As we later will see, you can attach associated data in has-many relations. 
 
 # Getting used to Promises
 
-Last, I thought I knew how to work with promises, but still it was rather difficult. For example inserting data in a row. I expected that this would work:
+Last, I thought I knew how to work with promises, but still it was rather difficult. For example, I tried these "stupid" expressions:
 
     DB('movies')
-      .insert({title: 'foo'
-      .insert({title: 'foo'
-      .insert({title: 'foo'
+      .insert({title: 'foo'})
+      .insert({title: 'bar'})
 
-Now, it doesn't. Then, I expected this to work:
+This does not work. Then, I expected this to work:
 
     DB('movies')
-      .insert({title: 'foo'
+      .insert({title: 'foo'})
       .return(DB)
-      .insert({title: 'foo'
-      .insert({title: 'foo'
+      .insert({title: 'bar'})
 
 
+For me, working with Promises is less intuitive than I would have thought. In the RELP, it requires extra typing of "then" and sometimes, it is hard to resolve a Promise to just obtain plain data. We'll come back to this in a later blog post, but let me know your ideas and experiences about this.
 
-(**) It is actually not clear to me why it wouldn't be movies_genres. Or, how to deal with that different table
-
-You can read about the roadmap [here](https://github.com/tgriesser/knex/issues/696). And, in my last post I left out dealing with relational data from Bookshelf, which there are surprisingly few discussions about. The main blog post seems to be (this)[http://dangertomanifold.com/working-with-relational-data-in-bookshelf-js/]. 
-
-Let's start with an example about managing movies in a database (disclaimer: It is my default example to try new libraries, and I wrote [a book about it](http://pipefishbook.com).
-
+You can take a look at the code of this blog post [here](https://github.com/mulderp/bookshelf-demo/tree/blog_post).
