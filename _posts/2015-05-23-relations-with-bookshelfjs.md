@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Relations with Bookshelf.js
-tags: orm database
+tags: orm databases
 ---
 SQL solves many problems to organize and query data. Especially, the vocabulary of [Active Record and Ruby-on-Rails](http://guides.rubyonrails.org/active_record_basics.html) made working with relational data very simple.
 
@@ -23,12 +23,12 @@ Managing these associations translate into 4 tables: Movies, directors, genres, 
 * A FK director_id in movies
 * A FK movie_id and a FK genre_id in movies_genres
 
-Now, let's bring this theory into something practical.
+Now, let's turn this theory into something practical.
 
 
 # CLI migrations
 
-First, we need to setup a database schema. Instead of manual scripts, you can get help from Knex at the command line to generate migrations. Running these commands with feel a lot like running "rake" in a Ruby-on-Rails project. 
+First, we need to setup a database schema. Instead of manual scripts, you can get help from Knex at the command line to generate migrations. Running these commands with Knex feel a lot like running "rake" in a Ruby-on-Rails project. 
 
 First, you can run:
 
@@ -251,6 +251,6 @@ This does not work. Then, I expected this to work:
       .insert({title: 'bar'})
 
 
-For me, working with Promises is less intuitive than I would have thought. In the RELP, it requires extra typing of "then" and sometimes, it is hard to resolve a Promise to just obtain plain data. We'll come back to this in a later blog post, but let me know your ideas and experiences about this.
+For me, working with Promises is less intuitive than I would have thought. In the REPL, it requires extra typing of "then" and sometimes, it is hard to resolve a Promise to just obtain plain data. We'll come back to this in a later blog post, but let me know your ideas and experiences about this.
 
 You can take a look at the code of this blog post [here](https://github.com/mulderp/bookshelf-demo/tree/blog_post).
