@@ -5,7 +5,7 @@ tags: writing
 ---
 After writing [The Pipefishbook](http://pipefishbook.com), there were some book reviews complaining: "This is not a full stack book." "This book does not go deep enough." "This book is more about automation than it is about web applications".
 
-True, the book tries to discuss many topics. And, the directions of the book changed two times. First, the initial idea was about writing a book on [combining Ruby-on-Rails with Backbone.js](http://thinkingonthinking.com/writing-on-ruby-and-backbone/) in beginning of 2013. At that time, the idea of a "full stack" engineer was still vague. You either worked on the backend or the frontend, but you would not combine both worlds.
+True, the book tries to discuss many topics. And, the directions of the book changed two times. First, the initial idea of the book was about writing on [combining Ruby-on-Rails with Backbone.js](http://thinkingonthinking.com/writing-on-ruby-and-backbone/) in beginning of 2013. At that time, the idea of a "full stack" engineer was still vague. You either worked on the backend or the frontend, but you would not combine both worlds.
 
 On the other hand, if you worked on web applications with Ruby-on-Rails, there was a certain stigma about working with JavaScript. Working with CoffeeScript was kind of accepted, but JavaScript had such bad press, that most advice you got was about avoiding it all together. Questioning these answers was why I wrote ["how I start liking JavaScript again"](http://thinkingonthinking.com/how-I-start-liking-javascript-again/) in my early blogging days.
 
