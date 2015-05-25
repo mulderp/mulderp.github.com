@@ -5,7 +5,7 @@ tags: orm databases
 ---
 SQL solves many problems to organize and query data. Especially, the vocabulary of [Active Record and Ruby-on-Rails](http://guides.rubyonrails.org/active_record_basics.html) made working with relational data very simple.
 
-Yet, if you work with Node.js, as I do for most of my projects, libraries for object-relational mapping, or ORM's, feel like work in progress compared to Ruby-on-Rails. For Node.js, the [Bookshelf.js](http://bookshelfjs.org/) library looks very interesting as I wrote in [this blog post](http://bookshelfjs.org/).
+Yet, if you work with Node.js, as I do for most of my projects, libraries for object-relational mapping, or ORM's, feel like work in progress compared to Ruby-on-Rails. For Node.js, the [Bookshelf.js](http://bookshelfjs.org/) library looks very interesting as I wrote in [this blog post](http://thinkingonthinking.com/Bookshelf-an-ORM-for-Node/).
 
 In that post, I mainly showed how to manually setup a database schema with [Knex.js](http://knexjs.org/). I left out a discussion how to work with relations in Bookshelf. It is getting high time to iterate on those previous experiments. Even more so, as the libraries Knex and Bookshelf have made quite some progress since then.
 
@@ -16,7 +16,7 @@ To explore the new features of Bookshelf and Knex, let's work on a small API to 
 In this example about a movies database, movies have two interesting associations:
 
 * A Movie *belongs to* a Director (association: "belongsTo"). And, a Director has many Movies (association: "hasMany"). For example, Steven Spielberg directed multiple movies, such as Jurassic Park (1993) and E.T. (1982).
-* A Movie *belongs to many* Genres (association: "belongsToMany"). And, a Genre belongs to many Movies. For example, E.T. is a "Family" movie and a "Sci-Fi" movie.
+* A Movie *belongs to many* Genres (association: "belongsToMany"). And, a Genre belongs to many Movies. For example, E.T. is a "Family" movie and a "Sci-Fi" movie. But the other direction is often important too, there are many other "Family" movies or "Sci-Fi" movies.
 
 Managing these associations translate into 4 tables: Movies, directors, genres, and a join table movies_genres. To make the associations work, we require some foreign keys (FK's) in the database:
 
