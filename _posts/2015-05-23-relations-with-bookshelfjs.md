@@ -3,15 +3,17 @@ layout: post
 title: Relations with Bookshelf.js
 tags: orm databases
 ---
-SQL solves many problems to organize and query data. Especially, the vocabulary of [Active Record and Ruby-on-Rails](http://guides.rubyonrails.org/active_record_basics.html) made working with relational data very simple.
+SQL solves many problems to organize and query data. SQL has been used in many technology stacks for web applications. Most notably, the vocabulary of [Active Record and Ruby-on-Rails](http://guides.rubyonrails.org/active_record_basics.html) made working with relational data very simple.
 
-Yet, if you work with Node.js, as I do for most of my projects, libraries for object-relational mapping, or ORM's, feel like work in progress compared to Ruby-on-Rails. For Node.js, the [Bookshelf.js](http://bookshelfjs.org/) library looks very interesting as I wrote in [this blog post](http://thinkingonthinking.com/Bookshelf-an-ORM-for-Node/).
+Yet, if you work with Node.js, as I do for most of my projects, libraries for object-relational mapping, or ORM's, are less popular. There is no good reason, as for Node.js, the [Bookshelf.js](http://bookshelfjs.org/) library provides many interesting concepts as I wrote in [this blog post](http://thinkingonthinking.com/Bookshelf-an-ORM-for-Node/).
 
-In that post, I mainly showed how to manually setup a database schema with [Knex.js](http://knexjs.org/). I left out a discussion how to work with relations in Bookshelf. It is getting high time to iterate on those previous experiments. Even more so, as the libraries Knex and Bookshelf have made quite some progress since then.
+In that post, I showed how to manually setup a database schema with [Knex.js](http://knexjs.org/). I left out a discussion how to work with relations in Bookshelf. It is getting high time to iterate on those previous experiments. Even more so, as the libraries Knex and Bookshelf have made quite some progress since then.
 
 # Basic Relations
 
-To explore the new features of Bookshelf and Knex, let's work on a small API to provide movies data. Usually, you would model your data with [entity-relationship diagrams](http://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) first. But having a background in Ruby-on-Rails, the interesting part is the use of a language that captures the relations between data. The docs about [associations in Ruby-on-Rails](http://guides.rubyonrails.org/association_basics.html) will tell you the details.
+To explore the new features of Bookshelf and Knex, let's work on a small API to provide movies data. This requires to discuss a simple data model first.
+
+Usually, data models are based on [entity-relationship diagrams](http://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model). Another option is to analyze the language when dealing with data, especially the relations between data. How this approach works is nicely discussed in the docs about [associations in Ruby-on-Rails](http://guides.rubyonrails.org/association_basics.html).
 
 In this example about a movies database, movies have two interesting associations:
 
@@ -154,7 +156,14 @@ Now, let's run the migrations with Knex:
 
     $ knex migrate:latest
 
-These migrations should be a good start to explore some syntax of Bookshelf.js.
+These migrations should be a good start to explore some syntax of Bookshelf.js. You can check the resulting schema in e.g. SQLite with: 
+
+    sqlite> .schema
+    CREATE TABLE "directors" ("id" integer not null primary key autoincrement, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime);
+    CREATE TABLE "genres" ("id" integer not null primary key autoincrement, "name" varchar(255), "created_at" datetime, "updated_at" datetime);
+    CREATE TABLE "knex_migrations" ("id" integer not null primary key autoincrement, "name" varchar(255), "batch" integer, "migration_time" datetime);
+    CREATE TABLE "movies" ("id" integer not null primary key autoincrement, "title" varchar(255), "year" integer, "director_id" integer, "created_at" datetime, "updated_at" datetime, foreign key("director_id") references "directors"("id"));
+    CREATE TABLE "movies_genres" ("id" integer not null primary key autoincrement, "movie_id" integer, "genre_id" integer, "created_at" datetime, "updated_at" datetime);
 
 
 # Defining basic relations
@@ -184,7 +193,9 @@ You can then require this config as follows:
 
     var bookshelf = require('config');
 
-Now, let's explore the relation between Movies and Directors.
+There is another approach to require Bookshelf in every model. This is shown in Ghost bloggin platform which uses a [Base Model](https://github.com/TryGhost/Ghost/blob/master/core/server/models/base.js).
+
+To learn more about associations in Bookshelf, let's explore the relation between Movies and Directors.
  
 The Bookshelf model for a Movie could be the following in a file ./models/movie.js:
 
