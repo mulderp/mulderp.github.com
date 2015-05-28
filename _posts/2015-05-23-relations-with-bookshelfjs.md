@@ -193,7 +193,7 @@ You can then require this config as follows:
 
     var bookshelf = require('config');
 
-There is another approach to require Bookshelf in every model. This is shown in Ghost bloggin platform which uses a [Base Model](https://github.com/TryGhost/Ghost/blob/master/core/server/models/base.js).
+There is another approach to require Bookshelf in every model. This is shown in Ghost blogging platform which uses a [Base Model](https://github.com/TryGhost/Ghost/blob/master/core/server/models/base.js).
 
 To learn more about associations in Bookshelf, let's explore the relation between Movies and Directors.
  
