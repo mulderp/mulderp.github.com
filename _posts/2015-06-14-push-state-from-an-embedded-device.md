@@ -9,6 +9,18 @@ In this post, I want to show you how to read sensor data and work with it in the
 
 We will use what we have learned in the previous [post on serial communication with Node.js](http://thinkingonthinking.com/serial-communication-with-nodejs/). If you haven't read that post, you can also run the embedded [Yeoman](http://yeoman.io/) generator which provides a number of files to get started. If you have read that post, you probably can skip the first section on getting the project files.
 
+The hardware used is an Arduino with the Grove Kit shield as shown below.
+
+<img src="/static/images/grove_kit.png" />
+
+Furthermore, a simple LED and an input switch are nice for debugging the hardware setup. The LED and input button are shown below:
+
+<img src="/static/images/grove_kit_led.png" />
+
+And the button:
+
+<img src="/static/images/grove_kit_btn.png" />
+
 With the code from this post, you will be able to start a socket connection on client and server, and move data from an Arduino with serial communication.
 
 # A basic web server
@@ -36,9 +48,13 @@ This should result into something similar to:
 
 This error appears because we not yet have an Arduino connected. Let's change this.
 
-# Setup the Arduino
+# Arduino Setup
 
-It is often a good idea to read out the position of a potentiometer before reading data from a sensor. A potentiometer behaves somewhat similar to a sensor. In both cases, a continuous signal (= "analog" quantity) is sampled by the microcontroller and converted into a digital quantity which a computer can work with it.
+It is often a good idea to read out the position of a potentiometer before reading data from a sensor. The potentiometer I use is shown below from the Grove Kit.
+
+<img src="/static/images/grove_kit_pot.png" />
+
+A potentiometer behaves somewhat similar to a sensor. In both cases, a continuous signal (= "analog" quantity) is sampled by the microcontroller and converted into a digital quantity which a computer can work with it.
 
 In your project directory, you will find the following project files:
  
