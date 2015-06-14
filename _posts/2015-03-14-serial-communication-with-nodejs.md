@@ -5,7 +5,11 @@ layout: post
 ---
 How can you talk to hardware peripherals, lights or robots from your laptop?
 
-The answer often is: [Serial communication](http://en.wikipedia.org/wiki/Serial_communication). Serial communication is often done with one oru multiple wires, but its concepts often apply to *wireless* communication too. 
+For many cases, the answer is: [Serial communication](http://en.wikipedia.org/wiki/Serial_communication). Serial communication often looks as in the figure below.
+
+<img src="/static/images/serial_comm.png" />
+
+Bits and bytes follow up each other. A clock can be provided for timing purposes. But a clock can be left out, when we set explicit timing information on the sending and receiving ends. Usually, the data travels on one or multiple wires, but serial communication concepts often apply to wire-*less* communication too. 
 
 There are different forms of serial communication such as [RS-232](http://en.wikipedia.org/wiki/RS-232) or [USB](http://en.wikipedia.org/wiki/USB). In both cases, the core building block in a micro chip is an [UART](http://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter) (or "universal asynchronous receiver and transmitter").  This digital logic can be configured to different data formats and transmission speeds. 
 
