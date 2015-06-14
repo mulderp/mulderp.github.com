@@ -5,6 +5,8 @@ tags: arduino embedded
 ---
 In this post, I want to show you how to read sensor data and work with it in the browser. To solve this problem, you need to "push" state from an embedded device into a ["socket"](https://en.wikipedia.org/wiki/Network_socket). For the web, this usually means applying the [WebSocket protocol](https://en.wikipedia.org/wiki/WebSocket).
 
+<img src="/static/images/epoch_analog.png" />
+
 We will use what we have learned in the previous [post on serial communication with Node.js](http://thinkingonthinking.com/serial-communication-with-nodejs/). If you haven't read that post, you can also run the embedded [Yeoman](http://yeoman.io/) generator which provides a number of files to get started. If you have read that post, you probably can skip the first section on getting the project files.
 
 With the code from this post, you will be able to start a socket connection on client and server, and move data from an Arduino with serial communication.
@@ -150,31 +152,60 @@ If you have put an LED to pin 6, you should now see it ON. But immediately after
 
 # Push Data with WebSockets
 
-For many cases, we want an open connection between Arduino and browser to process measurements from sensors in realtime. This approach is given with WebSockets 
+For many cases, we want an open connection between Arduino and browser to process measurements from sensors in realtime. This approach is given with WebSockets. A socket is a virtual communication device that can be shared between different processes on a computer. A WebSocket provides a protocol to work with sockets in a network.
+
+In the setup from above, the [ws library](https://www.npmjs.com/package/ws) for WebSockets in Node.js is already setup. For browsers, a [WebSocket API](https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_client_applications#Availability_of_WebSockets
+
+) is often included natively. 
+
+To test WebSockets from the command line, you can install a nice command line tool wscat:
+
+    $ npm install -g wscat
+
+Now, if you start the server:
+
+    $ node server
+
+And run:
+
+    $ wscat -c ws://localhost:3474
+
+You can already watch inputs from a digital switch on digital input 6. This should look similar to:
+
+    < {"state": 1}
+    
+Now, take the potentiometer and connect it to e.g. analog input 5.
+
+    board.analogRead(3, function(val, err) {
+        console.log(val);
+        ws.send('{"analog": ' + val + '}');
+    });
+
+Let's check again with wscat:
+
+    $ wscat -c ws://localhost:3474
+    < {"analog": 643}
+    < {"analog": 643}
+
+You now can observe the websocket connection in the browser and update a chart. This work is done in index.html
  
 static/index.html
+    
+    <script>
+      var ws = new WebSocket('ws://localhost:3474');
+    
+      ws.onmessage = function(e) {
+          var timestamp = ((new Date()).getTime() / 1000)|0;
+          var data = JSON.parse(e.data);
+          var dataPoint = {time:  timestamp, y: data.analog};
+          console.log(dataPoint);
+      };
+    </script>
+
  
-<code>
-</code>
- 
-static/bundle.js
- 
-<code>
-</code>
- 
-Next, we will move onto/look at following code for "server.js", so you can see what we are building and how it will operate once the code is run and is interacting with the Arduino.
- 
-Repeat until all stages complete.
- 
-Now we will execute the code above, using the default method of initialising/starting a Node.js instance:
- 
-<insert cmd here>
- 
-and so on.
- 
-// Wrap up of example
- 
-You can see how the Node.js code that we wrote above/just now does E, F & G and how it gives you the ability to do H, I and J. This is a simple but powerful method than can be extended to do <insert stuff here>.
+# Wrap up
+
+This post provided an outline to read data from an embedded device with Node.js and WebSockets. First, you had some contact with the web server. Then, the data was fed with a web socket into a browser. We still miss some basic connection to provide data over a network with a publish-subscribe pattern.
 
 
 # References
