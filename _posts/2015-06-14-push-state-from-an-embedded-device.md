@@ -29,7 +29,7 @@ Assuming you want to start with a fresh Node.js project, you need to install som
 
 First, you must install Yeoman and the generator with:
 
-    $ npm install -g yeoman-cli 
+    $ npm install -g yo
     $ npm install -g generator-embedded
 
 Now, you can run:
@@ -218,6 +218,7 @@ static/index.html
       };
     </script>
 
+A full example with plot function is [here](https://github.com/mulderp/nodejs-websockets-template).
  
 # Wrap up
 
