@@ -9,17 +9,19 @@ Talking to a display on an Raspberry Pi was not too difficult. Working with grap
 
     /dev/fb1
 
-To then show an image on the display requires a command "fbi". Installing it with:
+To then show an image on the display requires a command "fbi". First, we must install the program:
 
     # apt-get install fbi
 
-And, then [you could see the image quickly by running](https://www.raspberrypi.org/forums/viewtopic.php?f=27&t=15182):
+Then [you could see the image quickly by running](https://www.raspberrypi.org/forums/viewtopic.php?f=27&t=15182):
 
     # fbi -T 2 IMAGE.jpg
 
-I played with some scripts to change the image, but the processor on the RPi B was not fast enough (or my images were too large) to make it really un.
+I played with some scripts to change the image, but the processor on the RPi B was not fast enough (or my images were too large) to make it really fun.
 
-So, in my second project this week, I explored a new Linux image for the Intel Galileo. This was harder than expected.
+<img src="/static/images/rpi_display.png" />
+
+In my second project this week, I explored a new Linux image for the Intel Galileo. This was harder than expected.
 
 My main idea is: Build an SD Card with Node.js and some libraries pre-installed. Following the manuals, I formateted the SD card with an FAT32 filesystem. But it was not possible to get a bootable SD Card with this approach. Formatting the card as ext3 and copying an image kept the content readable, but the SD Card was not yet bootable.
 
