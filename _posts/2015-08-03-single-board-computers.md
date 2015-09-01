@@ -3,9 +3,11 @@ layout: post
 title: Booting single board computers
 tags: computers
 ---
-Last week, I have spend my evenings hacking operating systems for single board computers. I wanted to try out two things: Scripting a display on a Raspberry Pi. And, exploring Node.js on the Intel Galileo board.
+Booting processes of computers are opaque. When a board boots, it setups internal resources and peripherals. One such peripheral can be a display. And surprisingly, there is not much documantation out there about what is important.
 
-Talking to a display on an Raspberry Pi was not too difficult. Working with graphics on bare metal requires some reading about ["framebuffers"](https://en.wikipedia.org/wiki/Linux_framebuffer). On the Raspberry Pi, you must build a framebuffer device first. There is a nice [write-up](https://github.com/notro/fbtft/wiki) here, and I arrived quickly at a working device:
+## Raspberry Pi
+
+Some examples can be found in talking to a display on an Raspberry Pi. First, some reading about ["framebuffers"](https://en.wikipedia.org/wiki/Linux_framebuffer) is needed. To use a display on the Raspberry Pi, you must build a framebuffer device first. There is a nice [write-up](https://github.com/notro/fbtft/wiki) here, and I arrived quickly at a working device:
 
     /dev/fb1
 
@@ -25,7 +27,7 @@ In my second project this week, I explored a new Linux image for the Intel Galil
 
 My main idea is: Build an SD Card with Node.js and some libraries pre-installed. Following the manuals, I formatted the SD card with an FAT32 filesystem. But booting that one was difficult. Formatting the card with an ext3 filesystem made the content readable, but the SD Card was neither bootable.
 
-Exploring this problem, let me to play with the [Grub bootloader]8http://www.dedoimedo.com/computers/grub.html#mozTocId616834) and [Grub from the command line](http://www.mepis.org/docs/en/index.php?title=GRUB_from_command_line). Also, [UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface) might open new doors and I discvered [a wiki dedicated to development of operating systems](http://wiki.osdev.org/Main_Page).
+Exploring this problem, let me to play with the [Grub bootloader](http://www.dedoimedo.com/computers/grub.html#mozTocId616834) and [Grub from the command line](http://www.mepis.org/docs/en/index.php?title=GRUB_from_command_line). Also, [UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface) might open new doors and I discvered [a wiki dedicated to development of operating systems](http://wiki.osdev.org/Main_Page).
 
 Why bother? We usually pay money for this (to Apple or Microsoft) because we have better things to do, then learing about the boot process of an OS. But if we want to build embedded devices that have constrained resources, understanding an operating system becomes important again.
 
