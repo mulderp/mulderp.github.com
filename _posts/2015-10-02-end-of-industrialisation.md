@@ -25,7 +25,7 @@ Economic immigration in our times will be one of the many challenges we are faci
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/pmulder99/21759076219/in/dateposted-public/" title="DSCF2573"><img src="https://farm1.staticflickr.com/610/21759076219_ec51909178_n.jpg" width="320" height="240" alt="DSCF2573"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
-The hidden forces of capitalism drives people to risk their lives in search for a "better" life.  The "laws" of capitalism might have deeper roots in human nature, than economic atheories might suggest.
+The hidden forces of capitalism drives people to risk their lives in search for a "better" life.  Looking at "All the World's Futures", the "laws" of capitalism might have deeper roots in human nature, than economic theories might suggest.
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/pmulder99/21708240008/in/dateposted-public/" title="DSCF2419"><img src="https://farm1.staticflickr.com/715/21708240008_bdd4f4d88e_n.jpg" width="320" height="240" alt="DSCF2419"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
