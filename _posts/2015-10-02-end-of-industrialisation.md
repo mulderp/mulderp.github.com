@@ -29,7 +29,7 @@ The hidden forces of capitalism drives people to risk their lives in search for 
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/pmulder99/21708240008/in/dateposted-public/" title="DSCF2419"><img src="https://farm1.staticflickr.com/715/21708240008_bdd4f4d88e_n.jpg" width="320" height="240" alt="DSCF2419"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
-With Internet and computers, we stop having a "western" culture based on mass production. In this world to come, what would you see? How identity would you have and how would you "identify" yourself and friends? This is where the arts can help. Let's look again at "All the World's Futures" and work on the best ones.
+With Internet and computers, we stop having a "western" culture based on mass production. In this world to come, what would you see? What identity would you have? And, how would you "identify" yourself and friends? This is where the arts can help. Let's look again at "All the World's Futures" and work on the best ones.
 
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/pmulder99/21758067519/in/dateposted-public/" title="DSCF2567"><img src="https://farm6.staticflickr.com/5763/21758067519_c33121156c_n.jpg" width="320" height="240" alt="DSCF2567"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
