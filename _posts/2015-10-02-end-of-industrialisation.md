@@ -9,7 +9,7 @@ These questions came to mind when entering the Venice Biennale 2015 curated by O
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/pmulder99/21884104192/in/dateposted-public/" title="DSCF2425"><img src="https://farm1.staticflickr.com/692/21884104192_a4cd81e418_n.jpg" width="320" height="240" alt="DSCF2425"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
-Exploiting humans as slaves was common before the first industrial revolution (and still is today in some countries). In constrast to machines, humans can "feel" work.
+Exploiting humans as slaves was common before the first industrial revolution (and still is today in some countries). In contrast to machines, humans can "feel" work.
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/pmulder99/21758045279/in/dateposted-public/" title="DSCF2562"><img src="https://farm1.staticflickr.com/622/21758045279_b5fa970dbc_n.jpg" width="320" height="240" alt="DSCF2562"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
