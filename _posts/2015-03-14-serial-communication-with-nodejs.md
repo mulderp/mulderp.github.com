@@ -107,4 +107,4 @@ If everything works out, you'll see some numbers from the Arduino scrolling down
 
 This post gave you some basic concepts for communication with an embedded device with NodeJS. Not too much happened at this stage. Just numbers scrolling down the screen. Things will get more fun in a future blog post, where we'll connect the serial port to the browser by using a simple "polling" mechansism. This will enable us to write some simple web interfaces for hardware.
 
-*Note: This post is the first post of a new series about JavaScript for embedded devices. This will be the topic of my new book. Any feedback, suggestions and criticism is highly appreciated.*
+*Note: This post is the first post of a new series about JavaScript for embedded devices. This will be the topic of my new book. You can track its progress on the [book website](http://embeddednodejs.com/chapters.html). Any feedback, suggestions and criticism is highly appreciated.*
