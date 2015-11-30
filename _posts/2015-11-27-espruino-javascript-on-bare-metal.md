@@ -5,7 +5,7 @@ title: Espruino - JavaScript on bare metal
 ---
 Probably the easiest way to get started with JavaScript and embedded devices are Espruino boards. Espruino is "mini" Node.js for embedded devices.
 
-The [Espruino project](http://espruino.com) by Gordon Williams was [funded in a Kickstarter campaign 2013](https://www.kickstarter.com/projects/gfw/espruino-javascript-for-things) and [has been continuously improved since](https://www.kickstarter.com/projects/gfw/espruino-javascript-for-things).
+The [Espruino project](http://espruino.com) by Gordon Williams was [funded in a Kickstarter campaign 2013](https://www.kickstarter.com/projects/gfw/espruino-javascript-for-things) and [has been continuously improved since](http://makezine.com/2014/11/11/javascript-by-the-pico/).
 
 <img src="/static/images/espruino.png" />
 
