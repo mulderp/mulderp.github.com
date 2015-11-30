@@ -5,7 +5,7 @@ title: Espruino - JavaScript on bare metal
 ---
 Probably the easiest way to get started with JavaScript and embedded devices are Espruino boards. Espruino is "mini" Node.js for embedded devices.
 
-The [Espruino project](http://espruino.com) by Gordon Williams was [funded in a Kickstarter campaign 2014](http://makezine.com/2014/11/11/javascript-by-the-pico/) and has been continuously improved since.
+The [Espruino project](http://espruino.com) by Gordon Williams was [funded in a Kickstarter campaign 2013](https://www.kickstarter.com/projects/gfw/espruino-javascript-for-things) and [has been continuously improved since](https://www.kickstarter.com/projects/gfw/espruino-javascript-for-things).
 
 <img src="/static/images/espruino.png" />
 
@@ -41,7 +41,7 @@ You could add a toggle function to the Espruino workspace with:
     > togglePin(B7);  // ON
     > togglePin(B7);  // OFF
 
-Espruino comes with some [global functions](http://www.espruino.com/Reference#_global) built-in. 
+Espruino comes with some more [global functions](http://www.espruino.com/Reference#_global) built-in. 
 
 For example, you could attach (or "bind") functions to a certain pin, e.g. with:
 
@@ -54,14 +54,14 @@ And to toggle the LED off, use:
 
 Besides digital signals, an Espurino makes working with analog signals equally simple with [analogWrite](http://www.espruino.com/Reference#l__global_analogWrite). For example, a pulse-width-modulated (PWM) signal can be simply be generated with:
 
-    > >analogWrite(B7, 0.3, {freq: 1000});
+    > analogWrite(B7, 0.3, {freq: 1000});
 
 Or, to generate flickering pulses of 10 Herz would be possible with:
 
-    > >analogWrite(B7, 0.5, {freq: 10})
+    > analogWrite(B7, 0.5, {freq: 10})
 
 In contrast to Raspberry Pi and other Linux based devices, Espruino fills the gap for programming battery powered devices with JavaScript. 
 
-Boards can be obtained from [Espruino.org](http://espruino.org). Or, if you have some extra time and/or interests in deeper embedded software development, you can flash the JavaScript firmware to other boards, such as STM32 based discovery boards. Other boards are listed [here](http://www.espruino.com/Other+Boards). 
+Boards can be obtained from [Espruino.com](http://espruino.com). Or, if you have some extra time and/or interests in deeper embedded software development, you can flash the JavaScript firmware to other boards, such as STM32 based discovery boards. Other boards are listed [here](http://www.espruino.com/Other+Boards). 
 
 New Espruino devices even support connectivity with Wifi or Ethernet.
