@@ -13,7 +13,7 @@ A simple blinking LED example with Espruino can look as follows. First, you moun
 
 In contrast to an Arduino Uno or other microcontrollers, you don't need to setup an IDE to run code on Espruino. On most systems, you don't even need to install install drivers. You only need a terminal program which comes pre-installed on many computers these days.
 
-Once the hardware is setup, you can connect to the Espruino with a terminal program. A good terminal program for MacOS and Linux is "screen", while "hterm" is a popular choice on Windows machines.
+Once the hardware is setup, you can connect to the Espruino via USB and a terminal program. A good terminal program for MacOS and Linux is "screen", while "hterm" is a popular choice on Windows machines.
 
 On MacOS, you can connect to the Espruino with 'screen' as follows:
 
