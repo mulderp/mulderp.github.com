@@ -9,9 +9,9 @@ The [Espruino project](http://espruino.com) by Gordon Williams was [funded in a 
 
 <img src="/static/images/espruino.png" />
 
-A simple blinking LED example with Espruino can look as follows. First, you mount a [http://www.espruino.com/Pico[Espruino Pico](Espruino Pico (around 30USD) Pico with a LED and resistor on a breadboard as is shown above. In this case, you use pin B7 and GND. (If you are new to electronics: Breadboards and components will be discussed in my new book [Node.js for embedded systems](http://embeddednodejs.com)).
+A simple blinking LED example with Espruino can look as follows. First, you mount an [http://www.espruino.com/Pico[Espruino Pico](Espruino Pico) (which costs around 30USD) with a LED and resistor on a breadboard as is shown above. In this case, I use pin B7 and GND as shown in detail on the [hardware pinout](http://www.espruino.com/Pico). (By the way, if you are new to electronics: Breadboards and components will be discussed in my new book [Node.js for embedded systems](http://embeddednodejs.com)).
 
-In contrast to Arduino or other microcontrollers, you don't need to setup an IDE to run code on Espruino. On most systems, you don't even need to install install drivers. You only need a terminal program which comes pre-installed on my computers these days.
+In contrast to an Arduino Uno or other microcontrollers, you don't need to setup an IDE to run code on Espruino. On most systems, you don't even need to install install drivers. You only need a terminal program which comes pre-installed on many computers these days.
 
 Once the hardware is setup, you can connect to the Espruino with a terminal program. A good terminal program for MacOS and Linux is "screen", while "hterm" is a popular choice on Windows machines.
 
@@ -31,12 +31,12 @@ And OFF, with:
 
     > digitalWrite(B7, LOW);
 
-You could add a toggle functions in the Espruino workspace with:
+You could add a toggle function to the Espruino workspace with:
 
     > var pinStates=[];
     > function togglePin(pin) {
         pinStates[pin] = !pinStates[pin];
-	digitalWrite(pin, pinStates[pin]);
+        digitalWrite(pin, pinStates[pin]);
       }
     > togglePin(B7);  // ON
     > togglePin(B7);  // OFF
@@ -48,7 +48,7 @@ For example, you could attach (or "bind") functions to a certain pin, e.g. with:
     > toggleB7 = togglePin.bind(null, B7)
     > toggleB7();
 
-Now, when you run:
+And to toggle the LED off, use:
 
     > toggleB7();
 
