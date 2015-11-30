@@ -9,7 +9,7 @@ The [Espruino project](http://espruino.com) by Gordon Williams was [funded in a 
 
 <img src="/static/images/espruino.png" />
 
-A simple blinking LED example with Espruino can look as follows. First, you mount an [http://www.espruino.com/Pico[Espruino Pico](Espruino Pico) (which costs around 30USD) with a LED and resistor on a breadboard as is shown above. In this case, I use pin B7 and GND as shown in detail on the [hardware pinout](http://www.espruino.com/Pico). (By the way, if you are new to electronics: Breadboards and components will be discussed in my new book [Node.js for embedded systems](http://embeddednodejs.com)).
+A simple blinking LED example with Espruino can look as follows. First, you mount an [http://www.espruino.com/Pico](Espruino Pico) (which costs around 30USD) with a LED and resistor on a breadboard as is shown above. In this case, I use pin B7 and GND as shown in detail on the [hardware pinout](http://www.espruino.com/Pico). (By the way, if you are new to electronics: Breadboards and components will be discussed in my new book [Node.js for embedded systems](http://embeddednodejs.com)).
 
 In contrast to an Arduino Uno or other microcontrollers, you don't need to setup an IDE to run code on Espruino. On most systems, you don't even need to install install drivers. You only need a terminal program which comes pre-installed on many computers these days.
 
