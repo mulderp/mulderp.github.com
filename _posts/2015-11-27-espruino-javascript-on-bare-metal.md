@@ -66,7 +66,7 @@ Boards can be obtained from [Espruino.com](http://espruino.com). Or, if you have
 
 New Espruino devices even support connectivity with Wifi or Ethernet.
 
-=== Update: Espruino on ESP8266
+## Update: Espruino on ESP8266
 
 Thanks to the comment of [0xPIT](https://github.com/0xPIT/), I played a bit with Espruino and an ESP8266. The board I had was an ESP8266 12 from Tronixlabs. It has a jumper to enter bootmode (GPIO0).
 
