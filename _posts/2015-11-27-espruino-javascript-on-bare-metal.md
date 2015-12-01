@@ -65,3 +65,23 @@ In contrast to Raspberry Pi and other Linux based devices, Espruino fills the ga
 Boards can be obtained from [Espruino.com](http://espruino.com). Or, if you have some extra time and/or interests in deeper embedded software development, you can flash the JavaScript firmware to other boards, such as STM32 based discovery boards. Other boards are listed [here](http://www.espruino.com/Other+Boards). 
 
 New Espruino devices even support connectivity with Wifi or Ethernet.
+
+=== Update: Espruino on ESP8266
+
+Thanks to the comment of [0xPIT](https://github.com/0xPIT/), I played a bit with Espruino and an ESP8266. The board I had was an ESP8266 12 from Tronixlabs. It has a jumper to enter bootmode (GPIO0).
+
+<img src="/static/images/espruino_esp8266.jpg" />
+
+Now, to flash the ESP8266 firmware, I mainly used [this guide](http://williamdurand.fr/2015/03/17/playing-with-a-esp8266-wifi-module/). That means installing "esptool.py".
+
+Then, flashing the Espruino firmware with:
+
+    $ esptool.py --port /dev/cu.usbserial-FT912ZMF write_flash 0x00000 firmware/0x00000.bin 0x10000 firmware/0x10000.bin
+
+And, last flashing a script with with:
+
+    $ esptool.py --port /dev/cu.usbserial-FT912ZMF write_flash 0x60000 ./scripts/hello.js
+
+Now, connecting to the board with an FTDI-to-USB cable, you'll see that the script is executed:
+
+<img src="/static/images/esp_boot.png" />
