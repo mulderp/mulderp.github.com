@@ -72,16 +72,18 @@ Thanks to the comment of [0xPIT](https://github.com/0xPIT/), I played a bit with
 
 <img src="/static/images/espruino_esp8266.jpg" />
 
-Now, to flash the ESP8266 firmware, I mainly used [this guide](http://williamdurand.fr/2015/03/17/playing-with-a-esp8266-wifi-module/). That means installing "esptool.py".
+Now, to flash the ESP8266 firmware, I first cloned this [Espruino port for ESP8266](https://github.com/aplikatika/Espruino-on-ESP8266).
+
+The flashing process of an ESP8266I is nicely explaines in [this guide](http://williamdurand.fr/2015/03/17/playing-with-a-esp8266-wifi-module/). The main part is getting a copy of "esptool.py".
 
 Then, flashing the Espruino firmware with:
 
     $ esptool.py --port /dev/cu.usbserial-FT912ZMF write_flash 0x00000 firmware/0x00000.bin 0x10000 firmware/0x10000.bin
 
-And, last flashing a script with with:
+And, last flashing a JavaScript script onto the ESP8266 with:
 
     $ esptool.py --port /dev/cu.usbserial-FT912ZMF write_flash 0x60000 ./scripts/hello.js
 
-Now, connecting to the board with an FTDI-to-USB cable, you'll see that the script is executed:
+When you then connect to the board with an FTDI-to-USB cable, you'll see that the script is executed:
 
 <img src="/static/images/esp_boot.png" />
