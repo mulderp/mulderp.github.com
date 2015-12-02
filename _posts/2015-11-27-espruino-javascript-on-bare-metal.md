@@ -9,7 +9,7 @@ The [Espruino project](http://espruino.com) by Gordon Williams was [funded in a 
 
 <img src="/static/images/espruino.png" />
 
-A simple blinking LED example with Espruino can look as follows. First, you mount an [Espruino Pico](http://www.espruino.com/Pico) (which costs around 30USD) with a LED and resistor on a breadboard as is shown above. In this case, I use pin B7 and GND as shown in detail on the [hardware pinout](http://www.espruino.com/Pico). (By the way, if you are new to electronics: Breadboards and components will be discussed in my new book [Node.js for embedded systems](http://embeddednodejs.com)).
+A simple blinking LED example with Espruino can look as follows. First, you mount an [Espruino Pico](http://www.espruino.com/Pico) (which costs around 30USD) with a LED and resistor on a breadboard as is shown above. In this case, I use pin B7 and GND as shown in detail on the [hardware pinout](http://www.espruino.com/Pico). 
 
 In contrast to an Arduino Uno or other microcontrollers, you don't need to setup an IDE to run code on Espruino. On most systems, you don't even need to install install drivers. You only need a terminal program which comes pre-installed on many computers these days.
 
@@ -72,7 +72,7 @@ Thanks to the comment of [0xPIT](https://github.com/0xPIT/), I played a bit with
 
 <img src="/static/images/espruino_esp8266.jpg" />
 
-Now, to flash the ESP8266 firmware, I first cloned this [Espruino port for ESP8266](https://github.com/aplikatika/Espruino-on-ESP8266).
+Now, to flash Esupruino firmware to the ESP8266, I first cloned this [Espruino port for ESP8266](https://github.com/aplikatika/Espruino-on-ESP8266).
 
 The flashing process of an ESP8266I is nicely explaines in [this guide](http://williamdurand.fr/2015/03/17/playing-with-a-esp8266-wifi-module/). The main part is getting a copy of "esptool.py".
 
@@ -87,3 +87,5 @@ And, last flashing a JavaScript script onto the ESP8266 with:
 When you then connect to the board with an FTDI-to-USB cable, you'll see that the script is executed:
 
 <img src="/static/images/esp_boot.png" />
+
+(Note: if you are new to electronics: Breadboards and components will be discussed in my new book [Node.js for embedded systems](http://embeddednodejs.com)).
