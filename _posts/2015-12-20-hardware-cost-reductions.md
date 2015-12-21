@@ -5,7 +5,7 @@ tags: writing, embedded
 ---
 Hardware is getting cheaper and cheaper. It is fascinating to think about the origins of this phenomenon that people refer to [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law). To understand how it works and where we are going, let's look at computers under a microscope. 
 
-On a physical level, computers are pieces of silicon with hundreds of millions (sometimes billions) of transistos. These transistors often act as switches, either to store state or to run binary operations. In contrast to mechanical switches, transistor act on voltages and electrical signals.
+On a physical level, computers are pieces of silicon with hundreds of millions (sometimes billions) of transistors. These transistors often act as switches, either to store state or to run binary operations. In contrast to mechanical switches, transistors act on voltages and electrical signals.
 
 Transistors are made from different layers of conducting, isolating and semi-conducting materials. All layers are added on top of a silicon substrate. Have a look at the picture below for a visual explanation of layers on a silicon wafer.
 
