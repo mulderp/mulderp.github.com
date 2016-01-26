@@ -47,7 +47,7 @@ Well, to begin with, just deciding if there is more than one object in a visual 
 
 What's interesting about that Perceptrons book is that, so far as I can see, no current neural-network practitioners understand its ideas at all!  So far as I can see, all of its conclusions still apply to multilayer networks.    
 
-## 2006
+## 2003
 
 minsky@media.mit.edu schrieb:
 >   The power of consciousness comes not
@@ -59,14 +59,14 @@ minsky@media.mit.edu schrieb:
 > of change, and not because of it.
 
 
-## 2005 (1)
+## 2003 (1)
 
 >Dear Prof. Minsky,
 >
->lately I was thinking that computing systems never can
+>lately I was thinking that computing systems can never
 >be "intelligent" (I haven't thought about a definition
 >of intelligence yet, but I mean the function of
->solving problems autonomely). As far as I understand
+>solving problems autonously). As far as I understand
 >VLSI systems, they are all finite state machines.
 
 
@@ -77,7 +77,7 @@ Brain are finite-state machines, too.  So far as present-day physics can say.
 >I quite liked the last answer I got from you
 >(10/02/2003), that brains could be seen as
 >finite-state machines. I was wondering lately what the
->evolutionary reason was, that human has a certain
+>evolutionary reason was, that humans have a certain
 >number of neuron cells.
 >
 >I am working on integrating more transistors in
