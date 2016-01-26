@@ -28,8 +28,8 @@ prevent on developing individual views:
 > Interesting issue: does teaching "cooperation" conflict with learning to develop one's own ideas?
 
 
-http://www.ted.com/index.php/talks/jonathan_haidt_on_the_moral_mind.html
-http://www.yourmorals.org/explore.php
+* Jonathan Haidt [the moral mind](http://www.ted.com/index.php/talks/jonathan_haidt_on_the_moral_mind.html)
+* [YourMorals](http://www.yourmorals.org/explore.php)
 
 I couldn't quickly extract a clear idea from these. Does Jonathan Haidt have a good paper on this?
 
