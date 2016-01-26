@@ -1,5 +1,5 @@
 ---
-title: Marvin Minsky RIP
+title: RIP Marvin Minsky
 layout: post
 tags: ai
 ---
