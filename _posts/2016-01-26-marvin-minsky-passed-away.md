@@ -3,7 +3,7 @@ title: RIP Marvin Minsky
 layout: post
 tags: ai
 ---
-It is sad news to heard that Marvin Minsky passed away. He was a revolting mind who challenged our current views on computers and psychology. While programming is mainly about solving puzzle, views on learning about programming might evolve in the future. This was one of my original ideas behind my blog "thinkingonthinking" in the first place.
+It is sad news to heard that Marvin Minsky passed away. He was a revolting mind who challenged our current views on computers and psychology. While programming is mainly about solving puzzles, programming is also about learning and making discoveries. This was one of the lessons prof. Minsky taught me. And, it was one of the original ideas behind my blog "thinkingonthinking" in the first place.
 
 In honour to prof. Minsky, I want to share some email exchanges we had:
 
