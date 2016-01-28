@@ -1,9 +1,9 @@
 ---
-title: RIP Marvin Minsky
 layout: post
-tags: ai
+title: RIP Marvin Minsky
+tags: AI
 ---
-Much of engineering and programming is about solving puzzles, learning and making discoveries. That there are many emotions (like joy, fun, awe, pain, surprise) in thinking were one of the lessons prof. Minsky taught me. And, it was one of the ideas of starting my blog "[thinking_on thinking](http://hinkingonthinking.com)". 
+Much of engineering and programming is about solving puzzles, learning and making discoveries. That there are many emotions (like joy, fun, awe, pain, surprise) in thinking were one of the lessons prof. Minsky taught me. And, it was one of the ideas of starting my blog "[thinking_on thinking](http://thinkingonthinking.com)". 
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-pb3z2w9gDg" frameborder="0" allowfullscreen></iframe>
@@ -155,4 +155,4 @@ computers?  How can it teach us to make better abstractions?
 > no current neural-network practitioners understand its ideas at all!  
 > So far as I can see, all of its conclusions still apply to multilayer networks.    
 
-From these conversations, I learnt how important it can be to ask questions and how to search for new answers. These are the origins of my blog [thinkingonthinking](http://thinkingonthiking.com]
+From these conversations, I learnt how important it can be to ask questions and how to search for new answers. These are the origins of my blog [thinkingonthinking](http://thinkingonthiking.com).
