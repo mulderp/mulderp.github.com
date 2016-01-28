@@ -155,4 +155,4 @@ computers?  How can it teach us to make better abstractions?
 > no current neural-network practitioners understand its ideas at all!  
 > So far as I can see, all of its conclusions still apply to multilayer networks.    
 
-From these conversations, I learnt how important it can be to ask questions and how to search for new answers. Still, computers are mainly a thinking tool.
+From these conversations, I learnt how important it can be to ask questions and how to search for new answers. These are the origins of my blog [thinkingonthinking](http://thinkingonthiking.com]
