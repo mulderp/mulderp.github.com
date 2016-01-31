@@ -18,34 +18,38 @@ The easiest way to load D3 is by loading the script from a CDN, such as:
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js"></script>
 
-Alternatively, we can copy the library from the [github repository](https://github.com/mbostock/d3) or the [project website](http://d3js.org).
+Alternatively, you can copy the library from the [github repository](https://github.com/mbostock/d3) or the [project website](http://d3js.org).
 
-By adding a script reference to the library, we obtain a "d3" object to work with.
+Important: By adding a script tag with a reference to the D3.js library, you obtain a "d3" object to work with. With this, you have a tool to render data in a browser.
 
 ## The d3 object
 
-The d3 object is somewhat similar to the "$" object in jQuery. This means, that we can "select" DOM nodes, and we can build nodes with "append". For drawing, we need an "svg" based canvas. Adding this "svg" is the first step to build a graph. Therefore, we define the following construct:
+The d3 object is somewhat similar to the "$" object in jQuery. For example, you can "select" DOM nodes, like a circle tag. And you can build new nodes with "append".
+
+The d3 object also helps you with the setup of a convas for rendering graphics.  And, you need a "svg" based canvas. Adding this "svg" is the first step to build a graph. Therefore, let's define the following construct:
 
     var vis = d3.select("#graph")
                 .append("svg");
 
-We can add attributes such as width and height of the graph with:
+This selects the DOM node with id '#graph'. You can then add attributes such as width and height of the graph with:
 
          var w = 900,
              h = 400;
          vis.attr("width", w)
             .attr("height", h);
 
-We can also add text with:
+You can also add text with:
 
-         vis.text("Our Graph")
+         vis.text("The Graph")
             .select("#graph")
 
-This should look pretty familiar if you have worked with selectors in jQuery.
+Selecting and adding DOM nodes should look pretty familiar if you have worked with selectors in jQuery.
 
 ## Placing nodes
 
-To render data, we need to "join" data with DOM nodes. This is done with the [data()](https://github.com/mbostock/d3/wiki/Selections#wiki-data) command. The mapping of data to nodes can feel a bit magical, since this [adds relationships](http://bost.ocks.org/mike/join/) based on a declarative syntax. If you end up somewhat confused (as I was), you can read some additional explanation [here](http://knowledgestockpile.blogspot.de/2012/01/understanding-selectall-data-enter.html)
+However, D3 differs from jQuery as it allows to "layout" graphical structures according to "data". This means, [a selection of DOM nodes](http://bost.ocks.org/mike/selection/) provides a number of different functions than the same selection with jQuery.
+
+Once you have a selection of DOM nodes, you can "join" data to the DOM nodes! This is done with the [data()](https://github.com/mbostock/d3/wiki/Selections#wiki-data) command. The mapping of data to nodes can feel a bit magical, since this [adds relationships](http://bost.ocks.org/mike/join/) based on a declarative syntax. If you end up somewhat confused (as I was), you can read some additional explanation [here](http://knowledgestockpile.blogspot.de/2012/01/understanding-selectall-data-enter.html)
 
 To make a first mapping, we first define nodes:
 
@@ -55,19 +59,24 @@ To make a first mapping, we first define nodes:
 
 Since we start with a fresh canvas, all nodes will be new, and we can map these with "selectAll" - "data" - "enter":
 
-      vis.selectAll("circle.nodes")
+
+      vis.selectAll("circle .nodes")
          .data(nodes)
          .enter()
          .append("svg:circle")
+         .attr("class", "nodes")
          .attr("cx", function(d) { return d.x; })
          .attr("cy", function(d) { return d.y; })
 
-And to actually see the circles, we must set the fill attribute:
+The sequence is this: You select a group of DOM nodes (that might exist or not). You then [join](http://bost.ocks.org/mike/join/) these nodes with data. For every new DOM node, you specify a tag name (circle) and add a class and more attributes.
 
-      vis.selectAll("circle.nodes")
+To actually see the circles, you must set the fill attribute:
+
+      vis.selectAll("circle .nodes")
           .data(nodes)
           .enter()
           .append("svg:circle")
+          .attr("class", "nodes")
           .attr("cx", function(d) { return d.x; })
           .attr("cy", function(d) { return d.y; })
           .attr("r", "10px")
@@ -77,18 +86,18 @@ This should result into something like:
 
 <img src="{{page.images[0]}}">
 
-Since the circles are setup, we now can add and remove data, and the graph will update automatically: [Try this codepen](http://codepen.io/mulderp/pen/aDrxq) 
+Since the circles are setup, you now can add and remove data, and the graph will update automatically: [Try this codepen](http://codepen.io/mulderp/pen/aDrxq) 
 
 ## Connecting the Dots
 
-To render a graph, we need lines between the circles. Since we have the coordinates of the circles, let's define the line data structure with:
+A graph is based on nodes and _links_. To render these links, you need lines between the circles. Since you have the coordinates of the circles, you could add lines as follows:
 
     var links = [
       {source: nodes[0], target: nodes[1]},
       {source: nodes[2], target: nodes[1]}
     ]
 
-We can use the [line SVG shape](https://github.com/mbostock/d3/wiki/SVG-Shapes#wiki-svg_line) for connecting the dots:
+You can use the [line SVG shape](https://github.com/mbostock/d3/wiki/SVG-Shapes#wiki-svg_line) for connecting the dots:
 
     vis.selectAll(".line")
        .data(links)
