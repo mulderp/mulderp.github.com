@@ -41,6 +41,51 @@ To prepare working with the BlueIOT module, I build two little boards:
 
 <img src="/static/images/blueiot_1.png" />
 
+Besides the hardware helpers, you need to flash some firmware that can look as follows (credits to ]Guido Burger](https://twitter.com/guido_burger)):
+
+      #include <Wire.h>
+      #include <LowPower.h>
+      #include <SPI.h>
+      #include <SoftwareSerial.h>
+      
+      SoftwareSerial blueIOT(6, 9);
+      
+      void setup() {
+        Serial.begin(9600);
+         delay(1000);
+         blueIOT.begin(57600);
+         
+         // BLE Module wakeup - HIGH prevents module to go to sleep mode
+         pinMode(3, OUTPUT);
+         digitalWrite(3, HIGH);
+       
+         // TEST LED on PIN5
+         pinMode(5, OUTPUT);
+         blueIOT.write(20); // BLE buffer size
+         delay(1000);
+         Serial.println("start");
+      }
+      
+      void loop(){
+        
+        if (blueIOT.available()) {
+          char c = blueIOT.read();
+          Serial.println(c, HEX);
+          
+          if (c == '5') {
+            digitalWrite(5, HIGH);
+            blueIOT.write("on");
+          }
+          else {
+           digitalWrite(5, LOW);
+           blueIOT.write("off");
+          }
+          blueIOT.write("idle");
+        }
+      }
+
+
+
 # Using BLE with Noble.js
 
 The first contact with Noble is probably via the [beacon test script](https://github.com/sandeepmistry/noble/blob/master/test.js) from the Noble repository.  The following steps are necessary:
@@ -54,5 +99,26 @@ The first contact with Noble is probably via the [beacon test script](https://gi
 
 
 In the case of a BlueIOT beacon with a LED, the first step is discovering the device.
+
+Noble provides a number of events. So, on a first attempt to run this library, let's try this:
+
+    var noble = require('noble');
+    var MyRadio = require('./ble_radio');
+    
+    // the service unique identifier tells us that it's a BlueIOT beacon
+    var blueIOTServiceUuid = 'b4bdb9988f4a45f6a4076b48d79cfc2f';
+
+    // we mainly use the service to write the state of a LED
+    var blueIOTwriteCharacteristicUuid = 'b4bdb9988f4e45f6a4076b48d79cfc2f';
+    
+    var myRadio = new MyRadio({serviceIds: [blueIOTServiceUuid]});
+    
+    noble.on('stateChange', myRadio.startScanning);
+    noble.on('discover', myRadio.processDiscovery);
+
+With this construction, the main events from the beacon are processed behind the scenes in the "BLERadio" module.
+
+Let's look how to scan for devices and process "discoveries".
+
 
 
