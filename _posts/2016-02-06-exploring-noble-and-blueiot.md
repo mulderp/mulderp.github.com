@@ -14,15 +14,16 @@ And, as JavaScript developers, we are lucky that [Sandeep Mistry](https://github
 
 Based on his [Noble](https://github.com/sandeepmistry/noble) library, it is possible to learn what Bluetooth Low Energy does.
 
-To follow the examples of this blog post, you need a peripheral, or a "beacon". This can be anything, but I go with the [BlueIOT](https://www.tindie.com/products/FabLab/platinchen/) module. BlueIOT is based on the [BlueGiga BLE113](https://www.bluegiga.com/en-US/products/ble113-bluetooth-smart-module/). It has a couple of advantages compared to other solutions:
+But before coming to the JavaScript part, you need a peripheral, or a "beacon". Bluetooth is easier to graps if you can use a test vehicle.
+
+This can be anything, but I go with the [BlueIOT](https://www.tindie.com/products/FabLab/platinchen/) module. BlueIOT is based on the [BlueGiga BLE113](https://www.bluegiga.com/en-US/products/ble113-bluetooth-smart-module/). It has a couple of advantages compared to other solutions:
 
 * BlueIOT has a very small form factor and can be powered from a coin cell battery, sleeping currents can be smaller than 1 uA 
-* BlueIOT uses a FCC/Bluetooth certified BLE module. This can save you time and costs if you want to develop your own Beacons later.
-* Thanks to  the BLE113 Modul, a beacon can easily be scripted with [bgscript](http://ezoelectro.narod.ru/doc-pdf/ble112/BGScript_developer_guide_v2.5.pdf). This helps to separate application logic and communication logic, as well as reducing load on the host processor
+* It uses a FCC/Bluetooth certified BLE module. This can save you time and costs if you want to develop your own Beacons later.
 * The module comes with an ATmega328p chip that can be easily programmed with the Arduino toolchain
-* It is possible to update the module with OTA
+* It is possible to update the module with OTA and  connectivity configuration could be scripted with [bgscript](http://ezoelectro.narod.ru/doc-pdf/ble112/BGScript_developer_guide_v2.5.pdf). This helps to separate application logic and communication logic, as well as reducing load on the host processor
 
-Besides the BlueIOT modules, there are a couple of alternatives:
+Besides the BlueIOT modules, there are a couple of alternatives to explore Bluetooth connectivity:
 
 * Michael Kroll has built a [BLE Arduino shield](https://github.com/michaelkroll/BLE-Shield) that you can buy from Seeedstudio
 * [RedbearLabs Arduino Shields and boards](http://redbearlab.com/bleshield/)  are interesting if you like the Arduino form factor, and come with a number of nice apps and examples
@@ -120,5 +121,45 @@ With this construction, the main events from the beacon are processed behind the
 
 Let's look how to scan for devices and process "discoveries".
 
+# Scanning for devices
 
+Scanning for devices is shown in the Noble examples:
+
+    BLERadio.prototype.powerOn = function (state) {
+      console.log('state change: ' + state);
+    
+      if (state === 'poweredOn') {
+    
+        // Once the BLE radio has been powered on, it is possible
+        // to begin scanning for services. Pass an empty array to
+        // scan for all services (uses more time and power).
+    
+        console.log('scanning...');
+    
+        if (this.serviceUuid) {
+          noble.startScanning([this.serviceUuid], false);
+        } else {
+          noble.startScanning([], false);
+        }
+      }
+      else {
+        console.log('there is no BLE device. stop scanning.');
+        noble.stopScanning();
+      }
+    }
+
+It is possible to scan only for specific devices. This is indicated with the serviceUuid.
+Once the scanning has finished, you can process discoveries. I found the need to use a Connection module as follows:
+
+
+    BLERadio.prototype.processDiscovery = function(peripheral) {
+    
+      // once there is a peripheral, connect to it
+      var connection = new Connection(peripheral);
+      connection.start();
+    
+      noble.stopScanning();
+    }
+
+Now, from a Connection you can interact with services and characteristics on the device.
 
