@@ -14,7 +14,7 @@ And, as JavaScript developers, we are lucky that [Sandeep Mistry](https://github
 
 Based on his [Noble](https://github.com/sandeepmistry/noble) library, it is possible to learn what Bluetooth Low Energy does.
 
-But before coming to the JavaScript part, you need a peripheral, or a "beacon". Bluetooth is easier to graps if you can use a test vehicle.
+But before coming to the JavaScript part, you need a peripheral, or a "beacon". Bluetooth is easier to grasp with some test vehicles.
 
 This can be anything, but I go with the [BlueIOT](https://www.tindie.com/products/FabLab/platinchen/) module. BlueIOT is based on the [BlueGiga BLE113](https://www.bluegiga.com/en-US/products/ble113-bluetooth-smart-module/). It has a couple of advantages compared to other solutions:
 
