@@ -10,13 +10,13 @@ In 2014, there was the first [Oreilly SolidCon](http://conferences.oreilly.com/s
 <br>
 It is an interesting question: What happens if you mix _materials_ with code, symbols and data? In fact, what happens if you replace analog processes for fabrication of goods with digital abstractions to build things? 
 
-As Neil Gershenfield explains, these questions have led to the [so-called fablabs or "Fabrication Labs"](https://youtu.be/L0RDrSKenGo?t=10m48s). In Fablabs, people use digital designs from the internet and make physical objects out of it. Often, 3D printers or laser cutters are used. It is amazing to see how blueprints and designs are moving freely over the internet. And, it is equally amazing to see how skills and know-how evolve in maker spaces with blueprints coming from the web and open technologies.
+As Neil Gershenfeld explains, these questions have led to the [so-called fablabs or "Fabrication Labs"](https://youtu.be/L0RDrSKenGo?t=10m48s). In Fablabs, people use digital designs from the internet and transform them into physical objects. Often, 3D printers or laser cutters are used. It is amazing to see how blueprints and designs are moving freely over the internet. And, it is equally amazing to see how skills and know-how evolve if you visit a maker space regularly.
 
-If you have not yet been to a maker space before, here are some starting points. Some of the first FabLabs were built in Barcelona, where there is a young unemployment rate among young people. This should give you an impression.
+If you have not yet been to a maker space before, here are some starting points. Some of the first FabLabs were built in Barcelona, where there was (is) a high unemployment rate among young people. The video below should give you an impression about a FabLab in Barcelona and about the people involved, [esp. Tomas Diez](https://twitter.com/tomasdiez).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/16Cu6nHrWyQ" frameborder="0" allowfullscreen></iframe>
 
-While not Barcelona, Munich is quite interesting for projects of digital fabrication too. As I am in located in Munich, let's look at some examples.
+While not Barcelona, Munich is quite interesting for digital fabrication too. As I am in located in Munich, let's look at some examples what "maker spaces" do and how they provide tools and parts.
 
 # Maker spaces in Munich
 
