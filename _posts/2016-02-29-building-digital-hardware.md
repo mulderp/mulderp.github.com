@@ -3,7 +3,7 @@ layout: post
 tags: maker
 title: Building Digital Hardware
 ---
-In 2014, there was the first [Oreilly SolidCon](http://conferences.oreilly.com/solid/solid2014) about the impact of the "digital" world on the "digital". Especially, this talk by prof. Neil Gershenfield from the MIT center for bits and atoms captures the concepts and ideas of digital fabrication:
+In 2014, there was the first [Oreilly SolidCon](http://conferences.oreilly.com/solid/solid2014) about the impact of the "digital" world on the "analog" world. Especially, this talk by prof. Neil Gershenfield from the MIT center for bits and atoms captures the concepts and ideas of digital fabrication:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L0RDrSKenGo" frameborder="0" allowfullscreen></iframe>
 
