@@ -3,17 +3,22 @@ layout: post
 tags: maker
 title: Building Digital Hardware
 ---
-In 2014, there was the first [Oreilly SolidCon](http://conferences.oreilly.com/solid/solid2014) about the impact of the "digital" world on the "analog" world. Especially, this talk by prof. Neil Gershenfield from the MIT center for bits and atoms captures the concepts and ideas of digital fabrication:
+In 2014, there was the first [Oreilly SolidCon](http://conferences.oreilly.com/solid/solid2014) about the impact of the "digital" world on the "analog" world. This talk by prof. Neil Gershenfeld from the MIT Center for Bits and Atoms provides the foundations for digital fabrication:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L0RDrSKenGo" frameborder="0" allowfullscreen></iframe>
 
+<br>
 It is an interesting question: What happens if you mix _materials_ with code, symbols and data? In fact, what happens if you replace analog processes for fabrication of goods with digital abstractions to build things? 
 
-As Neil Gershenfield explains, these questions have led to the so-called fablabs or "Fabrication Labs". In Fablabs, people use digital designs from the internet and make physical objects out of it. Often, 3D printers or laser cutters are used. It is amazing to see how blueprints and designs are moving freely over the internet. And, it is equally amazing to see how skills and know-how evolve in maker spaces with blueprints coming from the web and open technologies.
+As Neil Gershenfield explains, these questions have led to the [so-called fablabs or "Fabrication Labs"](https://youtu.be/L0RDrSKenGo?t=10m48s). In Fablabs, people use digital designs from the internet and make physical objects out of it. Often, 3D printers or laser cutters are used. It is amazing to see how blueprints and designs are moving freely over the internet. And, it is equally amazing to see how skills and know-how evolve in maker spaces with blueprints coming from the web and open technologies.
 
-If you have not yet been to a maker space before, here are some starting points.
+If you have not yet been to a maker space before, here are some starting points. Some of the first FabLabs were built in Barcelona, where there is a young unemployment rate among young people. This should give you an impression.
 
-# Maker spaces
+<iframe width="560" height="315" src="https://www.youtube.com/embed/16Cu6nHrWyQ" frameborder="0" allowfullscreen></iframe>
+
+While not Barcelona, Munich is quite interesting for projects of digital fabrication too. As I am in located in Munich, let's look at some examples.
+
+# Maker spaces in Munich
 
 In Munich there are several maker spaces: 
 
