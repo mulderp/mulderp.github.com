@@ -23,4 +23,4 @@ And the paper continues:
 
 To me, it is an advantage of open-source hardware that is much more transparent. The playful aspects of Arduino remind more on working with Lego than with hard to understand electronics at times. It was nice to see the roots of these theories based on Piaget and Papert, resulting into the concept of ["lifelong kindergarden"](http://web.media.mit.edu/~mres/papers.html). The instruments that Marc Dussellier builds will certainly help. Maybe not for people with PhD's, but hopefully in areas of the world, where there are less means to buy expensive equipment.
 
-
+<img src="/static/images/m_dussellier.png" />
