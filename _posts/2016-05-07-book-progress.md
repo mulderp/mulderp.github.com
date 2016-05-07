@@ -3,7 +3,7 @@ layout: post
 title: Keeping ideas simple
 tags: writing, post
 ---
-Writing a book means communicating ideas. While writing, one difficulty I find is dealing with too many ideas at once. Keeping ideas simple and clear is very hard. By chance, I saw a TED talk by Chris Anderson which provides some nice strategy to improve communication of ideas. 
+Writing a book means communicating ideas. While writing, one difficulty I find is dealing with too many ideas at once. Keeping ideas simple and clear is very hard. By chance, I saw a TED talk by Chris Anderson discussing the importance of communicating ideas.
 
 <iframe src="https://embed-ssl.ted.com/talks/chris_anderson_teds_secret_to_great_public_speaking.html" width="640" height="360" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
