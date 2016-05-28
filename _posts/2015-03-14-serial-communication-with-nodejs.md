@@ -5,11 +5,11 @@ layout: post
 ---
 How can you talk to hardware peripherals, lights or robots from your laptop?
 
-For many cases, the answer is: [Serial communication](http://en.wikipedia.org/wiki/Serial_communication). Serial communication often looks as in the figure below.
+For many cases, the answer is: [Serial communication](http://en.wikipedia.org/wiki/Serial_communication).  With serial communication, you can send bits and bytes "in series" over a wire.  This often looks as in the figure below.
 
 <img src="/static/images/serial_comm.png" />
 
-Bits and bytes follow up each other "in series". A clock can be included for accurate timing of data signals. But in other communication schemes, the clock is left out. This is possible when timing is defined on the sending and receiving ends, for example when data transmission should happen on 57600 bits per second.
+While you will always find a wire for data, the clock is optional in some communication schemes. The clock can be included for accurate timing of data signals. But in other communication schemes, the clock is left out. From operating system perspective, a nice overview is [here](https://www.freebsd.org/doc/en/articles/serial-uart/). This is possible when timing is defined on the sending and receiving ends, for example when data transmission should happen on 57600 bits per second.
 
 Besides timing, serial communication is about configuration of wires. Data travels in one or multiple directions, usually on wires. But serial communication concepts often apply to wire-*less* communication too. 
 
