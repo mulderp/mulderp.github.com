@@ -1,6 +1,6 @@
 ---
 layout: post
-title: modular hardware
+title: Design of break out boards 
 tags: arduino, hardware
 ---
 Breakout boards help to "break out" pins of chips and circuits. In a way, breakout boards are catalysts for hardware development. Learning to design breakout boards is a good start to design more complex circuits and hardware.
@@ -19,4 +19,4 @@ His main message is that our job as engineers is no longer the task to write pat
 
 You might think that hardware for IoT is too complex for sharing online. The Tessel 2 is especially an interesting example that it is possible. Not only has the board been designed with open-source software toolchains. It also features a module system that allows software developers a plug-and-play experience for software development. With a simple [Tessel device for Eagle](https://github.com/embeddednodejs/tessellib) you can easily start to design your own Tessel modules. And with companies such as [oshpark](https://oshpark.com/) you can build your own prototype boards for under 10USD.
 
-
+<img src="/static/images/t2_breakout.png" />
