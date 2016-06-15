@@ -9,7 +9,7 @@ From a software perspective, a break out board feels like a unit test for hardwa
 
 <img src="/static/images/bb_boards_sparkfun.png" />
 
-Not only does Sparkfun offer to buy their boards. They also provide a schematic and board layout to actually experiment, copy and modify the board for your purposes. This is quite revolutionary. It is similar to how Linux allows developers to improve toolchains or to write new tools based on the Linux kernel.
+Not only does Sparkfun offer to buy their boards. They also provide a schematic and board layout to actually experiment, copy and modify the board for your purposes. This is quite revolutionary. It is similar to how Linux allows developers to improve toolchains or to write new tools based on the Linux kernel. Similar to C files related Linux, you can share CAD files for breakout boards online.
 
 Nathan Seidle, founder of Sparkfun, provides a nice overview about the way that the internet revolutionizes hardware development in this talk:
 
