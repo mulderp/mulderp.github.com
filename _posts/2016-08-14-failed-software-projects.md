@@ -11,8 +11,8 @@ Outcomes of software projects are really hard to judge. In the book ["The Innova
 
 This thought is interesting. Looking back, the software project from 2011 above was an experoment. The developers were able to experiment with some new technologies. The business side was able to learn more on building a software prototype. Looking back, the same results (basically a failed working prototype) could have been achieved wihtout spending money. The software developers might have better experimented with an open-source library or would have written blog posts. The business side could have started with a cheap mailing list or blog before going into development of a web application.
 
-Now, my situation is a bit different. When working with hardware, it is a bit harder to experiment with the latest technologies (although I try a lot like discussed in [embeddednodejs.com](http://embeddednodejs.com).
+Now, my situation is a bit different. When working with hardware, it is a bit harder to experiment with the latest open-source technologies (although I try a lot like discussed in [embeddednodejs.com](http://embeddednodejs.com)).
 
-Hardware engineers understand the merits of "never change a running system". When developing software in a hardware environment, you get an impression that everything moves slower, but on the other hand this can lead to more stable results. But as the Internet changes business models of hardware companies, I am sure we'll see the question of investing in a software projects more often.
+Hardware engineers understand the merits of "never change a running system". When developing software in a hardware environment, you get an impression that everything moves slower, but on the other hand this can lead to more stable results. But as the Internet changes business models of hardware companies, I am sure we'll see the question return on how to invest in a software projects. 
 
 
