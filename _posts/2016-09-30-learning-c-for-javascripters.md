@@ -76,7 +76,7 @@ This gives:
 What these instruction mean is another topic for a blog post all together, but for now, observe the different "sections" in the binary file. These sections are loaded into memory when you run the program. Also, one section keeps the string literal "hello, world".
 
 
-# 3) Study code from others
+# 4) Study code from others
 
 As with JavaScript, there are plenty of C libraries out there that you can study and learn from. Especially, [network programming is done with C](https://www.goodreads.com/book/show/258607.UNIX_Network_Programming) and you could learn by writing a small websockets client or server in C. This will teach you about assembling bytes to communication protocols and working with structs and such. Also, getting a feeling for the C standard libraries is important. OFten, these relate to the target machine that you use (for example study the difference of standard libs for Arduino or your Unix distribution of choice). Another way to learn is about C is builing parsers with Yacc and Lex. This will hopefully be another blog post as well.
 
