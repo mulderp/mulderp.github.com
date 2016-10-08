@@ -30,7 +30,7 @@ Here are some conclusions:
 
 * Business models don't need a lot of resources to experiment with. That's the whole point of building prototypes. Fast, cheap and throw-away models to test ideas.
 
-* A prototype might be compared to 'haute couture' in the fashion pyramid. It's about making something unique and special, that can be simplified later on. Like in haute couture, there are companies specializing in bringing prototypes to the world; however, a whole lot profitable luxury fashion lines do both: Haute-couture and High-end retail. And besides, there is space for volume and mass market segments.
+* A business prototype might be compared to 'haute couture' in the fashion pyramid. It's about making something unique and special, that can be simplified later on. Like in haute couture, there are companies specializing in bringing prototypes to the world; however, a whole lot profitable luxury fashion lines do both: Haute-couture and High-end retail. And besides, there is space for volume and mass market segments.
 
 * A business model is not just a product and a customer. Like in fashion, it's about how you feel in a shop, are received by a nice sales person, get extras and feel special. That is the sales channel and customer relationship part in a business model.
 
