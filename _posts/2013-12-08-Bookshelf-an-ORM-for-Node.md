@@ -13,28 +13,45 @@ And if you want to do this with Node.js, you often were left alone with your RDB
 
 [Knex](http://knexjs.org/) is a promissing wrapper for SQL in JavaScript. With Knex, we quickly can connect to a MySQL, Postgres or SQLite database.
 
-As example, let's use SQLite3:
+As example, let's start with [SQLite3](https://sqlite.org/download.html) database that comes as default in a knexfile.js:
 
 <pre>
-var DB = require('knex')({
-  client: 'sqlite3', 
-  connection: { filename: 'mydb.sqlite' } 
-});
+/ knexfile.js
+
+module.exports = {
+
+  development: {
+    client: 'sqlite3',
+    connection: {
+      filename: './mydb.sqlite3'
+    }
+  },
 </pre>
 
-From now on, we can use the DB object to define tables and attributes, basically, we can do [schema operations](http://knexjs.org/#Schema):
+In knex migrations, you can use the knex object to define tables and attributes. Basically, you can do [schema operations](http://knexjs.org/#Schema):
 
 <pre>
-// this is our schema example:
+// migrations/20161013223537_createMovies.js
 var table = function (table) {
   table.string('title');
   table.timestamps();
 };
 
-// this executes the schema operation:
-DB.schema.createTable('movies', table).then(function () {
-  console.log('Movies Table is Created!');
-});
+exports.up = function(knex, Promise) {
+
+  return knex.schema.createTable('movies', table).then(function () {
+    console.log('Movies Table is Created!');
+  });
+
+};
+
+exports.down = function(knex, Promise) {
+
+  return knex.schema.dropTable('movies').then(function() {
+    console.log('Movies Table is dropped!');
+  });
+
+};
 </pre>
 
 Adding a new column to the movies table is as easy with the [table](http://knexjs.org/#Schema-table) commands:
