@@ -42,7 +42,6 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('movies', table).then(function () {
     console.log('Movies Table is Created!');
   });
-
 };
 
 exports.down = function(knex, Promise) {
@@ -50,21 +49,35 @@ exports.down = function(knex, Promise) {
   return knex.schema.dropTable('movies').then(function() {
     console.log('Movies Table is dropped!');
   });
-
 };
 </pre>
 
 Adding a new column to the movies table is as easy with the [table](http://knexjs.org/#Schema-table) commands:
 
 <pre>
-
-var addYear = function (table) { 
-  table.integer('year');
+// migrations/20161013224455_addYear.js
+var addYear = function (table) {
+    table.integer('year');
 };
 
-DB.schema.table('movies', addYear)
-  .then(function() { console.log("Attribute added"); })
-  .catch(function(err) { console.log(err) });
+
+function rmYear (table) {
+    table.dropColumn('year');
+}
+
+
+exports.up = function(knex, Promise) {
+  return knex.schema.table('movies', addYear)
+    .then(function() { console.log("Attribute added"); })
+      .catch(function(err) { console.log(err) });
+
+};
+
+exports.down = function(knex, Promise) {
+  return knex.schema.table('movies', rmYear)
+    .then(function() { console.log("Attribute removed"); })
+      .catch(function(err) { console.log(err) });
+};
 </pre>
 
 Last, you need [to close the connection](http://stackoverflow.com/questions/28869148/knex-js-db-call-does-not-complete). This is done by adding on the last statement:
