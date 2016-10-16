@@ -18,7 +18,7 @@ The Rothko Chapel is very special though. It is one of the few places I know whe
 
 Leaving the Rothko Chapel, I moved on to the [Gremillion Gallery](http://www.gremillion.com/thomaszitzwitz/) to see works of an artist friend from Germany: [Thomas Zitzwitz](http://www.zitzwitz.com/). As a trained computer scientist and artist, Thomas's work provides interesting views on abstract art and the nature of light. At Gremillion's I also got an interesting overview about appreciation of modern art in Texas. While Houston can be seen as the center, it should be well worth to visit the [Fort Worth Modern Art museum](http://www.themodern.org/). The building by Tadao Ando has been titled as the ["World's most beautiful art museum"](http://www.themodern.org/about-modern/building).
 
-Well, talking about building and arts installation, my tour ended at [Skyspace](http://skyspace.rice.edu/) by James Turrell.
+Well, talking about buildings and arts installations, my tour ended at [Skyspace](http://skyspace.rice.edu/) by James Turrell.
 
 <img src="/static/images/turrell_sky.png" />
 
