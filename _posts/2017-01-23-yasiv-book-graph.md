@@ -14,7 +14,7 @@ The graph shows different kinds of products from the Amazon product catalog. The
 
 In the middle, the yellow circle shows the book "Node.js for Embedded Systems". It connects with a number of different product categories: Raspberry Pi, Arduino, BeagleBone, Robots, Design and Web Development.
 
-Let's look into details. First, people buy this book together with books an materials on Raspberry Pi and Arduino (cyan circles top left). Single board computers are indeed an interesting start with embedded systems. Books on Beaglebone are also connected to this (see orange circle).
+Let's look into details. First, people buy this book together with books on materials on Raspberry Pi and Arduino (cyan circles top left). Single board computers are indeed an interesting start with embedded systems. Books on Beaglebone are also connected to this (see orange circle).
 
 Second, there is a whole book category on Robots (red circle). From the data, it looks like robot books are more connected to Raspberry Pi and Arduino, than they are to Beaglebone. It seems our book could add an interesting link here, but it is not yet what people see. Somehow in this direction of machines, books are written on computer architecture and FPGA's as well.
 
