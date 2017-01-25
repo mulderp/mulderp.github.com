@@ -10,7 +10,7 @@ The graph of book sales Amazon can provide some insights:
 
 <img src="/static/images/amz_nodejs_embedded.png" />
 
-The graphs shows different kinds of products from the Amazon product catalog. The lines between nodes shows how books are combined in a shopping cart.
+The graph shows different kinds of products from the Amazon product catalog. The lines between nodes shows how books are combined in a shopping cart.
 
 In the middle, the yellow circle shows the book "Node.js for Embedded Systems". It connects with a number of different product categories: Raspberry Pi, Arduino, BeagleBone, Robots, Design and Web Development.
 
