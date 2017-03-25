@@ -6,7 +6,7 @@ tags: 3d printing, failure
 
 Two weeks ago at the [MCSM Modelbauclub](http://www.modellbauclub-mcsm.de/Munich-Maker-Space), I broke the 3D printer. Well, I damaged the printing plate by messing up the calibration of the printing head. Luckily, last week we could repair the damage, but it took some time. 
 
-It is no surprise hat with hardware things can break, with software you can just restart the computer. This makes the feeling of developing hardware a bit different from the software development experience. For hardware, gaining a feeling beforehand is important.
+It is no surprise hat with hardware things can break, with software you can just restart the computer. This makes the feeling of developing hardware a bit different from the software development experience. For hardware, gaining a feeling for a construction beforehand is important. There is no such concept as test-driven development.
 
 The outcome of a construction depends on the preparation. Instead of starting the 3D print process without a feeling for the position of the 3D printing head, it would have been important to listen to another's opinion. Or, to have some kind of picture of the position of pieces in space. 
 
