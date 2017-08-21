@@ -3,7 +3,7 @@ layout: post
 title: Finding Beethoven on Coursera
 tags: music 
 ---
-Summer time is great. Time for reading, time for discoveries, time to reflect. It is alos good to look at the bigger picture of physics, software or music. Here are some books that I touched:
+Summer time is great. Time for reading, time for discoveries, time to reflect. It is also good to look at the bigger picture of physics, software or music. Here are some books that I touched:
 
 
 * ["Losing the Signal: The Untold Story Behind the Extraordinary Rise and Spectacular Fall of BlackBerry"](https://www.goodreads.com/book/show/25602451-losing-the-signal): This book is about the history of BlackBerry. One of the company's founder [Mike Lazaridis](https://en.wikipedia.org/wiki/Mike_Lazaridis) had access to an early version of [Mobitex](https://en.wikipedia.org/wiki/Mobitex) - the predecessors of wireless data networks. The book is a very good overview about the beginnings and developments of mobile data networks in the 90ies (For example paging, Motorola, Palm, US Robotics, ... ).  The history of BlackBerry also shows the impact of data networks on the evolution of mobile devices.
