@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Books on physical software 
+title: Finding Beethoven on Coursera
 tags: music 
 ---
 The summer time I was lucky enough to find more time for reading as usual. Here are some books that I touched:
