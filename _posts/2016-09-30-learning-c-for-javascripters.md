@@ -21,7 +21,7 @@ Makefiles are essential in any C project. Makefiles wrap calls to a C toolchain 
 	all:
 		$(cc) $(src) -o hello
 
-Without a source file, tunning "make" results into an error that no source is found. This is a good moment to reflect what you need to learn about C source files and projects
+Without a source file, running "make" results into an error that no source is found. This is a good moment to reflect what you need to learn about C source files and projects
 
 # 2) Re-write code you know in C
 
