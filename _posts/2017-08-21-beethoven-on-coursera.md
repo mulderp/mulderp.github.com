@@ -3,7 +3,7 @@ layout: post
 title: Books on physical software 
 tags: music 
 ---
-The last months passed by quickly. Over the summer I was reading some books: 
+The summer time I was lucky enough to find more time for reading as usual. Here are some books that I touched:
 
 * ["Losing the Signal: The Untold Story Behind the Extraordinary Rise and Spectacular Fall of BlackBerry"](https://www.goodreads.com/book/show/25602451-losing-the-signal): This book is about the history of BlackBerry. One of the company's founder [Mike Lazaridis](https://en.wikipedia.org/wiki/Mike_Lazaridis) had access to an early version of [Mobitex](https://en.wikipedia.org/wiki/Mobitex) - the predecessors of wireless data networks. The book is a very good overview about the beginnings and developments of mobile data networks in the 90ies: Paging, Motorola and US Robotics a popular modem provider.  The history of BlackBerry also shows the impact of data networks on the evolution of mobile devices.
 
