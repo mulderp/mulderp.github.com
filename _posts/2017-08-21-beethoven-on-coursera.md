@@ -12,7 +12,7 @@ Summer time is great. Time for reading, time for discoveries, time to reflect. I
 
 * ["Tools of the Titans"](https://www.goodreads.com/book/show/31823677-tools-of-titans): I discovered this book by Tim Ferris because it is  on the NYTimes bestseller's list 2017. Also, I've heard about Tim Ferris before. Ferris' based this book on Ben Franklin's quote: "Early to bed and early to rise makes a man healthy, wealthy, and wise." So, the book indeed makes you aware that extreme characters wake up earlier, focus better and tolerate more their weaknesses (and use them wisely). The book is also interesting with respect to creative writing and probably my motivation for this blog post.
 
-Well, I started some more books and other things. But right now, I am most fascinated by some coursers on Coursera, esp. the [Beethoven Sonata Lecture by Jonathan Bliss](https://www.coursera.org/learn/beethoven-piano-sonatas/lecture/E2dNG/re-shaping-the-sonata-op-26). there are so many interesting puzzles and ideas in classical music. And audio is full of mathematics too, as well as circuits and hardware, as well as software (and a bit of Fourier analysis).
+Well, I started some more books and other things. But right now, I am most fascinated by some courses on Coursera, esp. the [Beethoven Sonata Lecture by Jonathan Bliss](https://www.coursera.org/learn/beethoven-piano-sonatas/lecture/E2dNG/re-shaping-the-sonata-op-26). there are so many interesting puzzles and ideas in classical music. And audio is full of mathematics too, as well as circuits and hardware, as well as software (and a bit of Fourier analysis).
 
 
 
