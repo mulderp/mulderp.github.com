@@ -5,7 +5,7 @@ tags: java eclipse
 ---
 When it comes to embedded systems, working with compilers gets important sooner or later. 
 
-So, it was interesting to listen to story and differences between C, Objective C and C++ by Robert C. Martin.
+So, it was interesting to listen to Robert C. Martin about differences between C, Objective C and C++ (and some general history of programming ).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ecIWPzGEbFc" frameborder="0" allowfullscreen></iframe>
 
