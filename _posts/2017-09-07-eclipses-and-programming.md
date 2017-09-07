@@ -3,7 +3,7 @@ layout: post
 title: Eclipses and programming
 tags: java eclipse
 ---
-Programming embedded systems is complicated. The constraints on memory and processor speed puts extra efforts on pogrammers for efficient programming. Usually, this involves working with a compiler.
+When it comes to embedded systems, working with compilers gets important sooner or later. 
 
 So, it was interesting to listen to story and differences between C, Objective C and C++ by Robert C. Martin.
 
