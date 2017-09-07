@@ -11,7 +11,7 @@ So, it was interesting to listen to Robert C. Martin about differences between C
 
 To program with C and C++, it usually takes a good IDE. While easy to use, the Arduino IDE is too simple for many professional programmers. One possible next step for embedded development is <a href="https://www.eclipse.org/">Eclipse</a>. As an additional motivation to explore Eclipse closer, the Eclipse open-source ecosystem. For example, the slide deck by [Erich Gamma](https://qconlondon.com/london-2008/qconlondon.com/dl/qcon-london-2008/slides/ErichGamma_qcon2008.pdf) on the history of Eclipse is quite interesting. There is also [EclipseCon](https://www.eclipsecon.org/europe2017/) which shows how the IDE evolves into different directions.
 
-Some nice plugins to understand closer are:
+Exploring plugins can be a good place to start:
 
 * Eclipse [CDT](https://eclipse.org/cdt/) and [JDT](https://eclipse.org/jdt/) are probably the main drivers of Eclipse. These plugin systems focus on C/C++ and Java development respectively.
 * Eclipse [PyDev](http://www.pydev.org/) is an interesting extension for working with Python projects. 
