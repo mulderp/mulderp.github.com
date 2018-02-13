@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'jekyll',     '=1.3.1'
+gem 'jekyll'
 gem 'liquid'     
 gem 'redcarpet' 
 gem 'maruku'   
