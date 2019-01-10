@@ -1,6 +1,6 @@
 ----
 layout: post
-title: Need writing again
+title: Le vent nous portera
 tags: random
 ---
 While driving during the X-mas holidays, I listened to a radio interview about a favorite music tracks. Someone read the lyrics of "Le vent nous portera" (The wind will transport us) by a French band "Noir desir".
