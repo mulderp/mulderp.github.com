@@ -1,0 +1,31 @@
+----
+layout: post
+title: Need writing again
+tags: random
+---
+While driving during the X-mas holidays, I listened to a radio interview about a favorite music tracks. Someone read the lyrics of "Le vent nous portera" (The wind will transport us) by a French band "Noir desir".
+The internet makes sharing so easy, even small thoughts like this one. In a sense, the internet is like the wind that transports thoughts.
+So, here the lyrics of the [song](https://www.youtube.com/watch?v=NrgcRvBJYBE) by Noir desir:
+
+    Je n'ai pas peur de la route
+    Faudrait voir, faut qu'on y goûte
+    Des méandres au creux des reins
+    Et tout ira bien
+    Le vent l'emportera
+    Ton message à la grande ourse
+    Et la trajectoire de la course
+    A l'instantané de velours
+    Même s'il ne sert à rien
+    Le vent l'emportera
+    Tout disparaîtra
+    Le vent nous portera
+    La caresse et la mitraille
+    Cette plaie qui nous tiraille
+    Le palais des autres jours
+    D'hier et demain
+    Le vent les portera
+    Génétique en bandoulière
+    Des chromosomes dans l'atmosphère
+    Des taxis pour les galaxies
+    Et mon tapis volant dis?
+    Ce parfum… 
