@@ -12,9 +12,11 @@ This is my first post in six years. It's about [Tessera-small](https://huggingfa
 
 *Same prompts and seeds, five sampler settings. Click for the full-size chart.*
 
-## Four chessboards
+## A pixel called MASK
 
-Tessera is a masked diffusion model over discrete tokens. A 16×16 sprite is a 256-token sentence, and every pixel is one token from a learned 512-colour palette (token 0 means transparent), plus a `[MASK]` token. There's no VAE and no latent space.
+Tessera is a masked diffusion model over discrete tokens. To see what it means, think of a picture as a collection of pixels, much like a text is a collection of words. In Tessera, each pixel is one of 512 colours, just like each word in a language model comes from a fixed vocabulary.
+
+Tessera uses one extra token that is not a colour, the mask token. To understand why, take the sentence "The dog ___ a duck." You can guess the missing word: chases, maybe bites. Tessera learns the same game for pictures: hide some pixels, guess the missing colours. And to draw a new picture, it starts with every pixel masked and fills them in over 16 steps.
 
 To draw a sprite:
 
