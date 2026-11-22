@@ -1,95 +1,70 @@
-{% assign description = "physical software" %}
+{% assign description = "physical software & thinking marvels" %}
 <!doctype html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> 	
-<html lang="en"> 
-<!--<![endif]-->
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	<!-- Force Latest IE rendering engine -->
-    <title>{{ page.title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>{% if page.title and page.title != "thinking_on thinking" %}{{ page.title }} — thinking_on thinking{% else %}thinking_on thinking — Patrick Mulder{% endif %}</title>
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-    <link href="http://feeds.feedburner.com/ThinkingOnThinking" rel="alternate" title="mulderp" type="application/atom+xml" /> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css">
+    <link href="/atom.xml" rel="alternate" title="thinking_on thinking" type="application/atom+xml" />
     <link rel="shortcut icon" href="/static/images/favicon.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="javascript, backbonejs, ruby, chef, rails, erlang">
+    <meta name="description" content="Patrick Mulder's lab notebook on Thinking Marvels (Marvin Minsky, Douglas Hofstadter, human & machine exploration), Physical Software & Hardware, Field Notes, Culture & Chess, and the Munich JS & Infra Lab." />
+    <meta name="keywords" content="thinking on thinking, marvin minsky, society of mind, physical software, hardware, embedded, chess, javascript, backbonejs, ruby, chef, arangodb">
 
     <link rel="stylesheet" href="/static/css/style.css">
-
-    <!--[if IE 7]>
-      <script src="/static/css/font-awesome-ie7.css"></script>
-    <![endif]-->
     <script type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
   </head>
   <body>
-    <div class="container">	
-      <div id='mobile' class='two columns hidden'>
+    <div class="container">
+      <div id="mobile" class="two columns hidden">
         <ul>
-          <li><span class="gray">Patrick Mulder</span></li>
-          <li><a id="mail-to-mobile" href="mailto:mulder.patrick@gmail.com" onClick="">mulder.patrick@gmail.com</a></li>
-          <li><a href="http://twitter.com/mulpat" onClick="_gaq.push(['_trackEvent', 'Link', 'Click', 'Mobile', Sidebar Email']);">@mulpat</a></li>
+          <li><a href="/"><strong>thinking_on thinking</strong></a></li>
+          <li><span class="gray">Patrick Mulder · {{ description }}</span></li>
+          <li><a id="mail-to-mobile" href="mailto:mulder.patrick@gmail.com">mulder.patrick@gmail.com</a> · <a href="https://github.com/mulderp">GitHub</a> · <a href="/atom.xml">RSS</a></li>
         </ul>
       </div>
 
       <div class="four columns sidebar">
         <section>
-          <a id="" style="font-size: 16px; margin-bottom: 8px; padding-bottom: 8px; font-weight: bold" href="/">thinking_on thinking</a>
+          <a class="site-brand" href="/">thinking_on thinking</a>
 
           <ul id="social">
             <li>
-              <a href="mailto:mulder.patrick@gmail.com?subject=hi" class="icon-envelope-alt" id="mail-to"></a>
+              <a href="mailto:mulder.patrick@gmail.com?subject=thinking_on%20thinking" class="icon-envelope-alt" id="mail-to" title="Email Patrick"></a>
             </li>
-
             <li>
-              <a href="http://twitter.com/mulpat" class="icon-twitter" id="twitter" style="font-size: 28px;"></a>
+              <a href="https://twitter.com/mulpat" class="icon-twitter" id="twitter" style="font-size: 28px;" title="@mulpat"></a>
             </li>
-
             <li>
-              <a href="http://github.com/mulderp" class="icon-github" id="github" title="I share and fork code here"></a>
+              <a href="https://github.com/mulderp" class="icon-github" id="github" title="I share and fork code here"></a>
             </li>
-
             <li>
-              <a href="skype:patrickmulder__?add" class="icon-comment" id="skype" title="Feel free to add me on Skype"></a>
-            </li>
-
-            <li>
-              <a href="http://feeds.feedburner.com/ThinkingOnThinking" class="icon-rss" id="rss" title="RSS"></a>
+              <a href="/atom.xml" class="icon-rss" id="rss" title="Atom / RSS Feed"></a>
             </li>
           </ul>
 
           <ul id="me">
-            <li>Patrick Mulder</span></li>
+            <li>Patrick Mulder</li>
             <li class="gray">{{ description }}</li>
           </ul>
-  
-  <ul>
-          <li>Get notified.</li>
-          <li><form style="font-size: 8px;" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=ThinkingOnThinking', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Enter your email address:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="ThinkingOnThinking" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://feedburner.google.com" target="_blank">FeedBurner</a></p></form></li>
-</ul>
+
+          <nav class="sidebar-orbits" aria-label="Blog Orbits">
+            <p class="sidebar-nav-title">Orbits</p>
+            <ul>
+              <li><a href="/#planet-thinking-marvels"><span class="orbit-dot dot-marvels"></span>Thinking Marvels</a></li>
+              <li><a href="/#planet-physical-software"><span class="orbit-dot dot-hardware"></span>Physical Software</a></li>
+              <li><a href="/#planet-culture-chess"><span class="orbit-dot dot-culture"></span>Culture &amp; Chess</a></li>
+              <li><a href="/#planet-munich-lab"><span class="orbit-dot dot-munich"></span>Munich Lab &amp; Tech</a></li>
+              <li class="sidebar-nav-all"><a href="/#all-posts">All Posts &amp; Tags ({{ site.posts | size }})</a></li>
+            </ul>
+          </nav>
         </section>
       </div>
 
       {{ content }}
     </div>
-
-<script type="text/javascript">
-  var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
-  analytics.load("t2dez1p4gw");
-  $(document).ready(function() {
-    analytics.trackLink( $("#mail-to"), 'mail_event', {source:"main"});
-    analytics.trackLink( $("#github"), 'contact-github', {source:"main"});
-    analytics.trackLink( $("#skype"), 'contact-skype', {source:"main"});
-    analytics.trackLink( $("#rss"), 'contact-rss', {source:"main"});
-  });
-</script>
   </body>
-</html> 
+</html>
