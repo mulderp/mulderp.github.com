@@ -59,12 +59,8 @@
 .dot-munich { background-color: #0284c7; box-shadow: 0 0 0 2px rgba(2,132,199,0.18); }
 
 .universe-colophon {
-  padding: 18px 22px;
-  margin-bottom: 24px;
-  background: #fafafa;
-  border: 1px solid #e6e6e6;
-  border-left: 4px solid #6b46c1;
-  border-radius: 6px;
+  padding: 0 0 8px;
+  margin-bottom: 32px;
 }
 .colophon-eyebrow {
   font-size: 11px;
@@ -75,8 +71,8 @@
   font-weight: 600;
 }
 .universe-colophon h1 {
-  font-size: 26px;
-  line-height: 32px;
+  font-size: 28px;
+  line-height: 36px;
   margin-bottom: 10px;
 }
 .colophon-lead {
@@ -391,3 +387,21 @@
     flex-direction: column;
   }
 }
+
+/* === 2026-11 plain words: quieter homepage === */
+.colophon-lead { font-size: 16px; line-height: 26px; color: #333; margin-bottom: 12px; }
+.colophon-latest { font-size: 14px; color: #555; margin-bottom: 0; }
+.planet-card { border-top: 1px solid #e2e8f0; box-shadow: none; padding: 20px 22px; }
+.planet-card h2 { font-size: 19px; line-height: 26px; font-weight: 600; color: #1e293b; margin-bottom: 6px; }
+.planet-years { font-size: 12px; font-weight: 400; color: #94a3b8; margin-left: 6px; }
+.planet-card .planet-desc { font-size: 14px; line-height: 21px; color: #64748b; margin-bottom: 12px; }
+.planet-links { margin: 0 0 12px; padding: 0; }
+.planet-links li { list-style: none !important; margin: 0; padding: 3px 0; font-size: 14px; line-height: 20px; }
+.planet-links a { color: #1e293b; text-decoration: none; }
+.planet-links a:hover { color: #06A; text-decoration: underline; }
+.planet-year { font-size: 12px; color: #94a3b8; margin-left: 4px; }
+.planet-drawer summary { font-size: 13px; color: #06A; }
+.post-index-main { display: block; flex: 1; min-width: 0; }
+.post-index-title { font-weight: 400; color: #1e293b; }
+.post-index-tags { display: inline-flex; margin-left: 6px; vertical-align: 1px; }
+.post-index-date { white-space: nowrap; }

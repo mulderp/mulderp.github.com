@@ -6,221 +6,122 @@ title: thinking_on thinking
 <div class="twelve columns offset-by-four main-universe">
 
   <header class="universe-colophon">
-    <p class="colophon-eyebrow">Personal Field Notebook · Est. 2012</p>
-    <h1>Orbits of Thought &amp; Physical Software</h1>
+    <h1>Notes on minds, machines and making things</h1>
     <p class="colophon-lead">
-      <strong>thinking_on thinking</strong> started as a personal note-taking device—inspired by conversations with
-      <a href="/marvin-minsky-passed-away/">Marvin Minsky</a> (<em>The Society of Mind</em>) and meeting Douglas Hofstadter,
-      and grown in Munich as an open laboratory for learning JavaScript, software engineering, and hardware in public.
+      I started this blog in 2012 to think out loud, inspired by conversations with
+      <a href="/marvin-minsky-passed-away/">Marvin Minsky</a> and his <em>Society of Mind</em>.
+      Since then it has collected notes on how humans and machines think, building hardware,
+      learning software in Munich, and culture and chess.
     </p>
-    <p class="colophon-sub">
-      Like Minsky’s society of agents, this archive has no single central sun. Instead, {{ site.posts | size }} notes orbit
-      four independent <strong>Planets</strong>—from the completed Munich tech lab to active explorations of human-machine thinking, physical software, culture, and chess.
-    </p>
+    {% assign latest = site.posts.first %}
+    <p class="colophon-latest">Latest: <a href="{{ latest.url }}">{{ latest.title }}</a> <span class="gray">· {{ latest.date | date: "%b %Y" }}</span></p>
   </header>
 
-  <section class="constellation-grid" aria-label="Blog Planets">
+  <section class="constellation-grid" aria-label="Orbits">
 
-    <!-- PLANET 1: THINKING MARVELS -->
-    <article class="planet-card planet-marvels" id="planet-thinking-marvels">
-      <div class="planet-orbit-ring" aria-hidden="true"></div>
-      <div class="planet-header">
-        <span class="planet-badge badge-active">Active Orbit · Core</span>
-        <h2><span class="orbit-dot dot-marvels"></span>Thinking Marvels</h2>
-        <p class="planet-desc">
-          How humans and machines represent knowledge, build abstractions, and explore ideas together—rooted in Marvin Minsky’s
-          <em>Society of Mind</em>, cognitive models, and visual languages.
-        </p>
-      </div>
-
-      <div class="planet-featured">
-        <p class="satellites-label">Anchor Satellites</p>
-        <div class="satellite-cluster">
-          <a class="satellite-pill pill-anchor" href="/marvin-minsky-passed-away/">★ RIP Marvin Minsky (2003–2008 Emails)</a>
-          <a class="satellite-pill" href="/book-progress/">Keeping ideas simple (Brains &amp; Nervous Systems)</a>
-          <a class="satellite-pill" href="/yasiv-book-graph/">Learning from a Graph</a>
-          <a class="satellite-pill" href="/visual-languages/">Visual Languages for the Web</a>
-          <a class="satellite-pill" href="/on-education-innovation/">On Education Innovation</a>
-          <a class="satellite-pill" href="/the-value-of-iteration/">The Value of Iteration</a>
-        </div>
-      </div>
-
+    <article class="planet-card" id="planet-thinking-marvels">
+      <h2><span class="orbit-dot dot-marvels"></span>Thinking Marvels</h2>
+      <p class="planet-desc">How humans and machines think: Minsky's <em>Society of Mind</em>, cognitive models and visual languages.</p>
+      <ul class="planet-links">
+        <li><a href="/marvin-minsky-passed-away/">RIP Marvin Minsky (2003–2008 emails)</a> <span class="planet-year">2016</span></li>
+        <li><a href="/book-progress/">Keeping ideas simple</a> <span class="planet-year">2016</span></li>
+        <li><a href="/yasiv-book-graph/">Learning from a graph</a> <span class="planet-year">2017</span></li>
+        <li><a href="/visual-languages/">Visual languages for the web</a> <span class="planet-year">2014</span></li>
+        <li><a href="/on-education-innovation/">On education innovation</a> <span class="planet-year">2014</span></li>
+      </ul>
+      {% assign n = 0 %}
+      {% capture items %}{% for post in site.posts %}{% include post_planet.html post=post %}{% if post_planet == "thinking-marvels" %}{% assign n = n | plus: 1 %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="planet-post-date">{{ post.date | date: "%b %Y" }}</span></li>{% endif %}{% endfor %}{% endcapture %}
       <details class="planet-drawer">
-        <summary>Explore all satellites in Thinking Marvels</summary>
-        <ul class="planet-post-list">
-          {% for post in site.posts %}
-            {% include post_planet.html post=post %}
-            {% if post_planet == "thinking-marvels" %}
-              <li>
-                <a href="{{ post.url }}">{{ post.title }}</a>
-                <span class="planet-post-date">{{ post.date | date: "%b %Y" }}</span>
-              </li>
-            {% endif %}
-          {% endfor %}
+        <summary>All {{ n }} posts</summary>
+        <ul class="planet-post-list">{{ items }}
         </ul>
       </details>
     </article>
 
-    <!-- PLANET 2: PHYSICAL SOFTWARE & HARDWARE -->
-    <article class="planet-card planet-hardware" id="planet-physical-software">
-      <div class="planet-orbit-ring" aria-hidden="true"></div>
-      <div class="planet-header">
-        <span class="planet-badge badge-active">Active Orbit · Atoms &amp; Bits</span>
-        <h2><span class="orbit-dot dot-hardware"></span>Physical Software &amp; Hardware</h2>
-        <p class="planet-desc">
-          Where code meets voltage, timing constraints, and physical matter: Arduino, C for JavaScripters, Espruino on bare metal,
-          3D printing, single-board computers, and embedded systems.
-        </p>
-      </div>
-
-      <div class="planet-featured">
-        <p class="satellites-label">Anchor Satellites</p>
-        <div class="satellite-cluster">
-          <a class="satellite-pill pill-anchor" href="/learning-c-for-javascripters/">★ From JavaScript to C</a>
-          <a class="satellite-pill" href="/I-broke-the-3d-printer/">I broke the 3d printer</a>
-          <a class="satellite-pill" href="/espruino-javascript-on-bare-metal/">Espruino - JavaScript on bare metal</a>
-          <a class="satellite-pill" href="/design-ofmodular-hardware/">Design of break out boards</a>
-          <a class="satellite-pill" href="/hardware-cost-reductions/">Experiences from Moore's Law</a>
-          <a class="satellite-pill" href="/digital-and-analog/">Digital and analog interactions</a>
-        </div>
-      </div>
-
+    <article class="planet-card" id="planet-physical-software">
+      <h2><span class="orbit-dot dot-hardware"></span>Physical Software</h2>
+      <p class="planet-desc">Where code meets hardware: Arduino, embedded C, 3D printing.</p>
+      <ul class="planet-links">
+        <li><a href="/learning-c-for-javascripters/">From JavaScript to C</a> <span class="planet-year">2016</span></li>
+        <li><a href="/I-broke-the-3d-printer/">I broke the 3D printer</a> <span class="planet-year">2017</span></li>
+        <li><a href="/espruino-javascript-on-bare-metal/">Espruino: JavaScript on bare metal</a> <span class="planet-year">2015</span></li>
+        <li><a href="/design-ofmodular-hardware/">Design of breakout boards</a> <span class="planet-year">2016</span></li>
+        <li><a href="/digital-and-analog/">Digital and analog interactions</a> <span class="planet-year">2015</span></li>
+      </ul>
+      {% assign n = 0 %}
+      {% capture items %}{% for post in site.posts %}{% include post_planet.html post=post %}{% if post_planet == "physical-software" %}{% assign n = n | plus: 1 %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="planet-post-date">{{ post.date | date: "%b %Y" }}</span></li>{% endif %}{% endfor %}{% endcapture %}
       <details class="planet-drawer">
-        <summary>Explore all satellites in Physical Software &amp; Hardware</summary>
-        <ul class="planet-post-list">
-          {% for post in site.posts %}
-            {% include post_planet.html post=post %}
-            {% if post_planet == "physical-software" %}
-              <li>
-                <a href="{{ post.url }}">{{ post.title }}</a>
-                <span class="planet-post-date">{{ post.date | date: "%b %Y" }}</span>
-              </li>
-            {% endif %}
-          {% endfor %}
+        <summary>All {{ n }} posts</summary>
+        <ul class="planet-post-list">{{ items }}
         </ul>
       </details>
     </article>
 
-    <!-- PLANET 3: FIELD NOTES, CULTURE & CHESS -->
-    <article class="planet-card planet-culture" id="planet-culture-chess">
-      <div class="planet-orbit-ring" aria-hidden="true"></div>
-      <div class="planet-header">
-        <span class="planet-badge badge-active">Active Orbit · Notes &amp; 64 Squares</span>
-        <h2><span class="orbit-dot dot-culture"></span>Field Notes, Culture &amp; Chess</h2>
-        <p class="planet-desc">
-          Reflections outside the terminal—Beethoven, contemporary art, books, travel, the craft of writing, and a growing orbit
-          for tracking chess study and patterns.
-        </p>
-      </div>
-
-      <div class="planet-featured">
-        <p class="satellites-label">Anchor Satellites &amp; Chess Seed</p>
-        <div class="satellite-cluster">
-          <a class="satellite-pill pill-chess" href="https://lichess.org/@/chessdiver/blog" target="_blank" rel="noopener" title="Patrick's chessdiver blog on Lichess + upcoming chess notes">♞ Chess Learnings (chessdiver · Lichess &amp; Notes)</a>
-          <a class="satellite-pill" href="/beethoven-on-coursera/">Finding Beethoven on Coursera</a>
-          <a class="satellite-pill" href="/voyage-en-france/">Voyage en France</a>
-          <a class="satellite-pill" href="/modern-arts-in-houston/">Modern arts tour in Houston</a>
-          <a class="satellite-pill" href="/end-of-industrialisation/">All the World's Futures (Venice)</a>
-          <a class="satellite-pill" href="/some-thoughts-about-writing/">Some thoughts about writing</a>
-        </div>
-      </div>
-
+    <article class="planet-card" id="planet-culture-chess">
+      <h2><span class="orbit-dot dot-culture"></span>Culture &amp; Chess</h2>
+      <p class="planet-desc">Music, art, travel and writing, and chess.</p>
+      <ul class="planet-links">
+        <li><a href="https://lichess.org/@/cheszdiver/blog" target="_blank" rel="noopener">Chess notes on Lichess ↗</a></li>
+        <li><a href="/beethoven-on-coursera/">Finding Beethoven on Coursera</a> <span class="planet-year">2017</span></li>
+        <li><a href="/voyage-en-france/">Voyage en France</a> <span class="planet-year">2020</span></li>
+        <li><a href="/modern-arts-in-houston/">Modern arts tour in Houston</a> <span class="planet-year">2016</span></li>
+        <li><a href="/some-thoughts-about-writing/">Some thoughts about writing</a> <span class="planet-year">2015</span></li>
+      </ul>
+      {% assign n = 0 %}
+      {% capture items %}{% for post in site.posts %}{% include post_planet.html post=post %}{% if post_planet == "culture-chess" %}{% assign n = n | plus: 1 %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="planet-post-date">{{ post.date | date: "%b %Y" }}</span></li>{% endif %}{% endfor %}{% endcapture %}
       <details class="planet-drawer">
-        <summary>Explore all satellites in Field Notes, Culture &amp; Chess</summary>
-        <ul class="planet-post-list">
-          <li class="chess-seed-item">
-            <a href="https://lichess.org/@/chessdiver/blog" target="_blank" rel="noopener">♞ Lichess Blog (@chessdiver) — Chess study &amp; field notes (new local notes incoming)</a>
-            <span class="planet-post-date">Orbit Seed</span>
-          </li>
-          {% for post in site.posts %}
-            {% include post_planet.html post=post %}
-            {% if post_planet == "culture-chess" %}
-              <li>
-                <a href="{{ post.url }}">{{ post.title }}</a>
-                <span class="planet-post-date">{{ post.date | date: "%b %Y" }}</span>
-              </li>
-            {% endif %}
-          {% endfor %}
+        <summary>All {{ n }} posts</summary>
+        <ul class="planet-post-list">{{ items }}
         </ul>
       </details>
     </article>
 
-    <!-- PLANET 4: MUNICH LAB & TECH -->
-    <article class="planet-card planet-munich" id="planet-munich-lab">
-      <div class="planet-orbit-ring" aria-hidden="true"></div>
-      <div class="planet-header">
-        <span class="planet-badge badge-completed">Completed Orbit · 2012–2016 Archive</span>
-        <h2><span class="orbit-dot dot-munich"></span>Munich Lab &amp; Tech</h2>
-        <p class="planet-desc">
-          A software engineering laboratory in Munich—learning JavaScript (Backbone, Browserify, Node, React, D3),
-          graph &amp; document databases (Neo4j, ArangoDB), and infrastructure craft (Chef, Vagrant, Ruby) in public.
-        </p>
-      </div>
-
-      <div class="planet-featured">
-        <p class="satellites-label">Most-Visited Satellites</p>
-        <div class="satellite-cluster">
-          <a class="satellite-pill pill-anchor" href="/how-I-start-liking-javascript-again/">★ How I am (re-)discovering JavaScript</a>
-          <a class="satellite-pill" href="/unix-in-the-browser/">Browserify - Unix in the browser</a>
-          <a class="satellite-pill" href="/Getting-Started-With-D3/">Getting Started with D3</a>
-          <a class="satellite-pill" href="/Exploring-Graphs-With-Neography/">Exploring Graphs with Neography</a>
-          <a class="satellite-pill" href="/aql-for-twitter-analysis/">AQL for Twitter Analysis (ArangoDB)</a>
-          <a class="satellite-pill" href="/building-infrastructure/">Building Infrastructure with Chef</a>
-        </div>
-      </div>
-
+    <article class="planet-card" id="planet-munich-lab">
+      <h2><span class="orbit-dot dot-munich"></span>Munich Lab &amp; Tech <span class="planet-years">2012–2016</span></h2>
+      <p class="planet-desc">Learning JavaScript, databases and infrastructure in public.</p>
+      <ul class="planet-links">
+        <li><a href="/how-I-start-liking-javascript-again/">How I am (re-)discovering JavaScript</a> <span class="planet-year">2013</span></li>
+        <li><a href="/unix-in-the-browser/">Browserify: Unix in the browser</a> <span class="planet-year">2014</span></li>
+        <li><a href="/Getting-Started-With-D3/">Getting started with D3</a> <span class="planet-year">2014</span></li>
+        <li><a href="/aql-for-twitter-analysis/">AQL for Twitter analysis</a> <span class="planet-year">2014</span></li>
+        <li><a href="/building-infrastructure/">Building infrastructure with Chef</a> <span class="planet-year">2013</span></li>
+      </ul>
+      {% assign n = 0 %}
+      {% capture items %}{% for post in site.posts %}{% include post_planet.html post=post %}{% if post_planet == "munich-lab" %}{% assign n = n | plus: 1 %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="planet-post-date">{{ post.date | date: "%b %Y" }}</span></li>{% endif %}{% endfor %}{% endcapture %}
       <details class="planet-drawer">
-        <summary>Explore all satellites in Munich Lab &amp; Tech (2012–2016)</summary>
-        <ul class="planet-post-list">
-          {% for post in site.posts %}
-            {% include post_planet.html post=post %}
-            {% if post_planet == "munich-lab" %}
-              <li>
-                <a href="{{ post.url }}">{{ post.title }}</a>
-                <span class="planet-post-date">{{ post.date | date: "%b %Y" }}</span>
-              </li>
-            {% endif %}
-          {% endfor %}
+        <summary>All {{ n }} posts</summary>
+        <ul class="planet-post-list">{{ items }}
         </ul>
       </details>
     </article>
-
   </section>
 
   <!-- FULL CHRONOLOGICAL INDEX WITH TAGS -->
-  <section class="full-archive-section" id="all-posts" aria-label="Complete Chronological Index with Tags">
+  <section class="full-archive-section" id="all-posts" aria-label="All posts">
     <div class="archive-header">
-      <h2>Complete Chronological Index &amp; Tags</h2>
-      <p class="gray">All {{ site.posts | size }} posts with their planet orbit and tags. Click any tag or planet below to filter.</p>
+      <h2>All posts</h2>
 
       <div class="tag-filter-bar" id="tag-filter-bar">
         <button type="button" class="filter-chip active" data-filter="all">All ({{ site.posts | size }})</button>
-        <button type="button" class="filter-chip chip-planet" data-planet-filter="thinking-marvels"><span class="orbit-dot dot-marvels"></span>Thinking Marvels</button>
-        <button type="button" class="filter-chip chip-planet" data-planet-filter="physical-software"><span class="orbit-dot dot-hardware"></span>Physical Software</button>
-        <button type="button" class="filter-chip chip-planet" data-planet-filter="culture-chess"><span class="orbit-dot dot-culture"></span>Culture &amp; Chess</button>
-        <button type="button" class="filter-chip chip-planet" data-planet-filter="munich-lab"><span class="orbit-dot dot-munich"></span>Munich Lab &amp; Tech</button>
-        <span class="filter-divider">|</span>
         <a class="filter-chip" href="#tag-ai" data-tag-filter="ai">#ai</a>
         <a class="filter-chip" href="#tag-javascript" data-tag-filter="javascript">#javascript</a>
         <a class="filter-chip" href="#tag-backbone" data-tag-filter="backbone">#backbone</a>
         <a class="filter-chip" href="#tag-browserify" data-tag-filter="browserify">#browserify</a>
         <a class="filter-chip" href="#tag-node" data-tag-filter="node">#node</a>
-        <a class="filter-chip" href="#tag-d3" data-tag-filter="d3">#d3</a>
         <a class="filter-chip" href="#tag-arduino" data-tag-filter="arduino">#arduino</a>
         <a class="filter-chip" href="#tag-hardware" data-tag-filter="hardware">#hardware</a>
-        <a class="filter-chip" href="#tag-embedded" data-tag-filter="embedded">#embedded</a>
-        <a class="filter-chip" href="#tag-c" data-tag-filter="c">#c</a>
         <a class="filter-chip" href="#tag-arangodb" data-tag-filter="arangodb">#arangodb</a>
-        <a class="filter-chip" href="#tag-graph" data-tag-filter="graph">#graph</a>
         <a class="filter-chip" href="#tag-chef" data-tag-filter="chef">#chef</a>
         <a class="filter-chip" href="#tag-vagrant" data-tag-filter="vagrant">#vagrant</a>
         <a class="filter-chip" href="#tag-ruby" data-tag-filter="ruby">#ruby</a>
         <a class="filter-chip" href="#tag-design" data-tag-filter="design">#design</a>
         <a class="filter-chip" href="#tag-writing" data-tag-filter="writing">#writing</a>
-        <a class="filter-chip" href="#tag-books" data-tag-filter="books">#books</a>
         <a class="filter-chip" href="#tag-blogging" data-tag-filter="blogging">#blogging</a>
         <a class="filter-chip" href="#tag-freelance" data-tag-filter="freelance">#freelance</a>
-        <a class="filter-chip" href="#tag-music" data-tag-filter="music">#music</a>
       </div>
       <p id="active-filter-status" class="filter-status hidden"></p>
     </div>
