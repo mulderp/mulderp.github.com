@@ -17,7 +17,7 @@ Like Minsky's society of mind, the blog has no single central sun. Instead, its 
    - Primary tags for new posts: `hardware`, `arduino`, `embedded`, `c`, `iot`, `3d`, `robotics`.
 
 3. **Field Notes, Culture & Chess (`planet: culture-chess` · 13 posts + Chess Seed · Active Orbit)**
-   - *Curiosity outside the terminal—Beethoven, contemporary art, books, travel, writing, and chess study (`@chessdiver` on Lichess).*
+   - *Curiosity outside the terminal—Beethoven, contemporary art, books, travel, writing, and chess study (`@cheszdiver` on Lichess).*
    - Anchors: *Finding Beethoven on Coursera*, *Voyage en France*, *Modern arts tour in Houston*, *Some thoughts about writing*, plus Chess learnings.
    - Primary tags for new posts: `chess`, `lichess`, `music`, `art`, `books`, `writing`, `travel`, `culture`.
 
@@ -44,7 +44,7 @@ You are an editorial scanner for my personal field-notebook blog "thinking_on th
 The blog was inspired by my correspondence with Marvin Minsky (The Society of Mind) and meeting Douglas Hofstadter, and orbits 4 Planets:
 1. Thinking Marvels (humans & machines exploring ideas together, mental models, AI, abstractions)
 2. Physical Software & Hardware (embedded systems, C, Arduino, electronics, 3D printing)
-3. Field Notes, Culture & Chess (chess study/@chessdiver, music, art, books, travel, writing)
+3. Field Notes, Culture & Chess (chess study/@cheszdiver, music, art, books, travel, writing)
 4. Munich Lab & Tech (completed 2012–2016 JS/infra archive)
 
 My best posts are 350–700 words, bridge concrete technical/physical/chess details with a bigger mental model, and keep a natural, curious human notebook voice (never corporate or generic AI marketing prose).
