@@ -2,7 +2,7 @@
 
 ## 1. Your Blog Identity & 4-Planet Constellation (2012–2026+)
 
-**Origin Story**: `thinking_on thinking` started as a personal note-taking device—inspired by your 2003–2008 correspondence with **Marvin Minsky** (*The Society of Mind*) and meeting **Douglas Hofstadter**, and grown in Munich as an open laboratory for learning JavaScript, software engineering, and hardware in public.
+**Origin Story**: `thinking_on thinking` started as a personal note-taking device—inspired by your 2003–2008 correspondence with **Marvin Minsky** (*The Society of Mind*) (and, once, meeting Daniel Dennett), and grown in Munich as an open laboratory for learning JavaScript, software engineering, and hardware in public.
 
 Like Minsky's society of mind, the blog has no single central sun. Instead, its **91 posts** (`51,924` words, average **571 words/post**) orbit **4 Planets**:
 
@@ -41,7 +41,7 @@ node ops/blog-pulse.mjs learning-c
 ### Prompt 1: First-Pass Blog Post Scanner & Clarity Audit
 ```markdown
 You are an editorial scanner for my personal field-notebook blog "thinking_on thinking" (thinkingonthinking.com).
-The blog was inspired by my correspondence with Marvin Minsky (The Society of Mind) and meeting Douglas Hofstadter, and orbits 4 Planets:
+The blog was inspired by my correspondence with Marvin Minsky (The Society of Mind), and orbits 4 Planets:
 1. Thinking Marvels (humans & machines exploring ideas together, mental models, AI, abstractions)
 2. Physical Software & Hardware (embedded systems, C, Arduino, electronics, 3D printing)
 3. Field Notes, Culture & Chess (chess study/@cheszdiver, music, art, books, travel, writing)
