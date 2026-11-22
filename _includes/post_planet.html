@@ -1,0 +1,26 @@
+{% assign p_slug = include.post.url | remove: '/' | downcase %}
+{% assign p_tags = include.post.tags | join: ' ' | remove: ',' | remove: '[' | remove: ']' | downcase | split: ' ' %}
+{% assign post_planet = "" %}
+
+{% if include.post.planet %}
+  {% assign post_planet = include.post.planet %}
+{% elsif p_slug == "marvin-minsky-passed-away" or p_slug == "yasiv-book-graph" or p_slug == "book-progress" or p_slug == "visual-languages" or p_slug == "the-value-of-iteration" or p_slug == "on-education-innovation" or p_slug == "push-conference" or p_slug == "software-categories" or p_slug == "ruby-and-patterns" or p_slug == "on-innovation-communities" or p_slug == "usability-is-everywhere" %}
+  {% assign post_planet = "thinking-marvels" %}
+{% elsif p_slug == "i-broke-the-3d-printer" or p_slug == "learning-c-for-javascripters" or p_slug == "eclipses-and-programming" or p_slug == "design-ofmodular-hardware" or p_slug == "learning-about-biohacking" or p_slug == "building-digital-hardware" or p_slug == "exploring-noble-and-blueiot" or p_slug == "hardware-cost-reductions" or p_slug == "espruino-javascript-on-bare-metal" or p_slug == "single-board-computers" or p_slug == "push-state-from-an-embedded-device" or p_slug == "an-arduino-sketch-from-scratch" or p_slug == "serial-input-with-streams" or p_slug == "serial-communication-with-nodejs" or p_slug == "digital-and-analog" or p_slug == "re-entering-hardware" %}
+  {% assign post_planet = "physical-software" %}
+{% elsif p_slug == "voyage-en-france" or p_slug == "need-writing-again" or p_slug == "beethoven-on-coursera" or p_slug == "modern-arts-in-houston" or p_slug == "end-of-industrialisation" or p_slug == "some-thoughts-about-writing" or p_slug == "book-review-python-for-finances" or p_slug == "switching-blogs" or p_slug == "tweaking-images" or p_slug == "learning-from-cinema-websites" or p_slug == "writing-on-ruby-and-backbone" or p_slug == "writing-a-book" or p_slug == "new-kid-on-the-blog" %}
+  {% assign post_planet = "culture-chess" %}
+{% else %}
+  {% for t in p_tags %}
+    {% if t == "ai" or t == "mind" or t == "thinking" or t == "models" or t == "cognition" or t == "agents" or t == "llm" %}
+      {% assign post_planet = "thinking-marvels" %}
+    {% elsif t == "hardware" or t == "arduino" or t == "embedded" or t == "c" or t == "iot" or t == "3d" or t == "robotics" %}
+      {% assign post_planet = "physical-software" %}
+    {% elsif t == "chess" or t == "lichess" or t == "music" or t == "art" or t == "arts" or t == "travel" or t == "culture" %}
+      {% assign post_planet = "culture-chess" %}
+    {% endif %}
+  {% endfor %}
+  {% if post_planet == "" %}
+    {% assign post_planet = "munich-lab" %}
+  {% endif %}
+{% endif %}

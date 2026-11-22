@@ -1,1 +1,7 @@
 _site/*
+_posts/_site/*
+.env
+ops/node_modules/
+ops/.auth/
+ops/*.png
+

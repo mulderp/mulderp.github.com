@@ -1,3 +1,11 @@
 permalink: '/:title/'
 markdown: kramdown
 highlighter: rouge
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - README.md
+  - ops
+  - beginnings
+  - node_modules
