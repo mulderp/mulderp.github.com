@@ -1,0 +1,19 @@
+{
+  "name": "thinkingonthinking-ops",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "status": "node check-status.mjs",
+    "pulse": "node blog-pulse.mjs",
+    "github": "node github-api.mjs",
+    "dns": "node dnsimple-api.mjs",
+    "preview:local": "node preview-server.mjs",
+    "preview:origin": "node playwright-helper.mjs preview-origin",
+    "login:dnsimple": "node playwright-helper.mjs login-dnsimple",
+    "login:github": "node playwright-helper.mjs login-github"
+  },
+  "dependencies": {
+    "playwright": "^1.50.0"
+  }
+}
