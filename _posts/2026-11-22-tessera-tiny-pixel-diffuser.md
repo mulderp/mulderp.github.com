@@ -1,39 +1,71 @@
 ---
 layout: post
-title: "What a Tiny 47.6M-Parameter Pixel Diffuser Teaches Us About Quantization, Compute, and Training vs. Inference"
+title: "What a 16×16 pixel diffusion model taught me about quantization and sampling"
 tags: ai
 ---
 
+Sunday morning, coffee, Hugging Face's featured models. Today's pick was a pixel-art generator, and I got stuck on a dumb thought: 16×16 is 256 pixels, which is four chessboards. Then I read the architecture, and it turns out the middle of the network really does think on an 8×8 board.
+
+This is my first post in six years. It's about [Tessera-small](https://huggingface.co/thejagstudio/tessera-small), a 47.6M-parameter model by Jagrat Patel, and its [in-browser ONNX port](https://huggingface.co/cfahlgren1/tessera-small-onnx) by `cfahlgren1`, which powers the [Slack Moji](https://huggingface.co/spaces/cfahlgren1/slack-moji) demo. The canvas is so small that you can count every pixel and watch quantization, sampling and training data each leave their mark.
+
 [![Tessera rendering quality and sampler mode impact](/static/images/tessera_mode_impact_summary.png)](/static/images/tessera_mode_impact_summary.png)
 
-*Click the image for the full-resolution version.*
+*Same prompts and seeds, five sampler settings. Click for the full-size chart.*
 
----
+## Four chessboards
 
-When we talk about generative AI, we usually picture multi-billion-parameter giants running on data-center GPUs. Recently, however, I ran a hands-on experiment with **Tessera-small**, a tiny **47.6-million-parameter** discrete diffusion model by Jagrat Patel (`thejagstudio/tessera-small`), alongside its in-browser ONNX port (`cfahlgren1/slack-moji`). Because the entire canvas is just a **`16×16` pixel grid**, you can literally count every pixel and see how **quantization**, **inference compute**, and **training data** shape the final image.
+Tessera is a masked diffusion model over discrete tokens. A 16×16 sprite is a 256-token sentence, and every pixel is one token from a learned 512-colour palette (token 0 means transparent), plus a `[MASK]` token. There's no VAE and no latent space.
 
-## 1. How Inference Translates Words into Pixels
-Unlike continuous diffusion models that denoise blurry floating-point latents, Tessera is a **Masked Diffusion Language Model**. It treats a `16×16` sprite as a **256-word sentence** where every pixel is a discrete token from a **512-color vocabulary** (plus `[MASK]`).
+To draw a sprite:
 
-During **inference** (turning your text prompt into an image):
-1. **Text Encoding**: Your prompt (e.g., `"cat wearing sunglasses"`) is converted into 24 text tokens by a frozen CLIP text encoder.
-2. **12-Layer Hourglass Transformer**: The 24 text tokens and 256 masked pixel tokens enter a single bidirectional sequence inside a **12-block transformer** (`2` full-resolution blocks → `8` patch-merged `8×8` core blocks for global shape → `2` full-resolution blocks for crisp outlines).
-3. **Parallel Unmasking**: Starting from a blank canvas of 256 `[MASK]` tokens, the model predicts a 512-color probability distribution for every pixel at once. Over **16 steps**, it locks in ("unmasks") the highest-confidence pixels first—usually the transparent background and black silhouette boundary in steps 1–4, followed by interior colors and shading in steps 5–16.
+1. The prompt goes through a frozen CLIP ViT-B/32 text encoder, padded to 24 tokens.
+2. The 24 text tokens and the 256 pixel tokens go into one bidirectional transformer with an hourglass layout: 2 blocks at full resolution, 8 blocks on 2×2 patch-merged tokens, then 2 more at full resolution. Merging 2×2 patches turns the 16×16 canvas into an 8×8 grid, so 8 of the 12 blocks literally work on a chessboard.
+3. Starting from a canvas that is all `[MASK]`, the model predicts a colour distribution for every pixel at once. Over about 16 steps it commits the pixels it is most sure about and predicts the rest again.
 
-## 2. Quantization and Inference Compute: Browser vs. Studio
-To make Tessera run 100% inside a web browser with zero server cost, `cfahlgren1` quantized the model weights from 16-bit floats (`224 MB`) down to **8-bit integers (`115 MB`)** using ONNX Runtime Web (`WebGPU`).
+Training was small too: 82,342 steps of 512 sprites, about 5.5 hours on one NVIDIA RTX PRO 6000 Blackwell. That's roughly one Sunday morning. On held-out data the model gets 78.8% of masked pixels right.
 
-Surprisingly, `int8` quantization barely hurts the weights—the quantized model agrees with the full `fp16` model on **91–99% of top pixel choices**. Yet, as our comparison chart shows, **how much compute you spend during inference sampling** makes a dramatic visual difference:
-- **Fast / Naive (4 steps, no spatial filtering)**: Confidence drops to `~65–77%`. Because too many neighboring pixels lock in simultaneously without seeing each other's choices, the sprite fractures into 39 noisy colors (and our rubber duck grows a second head).
-- **Browser Default (`16 steps`, constant guidance)**: Runs in `~3 seconds` on local WebGPU (`~80–84%` confidence). Adding **3×3 Spatial Non-Maximum Suppression (NMS)** stops adjacent uncertain pixels from clashing, producing a solid emoji baseline.
-- **Studio Advanced + Polish (`24 steps`, cosine guidance ramp, +2 polish passes)**: By giving the sampler more steps and **re-masking the least confident 8% of pixels twice** at the very end, pixel confidence jumps to **`91–95%`**. Stray color noise disappears, tightening a 36-color health potion into a crisp, 14-color pixel-art icon.
+## Quantization: what actually shrinks
 
-## 3. Training vs. Inference: Why `"a man who is walking with a dog"` Fails
-What happens when we prompt `"a man who is walking with a dog"`? Even with 24 steps and polish passes at `92.5%` confidence, the model draws **only a walking man**—no dog!
+To run Tessera in a browser with no inference server, the ONNX port stores the weights as int8. The download drops from 224 MB (the fp16 export) to 115 MB. Both numbers include the CLIP text encoder: the int8 denoiser is 51 MB and the int8 text encoder is 64 MB. So if you multiply 47.6M parameters by 2 bytes, get about 95 MB and wonder about the gap, the gap is CLIP.
 
-This neatly separates **inference quality** from **training limitations**:
-- **Inference** can only rearrange patterns the model learned during **training**.
-- Tessera was trained for 30 epochs on **Pixel Art Atlas 1.4M**—a dataset of 1.4 million retro game icons where almost every image is a **single centered subject** filling the entire `16×16` tile.
-- A pixel-art human character already requires `14×8` pixels for a readable head, torso, legs, and black boundary outline. Once the transformer locks a centered human into columns `4–11` during steps 1–4, there is no physical grid space left for a dog, nor did the training data teach the model to "zoom out" and draw a 4-pixel yellow stick-man next to a 3-pixel white dog.
+Some details from the port that I liked:
 
-**The Takeaway**: Quantization (`int8` ONNX) lets us move a 47.6M model from a cloud GPU straight into the browser, and smarter inference sampling (spatial NMS + polish passes) cleans up pixel-level noise. But no amount of inference compute can overcome a training distribution prior: when your world is `16×16` single-subject sprites, a multi-character scene requires generating two sprites and stitching them together!
+- Only storage is int8. Each weight matrix has one scale per output channel, and the weights are turned back into fp32 at inference time, so the math still runs in fp32.
+- The convolution weights stay fp16, because per-channel int8 gave wrong WebGPU results for 4D conv weights in onnxruntime-web 1.22. That's only about 0.3M of the 47.5M denoiser parameters.
+- `Pow(x, 2)` was rewritten as `x*x`, because the original could return NaN on some GPUs for negative inputs.
+
+The outputs barely change. On 8 test prompts, the int8 build and the fp16 export pick the same top colour for 91–99% of pixels. The repo reports about 1 second for 4 sprites on a laptop with WebGPU. On my machine a batch took about 3 seconds.
+
+So the precision of the weights isn't where image quality is won or lost. Sampling is.
+
+## Sampling: where the quality goes
+
+The chart runs the same prompts and seeds through five settings:
+
+1. **Fast / naive:** 4 steps, no spatial NMS
+2. **No NMS:** 16 steps, no spatial NMS
+3. **Browser default** (what Slack Moji uses): 16 steps, guidance 3, with NMS
+4. **Advanced:** 24 steps, guidance ramping up to 4.0 on a cosine curve
+5. **Advanced + polish:** the same, plus two extra passes that re-mask and redraw the least confident 8% of pixels
+
+The browser default is already a careful sampler. It commits the most confident pixels first on a cosine schedule, adds annealed Gumbel noise, and runs 3×3 non-maximum suppression, so neighbouring pixels that are both unsure don't get committed in the same step. Turning NMS off is what makes the first two columns speckle. With only 4 steps, too many neighbours lock in before they can see each other: the cat breaks into 39 colours and the rubber duck grows a second head.
+
+At the other end, more steps and the polish passes clean up stray pixels. The health potion goes from 36 colours in naive mode to 23 at the default and 14 after polishing.
+
+The chart also prints a confidence number under each sprite. It rises from 65–78% (naive) to 80–84% (default) to 91–95% (polished). Take that with a grain of salt: the polish passes redraw exactly the least confident pixels, so the average goes up partly by design. The colour counts and the pictures are the better evidence.
+
+## Training: why "a man who is walking with a dog" has no dog
+
+Even with 24 steps and polish, "a man who is walking with a dog" gives me a walking man and no dog. More sampling doesn't fix it, because the problem comes from training.
+
+Tessera was trained for 30 epochs on [Pixel Art Atlas 1.4M](https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m). Those 1.4 million sprites don't come from old games. They were generated from text prompts with Krea 2 Turbo and a pixel-art LoRA, and almost every one shows a single centred subject. The dataset card also warns that the captions describe what the generator was asked to draw, and that colours, counts and other details may not match the picture. So the model saw plenty of prompts that mention two things, attached to pictures that often show one.
+
+It isn't that the grid is too small. A 4-pixel stick man next to a 3-pixel dog would fit in 16×16. The model simply never learned to draw two subjects. My reading of what happens: once it commits to a centred figure in the first few steps, the rest of the canvas becomes background.
+
+Two workarounds do get a dog, shown at the bottom of the chart. You can generate "walking man" and "small white dog" separately and put them side by side on a 32×16 canvas. Or you can use inpainting, which Tessera supports, and seed the left and right halves of the canvas with man and dog pixels.
+
+## What I took away
+
+int8 moved the model from a GPU server into a browser tab with almost no change in what it draws. Sampling choices (steps, NMS, re-masking) changed the pictures far more than quantization did. And neither can add something the training data never showed: in a world of single-subject 16×16 sprites, a man walking a dog is two sprites stitched together.
+
+If you want to play with it yourself: Tessera-small is licensed CC BY-NC 4.0, so it's free for personal and research use with credit, but commercial use needs a separate licence from the author.
