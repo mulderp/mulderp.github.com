@@ -4,9 +4,9 @@ title: "Turning a Man with a Dog into Pixel Art by diffusion"
 tags: ai
 ---
 
-Sunday morning, coffee, Hugging Face's featured models. Today's pick was a pixel-art generator, and I got stuck on a dumb thought: Can it draw a 16x16 pixel picture of a man with a dog? I tried to read the architecture, and it requires a bit more learning to finally answer. Let us start with part 1.
+Sunday morning, coffee, Hugging Face's featured models. Today's [pick](https://huggingface.co/datasets) led to a pixel-art generator, and I got stuck on a dumb thought: Can it draw a 16x16 pixel picture of a man with a dog? I tried to read the architecture, and it requires a bit more learning to finally answer. Let us start with part 1.
 
-The featured model on Huggging Face is [Tessera-small](https://huggingface.co/thejagstudio/tessera-small). It is a 47.6M-parameter model by Jagrat Patel, and its [in-browser ONNX port](https://huggingface.co/cfahlgren1/tessera-small-onnx) by `cfahlgren1`, which powers the [Slack Moji](https://huggingface.co/spaces/cfahlgren1/slack-moji) demo. The canvas is so small that you can count every pixel and watch quantization, sampling and training data each leave their mark.
+The featured model on Hugging Face is [Tessera-small](https://huggingface.co/thejagstudio/tessera-small). It is a 47.6M-parameter model by Jagrat Patel, and its [in-browser ONNX port](https://huggingface.co/cfahlgren1/tessera-small-onnx) by `cfahlgren1`, which powers the [Slack Moji](https://huggingface.co/spaces/cfahlgren1/slack-moji) demo. The canvas is so small that you can count every pixel and watch quantization, sampling and training data each leave their mark.
 
 [![Tessera rendering quality and sampler mode impact](/static/images/tessera_mode_impact_summary.png)](/static/images/tessera_mode_impact_summary.png)
 
