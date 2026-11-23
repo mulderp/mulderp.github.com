@@ -6,7 +6,7 @@ tags: ai
 
 Sunday morning, coffee, Hugging Face's featured models. Today's pick was a pixel-art generator, and I got stuck on a dumb thought: Can it draw a 16x16 pixel picture of a man with a dog? I tried to read the architecture, and it requires a bit more learning to finally answer. Let us start with part 1.
 
-The featured model on Huggging Face is [Tessera-small](https://huggingface.co/thejagstudio/tessera-small). It is a 47.6M-parameter model by Jagrat Patel, and its [in-browser ONNX port](https://huggingface.co/cfahlgren1/tessera-small-onnx) by `cfahlgren1`, which powers the [Slack Moji](https://huggingface.co/spaces/cfahlgren1/slack-moji) demo. The canvas is so small that you can count every pixel and watch quantization, sampling and training data each leave their mark.
+The featured model on Hugging Face is [Tessera-small](https://huggingface.co/thejagstudio/tessera-small). It is a 47.6M-parameter model by Jagrat Patel (TheJagStudio), and its [in-browser ONNX port](https://huggingface.co/cfahlgren1/tessera-small-onnx) by `cfahlgren1`, which powers the [Slack Moji](https://huggingface.co/spaces/cfahlgren1/slack-moji) demo. The canvas is so small that you can count every pixel and watch quantization, sampling and training data each leave their mark.
 
 [![Tessera rendering quality and sampler mode impact](/static/images/tessera_mode_impact_summary.png)](/static/images/tessera_mode_impact_summary.png)
 
@@ -14,21 +14,29 @@ The featured model on Huggging Face is [Tessera-small](https://huggingface.co/th
 
 ## A pixel called MASK
 
-Tessera is a masked diffusion model over discrete tokens. To see what that means, think of a picture as a collection of pixels, much like a text is a collection of words. In Tessera, each pixel is one of 512 colours, just like each word in a language model comes from a fixed vocabulary.
+Tessera is a masked diffusion model over discrete tokens. To see what that means, think of a picture as a collection of pixels, much like a text is a collection of words. According to the [Tessera-small model card](https://huggingface.co/thejagstudio/tessera-small), each pixel is one of 512 palette colours (with token 0 = transparent), just like each word in a language model comes from a fixed vocabulary.
 
-Tessera uses one extra token that is not a colour, the mask token. To understand why, take the sentence "The dog ___ a duck." You can guess the missing word: chases, maybe bites. Tessera learns the same game for pictures: hide some pixels, guess the missing colours. During training, the [forward process of discrete diffusion](https://sander.ai/2026/08/24/continuous-dlms.html) gradually turns some colours into `[MASK]` until the whole image is in the absorbing, fully masked state.
+Tessera uses one extra token that is not a colour, `[MASK]`. To understand why, take the sentence "The dog ___ a duck." You can guess the missing word: chases, maybe bites. Tessera learns the same game for pictures: hide some pixels, guess the missing colours. During training, the [forward process of discrete diffusion](https://sander.ai/2026/08/24/continuous-dlms.html) gradually turns some colours into `[MASK]` until the whole image is in the absorbing, fully masked state.
 
-To draw a new picture, it starts with every pixel masked and fills the canvas step by step. The model does not learn *where* to put the man or the dog. It learns *what colour might belong in a pixel* after seeing the prompt and all the colours already known around it.
+To draw a new picture, it starts with every pixel masked and unmasks all 256 pixels in parallel over about 16 steps (per the [model card](https://huggingface.co/thejagstudio/tessera-small)). The model does not learn *where* to put the man or the dog. It learns *what colour might belong in a pixel* after seeing the prompt and all the colours already known around it.
 
 ## Where the chessboards come in
 
 To draw a sprite:
 
-1. A small tokenizer splits the prompt into 24 text tokens, padded if necessary. A tokenizer and an embedding model are separate pieces: the tokenizer makes chunks of text, while CLIP turns those chunks into number vectors. CLIP is the frozen text encoder here; Tessera does not change its weights. In a high-dimensional embedding space, text with similar meaning tends to end up near one another because the model learned from text and image pairs. CLIP also uses this arrangement for both of the pair's items, unlike [the Yasiv graph](https://thinkingonthinking.com/yasiv-book-graph/) I once wrote about: in that graph, books were nodes and co-purchases formed visible edges. Here, a text chunk is itself a point in a much larger space, and there are no edges to inspect.
+1. A small tokenizer splits the prompt into 24 text tokens, padded if necessary. A tokenizer and an embedding model are separate pieces: the tokenizer makes chunks of text, while [OpenAI CLIP (ViT-B/32)](https://huggingface.co/openai/clip-vit-base-patch32) turns those chunks into number vectors. CLIP is the frozen text encoder here; Tessera does not change its weights. In a high-dimensional embedding space, text with similar meaning tends to end up near one another because the model learned from text and image pairs. CLIP also uses this arrangement for both of the pair's items, unlike [the Yasiv graph](https://thinkingonthinking.com/yasiv-book-graph/) I once wrote about: in that graph, books were nodes and co-purchases formed visible edges. Here, a text chunk is itself a point in a much larger space, and there are no edges to inspect.
 2. The 24 text tokens and the 256 pixel tokens enter one bidirectional transformer with an hourglass layout: 2 blocks at full resolution, 8 blocks on 2×2 patch-merged tokens, then 2 more at full resolution. Merging 2×2 patches turns the 16×16 canvas into an 8×8 grid, so 8 of the 12 blocks literally work on a chessboard.
 3. Starting from an all-`[MASK]` canvas, the model gives every pixel a distribution over colours. It commits the pixels it is most sure about, then gives the remaining positions another prediction. A few large steps are difficult because pixels committed in parallel are only conditionally independent: each head of the duck may look plausible on its own, even if the two heads together do not. That is why careful samplers spread the commitments out and use spatial checks instead of filling the grid in one go.
 
-Training was small too: 82,342 steps of 512 sprites, about 5.5 hours on one NVIDIA RTX PRO 6000 Blackwell. That's roughly one Sunday morning. On held-out data the model gets 78.8% of masked pixels right.
+Training was small too: 82,342 steps of 512 sprites, about 5.5 hours on one NVIDIA RTX PRO 6000 Blackwell. That's roughly one Sunday morning. The [model card](https://huggingface.co/thejagstudio/tessera-small) reports a validation accuracy of 78.8% of masked pixels for the EMA weights.
+
+[TODO Patrick: eigene Erklärung von „EMA-Gewichte“ in 1–2 Sätzen]
+
+I haven't fully wrapped my head around that 78.8% figure yet, and a few open questions remain for me:
+
+- At what masking ratio was it measured (for example, averaged across 0–100% masking)?
+- Do transparent background pixels count toward the accuracy? If so, easy background pixels could make the number look higher than it feels.
+- What would a simple baseline score (for example, always guessing transparent)?
 
 ## Quantization: what actually shrinks
 
@@ -38,7 +46,7 @@ Some details from the port that I liked:
 
 - Only storage is int8. Each weight matrix has one scale per output channel, and the weights are turned back into fp32 at inference time, so the math still runs in fp32.
 - The convolution weights stay fp16, because per-channel int8 gave wrong WebGPU results for 4D conv weights in onnxruntime-web 1.22. That's only about 0.3M of the 47.5M denoiser parameters.
-- `Pow(x, 2)` was rewritten as `x*x`, because the original could return NaN on some GPUs for negative inputs.
+- `Pow(x, 2)` was rewritten as `x*x` (the [ONNX port README](https://huggingface.co/cfahlgren1/tessera-small-onnx#quantization) notes that `Pow(x, 2)` can return NaN on some GPUs for negative inputs, though no upstream issue is linked).
 
 The outputs barely change. On 8 test prompts, the int8 build and the fp16 export pick the same top colour for 91–99% of pixels. The repo reports about 1 second for 4 sprites on a laptop with WebGPU. On my machine a batch took about 3 seconds.
 
@@ -75,3 +83,5 @@ Two workarounds do get a dog, shown at the bottom of the chart. You can generate
 int8 moved the model from a GPU server into a browser tab with almost no change in what it draws. Sampling choices (steps, NMS, re-masking) changed the pictures far more than quantization did. And neither can add something the training data never showed: in a world of single-subject 16×16 sprites, a man walking a dog is two sprites stitched together.
 
 If you want to play with it yourself: Tessera-small is licensed CC BY-NC 4.0, so it's free for personal and research use with credit, but commercial use needs a separate licence from the author.
+
+*Update (Nov 23, 2026): corrected the model link to the original repo and sourced the facts from its model card.*
